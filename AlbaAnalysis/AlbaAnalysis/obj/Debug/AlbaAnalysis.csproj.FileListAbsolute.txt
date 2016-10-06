@@ -1,0 +1,9 @@
+C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\bin\Debug\AlbaAnalysis.exe.config
+C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\bin\Debug\AlbaAnalysis.exe
+C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\bin\Debug\AlbaAnalysis.pdb
+C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\obj\Debug\AlbaAnalysis.Properties.Resources.resources
+C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\obj\Debug\AlbaAnalysis.SerialForm.resources
+C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\obj\Debug\AlbaAnalysis.csproj.GenerateResource.Cache
+C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\obj\Debug\AlbaAnalysis.exe
+C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\obj\Debug\AlbaAnalysis.pdb
+C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\obj\Debug\AlbaAnalysis.csprojResolveAssemblyReference.cache
