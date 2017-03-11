@@ -15,13 +15,15 @@ using AlbaAnalysis.Routine;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Diagnostics;
 
-namespace AlbaAnalysis {
+namespace AlbaAnalysis
+{
 
     delegate void Handler(string[] strs, string str, int i);
     delegate void voidMethod();
 
 
-    public partial class SerialForm : Form {
+    public partial class SerialForm : Form
+    {
 
         DateTime start = DateTime.Now;
         List<string> saveData = new List<string>();
@@ -34,7 +36,8 @@ namespace AlbaAnalysis {
         int fileNumber = 1;
 
 
-        public SerialForm() {
+        public SerialForm()
+        {
             InitializeComponent();
             buttonNext.Enabled = false;
 
@@ -42,10 +45,6 @@ namespace AlbaAnalysis {
             buttonStopCsv.Enabled = false;
             buttonRDrug.Enabled = false;
             buttonLDrug.Enabled = false;
-            buttonUp.Enabled = false;
-            buttonDown.Enabled = false;
-            buttonRRoll.Enabled = false;
-            buttonLRoll.Enabled = false;
             buttonConnect.Enabled = false;
         }
 
@@ -55,7 +54,8 @@ namespace AlbaAnalysis {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Serial_Load(object sender, EventArgs e) {
+        private void Serial_Load(object sender, EventArgs e)
+        {
             buttonConnect.Focus();
 
             string[] Portlist = SerialPort.GetPortNames();
@@ -70,11 +70,15 @@ namespace AlbaAnalysis {
 
             if (comboBoxPort.Items.Count == 0)
                 comboBoxPort.Items.Add("利用可能なシリアルポートは存在しません。");
-            else if (comboBoxPort.Items.Count > 0) {
+            else if (comboBoxPort.Items.Count > 0)
+            {
                 comboBoxPort.SelectedIndex = 0;
-                try {
+                try
+                {
                     serialPort1.PortName = comboBoxPort.SelectedItem.ToString();
-                } catch (Exception exc) {
+                }
+                catch (Exception exc)
+                {
                     MessageBox.Show(exc.Message);
                 }
 
@@ -124,32 +128,33 @@ namespace AlbaAnalysis {
             chartMpuRoll.ChartAreas[0].AxisX.Title = "Time[s]";
             chartMpuRoll.ChartAreas[0].AxisY.Title = "MpuRoll";
 
-            chartKxrX.ChartAreas[0].AxisX.Title = "Time[s]";
-            chartKxrX.ChartAreas[0].AxisY.Title = "Kxr-X";
-
-            chartKxrZ.ChartAreas[0].AxisX.Title = "Time[s]";
-            chartKxrZ.ChartAreas[0].AxisY.Title = "Kxr-Z";
             #endregion
 
         }
 
-        private void SerialForm_FormClosing(object sender, FormClosingEventArgs e) {
+        private void SerialForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
             serialPort1.Dispose();
             serialPort1.Close();
         }
 
-        private void comboBoxBaud_TextChanged(object sender, EventArgs e) {
+        private void comboBoxBaud_TextChanged(object sender, EventArgs e)
+        {
             if (comboBoxBaud.SelectedIndex != -1)
                 serialPort1.BaudRate = (int)comboBoxBaud.SelectedValue;
         }
 
-        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e) {
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
             string data = null;
             sw = new Stopwatch();
             sw.Start();
-            try {
+            try
+            {
                 data = serialPort1.ReadLine();
-            } catch (Exception) {
+            }
+            catch (Exception)
+            {
                 return;
             }
             sw.Stop();
@@ -157,9 +162,11 @@ namespace AlbaAnalysis {
                 serialPort1.DiscardInBuffer();
 
             var datas = data.Split(',');
-          
-            if (datas.Count() == Constants.dataMembers) {
-                for (int i = 0; i < datas.Count() - 1; i++) {
+
+            if (datas.Count() == Constants.dataMembers)
+            {
+                for (int i = 0; i < datas.Count() - 1; i++)
+                {
                     if (string.IsNullOrEmpty(datas[i]))
                         return;
                 }
@@ -177,15 +184,8 @@ namespace AlbaAnalysis {
         /// </summary>
         /// <param name="data">配列化した受信データ</param>
         /// <param name="i"></param>
-        public void checkSteer(string[] datas, string data, int i) {
-            if (datas[8] == 0.ToString() && datas[9] == 2.ToString())
-                buttonRRoll.BackColor = Color.LightBlue;
-            else buttonRRoll.BackColor = Color.LightGray;
-
-            if (datas[9] == 0.ToString() && datas[8] == 2.ToString())
-                buttonLRoll.BackColor = Color.LightBlue;
-            else buttonLRoll.BackColor = Color.LightGray;
-
+        public void checkSteer(string[] datas, string data, int i)
+        {
             if (datas[10] == 1.ToString())
                 buttonRDrug.BackColor = Color.LightCoral;
             else buttonRDrug.BackColor = Color.LightGray;
@@ -199,13 +199,10 @@ namespace AlbaAnalysis {
         /// <summary>
         /// 操舵入力表示用のボタンをNextButtonを押したときに色を戻します
         /// </summary>
-        private void ResetButton() {
-            buttonRRoll.BackColor = Color.LightGray;
-            buttonLRoll.BackColor = Color.LightGray;
+        private void ResetButton()
+        {
             buttonRDrug.BackColor = Color.LightGray;
             buttonLDrug.BackColor = Color.LightGray;
-            buttonDown.BackColor = Color.LightGray;
-            buttonUp.BackColor = Color.LightGray;
         }
 
         /// <summary>
@@ -213,13 +210,15 @@ namespace AlbaAnalysis {
         /// </summary>
         /// <param name="datas">配列化した受信データ</param>
         /// <param name="i"></param>
-        private void showChart(string[] datas, string data, int i) {
+        private void showChart(string[] datas, string data, int i)
+        {
             DateTime end = DateTime.Now;
             TimeSpan time = end - start;
             int xValue = (int)time.TotalSeconds;
 
             #region グラフ設定
-            try {
+            try
+            {
                 chartSpeed.Series["Speed"].Points.AddXY(xValue, double.Parse(datas[19]));
                 chartMpuPitch.Series["MPitch"].Points.AddXY(xValue, double.Parse(datas[13]));
                 chartCadence.Series["Cadence"].Points.AddXY(xValue, double.Parse(datas[12]));
@@ -227,41 +226,38 @@ namespace AlbaAnalysis {
                 chartBattery.Series["LBattery"].Points.AddXY(xValue, double.Parse(datas[7]));
                 chartMpuYaw.Series["MYaw"].Points.AddXY(xValue, double.Parse(datas[15]));
                 chartMpuRoll.Series["MRoll"].Points.AddXY(xValue, double.Parse(datas[14]));
-                chartKxrX.Series["Kxr-X"].Points.AddXY(xValue, double.Parse(datas[16]));
-                chartKxrZ.Series["Kxr-Z"].Points.AddXY(xValue, double.Parse(datas[18]));
-            } catch (Exception) {
+            }
+            catch (Exception)
+            {
                 return;
             }
 
             chartSpeed.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
-            chartSpeed.ChartAreas[0].AxisX.Minimum = time.TotalSeconds - 30;
+            chartSpeed.ChartAreas[0].AxisX.Minimum = 0;
 
             chartMpuPitch.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
-            chartMpuPitch.ChartAreas[0].AxisX.Minimum = time.TotalSeconds - 30;
+            chartMpuPitch.ChartAreas[0].AxisX.Minimum = 0;
 
             chartCadence.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
-            chartCadence.ChartAreas[0].AxisX.Minimum = time.TotalSeconds - 30;
+            chartCadence.ChartAreas[0].AxisX.Minimum = 0;
 
             chartBattery.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
-            chartBattery.ChartAreas[0].AxisX.Minimum = time.TotalSeconds - 30;
+            chartBattery.ChartAreas[0].AxisX.Minimum = 0;
 
             chartMpuYaw.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
-            chartMpuYaw.ChartAreas[0].AxisX.Minimum = time.TotalSeconds - 30;
+            chartMpuYaw.ChartAreas[0].AxisX.Minimum = 0;
 
             chartMpuRoll.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
-            chartMpuRoll.ChartAreas[0].AxisX.Minimum = time.TotalSeconds - 30;
+            chartMpuRoll.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartKxrX.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
-            chartKxrX.ChartAreas[0].AxisX.Minimum = time.TotalSeconds - 30;
-
-            chartKxrZ.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
-            chartKxrZ.ChartAreas[0].AxisX.Minimum = time.TotalSeconds - 30;
             #endregion
         }
 
-        private void showChartCsv(string[] datas, string data, int i) {
+        private void showChartCsv(string[] datas, string data, int i)
+        {
             #region グラフ設定
-            try {
+            try
+            {
                 chartSpeed.Series["Speed"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[19]));
                 chartMpuPitch.Series["MPitch"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[13]));
                 chartCadence.Series["Cadence"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[12]));
@@ -269,9 +265,9 @@ namespace AlbaAnalysis {
                 chartBattery.Series["LBattery"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[7]));
                 chartMpuYaw.Series["MYaw"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[15]));
                 chartMpuRoll.Series["MRoll"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[14]));
-                chartKxrX.Series["Kxr-X"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[16]));
-                chartKxrZ.Series["Kxr-Z"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[18]));
-            } catch (Exception) {
+            }
+            catch (Exception)
+            {
                 return;
             }
 
@@ -293,11 +289,6 @@ namespace AlbaAnalysis {
             chartMpuRoll.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
             chartMpuRoll.ChartAreas[0].AxisX.Minimum = double.Parse(datas[20]) - 15;
 
-            chartKxrX.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
-            chartKxrX.ChartAreas[0].AxisX.Minimum = double.Parse(datas[20]) - 15;
-
-            chartKxrZ.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
-            chartKxrZ.ChartAreas[0].AxisX.Minimum = double.Parse(datas[20]) - 15;
             #endregion
         }
 
@@ -305,7 +296,8 @@ namespace AlbaAnalysis {
         /// <summary>
         /// Nextボタンを押したときにグラフをクリアします
         /// </summary>
-        void ClearChart() {
+        void ClearChart()
+        {
             chartSpeed.Series["Speed"].Points.Clear();
             chartMpuPitch.Series["MPitch"].Points.Clear();
             chartCadence.Series["Cadence"].Points.Clear();
@@ -313,8 +305,6 @@ namespace AlbaAnalysis {
             chartBattery.Series["LBattery"].Points.Clear();
             chartMpuYaw.Series["MYaw"].Points.Clear();
             chartMpuRoll.Series["MRoll"].Points.Clear();
-            chartKxrX.Series["Kxr-X"].Points.Clear();
-            chartKxrZ.Series["Kxr-Z"].Points.Clear();
         }
 
         /// <summary>
@@ -322,24 +312,16 @@ namespace AlbaAnalysis {
         /// </summary>
         /// <param name="datas">配列化した受信データ</param>
         /// <param name="i"></param>
-        private void showText(string[] datas, string data, int i = 0) {
+        private void showText(string[] datas, string data, int i = 0)
+        {
             #region textboxへの表示
             textBoxAllData.AppendText(data + Environment.NewLine);
-            textBoxRAdslX.AppendText(datas[1] + Environment.NewLine);
-            textBoxLAdslX.AppendText(datas[0] + Environment.NewLine);
-            textBoxRAdslY.AppendText(datas[3] + Environment.NewLine);
-            textBoxLAdslY.AppendText(datas[2] + Environment.NewLine);
-            textBoxRAdslZ.AppendText(datas[5] + Environment.NewLine);
-            textBoxLAdslZ.AppendText(datas[4] + Environment.NewLine);
             textBoxBatteryDataR.AppendText(datas[6] + Environment.NewLine);
             textBoxBatteryDataL.AppendText(datas[7] + Environment.NewLine);
             textBoxCadence.AppendText(datas[12] + Environment.NewLine);
             textBoxMpuPitch.AppendText(datas[13] + Environment.NewLine);
             textBoxMpuRoll.AppendText(datas[14] + Environment.NewLine);
             textBoxMpuYaw.AppendText(datas[15] + Environment.NewLine);
-            textBoxKxrX.AppendText(datas[16] + Environment.NewLine);
-            textBoxKxrY.AppendText(datas[17] + Environment.NewLine);
-            textBoxKxrZ.AppendText(datas[18] + Environment.NewLine);
             textBoxSpeed.AppendText(datas[19] + Environment.NewLine);
             #endregion
         }
@@ -347,41 +329,39 @@ namespace AlbaAnalysis {
         /// <summary>
         /// Nextボタンを押したときにtextBoxをクリアします
         /// </summary>
-        void ClearTextBox() {
+        void ClearTextBox()
+        {
             textBoxAllData.Clear();
             textBoxMpuPitch.Clear();
             textBoxBatteryDataR.Clear();
             textBoxBatteryDataL.Clear();
-            textBoxRAdslX.Clear();
-            textBoxLAdslX.Clear();
-            textBoxRAdslY.Clear();
-            textBoxLAdslY.Clear();
-            textBoxRAdslZ.Clear();
-            textBoxLAdslZ.Clear();
             textBoxBatteryDataR.Clear();
             textBoxBatteryDataL.Clear();
             textBoxCadence.Clear();
             textBoxMpuPitch.Clear();
             textBoxMpuRoll.Clear();
             textBoxMpuYaw.Clear();
-            textBoxKxrX.Clear();
-            textBoxKxrY.Clear();
-            textBoxKxrZ.Clear();
             textBoxSpeed.Clear();
         }
 
-        private void buttonConnect_Click_1(object sender, EventArgs e) {
-            if (serialPort1.IsOpen == false) {
-                try {
+        private void buttonConnect_Click_1(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen == false)
+            {
+                try
+                {
                     serialPort1.Open();
                     serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialPort1_DataReceived);
-                } catch (Exception) {
+                }
+                catch (Exception)
+                {
                     MessageBox.Show("利用可能なシリアルポートがありません");
                 }
                 serialPort1.DtrEnable = true;
                 serialPort1.RtsEnable = true;
             }
-            if (serialPort1.IsOpen == true) {
+            if (serialPort1.IsOpen == true)
+            {
                 buttonConnect.Enabled = false;
                 buttonClose.Enabled = true;
                 buttonNext.Enabled = false;
@@ -391,7 +371,8 @@ namespace AlbaAnalysis {
             }
         }
 
-        private void buttonClose_Click_1(object sender, EventArgs e) {
+        private void buttonClose_Click_1(object sender, EventArgs e)
+        {
             var pathItem = new filePath();
             path = @"./Log/" + DateTime.Now.ToString("MMdd") + "TF" + fileNumber + ".csv";
             SerialProcess.writeDatas(saveData, path, true);
@@ -406,63 +387,79 @@ namespace AlbaAnalysis {
             buttonOpenCsv.Enabled = true;
         }
 
-        private void buttonNext_Click_1(object sender, EventArgs e) {
+        private void buttonNext_Click_1(object sender, EventArgs e)
+        {
             fileNumber++;
             clearForm();
             buttonConnect.Focus();
         }
 
-        private void clearForm() {
+        private void clearForm()
+        {
             ClearTextBox();
             ClearChart();
             ResetButton();
             saveData.Clear();
         }
 
-        private void comboBoxBaud_SelectedIndexChanged(object sender, EventArgs e) {
+        private void comboBoxBaud_SelectedIndexChanged(object sender, EventArgs e)
+        {
             if (comboBoxBaud.SelectedIndex != -1)
                 serialPort1.BaudRate = (int)comboBoxBaud.SelectedValue;
         }
 
-        private async void buttonRunCsv_Click(object sender, EventArgs e) {
+        private async void buttonRunCsv_Click(object sender, EventArgs e)
+        {
             clearForm();
             buttonStopCsv.Enabled = true;
             buttonStopCsv.Focus();
             _resultPath = comboBoxFiles.Text;
             csvFlag = 0;
             StreamReader fw;
-            await Task.Run(() => {
+            await Task.Run(() =>
+            {
                 start = DateTime.Now;
-                if (string.IsNullOrEmpty(_resultPath)) {
+                if (string.IsNullOrEmpty(_resultPath))
+                {
                     MessageBox.Show("パスを選択してください");
                     return;
                 }
-                try {
+                try
+                {
                     fw = new StreamReader(_resultPath);
-                } catch (Exception exc) {
+                }
+                catch (Exception exc)
+                {
                     MessageBox.Show(exc.Message);
                     return;
                 }
 
-                do {
-                    if (csvFlag == 1) {
+                do
+                {
+                    if (csvFlag == 1)
+                    {
                         fw.Dispose();
                         fw.Close();
                         return;
                     }
                     var data = fw.ReadLine();
                     string[] datas = null;
-                    try {
+                    try
+                    {
                         datas = data.Split(',');
-                    } catch (Exception) {
+                    }
+                    catch (Exception)
+                    {
                         MessageBox.Show("ファイルが空です。");
                         return;
                     }
 
                     // for (int i = 0; i < aveData.Count(); i++)
                     //     aveData[i] = 0.ToString();
-                    if (datas.Count() == Constants.dataMembers) {
-                        for (int i = 0; i < datas.Count() - 1; i++) {
+                    if (datas.Count() == Constants.dataMembers)
+                    {
+                        for (int i = 0; i < datas.Count() - 1; i++)
+                        {
                             if (string.IsNullOrEmpty(datas[i]))
                                 return;
                         }
@@ -485,13 +482,16 @@ namespace AlbaAnalysis {
             comboBoxFiles.Focus();
         }
 
-        private void buttonStopCsv_Click(object sender, EventArgs e) {
+        private void buttonStopCsv_Click(object sender, EventArgs e)
+        {
             csvFlag = 1;
             buttonRunCsv.Focus();
         }
 
-        private void buttonOpenCsv_Click(object sender, EventArgs e) {
-            if (csvFlag == 0) {
+        private void buttonOpenCsv_Click(object sender, EventArgs e)
+        {
+            if (csvFlag == 0)
+            {
                 MessageBox.Show("ファイルの再生を終了してください。");
                 return;
             }
@@ -501,26 +501,32 @@ namespace AlbaAnalysis {
 
         }
 
-        private void AddAllPath() {
+        private void AddAllPath()
+        {
             comboBoxFiles.Items.Clear();
             string[] _path = null;
             _path = Directory.GetFiles(@"C:\Users\rocko\Dropbox\Albatross\TF電装データ", "*");
             comboBoxFiles.Items.AddRange(_path);
-          //  comboBoxFiles.SelectedIndex = 0;
+            //  comboBoxFiles.SelectedIndex = 0;
         }
 
-        private void comboBoxFiles_SelectedIndexChanged(object sender, EventArgs e) {
+        private void comboBoxFiles_SelectedIndexChanged(object sender, EventArgs e)
+        {
             buttonRunCsv.Focus();
         }
 
-        private void SerialForm_KeyDown(object sender, KeyEventArgs e) {
-            switch (e.KeyCode) {
+        private void SerialForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
                 case Keys.C:
-                    if (serialPort1.IsOpen == false) {
+                    if (serialPort1.IsOpen == false)
+                    {
                         this.buttonConnect.Focus();
                         this.buttonConnect.PerformClick();
                     }
-                    else {
+                    else
+                    {
                         buttonClose.Focus();
                         buttonClose.PerformClick();
                     }
@@ -541,7 +547,7 @@ namespace AlbaAnalysis {
                     buttonOpenCsv.Focus();
                     buttonOpenCsv.PerformClick();
                     break;
-                    
+
             }
         }
     }
