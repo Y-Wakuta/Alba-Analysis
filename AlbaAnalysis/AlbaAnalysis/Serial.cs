@@ -393,7 +393,7 @@ namespace AlbaAnalysis {
 
         private void buttonClose_Click_1(object sender, EventArgs e) {
             var pathItem = new filePath();
-            path = @"C:\Users\rocko\Dropbox\Albatross\TF電装データ\" + DateTime.Now.ToString("MMdd") + "TF" + fileNumber + ".csv";
+            path = @"./Log/" + DateTime.Now.ToString("MMdd") + "TF" + fileNumber + ".csv";
             SerialProcess.writeDatas(saveData, path, true);
             AddAllPath();
             serialPort1.DiscardInBuffer();
@@ -473,7 +473,8 @@ namespace AlbaAnalysis {
                         BeginInvoke(new Handler(showChart), datas, data, 0);
                         BeginInvoke(new Handler(showText), datas, data, 0);
                         BeginInvoke(new Handler(checkSteer), datas, data, 0);
-                        System.Threading.Thread.Sleep(120);
+                        //csv読み込みの速度向上
+                        System.Threading.Thread.Sleep(100);
                     }
                 } while (fw.EndOfStream != true);
                 fw.Dispose();
