@@ -119,8 +119,11 @@ namespace AlbaAnalysis
             chartCadence.ChartAreas[0].AxisX.Title = "Time[s]";
             chartCadence.ChartAreas[0].AxisY.Title = "Cadence[/m]";
 
-            chartBattery.ChartAreas[0].AxisX.Title = "Time[s]";
-            chartBattery.ChartAreas[0].AxisY.Title = "Battery[V]";
+            chartRBattery.ChartAreas[0].AxisX.Title = "Time[s]";
+            chartRBattery.ChartAreas[0].AxisY.Title = "RBattery[V]";
+
+            chartLBattery.ChartAreas[0].AxisX.Title = "Time[s]";
+            chartLBattery.ChartAreas[0].AxisY.Title = "LBattery[V]";
 
             chartMpuYaw.ChartAreas[0].AxisX.Title = "Time[s]";
             chartMpuYaw.ChartAreas[0].AxisY.Title = "MpuYaw";
@@ -222,8 +225,8 @@ namespace AlbaAnalysis
                 chartSpeed.Series["Speed"].Points.AddXY(xValue, double.Parse(datas[19]));
                 chartMpuPitch.Series["MPitch"].Points.AddXY(xValue, double.Parse(datas[13]));
                 chartCadence.Series["Cadence"].Points.AddXY(xValue, double.Parse(datas[12]));
-                chartBattery.Series["RBattery"].Points.AddXY(xValue, double.Parse(datas[6]));
-                chartBattery.Series["LBattery"].Points.AddXY(xValue, double.Parse(datas[7]));
+                chartRBattery.Series["RBattery"].Points.AddXY(xValue, double.Parse(datas[6]));
+                chartLBattery.Series["LBattery"].Points.AddXY(xValue, double.Parse(datas[7]));
                 chartMpuYaw.Series["MYaw"].Points.AddXY(xValue, double.Parse(datas[15]));
                 chartMpuRoll.Series["MRoll"].Points.AddXY(xValue, double.Parse(datas[14]));
             }
@@ -241,8 +244,11 @@ namespace AlbaAnalysis
             chartCadence.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
             chartCadence.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartBattery.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
-            chartBattery.ChartAreas[0].AxisX.Minimum = 0;
+            chartRBattery.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
+            chartRBattery.ChartAreas[0].AxisX.Minimum = 0;
+
+            chartLBattery.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
+            chartLBattery.ChartAreas[0].AxisX.Minimum = 0;
 
             chartMpuYaw.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
             chartMpuYaw.ChartAreas[0].AxisX.Minimum = 0;
@@ -261,8 +267,8 @@ namespace AlbaAnalysis
                 chartSpeed.Series["Speed"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[19]));
                 chartMpuPitch.Series["MPitch"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[13]));
                 chartCadence.Series["Cadence"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[12]));
-                chartBattery.Series["RBattery"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[6]));
-                chartBattery.Series["LBattery"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[7]));
+                chartRBattery.Series["RBattery"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[6]));
+                chartLBattery.Series["LBattery"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[7]));
                 chartMpuYaw.Series["MYaw"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[15]));
                 chartMpuRoll.Series["MRoll"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[14]));
             }
@@ -272,22 +278,25 @@ namespace AlbaAnalysis
             }
 
             chartSpeed.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
-            chartSpeed.ChartAreas[0].AxisX.Minimum = double.Parse(datas[20]) - 15;
+            chartSpeed.ChartAreas[0].AxisX.Minimum = 0;
 
             chartMpuPitch.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
-            chartMpuPitch.ChartAreas[0].AxisX.Minimum = double.Parse(datas[20]) - 15;
+            chartMpuPitch.ChartAreas[0].AxisX.Minimum = 0;
 
             chartCadence.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
-            chartCadence.ChartAreas[0].AxisX.Minimum = double.Parse(datas[20]) - 15;
+            chartCadence.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
-            chartBattery.ChartAreas[0].AxisX.Minimum = double.Parse(datas[20]) - 15;
+            chartRBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
+            chartRBattery.ChartAreas[0].AxisX.Minimum = 0;
+
+            chartLBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
+            chartLBattery.ChartAreas[0].AxisX.Minimum = 0;
 
             chartMpuYaw.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
-            chartMpuYaw.ChartAreas[0].AxisX.Minimum = double.Parse(datas[20]) - 15;
+            chartMpuYaw.ChartAreas[0].AxisX.Minimum = 0;
 
             chartMpuRoll.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
-            chartMpuRoll.ChartAreas[0].AxisX.Minimum = double.Parse(datas[20]) - 15;
+            chartMpuRoll.ChartAreas[0].AxisX.Minimum = 0;
 
             #endregion
         }
@@ -301,8 +310,8 @@ namespace AlbaAnalysis
             chartSpeed.Series["Speed"].Points.Clear();
             chartMpuPitch.Series["MPitch"].Points.Clear();
             chartCadence.Series["Cadence"].Points.Clear();
-            chartBattery.Series["RBattery"].Points.Clear();
-            chartBattery.Series["LBattery"].Points.Clear();
+            chartRBattery.Series["RBattery"].Points.Clear();
+            chartLBattery.Series["LBattery"].Points.Clear();
             chartMpuYaw.Series["MYaw"].Points.Clear();
             chartMpuRoll.Series["MRoll"].Points.Clear();
         }
