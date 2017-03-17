@@ -131,8 +131,17 @@ namespace AlbaAnalysis
             chartMpuRoll.ChartAreas[0].AxisX.Title = "Time[s]";
             chartMpuRoll.ChartAreas[0].AxisY.Title = "MpuRoll";
 
-            #endregion
+            chartRollInput.ChartAreas[0].AxisX.Title = "Time[s]";
+            chartRollInput.ChartAreas[0].AxisY.Title = "RollInput";
 
+            chartPitchInput.ChartAreas[0].AxisX.Title = "Time[s]";
+            chartPitchInput.ChartAreas[0].AxisY.Title = "PitchInput";
+
+            chartDrugInput.ChartAreas[0].AxisX.Title = "Time[s]";
+            chartDrugInput.ChartAreas[0].AxisY.Title = "DrugInput";
+
+
+            #endregion
         }
 
         private void SerialForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -255,6 +264,15 @@ namespace AlbaAnalysis
 
             chartMpuRoll.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
             chartMpuRoll.ChartAreas[0].AxisX.Minimum = 0;
+
+            chartRollInput.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
+            chartRollInput.ChartAreas[0].AxisX.Minimum = 0;
+
+            chartDrugInput.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
+            chartDrugInput.ChartAreas[0].AxisX.Minimum = 0;
+
+            chartPitchInput.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
+            chartPitchInput.ChartAreas[0].AxisX.Minimum = 0;
 
             #endregion
         }
@@ -522,42 +540,6 @@ namespace AlbaAnalysis
         private void comboBoxFiles_SelectedIndexChanged(object sender, EventArgs e)
         {
             buttonRunCsv.Focus();
-        }
-
-        private void SerialForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.C:
-                    if (serialPort1.IsOpen == false)
-                    {
-                        this.buttonConnect.Focus();
-                        this.buttonConnect.PerformClick();
-                    }
-                    else
-                    {
-                        buttonClose.Focus();
-                        buttonClose.PerformClick();
-                    }
-                    break;
-                case Keys.N:
-                    buttonNext.Focus();
-                    buttonNext.PerformClick();
-                    break;
-                case Keys.R:
-                    buttonRunCsv.Focus();
-                    buttonRunCsv.PerformClick();
-                    break;
-                case Keys.S:
-                    buttonStopCsv.Focus();
-                    buttonStopCsv.PerformClick();
-                    break;
-                case Keys.O:
-                    buttonOpenCsv.Focus();
-                    buttonOpenCsv.PerformClick();
-                    break;
-
-            }
         }
     }
 }

@@ -102,9 +102,9 @@
             this.buttonRDrug = new System.Windows.Forms.Button();
             this.rollProgressBar = new System.Windows.Forms.ProgressBar();
             this.pitchVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
-            this.DrugInputChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.PitchInputChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.rollInputChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartDrugInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartPitchInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartRollInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1.SuspendLayout();
             this.groupBoxAllData.SuspendLayout();
             this.groupBoxSerialConfig.SuspendLayout();
@@ -120,9 +120,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartMpuRoll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartMpuPitch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DrugInputChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PitchInputChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rollInputChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDrugInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPitchInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartRollInput)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxMpuPitch
@@ -470,9 +470,9 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.rollInputChart);
-            this.tabPage3.Controls.Add(this.PitchInputChart);
-            this.tabPage3.Controls.Add(this.DrugInputChart);
+            this.tabPage3.Controls.Add(this.chartRollInput);
+            this.tabPage3.Controls.Add(this.chartPitchInput);
+            this.tabPage3.Controls.Add(this.chartDrugInput);
             this.tabPage3.Controls.Add(this.pitchVerticalProgressBar);
             this.tabPage3.Controls.Add(this.rollProgressBar);
             this.tabPage3.Controls.Add(this.buttonRDrug);
@@ -756,9 +756,9 @@
             // buttonLDrug
             // 
             this.buttonLDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLDrug.Location = new System.Drawing.Point(445, 140);
+            this.buttonLDrug.Location = new System.Drawing.Point(496, 140);
             this.buttonLDrug.Name = "buttonLDrug";
-            this.buttonLDrug.Size = new System.Drawing.Size(251, 109);
+            this.buttonLDrug.Size = new System.Drawing.Size(310, 109);
             this.buttonLDrug.TabIndex = 3;
             this.buttonLDrug.Text = "左ドラッグラダー";
             this.buttonLDrug.UseVisualStyleBackColor = true;
@@ -768,7 +768,7 @@
             this.buttonRDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonRDrug.Location = new System.Drawing.Point(155, 140);
             this.buttonRDrug.Name = "buttonRDrug";
-            this.buttonRDrug.Size = new System.Drawing.Size(262, 109);
+            this.buttonRDrug.Size = new System.Drawing.Size(312, 109);
             this.buttonRDrug.TabIndex = 5;
             this.buttonRDrug.Text = "右ドラッグラダー";
             this.buttonRDrug.UseVisualStyleBackColor = true;
@@ -777,7 +777,7 @@
             // 
             this.rollProgressBar.Location = new System.Drawing.Point(155, 26);
             this.rollProgressBar.Name = "rollProgressBar";
-            this.rollProgressBar.Size = new System.Drawing.Size(820, 81);
+            this.rollProgressBar.Size = new System.Drawing.Size(1019, 95);
             this.rollProgressBar.TabIndex = 7;
             // 
             // pitchVerticalProgressBar
@@ -787,9 +787,9 @@
             this.pitchVerticalProgressBar.Size = new System.Drawing.Size(107, 554);
             this.pitchVerticalProgressBar.TabIndex = 9;
             // 
-            // DrugInputChart
+            // chartDrugInput
             // 
-            this.DrugInputChart.BackColor = System.Drawing.Color.LightGray;
+            this.chartDrugInput.BackColor = System.Drawing.Color.LightGray;
             chartArea10.AxisX.LabelStyle.Format = "#.#";
             chartArea10.AxisY.IsLabelAutoFit = false;
             chartArea10.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -798,32 +798,32 @@
             chartArea10.Position.Auto = false;
             chartArea10.Position.Height = 100F;
             chartArea10.Position.Width = 94F;
-            this.DrugInputChart.ChartAreas.Add(chartArea10);
+            this.chartDrugInput.ChartAreas.Add(chartArea10);
             legend10.Name = "Legend1";
             legend10.Position.Auto = false;
             legend10.Position.Height = 9.476309F;
             legend10.Position.Width = 20F;
             legend10.Position.X = 79F;
             legend10.Position.Y = 2F;
-            this.DrugInputChart.Legends.Add(legend10);
-            this.DrugInputChart.Location = new System.Drawing.Point(1132, 422);
-            this.DrugInputChart.Margin = new System.Windows.Forms.Padding(1);
-            this.DrugInputChart.Name = "DrugInputChart";
+            this.chartDrugInput.Legends.Add(legend10);
+            this.chartDrugInput.Location = new System.Drawing.Point(1193, 425);
+            this.chartDrugInput.Margin = new System.Windows.Forms.Padding(1);
+            this.chartDrugInput.Name = "chartDrugInput";
             series10.BorderWidth = 2;
             series10.ChartArea = "ChartArea1";
             series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series10.Color = System.Drawing.Color.Red;
             series10.Legend = "Legend1";
-            series10.LegendText = "RBattery";
+            series10.LegendText = "DrugInput";
             series10.Name = "RBattery";
-            this.DrugInputChart.Series.Add(series10);
-            this.DrugInputChart.Size = new System.Drawing.Size(805, 394);
-            this.DrugInputChart.TabIndex = 17;
-            this.DrugInputChart.Text = "chart4";
+            this.chartDrugInput.Series.Add(series10);
+            this.chartDrugInput.Size = new System.Drawing.Size(1314, 381);
+            this.chartDrugInput.TabIndex = 17;
+            this.chartDrugInput.Text = "chart4";
             // 
-            // PitchInputChart
+            // chartPitchInput
             // 
-            this.PitchInputChart.BackColor = System.Drawing.Color.LightGray;
+            this.chartPitchInput.BackColor = System.Drawing.Color.LightGray;
             chartArea9.AxisX.LabelStyle.Format = "#.#";
             chartArea9.AxisY.IsLabelAutoFit = false;
             chartArea9.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -832,32 +832,32 @@
             chartArea9.Position.Auto = false;
             chartArea9.Position.Height = 100F;
             chartArea9.Position.Width = 94F;
-            this.PitchInputChart.ChartAreas.Add(chartArea9);
+            this.chartPitchInput.ChartAreas.Add(chartArea9);
             legend9.Name = "Legend1";
             legend9.Position.Auto = false;
             legend9.Position.Height = 9.476309F;
             legend9.Position.Width = 20F;
             legend9.Position.X = 79F;
             legend9.Position.Y = 2F;
-            this.PitchInputChart.Legends.Add(legend9);
-            this.PitchInputChart.Location = new System.Drawing.Point(170, 262);
-            this.PitchInputChart.Margin = new System.Windows.Forms.Padding(1);
-            this.PitchInputChart.Name = "PitchInputChart";
+            this.chartPitchInput.Legends.Add(legend9);
+            this.chartPitchInput.Location = new System.Drawing.Point(155, 262);
+            this.chartPitchInput.Margin = new System.Windows.Forms.Padding(1);
+            this.chartPitchInput.Name = "chartPitchInput";
             series9.BorderWidth = 2;
             series9.ChartArea = "ChartArea1";
             series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series9.Color = System.Drawing.Color.Red;
             series9.Legend = "Legend1";
-            series9.LegendText = "RBattery";
-            series9.Name = "RBattery";
-            this.PitchInputChart.Series.Add(series9);
-            this.PitchInputChart.Size = new System.Drawing.Size(805, 394);
-            this.PitchInputChart.TabIndex = 18;
-            this.PitchInputChart.Text = "chart4";
+            series9.LegendText = "PitchInput";
+            series9.Name = "Pitch";
+            this.chartPitchInput.Series.Add(series9);
+            this.chartPitchInput.Size = new System.Drawing.Size(1019, 544);
+            this.chartPitchInput.TabIndex = 18;
+            this.chartPitchInput.Text = "chart4";
             // 
-            // rollInputChart
+            // chartRollInput
             // 
-            this.rollInputChart.BackColor = System.Drawing.Color.LightGray;
+            this.chartRollInput.BackColor = System.Drawing.Color.LightGray;
             chartArea8.AxisX.LabelStyle.Format = "#.#";
             chartArea8.AxisY.IsLabelAutoFit = false;
             chartArea8.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -866,28 +866,28 @@
             chartArea8.Position.Auto = false;
             chartArea8.Position.Height = 100F;
             chartArea8.Position.Width = 94F;
-            this.rollInputChart.ChartAreas.Add(chartArea8);
+            this.chartRollInput.ChartAreas.Add(chartArea8);
             legend8.Name = "Legend1";
             legend8.Position.Auto = false;
             legend8.Position.Height = 9.476309F;
             legend8.Position.Width = 20F;
             legend8.Position.X = 79F;
             legend8.Position.Y = 2F;
-            this.rollInputChart.Legends.Add(legend8);
-            this.rollInputChart.Location = new System.Drawing.Point(1132, 26);
-            this.rollInputChart.Margin = new System.Windows.Forms.Padding(1);
-            this.rollInputChart.Name = "rollInputChart";
+            this.chartRollInput.Legends.Add(legend8);
+            this.chartRollInput.Location = new System.Drawing.Point(1193, 16);
+            this.chartRollInput.Margin = new System.Windows.Forms.Padding(1);
+            this.chartRollInput.Name = "chartRollInput";
             series8.BorderWidth = 2;
             series8.ChartArea = "ChartArea1";
             series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series8.Color = System.Drawing.Color.Red;
             series8.Legend = "Legend1";
-            series8.LegendText = "RBattery";
-            series8.Name = "RBattery";
-            this.rollInputChart.Series.Add(series8);
-            this.rollInputChart.Size = new System.Drawing.Size(805, 394);
-            this.rollInputChart.TabIndex = 19;
-            this.rollInputChart.Text = "chart4";
+            series8.LegendText = "RollInput";
+            series8.Name = "RollInput";
+            this.chartRollInput.Series.Add(series8);
+            this.chartRollInput.Size = new System.Drawing.Size(1314, 394);
+            this.chartRollInput.TabIndex = 19;
+            this.chartRollInput.Text = "chart4";
             // 
             // SerialForm
             // 
@@ -927,9 +927,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartMpuRoll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartMpuPitch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DrugInputChart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PitchInputChart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rollInputChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDrugInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPitchInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartRollInput)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -978,9 +978,9 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartRBattery;
         private System.Windows.Forms.TabPage tabPage3;
         private VerticalProgressBar verticalProgressBar1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart rollInputChart;
-        private System.Windows.Forms.DataVisualization.Charting.Chart PitchInputChart;
-        private System.Windows.Forms.DataVisualization.Charting.Chart DrugInputChart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartRollInput;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartPitchInput;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartDrugInput;
         private VerticalProgressBar pitchVerticalProgressBar;
         private System.Windows.Forms.ProgressBar rollProgressBar;
         private System.Windows.Forms.Button buttonRDrug;
