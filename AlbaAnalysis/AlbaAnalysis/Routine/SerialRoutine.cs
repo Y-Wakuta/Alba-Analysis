@@ -8,30 +8,6 @@ using System.IO.Ports;
 using System.IO;
 using AlbaAnalysis.Entity;
 
-/*
-0:R－ADSL－X
-1:L－ADSLーX
-2:R－ADSL－Y
-3:L－ADSL－Y
-4:R－ADSL－Z
-5:L－ADSLーZ
-6:R-V
-7:L－V
-8:右エルロン
-9:左エルロン
-10:右ドラッグラダー
-11:左ドラッグラダー
-12:ケイデンス
-13:ピッチ
-14:ロール
-15:ヨー
-16:KX-X
-17:KX-Y
-18:KX-Z
-19:機速
-20:\r
-*/
-
 namespace AlbaAnalysis.Routine {
     public class SerialRoutine {
 

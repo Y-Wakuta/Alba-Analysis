@@ -24,37 +24,37 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SerialForm));
             this.textBoxMpuPitch = new System.Windows.Forms.TextBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
@@ -87,42 +87,41 @@
             this.comboBoxBaud = new System.Windows.Forms.ComboBox();
             this.bauditemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.chartRBattery = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartLBattery = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.chartCadence = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartMpuYaw = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartMpuRoll = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartMpuPitch = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.verticalProgressBar1 = new AlbaAnalysis.VerticalProgressBar();
-            this.buttonLDrug = new System.Windows.Forms.Button();
-            this.buttonRDrug = new System.Windows.Forms.Button();
-            this.rollProgressBar = new System.Windows.Forms.ProgressBar();
-            this.pitchVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
-            this.chartDrugInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartPitchInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartMpuRoll = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartMpuYaw = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartCadence = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.chartLBattery = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartRBattery = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.chartRollInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartPitchInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartDrugInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pitchVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
+            this.rollProgressBar = new System.Windows.Forms.ProgressBar();
+            this.buttonRDrug = new System.Windows.Forms.Button();
+            this.buttonLDrug = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxAllData.SuspendLayout();
             this.groupBoxSerialConfig.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bauditemsBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartRBattery)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartLBattery)).BeginInit();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartCadence)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartMpuYaw)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartMpuRoll)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartMpuPitch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartDrugInput)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartPitchInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartMpuRoll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartMpuYaw)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartCadence)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartLBattery)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartRBattery)).BeginInit();
+            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartRollInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPitchInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDrugInput)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxMpuPitch
@@ -327,7 +326,6 @@
             // groupBoxAllData
             // 
             this.groupBoxAllData.AutoSize = true;
-            this.groupBoxAllData.Controls.Add(this.verticalProgressBar1);
             this.groupBoxAllData.Controls.Add(this.textBoxAllData);
             this.groupBoxAllData.Location = new System.Drawing.Point(17, 178);
             this.groupBoxAllData.Name = "groupBoxAllData";
@@ -468,21 +466,188 @@
             this.tabControl1.Size = new System.Drawing.Size(2547, 908);
             this.tabControl1.TabIndex = 6;
             // 
-            // tabPage3
+            // tabPage1
             // 
-            this.tabPage3.Controls.Add(this.chartRollInput);
-            this.tabPage3.Controls.Add(this.chartPitchInput);
-            this.tabPage3.Controls.Add(this.chartDrugInput);
-            this.tabPage3.Controls.Add(this.pitchVerticalProgressBar);
-            this.tabPage3.Controls.Add(this.rollProgressBar);
-            this.tabPage3.Controls.Add(this.buttonRDrug);
-            this.tabPage3.Controls.Add(this.buttonLDrug);
-            this.tabPage3.Location = new System.Drawing.Point(4, 31);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(2539, 873);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Control";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage1.Controls.Add(this.chartMpuPitch);
+            this.tabPage1.Controls.Add(this.chartSpeed);
+            this.tabPage1.Controls.Add(this.chartMpuRoll);
+            this.tabPage1.Controls.Add(this.chartMpuYaw);
+            this.tabPage1.Controls.Add(this.chartCadence);
+            this.tabPage1.Location = new System.Drawing.Point(4, 31);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(2539, 873);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Core";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // chartMpuPitch
+            // 
+            this.chartMpuPitch.BackColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            chartArea1.AxisX.LabelStyle.Format = "#.#";
+            chartArea1.AxisX.ScrollBar.ButtonColor = System.Drawing.Color.Black;
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.IsLabelAutoFit = false;
+            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Meiryo UI", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 100F;
+            chartArea1.Position.Width = 94F;
+            this.chartMpuPitch.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            legend1.Position.Auto = false;
+            legend1.Position.Height = 9.476309F;
+            legend1.Position.Width = 20F;
+            legend1.Position.X = 79F;
+            legend1.Position.Y = 2F;
+            this.chartMpuPitch.Legends.Add(legend1);
+            this.chartMpuPitch.Location = new System.Drawing.Point(14, 459);
+            this.chartMpuPitch.Margin = new System.Windows.Forms.Padding(1);
+            this.chartMpuPitch.Name = "chartMpuPitch";
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Color = System.Drawing.Color.Blue;
+            series1.Legend = "Legend1";
+            series1.Name = "MPitch";
+            this.chartMpuPitch.Series.Add(series1);
+            this.chartMpuPitch.Size = new System.Drawing.Size(868, 408);
+            this.chartMpuPitch.TabIndex = 20;
+            this.chartMpuPitch.Text = "Mpitch";
+            // 
+            // chartSpeed
+            // 
+            this.chartSpeed.BackColor = System.Drawing.Color.LightGray;
+            chartArea2.AxisX.LabelStyle.Format = "#.#";
+            chartArea2.AxisY.IsLabelAutoFit = false;
+            chartArea2.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.Name = "ChartArea1";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 100F;
+            chartArea2.Position.Width = 94F;
+            this.chartSpeed.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            legend2.Position.Auto = false;
+            legend2.Position.Height = 9.476309F;
+            legend2.Position.Width = 20F;
+            legend2.Position.X = 79F;
+            legend2.Position.Y = 2F;
+            this.chartSpeed.Legends.Add(legend2);
+            this.chartSpeed.Location = new System.Drawing.Point(896, 16);
+            this.chartSpeed.Margin = new System.Windows.Forms.Padding(1);
+            this.chartSpeed.Name = "chartSpeed";
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            series2.Legend = "Legend1";
+            series2.LegendText = "Speed";
+            series2.Name = "Speed";
+            this.chartSpeed.Series.Add(series2);
+            this.chartSpeed.Size = new System.Drawing.Size(887, 441);
+            this.chartSpeed.TabIndex = 18;
+            this.chartSpeed.Text = "chart6";
+            title1.Name = "Speed";
+            this.chartSpeed.Titles.Add(title1);
+            // 
+            // chartMpuRoll
+            // 
+            this.chartMpuRoll.BackColor = System.Drawing.Color.LightGray;
+            chartArea3.AxisX.LabelStyle.Format = "#.#";
+            chartArea3.AxisY.IsLabelAutoFit = false;
+            chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.Name = "ChartArea1";
+            chartArea3.Position.Auto = false;
+            chartArea3.Position.Height = 100F;
+            chartArea3.Position.Width = 94F;
+            this.chartMpuRoll.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            legend3.Position.Auto = false;
+            legend3.Position.Height = 9.476309F;
+            legend3.Position.Width = 20F;
+            legend3.Position.X = 79F;
+            legend3.Position.Y = 2F;
+            this.chartMpuRoll.Legends.Add(legend3);
+            this.chartMpuRoll.Location = new System.Drawing.Point(14, 16);
+            this.chartMpuRoll.Margin = new System.Windows.Forms.Padding(1);
+            this.chartMpuRoll.Name = "chartMpuRoll";
+            series3.BorderWidth = 2;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            series3.Legend = "Legend1";
+            series3.Name = "MRoll";
+            this.chartMpuRoll.Series.Add(series3);
+            this.chartMpuRoll.Size = new System.Drawing.Size(868, 441);
+            this.chartMpuRoll.TabIndex = 19;
+            this.chartMpuRoll.Text = "MpuRoll";
+            // 
+            // chartMpuYaw
+            // 
+            this.chartMpuYaw.BackColor = System.Drawing.Color.LightGray;
+            chartArea4.AxisX.LabelStyle.Format = "#.#";
+            chartArea4.AxisY.IsLabelAutoFit = false;
+            chartArea4.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.Name = "ChartArea1";
+            chartArea4.Position.Auto = false;
+            chartArea4.Position.Height = 100F;
+            chartArea4.Position.Width = 94F;
+            this.chartMpuYaw.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            legend4.Position.Auto = false;
+            legend4.Position.Height = 9.476309F;
+            legend4.Position.Width = 20F;
+            legend4.Position.X = 79F;
+            legend4.Position.Y = 2F;
+            this.chartMpuYaw.Legends.Add(legend4);
+            this.chartMpuYaw.Location = new System.Drawing.Point(896, 459);
+            this.chartMpuYaw.Margin = new System.Windows.Forms.Padding(1);
+            this.chartMpuYaw.Name = "chartMpuYaw";
+            series4.BorderWidth = 2;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            series4.Legend = "Legend1";
+            series4.Name = "MYaw";
+            this.chartMpuYaw.Series.Add(series4);
+            this.chartMpuYaw.Size = new System.Drawing.Size(887, 408);
+            this.chartMpuYaw.TabIndex = 13;
+            this.chartMpuYaw.Text = "MpuYaw";
+            // 
+            // chartCadence
+            // 
+            this.chartCadence.BackColor = System.Drawing.Color.LightGray;
+            chartArea5.AxisX.LabelStyle.Format = "#.#";
+            chartArea5.AxisY.IsLabelAutoFit = false;
+            chartArea5.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.Name = "ChartArea1";
+            chartArea5.Position.Auto = false;
+            chartArea5.Position.Height = 100F;
+            chartArea5.Position.Width = 94F;
+            this.chartCadence.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            legend5.Position.Auto = false;
+            legend5.Position.Height = 9.476309F;
+            legend5.Position.Width = 20F;
+            legend5.Position.X = 79F;
+            legend5.Position.Y = 2F;
+            this.chartCadence.Legends.Add(legend5);
+            this.chartCadence.Location = new System.Drawing.Point(1785, 16);
+            this.chartCadence.Margin = new System.Windows.Forms.Padding(1);
+            this.chartCadence.Name = "chartCadence";
+            series5.BorderWidth = 2;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Color = System.Drawing.Color.Lime;
+            series5.Legend = "Legend1";
+            series5.Name = "Cadence";
+            this.chartCadence.Series.Add(series5);
+            this.chartCadence.Size = new System.Drawing.Size(753, 441);
+            this.chartCadence.TabIndex = 17;
+            this.chartCadence.Text = "Cadence";
+            this.chartCadence.Click += new System.EventHandler(this.chartCadence_Click);
             // 
             // tabPage2
             // 
@@ -491,44 +656,10 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(2539, 873);
+            this.tabPage2.Size = new System.Drawing.Size(2542, 873);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "WingEdge";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // chartRBattery
-            // 
-            this.chartRBattery.BackColor = System.Drawing.Color.LightGray;
-            chartArea7.AxisX.LabelStyle.Format = "#.#";
-            chartArea7.AxisY.IsLabelAutoFit = false;
-            chartArea7.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea7.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea7.Name = "ChartArea1";
-            chartArea7.Position.Auto = false;
-            chartArea7.Position.Height = 100F;
-            chartArea7.Position.Width = 94F;
-            this.chartRBattery.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            legend7.Position.Auto = false;
-            legend7.Position.Height = 9.476309F;
-            legend7.Position.Width = 20F;
-            legend7.Position.X = 79F;
-            legend7.Position.Y = 2F;
-            this.chartRBattery.Legends.Add(legend7);
-            this.chartRBattery.Location = new System.Drawing.Point(20, 18);
-            this.chartRBattery.Margin = new System.Windows.Forms.Padding(1);
-            this.chartRBattery.Name = "chartRBattery";
-            series7.BorderWidth = 2;
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series7.Color = System.Drawing.Color.Red;
-            series7.Legend = "Legend1";
-            series7.LegendText = "RBattery";
-            series7.Name = "RBattery";
-            this.chartRBattery.Series.Add(series7);
-            this.chartRBattery.Size = new System.Drawing.Size(805, 394);
-            this.chartRBattery.TabIndex = 16;
-            this.chartRBattery.Text = "chart4";
             // 
             // chartLBattery
             // 
@@ -564,296 +695,55 @@
             this.chartLBattery.TabIndex = 17;
             this.chartLBattery.Text = "chart4";
             // 
-            // tabPage1
+            // chartRBattery
             // 
-            this.tabPage1.Controls.Add(this.chartMpuPitch);
-            this.tabPage1.Controls.Add(this.chartSpeed);
-            this.tabPage1.Controls.Add(this.chartMpuRoll);
-            this.tabPage1.Controls.Add(this.chartMpuYaw);
-            this.tabPage1.Controls.Add(this.chartCadence);
-            this.tabPage1.Location = new System.Drawing.Point(4, 31);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(2539, 873);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Core";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.chartRBattery.BackColor = System.Drawing.Color.LightGray;
+            chartArea7.AxisX.LabelStyle.Format = "#.#";
+            chartArea7.AxisY.IsLabelAutoFit = false;
+            chartArea7.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea7.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea7.Name = "ChartArea1";
+            chartArea7.Position.Auto = false;
+            chartArea7.Position.Height = 100F;
+            chartArea7.Position.Width = 94F;
+            this.chartRBattery.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            legend7.Position.Auto = false;
+            legend7.Position.Height = 9.476309F;
+            legend7.Position.Width = 20F;
+            legend7.Position.X = 79F;
+            legend7.Position.Y = 2F;
+            this.chartRBattery.Legends.Add(legend7);
+            this.chartRBattery.Location = new System.Drawing.Point(20, 18);
+            this.chartRBattery.Margin = new System.Windows.Forms.Padding(1);
+            this.chartRBattery.Name = "chartRBattery";
+            series7.BorderWidth = 2;
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.Color = System.Drawing.Color.Red;
+            series7.Legend = "Legend1";
+            series7.LegendText = "RBattery";
+            series7.Name = "RBattery";
+            this.chartRBattery.Series.Add(series7);
+            this.chartRBattery.Size = new System.Drawing.Size(805, 394);
+            this.chartRBattery.TabIndex = 16;
+            this.chartRBattery.Text = "chart4";
             // 
-            // chartCadence
+            // tabPage3
             // 
-            this.chartCadence.BackColor = System.Drawing.Color.LightGray;
-            chartArea5.AxisX.LabelStyle.Format = "#.#";
-            chartArea5.AxisY.IsLabelAutoFit = false;
-            chartArea5.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea5.Name = "ChartArea1";
-            chartArea5.Position.Auto = false;
-            chartArea5.Position.Height = 100F;
-            chartArea5.Position.Width = 94F;
-            this.chartCadence.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            legend5.Position.Auto = false;
-            legend5.Position.Height = 9.476309F;
-            legend5.Position.Width = 20F;
-            legend5.Position.X = 79F;
-            legend5.Position.Y = 2F;
-            this.chartCadence.Legends.Add(legend5);
-            this.chartCadence.Location = new System.Drawing.Point(661, 14);
-            this.chartCadence.Margin = new System.Windows.Forms.Padding(1);
-            this.chartCadence.Name = "chartCadence";
-            series5.BorderWidth = 2;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Color = System.Drawing.Color.Lime;
-            series5.Legend = "Legend1";
-            series5.Name = "Cadence";
-            this.chartCadence.Series.Add(series5);
-            this.chartCadence.Size = new System.Drawing.Size(612, 324);
-            this.chartCadence.TabIndex = 17;
-            this.chartCadence.Text = "Cadence";
-            // 
-            // chartMpuYaw
-            // 
-            this.chartMpuYaw.BackColor = System.Drawing.Color.LightGray;
-            chartArea4.AxisX.LabelStyle.Format = "#.#";
-            chartArea4.AxisY.IsLabelAutoFit = false;
-            chartArea4.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea4.Name = "ChartArea1";
-            chartArea4.Position.Auto = false;
-            chartArea4.Position.Height = 100F;
-            chartArea4.Position.Width = 94F;
-            this.chartMpuYaw.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            legend4.Position.Auto = false;
-            legend4.Position.Height = 9.476309F;
-            legend4.Position.Width = 20F;
-            legend4.Position.X = 79F;
-            legend4.Position.Y = 2F;
-            this.chartMpuYaw.Legends.Add(legend4);
-            this.chartMpuYaw.Location = new System.Drawing.Point(1594, 317);
-            this.chartMpuYaw.Margin = new System.Windows.Forms.Padding(1);
-            this.chartMpuYaw.Name = "chartMpuYaw";
-            series4.BorderWidth = 2;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            series4.Legend = "Legend1";
-            series4.Name = "MYaw";
-            this.chartMpuYaw.Series.Add(series4);
-            this.chartMpuYaw.Size = new System.Drawing.Size(612, 324);
-            this.chartMpuYaw.TabIndex = 13;
-            this.chartMpuYaw.Text = "MpuYaw";
-            // 
-            // chartMpuRoll
-            // 
-            this.chartMpuRoll.BackColor = System.Drawing.Color.LightGray;
-            chartArea3.AxisX.LabelStyle.Format = "#.#";
-            chartArea3.AxisY.IsLabelAutoFit = false;
-            chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.Name = "ChartArea1";
-            chartArea3.Position.Auto = false;
-            chartArea3.Position.Height = 100F;
-            chartArea3.Position.Width = 94F;
-            this.chartMpuRoll.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            legend3.Position.Auto = false;
-            legend3.Position.Height = 9.476309F;
-            legend3.Position.Width = 20F;
-            legend3.Position.X = 79F;
-            legend3.Position.Y = 2F;
-            this.chartMpuRoll.Legends.Add(legend3);
-            this.chartMpuRoll.Location = new System.Drawing.Point(847, 342);
-            this.chartMpuRoll.Margin = new System.Windows.Forms.Padding(1);
-            this.chartMpuRoll.Name = "chartMpuRoll";
-            series3.BorderWidth = 2;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            series3.Legend = "Legend1";
-            series3.Name = "MRoll";
-            this.chartMpuRoll.Series.Add(series3);
-            this.chartMpuRoll.Size = new System.Drawing.Size(612, 324);
-            this.chartMpuRoll.TabIndex = 19;
-            this.chartMpuRoll.Text = "MpuRoll";
-            // 
-            // chartSpeed
-            // 
-            this.chartSpeed.BackColor = System.Drawing.Color.LightGray;
-            chartArea2.AxisX.LabelStyle.Format = "#.#";
-            chartArea2.AxisY.IsLabelAutoFit = false;
-            chartArea2.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea2.Name = "ChartArea1";
-            chartArea2.Position.Auto = false;
-            chartArea2.Position.Height = 100F;
-            chartArea2.Position.Width = 94F;
-            this.chartSpeed.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            legend2.Position.Auto = false;
-            legend2.Position.Height = 9.476309F;
-            legend2.Position.Width = 20F;
-            legend2.Position.X = 79F;
-            legend2.Position.Y = 2F;
-            this.chartSpeed.Legends.Add(legend2);
-            this.chartSpeed.Location = new System.Drawing.Point(26, 18);
-            this.chartSpeed.Margin = new System.Windows.Forms.Padding(1);
-            this.chartSpeed.Name = "chartSpeed";
-            series2.BorderWidth = 2;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            series2.Legend = "Legend1";
-            series2.LegendText = "Speed";
-            series2.Name = "Speed";
-            this.chartSpeed.Series.Add(series2);
-            this.chartSpeed.Size = new System.Drawing.Size(612, 324);
-            this.chartSpeed.TabIndex = 18;
-            this.chartSpeed.Text = "chart6";
-            title1.Name = "Speed";
-            this.chartSpeed.Titles.Add(title1);
-            // 
-            // chartMpuPitch
-            // 
-            this.chartMpuPitch.BackColor = System.Drawing.Color.LightGray;
-            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            chartArea1.AxisX.LabelStyle.Format = "#.#";
-            chartArea1.AxisX.ScrollBar.ButtonColor = System.Drawing.Color.Black;
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.IsLabelAutoFit = false;
-            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Meiryo UI", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            chartArea1.Name = "ChartArea1";
-            chartArea1.Position.Auto = false;
-            chartArea1.Position.Height = 100F;
-            chartArea1.Position.Width = 94F;
-            this.chartMpuPitch.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            legend1.Position.Auto = false;
-            legend1.Position.Height = 9.476309F;
-            legend1.Position.Width = 20F;
-            legend1.Position.X = 79F;
-            legend1.Position.Y = 2F;
-            this.chartMpuPitch.Legends.Add(legend1);
-            this.chartMpuPitch.Location = new System.Drawing.Point(31, 337);
-            this.chartMpuPitch.Margin = new System.Windows.Forms.Padding(1);
-            this.chartMpuPitch.Name = "chartMpuPitch";
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Color = System.Drawing.Color.Blue;
-            series1.Legend = "Legend1";
-            series1.Name = "MPitch";
-            this.chartMpuPitch.Series.Add(series1);
-            this.chartMpuPitch.Size = new System.Drawing.Size(612, 324);
-            this.chartMpuPitch.TabIndex = 20;
-            this.chartMpuPitch.Text = "Mpitch";
-            // 
-            // verticalProgressBar1
-            // 
-            this.verticalProgressBar1.Location = new System.Drawing.Point(28, 34);
-            this.verticalProgressBar1.Name = "verticalProgressBar1";
-            this.verticalProgressBar1.Size = new System.Drawing.Size(100, 23);
-            this.verticalProgressBar1.TabIndex = 28;
-            // 
-            // buttonLDrug
-            // 
-            this.buttonLDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLDrug.Location = new System.Drawing.Point(496, 140);
-            this.buttonLDrug.Name = "buttonLDrug";
-            this.buttonLDrug.Size = new System.Drawing.Size(310, 109);
-            this.buttonLDrug.TabIndex = 3;
-            this.buttonLDrug.Text = "左ドラッグラダー";
-            this.buttonLDrug.UseVisualStyleBackColor = true;
-            // 
-            // buttonRDrug
-            // 
-            this.buttonRDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRDrug.Location = new System.Drawing.Point(155, 140);
-            this.buttonRDrug.Name = "buttonRDrug";
-            this.buttonRDrug.Size = new System.Drawing.Size(312, 109);
-            this.buttonRDrug.TabIndex = 5;
-            this.buttonRDrug.Text = "右ドラッグラダー";
-            this.buttonRDrug.UseVisualStyleBackColor = true;
-            // 
-            // rollProgressBar
-            // 
-            this.rollProgressBar.Location = new System.Drawing.Point(155, 26);
-            this.rollProgressBar.Name = "rollProgressBar";
-            this.rollProgressBar.Size = new System.Drawing.Size(1019, 95);
-            this.rollProgressBar.TabIndex = 7;
-            // 
-            // pitchVerticalProgressBar
-            // 
-            this.pitchVerticalProgressBar.Location = new System.Drawing.Point(24, 26);
-            this.pitchVerticalProgressBar.Name = "pitchVerticalProgressBar";
-            this.pitchVerticalProgressBar.Size = new System.Drawing.Size(107, 554);
-            this.pitchVerticalProgressBar.TabIndex = 9;
-            // 
-            // chartDrugInput
-            // 
-            this.chartDrugInput.BackColor = System.Drawing.Color.LightGray;
-            chartArea10.AxisX.LabelStyle.Format = "#.#";
-            chartArea10.AxisY.IsLabelAutoFit = false;
-            chartArea10.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea10.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea10.Name = "ChartArea1";
-            chartArea10.Position.Auto = false;
-            chartArea10.Position.Height = 100F;
-            chartArea10.Position.Width = 94F;
-            this.chartDrugInput.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            legend10.Position.Auto = false;
-            legend10.Position.Height = 9.476309F;
-            legend10.Position.Width = 20F;
-            legend10.Position.X = 79F;
-            legend10.Position.Y = 2F;
-            this.chartDrugInput.Legends.Add(legend10);
-            this.chartDrugInput.Location = new System.Drawing.Point(1193, 425);
-            this.chartDrugInput.Margin = new System.Windows.Forms.Padding(1);
-            this.chartDrugInput.Name = "chartDrugInput";
-            series10.BorderWidth = 2;
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series10.Color = System.Drawing.Color.Red;
-            series10.Legend = "Legend1";
-            series10.LegendText = "DrugInput";
-            series10.Name = "RBattery";
-            this.chartDrugInput.Series.Add(series10);
-            this.chartDrugInput.Size = new System.Drawing.Size(1314, 381);
-            this.chartDrugInput.TabIndex = 17;
-            this.chartDrugInput.Text = "chart4";
-            // 
-            // chartPitchInput
-            // 
-            this.chartPitchInput.BackColor = System.Drawing.Color.LightGray;
-            chartArea9.AxisX.LabelStyle.Format = "#.#";
-            chartArea9.AxisY.IsLabelAutoFit = false;
-            chartArea9.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea9.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea9.Name = "ChartArea1";
-            chartArea9.Position.Auto = false;
-            chartArea9.Position.Height = 100F;
-            chartArea9.Position.Width = 94F;
-            this.chartPitchInput.ChartAreas.Add(chartArea9);
-            legend9.Name = "Legend1";
-            legend9.Position.Auto = false;
-            legend9.Position.Height = 9.476309F;
-            legend9.Position.Width = 20F;
-            legend9.Position.X = 79F;
-            legend9.Position.Y = 2F;
-            this.chartPitchInput.Legends.Add(legend9);
-            this.chartPitchInput.Location = new System.Drawing.Point(155, 262);
-            this.chartPitchInput.Margin = new System.Windows.Forms.Padding(1);
-            this.chartPitchInput.Name = "chartPitchInput";
-            series9.BorderWidth = 2;
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series9.Color = System.Drawing.Color.Red;
-            series9.Legend = "Legend1";
-            series9.LegendText = "PitchInput";
-            series9.Name = "Pitch";
-            this.chartPitchInput.Series.Add(series9);
-            this.chartPitchInput.Size = new System.Drawing.Size(1019, 544);
-            this.chartPitchInput.TabIndex = 18;
-            this.chartPitchInput.Text = "chart4";
+            this.tabPage3.Controls.Add(this.chartRollInput);
+            this.tabPage3.Controls.Add(this.chartPitchInput);
+            this.tabPage3.Controls.Add(this.chartDrugInput);
+            this.tabPage3.Controls.Add(this.pitchVerticalProgressBar);
+            this.tabPage3.Controls.Add(this.rollProgressBar);
+            this.tabPage3.Controls.Add(this.buttonRDrug);
+            this.tabPage3.Controls.Add(this.buttonLDrug);
+            this.tabPage3.Location = new System.Drawing.Point(4, 31);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(2542, 873);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Control";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // chartRollInput
             // 
@@ -889,6 +779,108 @@
             this.chartRollInput.TabIndex = 19;
             this.chartRollInput.Text = "chart4";
             // 
+            // chartPitchInput
+            // 
+            this.chartPitchInput.BackColor = System.Drawing.Color.LightGray;
+            chartArea9.AxisX.LabelStyle.Format = "#.#";
+            chartArea9.AxisY.IsLabelAutoFit = false;
+            chartArea9.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea9.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea9.Name = "ChartArea1";
+            chartArea9.Position.Auto = false;
+            chartArea9.Position.Height = 100F;
+            chartArea9.Position.Width = 94F;
+            this.chartPitchInput.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            legend9.Position.Auto = false;
+            legend9.Position.Height = 9.476309F;
+            legend9.Position.Width = 20F;
+            legend9.Position.X = 79F;
+            legend9.Position.Y = 2F;
+            this.chartPitchInput.Legends.Add(legend9);
+            this.chartPitchInput.Location = new System.Drawing.Point(155, 262);
+            this.chartPitchInput.Margin = new System.Windows.Forms.Padding(1);
+            this.chartPitchInput.Name = "chartPitchInput";
+            series9.BorderWidth = 2;
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series9.Color = System.Drawing.Color.Red;
+            series9.Legend = "Legend1";
+            series9.LegendText = "PitchInput";
+            series9.Name = "Pitch";
+            this.chartPitchInput.Series.Add(series9);
+            this.chartPitchInput.Size = new System.Drawing.Size(1019, 544);
+            this.chartPitchInput.TabIndex = 18;
+            this.chartPitchInput.Text = "chart4";
+            // 
+            // chartDrugInput
+            // 
+            this.chartDrugInput.BackColor = System.Drawing.Color.LightGray;
+            chartArea10.AxisX.LabelStyle.Format = "#.#";
+            chartArea10.AxisY.IsLabelAutoFit = false;
+            chartArea10.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea10.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea10.Name = "ChartArea1";
+            chartArea10.Position.Auto = false;
+            chartArea10.Position.Height = 100F;
+            chartArea10.Position.Width = 94F;
+            this.chartDrugInput.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            legend10.Position.Auto = false;
+            legend10.Position.Height = 9.476309F;
+            legend10.Position.Width = 20F;
+            legend10.Position.X = 79F;
+            legend10.Position.Y = 2F;
+            this.chartDrugInput.Legends.Add(legend10);
+            this.chartDrugInput.Location = new System.Drawing.Point(1193, 425);
+            this.chartDrugInput.Margin = new System.Windows.Forms.Padding(1);
+            this.chartDrugInput.Name = "chartDrugInput";
+            series10.BorderWidth = 2;
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series10.Color = System.Drawing.Color.Red;
+            series10.Legend = "Legend1";
+            series10.LegendText = "DrugInput";
+            series10.Name = "RBattery";
+            this.chartDrugInput.Series.Add(series10);
+            this.chartDrugInput.Size = new System.Drawing.Size(1314, 381);
+            this.chartDrugInput.TabIndex = 17;
+            this.chartDrugInput.Text = "chart4";
+            // 
+            // pitchVerticalProgressBar
+            // 
+            this.pitchVerticalProgressBar.Location = new System.Drawing.Point(24, 26);
+            this.pitchVerticalProgressBar.Name = "pitchVerticalProgressBar";
+            this.pitchVerticalProgressBar.Size = new System.Drawing.Size(107, 750);
+            this.pitchVerticalProgressBar.TabIndex = 9;
+            // 
+            // rollProgressBar
+            // 
+            this.rollProgressBar.Location = new System.Drawing.Point(155, 26);
+            this.rollProgressBar.Name = "rollProgressBar";
+            this.rollProgressBar.Size = new System.Drawing.Size(1019, 95);
+            this.rollProgressBar.TabIndex = 7;
+            // 
+            // buttonRDrug
+            // 
+            this.buttonRDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonRDrug.Location = new System.Drawing.Point(155, 140);
+            this.buttonRDrug.Name = "buttonRDrug";
+            this.buttonRDrug.Size = new System.Drawing.Size(312, 109);
+            this.buttonRDrug.TabIndex = 5;
+            this.buttonRDrug.Text = "右ドラッグラダー";
+            this.buttonRDrug.UseVisualStyleBackColor = true;
+            // 
+            // buttonLDrug
+            // 
+            this.buttonLDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonLDrug.Location = new System.Drawing.Point(496, 140);
+            this.buttonLDrug.Name = "buttonLDrug";
+            this.buttonLDrug.Size = new System.Drawing.Size(310, 109);
+            this.buttonLDrug.TabIndex = 3;
+            this.buttonLDrug.Text = "左ドラッグラダー";
+            this.buttonLDrug.UseVisualStyleBackColor = true;
+            // 
             // SerialForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
@@ -909,7 +901,6 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SerialForm_FormClosing);
             this.Load += new System.EventHandler(this.Serial_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SerialForm_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBoxAllData.ResumeLayout(false);
@@ -917,19 +908,19 @@
             this.groupBoxSerialConfig.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bauditemsBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartRBattery)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartLBattery)).EndInit();
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartCadence)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartMpuYaw)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartMpuRoll)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartMpuPitch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartDrugInput)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartPitchInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartMpuRoll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartMpuYaw)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartCadence)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartLBattery)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartRBattery)).EndInit();
+            this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartRollInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPitchInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDrugInput)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -977,7 +968,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartLBattery;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartRBattery;
         private System.Windows.Forms.TabPage tabPage3;
-        private VerticalProgressBar verticalProgressBar1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartRollInput;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartPitchInput;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDrugInput;

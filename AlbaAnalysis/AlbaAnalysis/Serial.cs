@@ -45,7 +45,6 @@ namespace AlbaAnalysis {
             buttonConnect.Enabled = false;
         }
 
-
         /// <summary>
         /// シリアルポートとボートレートを取得
         /// </summary>
@@ -168,8 +167,6 @@ namespace AlbaAnalysis {
                     if (string.IsNullOrEmpty(datas[i]))
                         return;
                 }
-                var temp = DateTime.Now;
-                var time = (temp - start).TotalSeconds.ToString();
                 saveData.Add(data);
                 BeginInvoke(new Handler(showChart), datas, data, 0);
                 BeginInvoke(new Handler(showText), datas, data, 0);
@@ -183,14 +180,17 @@ namespace AlbaAnalysis {
         /// <param name="data">配列化した受信データ</param>
         /// <param name="i"></param>
         public void checkSteer(string[] datas, string data, int i) {
-            if (datas[10] == 1.ToString())
+            if (datas[DataOrder.DrugR] == 1.ToString())
                 buttonRDrug.BackColor = Color.LightCoral;
             else buttonRDrug.BackColor = Color.LightGray;
 
-            if (datas[11] == 1.ToString())
+            if (datas[DataOrder.DrugL] == 1.ToString())
                 buttonLDrug.BackColor = Color.LightCoral;
             else
                 buttonLDrug.BackColor = Color.LightGray;
+
+            rollProgressBar.Value = (int)(double.Parse(datas[DataOrder.MpuRoll]) * 100);
+            pitchVerticalProgressBar.Value = (int)(double.Parse(datas[DataOrder.MpuPitch]) * 100);
         }
 
         /// <summary>
@@ -213,13 +213,17 @@ namespace AlbaAnalysis {
 
             #region グラフ設定
             try {
-                chartSpeed.Series["Speed"].Points.AddXY(xValue, double.Parse(datas[19]));
-                chartMpuPitch.Series["MPitch"].Points.AddXY(xValue, double.Parse(datas[13]));
-                chartCadence.Series["Cadence"].Points.AddXY(xValue, double.Parse(datas[12]));
-                chartRBattery.Series["RBattery"].Points.AddXY(xValue, double.Parse(datas[6]));
-                chartLBattery.Series["LBattery"].Points.AddXY(xValue, double.Parse(datas[7]));
-                chartMpuYaw.Series["MYaw"].Points.AddXY(xValue, double.Parse(datas[15]));
-                chartMpuRoll.Series["MRoll"].Points.AddXY(xValue, double.Parse(datas[14]));
+                chartSpeed.Series["Speed"].Points.AddXY(xValue, double.Parse(datas[DataOrder.AirSpeed]));
+                chartMpuPitch.Series["MPitch"].Points.AddXY(xValue, double.Parse(datas[DataOrder.MpuPitch]));
+                chartCadence.Series["Cadence"].Points.AddXY(xValue, double.Parse(datas[DataOrder.Cadence]));
+                chartRBattery.Series["RBattery"].Points.AddXY(xValue, double.Parse(datas[DataOrder.VoltageR]));
+                chartLBattery.Series["LBattery"].Points.AddXY(xValue, double.Parse(datas[DataOrder.VoltageL]));
+                chartMpuYaw.Series["MYaw"].Points.AddXY(xValue, double.Parse(datas[DataOrder.MpuYaw]));
+                chartMpuRoll.Series["MRoll"].Points.AddXY(xValue, double.Parse(datas[DataOrder.MpuRoll]));
+                chartDrugInput.Series["DrugInput"].Points.AddXY(xValue, double.Parse(datas[DataOrder.DrugR]) - double.Parse(datas[DataOrder.DrugL]));
+                chartRollInput.Series["RollInput"].Points.AddXY(xValue, double.Parse(datas[DataOrder.RollInput]));
+                chartPitchInput.Series["PitchInput"].Points.AddXY(xValue, double.Parse(datas[DataOrder.PitchInput]));
+                datas[DataOrder.Time] = xValue.ToString();
             }
             catch (Exception) {
                 return;
@@ -261,38 +265,50 @@ namespace AlbaAnalysis {
         private void showChartCsv(string[] datas, string data, int i) {
             #region グラフ設定
             try {
-                chartSpeed.Series["Speed"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[19]));
-                chartMpuPitch.Series["MPitch"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[13]));
-                chartCadence.Series["Cadence"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[12]));
-                chartRBattery.Series["RBattery"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[6]));
-                chartLBattery.Series["LBattery"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[7]));
-                chartMpuYaw.Series["MYaw"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[15]));
-                chartMpuRoll.Series["MRoll"].Points.AddXY(double.Parse(datas[20]), double.Parse(datas[14]));
+                chartSpeed.Series["Speed"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.AirSpeed]));
+                chartMpuPitch.Series["MPitch"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.MpuPitch]));
+                chartCadence.Series["Cadence"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.Cadence]));
+                chartRBattery.Series["RBattery"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.VoltageR]));
+                chartLBattery.Series["LBattery"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.VoltageL]));
+                chartMpuYaw.Series["MYaw"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.MpuYaw]));
+                chartMpuRoll.Series["MRoll"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.MpuRoll]));
+                chartDrugInput.Series["DrugInput"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.DrugR]) - double.Parse(datas[DataOrder.DrugL]));
+                chartRollInput.Series["RollInput"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.RollInput]));
+                chartPitchInput.Series["PitchInput"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.PitchInput]));
             }
             catch (Exception) {
                 return;
             }
 
-            chartSpeed.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
+            chartSpeed.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
             chartSpeed.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartMpuPitch.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
+            chartMpuPitch.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
             chartMpuPitch.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartCadence.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
+            chartCadence.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
             chartCadence.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartRBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
+            chartRBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
             chartRBattery.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartLBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
+            chartLBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
             chartLBattery.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartMpuYaw.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
+            chartMpuYaw.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
             chartMpuYaw.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartMpuRoll.ChartAreas[0].AxisX.Maximum = double.Parse(datas[20]);
+            chartMpuRoll.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
             chartMpuRoll.ChartAreas[0].AxisX.Minimum = 0;
+
+            chartRollInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
+            chartRollInput.ChartAreas[0].AxisX.Minimum = 0;
+
+            chartDrugInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
+            chartDrugInput.ChartAreas[0].AxisX.Minimum = 0;
+
+            chartPitchInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
+            chartPitchInput.ChartAreas[0].AxisX.Minimum = 0;
 
             #endregion
         }
@@ -319,13 +335,13 @@ namespace AlbaAnalysis {
         private void showText(string[] datas, string data, int i = 0) {
             #region textboxへの表示
             textBoxAllData.AppendText(data + Environment.NewLine);
-            textBoxBatteryDataR.AppendText(datas[6] + Environment.NewLine);
-            textBoxBatteryDataL.AppendText(datas[7] + Environment.NewLine);
-            textBoxCadence.AppendText(datas[12] + Environment.NewLine);
-            textBoxMpuPitch.AppendText(datas[13] + Environment.NewLine);
-            textBoxMpuRoll.AppendText(datas[14] + Environment.NewLine);
-            textBoxMpuYaw.AppendText(datas[15] + Environment.NewLine);
-            textBoxSpeed.AppendText(datas[19] + Environment.NewLine);
+            textBoxBatteryDataR.AppendText(datas[DataOrder.VoltageR] + Environment.NewLine);
+            textBoxBatteryDataL.AppendText(datas[DataOrder.VoltageL] + Environment.NewLine);
+            textBoxCadence.AppendText(datas[DataOrder.Cadence] + Environment.NewLine);
+            textBoxMpuPitch.AppendText(datas[DataOrder.MpuPitch] + Environment.NewLine);
+            textBoxMpuRoll.AppendText(datas[DataOrder.MpuRoll] + Environment.NewLine);
+            textBoxMpuYaw.AppendText(datas[DataOrder.MpuYaw] + Environment.NewLine);
+            textBoxSpeed.AppendText(datas[DataOrder.AirSpeed] + Environment.NewLine);
             #endregion
         }
 
@@ -490,6 +506,12 @@ namespace AlbaAnalysis {
 
         private void comboBoxFiles_SelectedIndexChanged(object sender, EventArgs e) {
             buttonRunCsv.Focus();
+        }
+
+        private void chartCadence_Click(object sender, EventArgs e) {
+            Detail detail = new Detail();
+    
+            detail.Show();
         }
     }
 }

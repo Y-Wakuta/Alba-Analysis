@@ -51,6 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Detail.Designer.cs">
+      <DependentUpon>Detail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entity\SerialEntity.cs" />
     <Compile Include="Routine\SerialRoutine.cs" />
     <Compile Include="Serial.cs">
@@ -64,6 +70,9 @@
     <Compile Include="VerticalProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="Detail.resx">
+      <DependentUpon>Detail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -79,8 +88,10 @@
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.BatteryDataL.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.BatteryDataR.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.bauditems.datasource" />
+    <None Include="Properties\DataSources\AlbaAnalysis.Entity.Cadence.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.filePath.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.MpuData.datasource" />
+    <None Include="Properties\DataSources\AlbaAnalysis.Entity.Time.datasource" />
     <None Include="Properties\DataSources\Serial.bauditems.datasource" />
     <None Include="Properties\DataSources\Serial.portNames.datasource" />
     <None Include="Properties\Settings.settings">
