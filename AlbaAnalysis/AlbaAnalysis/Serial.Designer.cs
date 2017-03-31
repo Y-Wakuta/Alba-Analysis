@@ -101,9 +101,9 @@
             this.chartPitchInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartDrugInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pitchVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
-            this.rollProgressBar = new System.Windows.Forms.ProgressBar();
             this.buttonRDrug = new System.Windows.Forms.Button();
             this.buttonLDrug = new System.Windows.Forms.Button();
+            this.rollVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
             this.groupBox1.SuspendLayout();
             this.groupBoxAllData.SuspendLayout();
             this.groupBoxSerialConfig.SuspendLayout();
@@ -460,10 +460,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl1.Location = new System.Drawing.Point(0, 511);
+            this.tabControl1.Location = new System.Drawing.Point(0, 482);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(2547, 908);
+            this.tabControl1.Size = new System.Drawing.Size(2550, 908);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -476,7 +476,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(2539, 873);
+            this.tabPage1.Size = new System.Drawing.Size(2542, 873);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Core";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -656,7 +656,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(2542, 873);
+            this.tabPage2.Size = new System.Drawing.Size(2539, 873);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "WingEdge";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -731,11 +731,11 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.rollVerticalProgressBar);
             this.tabPage3.Controls.Add(this.chartRollInput);
             this.tabPage3.Controls.Add(this.chartPitchInput);
             this.tabPage3.Controls.Add(this.chartDrugInput);
             this.tabPage3.Controls.Add(this.pitchVerticalProgressBar);
-            this.tabPage3.Controls.Add(this.rollProgressBar);
             this.tabPage3.Controls.Add(this.buttonRDrug);
             this.tabPage3.Controls.Add(this.buttonLDrug);
             this.tabPage3.Location = new System.Drawing.Point(4, 31);
@@ -764,7 +764,7 @@
             legend8.Position.X = 79F;
             legend8.Position.Y = 2F;
             this.chartRollInput.Legends.Add(legend8);
-            this.chartRollInput.Location = new System.Drawing.Point(1193, 16);
+            this.chartRollInput.Location = new System.Drawing.Point(1277, 16);
             this.chartRollInput.Margin = new System.Windows.Forms.Padding(1);
             this.chartRollInput.Name = "chartRollInput";
             series8.BorderWidth = 2;
@@ -775,7 +775,7 @@
             series8.LegendText = "RollInput";
             series8.Name = "RollInput";
             this.chartRollInput.Series.Add(series8);
-            this.chartRollInput.Size = new System.Drawing.Size(1314, 394);
+            this.chartRollInput.Size = new System.Drawing.Size(1230, 394);
             this.chartRollInput.TabIndex = 19;
             this.chartRollInput.Text = "chart4";
             // 
@@ -798,7 +798,7 @@
             legend9.Position.X = 79F;
             legend9.Position.Y = 2F;
             this.chartPitchInput.Legends.Add(legend9);
-            this.chartPitchInput.Location = new System.Drawing.Point(155, 262);
+            this.chartPitchInput.Location = new System.Drawing.Point(253, 272);
             this.chartPitchInput.Margin = new System.Windows.Forms.Padding(1);
             this.chartPitchInput.Name = "chartPitchInput";
             series9.BorderWidth = 2;
@@ -832,7 +832,7 @@
             legend10.Position.X = 79F;
             legend10.Position.Y = 2F;
             this.chartDrugInput.Legends.Add(legend10);
-            this.chartDrugInput.Location = new System.Drawing.Point(1193, 425);
+            this.chartDrugInput.Location = new System.Drawing.Point(1277, 425);
             this.chartDrugInput.Margin = new System.Windows.Forms.Padding(1);
             this.chartDrugInput.Name = "chartDrugInput";
             series10.BorderWidth = 2;
@@ -843,28 +843,21 @@
             series10.LegendText = "DrugInput";
             series10.Name = "RBattery";
             this.chartDrugInput.Series.Add(series10);
-            this.chartDrugInput.Size = new System.Drawing.Size(1314, 381);
+            this.chartDrugInput.Size = new System.Drawing.Size(1230, 381);
             this.chartDrugInput.TabIndex = 17;
             this.chartDrugInput.Text = "chart4";
             // 
             // pitchVerticalProgressBar
             // 
-            this.pitchVerticalProgressBar.Location = new System.Drawing.Point(24, 26);
+            this.pitchVerticalProgressBar.Location = new System.Drawing.Point(13, 16);
             this.pitchVerticalProgressBar.Name = "pitchVerticalProgressBar";
-            this.pitchVerticalProgressBar.Size = new System.Drawing.Size(107, 750);
+            this.pitchVerticalProgressBar.Size = new System.Drawing.Size(107, 814);
             this.pitchVerticalProgressBar.TabIndex = 9;
-            // 
-            // rollProgressBar
-            // 
-            this.rollProgressBar.Location = new System.Drawing.Point(155, 26);
-            this.rollProgressBar.Name = "rollProgressBar";
-            this.rollProgressBar.Size = new System.Drawing.Size(1019, 95);
-            this.rollProgressBar.TabIndex = 7;
             // 
             // buttonRDrug
             // 
             this.buttonRDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRDrug.Location = new System.Drawing.Point(155, 140);
+            this.buttonRDrug.Location = new System.Drawing.Point(287, 37);
             this.buttonRDrug.Name = "buttonRDrug";
             this.buttonRDrug.Size = new System.Drawing.Size(312, 109);
             this.buttonRDrug.TabIndex = 5;
@@ -874,12 +867,19 @@
             // buttonLDrug
             // 
             this.buttonLDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLDrug.Location = new System.Drawing.Point(496, 140);
+            this.buttonLDrug.Location = new System.Drawing.Point(626, 37);
             this.buttonLDrug.Name = "buttonLDrug";
             this.buttonLDrug.Size = new System.Drawing.Size(310, 109);
             this.buttonLDrug.TabIndex = 3;
             this.buttonLDrug.Text = "左ドラッグラダー";
             this.buttonLDrug.UseVisualStyleBackColor = true;
+            // 
+            // rollVerticalProgressBar
+            // 
+            this.rollVerticalProgressBar.Location = new System.Drawing.Point(142, 16);
+            this.rollVerticalProgressBar.Name = "rollVerticalProgressBar";
+            this.rollVerticalProgressBar.Size = new System.Drawing.Size(107, 814);
+            this.rollVerticalProgressBar.TabIndex = 20;
             // 
             // SerialForm
             // 
@@ -972,9 +972,9 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartPitchInput;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDrugInput;
         private VerticalProgressBar pitchVerticalProgressBar;
-        private System.Windows.Forms.ProgressBar rollProgressBar;
         private System.Windows.Forms.Button buttonRDrug;
         private System.Windows.Forms.Button buttonLDrug;
+        private VerticalProgressBar rollVerticalProgressBar;
     }
 }
 

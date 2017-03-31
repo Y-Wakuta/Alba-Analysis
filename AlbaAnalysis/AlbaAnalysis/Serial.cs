@@ -31,8 +31,7 @@ namespace AlbaAnalysis {
         Stopwatch sw;
         int csvFlag = 0;
         string path = null;
-        int fileNumber = 1;
-
+        CadenceView cadenceView = new CadenceView();
 
         public SerialForm() {
             InitializeComponent();
@@ -42,7 +41,13 @@ namespace AlbaAnalysis {
             buttonStopCsv.Enabled = false;
             buttonRDrug.Enabled = false;
             buttonLDrug.Enabled = false;
-            buttonConnect.Enabled = false;
+            buttonConnect.Enabled = true;
+
+            rollVerticalProgressBar.Maximum = 20;
+            rollVerticalProgressBar.Maximum = 0;
+
+            pitchVerticalProgressBar.Maximum = 20;
+            pitchVerticalProgressBar.Maximum = 0;
         }
 
         /// <summary>
@@ -162,12 +167,18 @@ namespace AlbaAnalysis {
 
             var datas = data.Split(',');
 
-            if (datas.Count() == Constants.dataMembers) {
+            if (datas.Count() == DataOrder.dataMembers) {
                 for (int i = 0; i < datas.Count() - 1; i++) {
                     if (string.IsNullOrEmpty(datas[i]))
                         return;
+                    try {
+                        int.Parse(datas[i]);
+                    }
+                    catch (Exception) {
+                        datas[i] = 0.ToString();
+                    }
                 }
-                saveData.Add(data);
+                saveData.Add(data + Environment.NewLine);
                 BeginInvoke(new Handler(showChart), datas, data, 0);
                 BeginInvoke(new Handler(showText), datas, data, 0);
                 BeginInvoke(new Handler(checkSteer), datas, data, 0);
@@ -189,8 +200,13 @@ namespace AlbaAnalysis {
             else
                 buttonLDrug.BackColor = Color.LightGray;
 
-            rollProgressBar.Value = (int)(double.Parse(datas[DataOrder.MpuRoll]) * 100);
-            pitchVerticalProgressBar.Value = (int)(double.Parse(datas[DataOrder.MpuPitch]) * 100);
+            if (int.Parse(datas[DataOrder.ErebonRInput]) > rollVerticalProgressBar.Maximum)
+                rollVerticalProgressBar.Maximum = int.Parse(datas[DataOrder.ErebonRInput]);
+            rollVerticalProgressBar.Value = int.Parse(datas[DataOrder.ErebonRInput]);
+
+            if (int.Parse(datas[DataOrder.ErebonLInput]) > pitchVerticalProgressBar.Maximum)
+                pitchVerticalProgressBar.Maximum = int.Parse(datas[DataOrder.ErebonLInput]);
+            pitchVerticalProgressBar.Value = int.Parse(datas[DataOrder.ErebonLInput]);
         }
 
         /// <summary>
@@ -221,9 +237,11 @@ namespace AlbaAnalysis {
                 chartMpuYaw.Series["MYaw"].Points.AddXY(xValue, double.Parse(datas[DataOrder.MpuYaw]));
                 chartMpuRoll.Series["MRoll"].Points.AddXY(xValue, double.Parse(datas[DataOrder.MpuRoll]));
                 chartDrugInput.Series["DrugInput"].Points.AddXY(xValue, double.Parse(datas[DataOrder.DrugR]) - double.Parse(datas[DataOrder.DrugL]));
-                chartRollInput.Series["RollInput"].Points.AddXY(xValue, double.Parse(datas[DataOrder.RollInput]));
-                chartPitchInput.Series["PitchInput"].Points.AddXY(xValue, double.Parse(datas[DataOrder.PitchInput]));
+                chartRollInput.Series["RollInput"].Points.AddXY(xValue, double.Parse(datas[DataOrder.ErebonRInput]));
+                chartPitchInput.Series["PitchInput"].Points.AddXY(xValue, double.Parse(datas[DataOrder.ErebonLInput]));
                 datas[DataOrder.Time] = xValue.ToString();
+                cadenceView.cadence = datas[DataOrder.Cadence];
+                cadenceView.time = datas[DataOrder.Time];
             }
             catch (Exception) {
                 return;
@@ -273,8 +291,8 @@ namespace AlbaAnalysis {
                 chartMpuYaw.Series["MYaw"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.MpuYaw]));
                 chartMpuRoll.Series["MRoll"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.MpuRoll]));
                 chartDrugInput.Series["DrugInput"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.DrugR]) - double.Parse(datas[DataOrder.DrugL]));
-                chartRollInput.Series["RollInput"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.RollInput]));
-                chartPitchInput.Series["PitchInput"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.PitchInput]));
+                chartRollInput.Series["RollInput"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.ErebonRInput]));
+                chartPitchInput.Series["PitchInput"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.ErebonLInput]));
             }
             catch (Exception) {
                 return;
@@ -386,7 +404,7 @@ namespace AlbaAnalysis {
 
         private void buttonClose_Click_1(object sender, EventArgs e) {
             var pathItem = new filePath();
-            path = @"./Log/" + DateTime.Now.ToString("MMdd") + "TF" + fileNumber + ".csv";
+            path = @"../../../Log/" + "TF" + DateTime.Now.ToString("MMdd_hhmm") + ".csv";
             SerialProcess.writeDatas(saveData, path, true);
             AddAllPath();
             serialPort1.DiscardInBuffer();
@@ -400,7 +418,6 @@ namespace AlbaAnalysis {
         }
 
         private void buttonNext_Click_1(object sender, EventArgs e) {
-            fileNumber++;
             clearForm();
             buttonConnect.Focus();
         }
@@ -456,7 +473,7 @@ namespace AlbaAnalysis {
 
                     // for (int i = 0; i < aveData.Count(); i++)
                     //     aveData[i] = 0.ToString();
-                    if (datas.Count() == Constants.dataMembers) {
+                    if (datas.Count() == DataOrder.dataMembers) {
                         for (int i = 0; i < datas.Count() - 1; i++) {
                             if (string.IsNullOrEmpty(datas[i]))
                                 return;
@@ -509,8 +526,7 @@ namespace AlbaAnalysis {
         }
 
         private void chartCadence_Click(object sender, EventArgs e) {
-            Detail detail = new Detail();
-    
+            var detail = new Detail(cadenceView);
             detail.Show();
         }
     }
