@@ -17,12 +17,15 @@ namespace AlbaAnalysis.Routine {
         /// <summary>
         /// リストに保存したデータをcsvに出力します
         /// </summary>
-        /// <param name="data">配列化していない受信データ</param>
+        /// <param name="se">配列化していない受信データ</param>
         /// <param name="path"></param>
-        public void writeDatas(List<string> data, string path, bool append) {
+        public void writeDatas(List<SerialEntity> se, string path, bool append) {
             var sw = new StreamWriter(path, append);
-            foreach (var dt in data) {
-                sw.Write(dt);
+            foreach (var d in se) {
+                sw.Write(d.MpuXR + "," + d.MpuYR + "," + d.MpuZR + "," + d.VoltageR + "," + d.MpuXL + "," + d.MpuYL + "," + d.MpuZL
+                            + "," + d.VoltageL + "," + d.ErebonRInput + "," + d.DrugR + "," + d.ErebonLInput + "," + d.DrugL
+                             + "," + d.MpuRoll + "," + d.MpuPitch + "," + d.MpuYaw
+                              + "," + d.AirSpeed + "," + d.Sonar + "," + d.Cadence);
             }
             sw.Close();
         }
@@ -68,15 +71,6 @@ namespace AlbaAnalysis.Routine {
             else if (double.Parse(datas[7]) < Constants.batteryVoltageLimit) {
                 System.Media.SystemSounds.Beep.Play();
             }
-        }
-
-        public string AddTimeToDatas(string[] datas, string time) {
-            string data = null;
-            for (int i = 0; i < datas.Count() - 2; i++)
-                data += datas[i] + ",";
-            data += datas[21] + ",";
-            data += datas[20];
-            return data;
         }
     }
 }

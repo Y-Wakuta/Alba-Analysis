@@ -17,14 +17,14 @@ using System.Diagnostics;
 
 namespace AlbaAnalysis {
 
-    delegate void Handler(string[] strs, string str, int i);
+    delegate void Handler(SerialEntity strs, string str, int i);
     delegate void voidMethod();
 
 
     public partial class SerialForm : Form {
 
         DateTime start = DateTime.Now;
-        List<string> saveData = new List<string>();
+        List<SerialEntity> saveData = new List<SerialEntity>();
         string[] aveData = new string[40];
         string _resultPath = null;
         SerialRoutine SerialProcess = new SerialRoutine();
@@ -32,6 +32,7 @@ namespace AlbaAnalysis {
         int csvFlag = 0;
         string path = null;
         CadenceView cadenceView = new CadenceView();
+        SerialEntity serialEntity = new SerialEntity();
 
         public SerialForm() {
             InitializeComponent();
@@ -167,18 +168,77 @@ namespace AlbaAnalysis {
 
             var datas = data.Split(',');
 
-            if (datas.Count() == DataOrder.dataMembers) {
-                for (int i = 0; i < datas.Count() - 1; i++) {
-                    if (string.IsNullOrEmpty(datas[i]))
-                        return;
-                    try {
-                        int.Parse(datas[i]);
-                    }
-                    catch (Exception) {
-                        datas[i] = 0.ToString();
-                    }
+            for (int i = 0; i < datas.Count() - 1; i++) {
+                if (string.IsNullOrEmpty(datas[i]))
+                    return;
+                try {
+                    int.Parse(datas[i]);
                 }
-                saveData.Add(data + Environment.NewLine);
+                catch (Exception) {
+                    datas[i] = 0.ToString();
+                }
+            }
+
+            DateTime end = DateTime.Now;
+            TimeSpan time = end - start;
+            var xValue = time.TotalSeconds.ToString();
+
+            if (datas[0] == "con" && datas.Count() == Enum.GetNames(typeof(ControlDataOrder)).Length) {
+                serialEntity.MpuXR = datas[1];
+                serialEntity.MpuYR = datas[2];
+                serialEntity.MpuZR = datas[3];
+                serialEntity.VoltageR = datas[4];
+                serialEntity.MpuXL = datas[5];
+                serialEntity.MpuYL = datas[6];
+                serialEntity.MpuZL = datas[7];
+                serialEntity.VoltageL = datas[8];
+                serialEntity.Time = xValue;
+
+                var tempSerial = new SerialEntity();
+                tempSerial = serialEntity;
+                saveData.Add(tempSerial);
+
+                BeginInvoke(new Handler(showChart), datas, data, 0);
+                BeginInvoke(new Handler(showText), datas, data, 0);
+                BeginInvoke(new Handler(checkSteer), datas, data, 0);
+
+            }
+            else if (datas[0] == "inp" && datas.Count() == Enum.GetNames(typeof(InputDataOrder)).Length) {
+                serialEntity.ErebonRInput = datas[1];
+                serialEntity.DrugR = datas[2];
+                serialEntity.ErebonLInput = datas[3];
+                serialEntity.DrugL = datas[4];
+                serialEntity.Time = xValue;
+
+                var tempSerial = new SerialEntity();
+                tempSerial = serialEntity;
+                saveData.Add(tempSerial);
+                BeginInvoke(new Handler(showChart), datas, data, 0);
+                BeginInvoke(new Handler(showText), datas, data, 0);
+                BeginInvoke(new Handler(checkSteer), datas, data, 0);
+            }
+            else if (datas[0] == "mpu" && datas.Count() == Enum.GetNames(typeof(MpuDataOrder)).Length) {
+                serialEntity.MpuRoll = datas[1];
+                serialEntity.MpuPitch = datas[2];
+                serialEntity.MpuYaw = datas[3];
+                serialEntity.Time = xValue;
+
+                var tempSerial = new SerialEntity();
+                tempSerial = serialEntity;
+                saveData.Add(tempSerial);
+                BeginInvoke(new Handler(showChart), datas, data, 0);
+                BeginInvoke(new Handler(showText), datas, data, 0);
+                BeginInvoke(new Handler(checkSteer), datas, data, 0);
+            }
+            else if (datas[0] == "kei" && datas.Count() == Enum.GetNames(typeof(KeikiDataOrder)).Length) {
+                serialEntity.AirSpeed = datas[1];
+                serialEntity.Sonar = datas[2];
+                serialEntity.Cadence = datas[3];
+                serialEntity.Time = xValue;
+
+                var tempSerial = new SerialEntity();
+                tempSerial = serialEntity;
+                saveData.Add(tempSerial);
                 BeginInvoke(new Handler(showChart), datas, data, 0);
                 BeginInvoke(new Handler(showText), datas, data, 0);
                 BeginInvoke(new Handler(checkSteer), datas, data, 0);
@@ -190,24 +250,25 @@ namespace AlbaAnalysis {
         /// </summary>
         /// <param name="data">配列化した受信データ</param>
         /// <param name="i"></param>
-        public void checkSteer(string[] datas, string data, int i) {
-            if (datas[DataOrder.DrugR] == 1.ToString())
+        public void checkSteer(SerialEntity datas, string data, int i) {
+            if (datas.DrugR == 1.ToString())
                 buttonRDrug.BackColor = Color.LightCoral;
             else buttonRDrug.BackColor = Color.LightGray;
 
-            if (datas[DataOrder.DrugL] == 1.ToString())
+            if (datas.DrugL == 1.ToString())
                 buttonLDrug.BackColor = Color.LightCoral;
             else
                 buttonLDrug.BackColor = Color.LightGray;
 
-            if (int.Parse(datas[DataOrder.ErebonRInput]) > rollVerticalProgressBar.Maximum)
-                rollVerticalProgressBar.Maximum = int.Parse(datas[DataOrder.ErebonRInput]);
-            rollVerticalProgressBar.Value = int.Parse(datas[DataOrder.ErebonRInput]);
+            if (int.Parse(datas.ErebonRInput) > rollVerticalProgressBar.Maximum)
+                rollVerticalProgressBar.Maximum = int.Parse(datas.ErebonRInput);
+            rollVerticalProgressBar.Value = int.Parse(datas.ErebonRInput);
 
-            if (int.Parse(datas[DataOrder.ErebonLInput]) > pitchVerticalProgressBar.Maximum)
-                pitchVerticalProgressBar.Maximum = int.Parse(datas[DataOrder.ErebonLInput]);
-            pitchVerticalProgressBar.Value = int.Parse(datas[DataOrder.ErebonLInput]);
+            if (int.Parse(datas.ErebonLInput) > pitchVerticalProgressBar.Maximum)
+                pitchVerticalProgressBar.Maximum = int.Parse(datas.ErebonLInput);
+            pitchVerticalProgressBar.Value = int.Parse(datas.ErebonLInput);
         }
+
 
         /// <summary>
         /// 操舵入力表示用のボタンをNextButtonを押したときに色を戻します
@@ -222,110 +283,107 @@ namespace AlbaAnalysis {
         /// </summary>
         /// <param name="datas">配列化した受信データ</param>
         /// <param name="i"></param>
-        private void showChart(string[] datas, string data, int i) {
-            DateTime end = DateTime.Now;
-            TimeSpan time = end - start;
-            int xValue = (int)time.TotalSeconds;
+        private void showChart(SerialEntity datas, string data, int i) {
+
 
             #region グラフ設定
             try {
-                chartSpeed.Series["Speed"].Points.AddXY(xValue, double.Parse(datas[DataOrder.AirSpeed]));
-                chartMpuPitch.Series["MPitch"].Points.AddXY(xValue, double.Parse(datas[DataOrder.MpuPitch]));
-                chartCadence.Series["Cadence"].Points.AddXY(xValue, double.Parse(datas[DataOrder.Cadence]));
-                chartRBattery.Series["RBattery"].Points.AddXY(xValue, double.Parse(datas[DataOrder.VoltageR]));
-                chartLBattery.Series["LBattery"].Points.AddXY(xValue, double.Parse(datas[DataOrder.VoltageL]));
-                chartMpuYaw.Series["MYaw"].Points.AddXY(xValue, double.Parse(datas[DataOrder.MpuYaw]));
-                chartMpuRoll.Series["MRoll"].Points.AddXY(xValue, double.Parse(datas[DataOrder.MpuRoll]));
-                chartDrugInput.Series["DrugInput"].Points.AddXY(xValue, double.Parse(datas[DataOrder.DrugR]) - double.Parse(datas[DataOrder.DrugL]));
-                chartRollInput.Series["RollInput"].Points.AddXY(xValue, double.Parse(datas[DataOrder.ErebonRInput]));
-                chartPitchInput.Series["PitchInput"].Points.AddXY(xValue, double.Parse(datas[DataOrder.ErebonLInput]));
-                datas[DataOrder.Time] = xValue.ToString();
-                cadenceView.cadence = datas[DataOrder.Cadence];
-                cadenceView.time = datas[DataOrder.Time];
+                chartSpeed.Series["Speed"].Points.AddXY(datas.Time, double.Parse(datas.AirSpeed));
+                chartMpuPitch.Series["MPitch"].Points.AddXY(datas.Time, double.Parse(datas.MpuPitch));
+                chartCadence.Series["Cadence"].Points.AddXY(datas.Time, double.Parse(datas.Cadence));
+                chartRBattery.Series["RBattery"].Points.AddXY(datas.Time, double.Parse(datas.VoltageR));
+                chartLBattery.Series["LBattery"].Points.AddXY(datas.Time, double.Parse(datas.VoltageL));
+                chartMpuYaw.Series["MYaw"].Points.AddXY(datas.Time, double.Parse(datas.MpuYaw));
+                chartMpuRoll.Series["MRoll"].Points.AddXY(datas.Time, double.Parse(datas.MpuRoll));
+                chartDrugInput.Series["DrugInput"].Points.AddXY(datas.Time, double.Parse(datas.DrugR) - double.Parse(datas.DrugL));
+                chartRollInput.Series["RollInput"].Points.AddXY(datas.Time, double.Parse(datas.ErebonRInput));
+                chartPitchInput.Series["PitchInput"].Points.AddXY(datas.Time, double.Parse(datas.ErebonLInput));
+                cadenceView.cadence = datas.Cadence;
+                cadenceView.time = datas.Time;
             }
             catch (Exception) {
                 return;
             }
 
-            chartSpeed.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
+            chartSpeed.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartSpeed.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartMpuPitch.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
+            chartMpuPitch.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartMpuPitch.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartCadence.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
+            chartCadence.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartCadence.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartRBattery.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
+            chartRBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartRBattery.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartLBattery.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
+            chartLBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartLBattery.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartMpuYaw.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
+            chartMpuYaw.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartMpuYaw.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartMpuRoll.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
+            chartMpuRoll.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartMpuRoll.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartRollInput.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
+            chartRollInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartRollInput.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartDrugInput.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
+            chartDrugInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartDrugInput.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartPitchInput.ChartAreas[0].AxisX.Maximum = time.TotalSeconds;
+            chartPitchInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartPitchInput.ChartAreas[0].AxisX.Minimum = 0;
 
             #endregion
         }
 
-        private void showChartCsv(string[] datas, string data, int i) {
+        private void showChartCsv(SerialEntity datas, string data, int i) {
             #region グラフ設定
             try {
-                chartSpeed.Series["Speed"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.AirSpeed]));
-                chartMpuPitch.Series["MPitch"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.MpuPitch]));
-                chartCadence.Series["Cadence"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.Cadence]));
-                chartRBattery.Series["RBattery"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.VoltageR]));
-                chartLBattery.Series["LBattery"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.VoltageL]));
-                chartMpuYaw.Series["MYaw"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.MpuYaw]));
-                chartMpuRoll.Series["MRoll"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.MpuRoll]));
-                chartDrugInput.Series["DrugInput"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.DrugR]) - double.Parse(datas[DataOrder.DrugL]));
-                chartRollInput.Series["RollInput"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.ErebonRInput]));
-                chartPitchInput.Series["PitchInput"].Points.AddXY(double.Parse(datas[DataOrder.Time]), double.Parse(datas[DataOrder.ErebonLInput]));
+                chartSpeed.Series["Speed"].Points.AddXY(double.Parse(datas.Time), double.Parse(datas.AirSpeed));
+                chartMpuPitch.Series["MPitch"].Points.AddXY(double.Parse(datas.Time), double.Parse(datas.MpuPitch));
+                chartCadence.Series["Cadence"].Points.AddXY(double.Parse(datas.Time), double.Parse(datas.Cadence));
+                chartRBattery.Series["RBattery"].Points.AddXY(double.Parse(datas.Time), double.Parse(datas.VoltageR));
+                chartLBattery.Series["LBattery"].Points.AddXY(double.Parse(datas.Time), double.Parse(datas.VoltageL));
+                chartMpuYaw.Series["MYaw"].Points.AddXY(double.Parse(datas.Time), double.Parse(datas.MpuYaw));
+                chartMpuRoll.Series["MRoll"].Points.AddXY(double.Parse(datas.Time), double.Parse(datas.MpuRoll));
+                chartDrugInput.Series["DrugInput"].Points.AddXY(double.Parse(datas.Time), double.Parse(datas.DrugR) - double.Parse(datas.DrugL));
+                chartRollInput.Series["RollInput"].Points.AddXY(double.Parse(datas.Time), double.Parse(datas.ErebonRInput));
+                chartPitchInput.Series["PitchInput"].Points.AddXY(double.Parse(datas.Time), double.Parse(datas.ErebonLInput));
             }
             catch (Exception) {
                 return;
             }
 
-            chartSpeed.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
+            chartSpeed.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartSpeed.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartMpuPitch.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
+            chartMpuPitch.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartMpuPitch.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartCadence.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
+            chartCadence.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartCadence.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartRBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
+            chartRBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartRBattery.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartLBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
+            chartLBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartLBattery.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartMpuYaw.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
+            chartMpuYaw.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartMpuYaw.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartMpuRoll.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
+            chartMpuRoll.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartMpuRoll.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartRollInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
+            chartRollInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartRollInput.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartDrugInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
+            chartDrugInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartDrugInput.ChartAreas[0].AxisX.Minimum = 0;
 
-            chartPitchInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas[DataOrder.Time]);
+            chartPitchInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
             chartPitchInput.ChartAreas[0].AxisX.Minimum = 0;
 
             #endregion
@@ -350,16 +408,16 @@ namespace AlbaAnalysis {
         /// </summary>
         /// <param name="datas">配列化した受信データ</param>
         /// <param name="i"></param>
-        private void showText(string[] datas, string data, int i = 0) {
+        private void showText(SerialEntity datas, string data, int i = 0) {
             #region textboxへの表示
             textBoxAllData.AppendText(data + Environment.NewLine);
-            textBoxBatteryDataR.AppendText(datas[DataOrder.VoltageR] + Environment.NewLine);
-            textBoxBatteryDataL.AppendText(datas[DataOrder.VoltageL] + Environment.NewLine);
-            textBoxCadence.AppendText(datas[DataOrder.Cadence] + Environment.NewLine);
-            textBoxMpuPitch.AppendText(datas[DataOrder.MpuPitch] + Environment.NewLine);
-            textBoxMpuRoll.AppendText(datas[DataOrder.MpuRoll] + Environment.NewLine);
-            textBoxMpuYaw.AppendText(datas[DataOrder.MpuYaw] + Environment.NewLine);
-            textBoxSpeed.AppendText(datas[DataOrder.AirSpeed] + Environment.NewLine);
+            textBoxBatteryDataR.AppendText(datas.VoltageR + Environment.NewLine);
+            textBoxBatteryDataL.AppendText(datas.VoltageL + Environment.NewLine);
+            textBoxCadence.AppendText(datas.Cadence + Environment.NewLine);
+            textBoxMpuPitch.AppendText(datas.MpuPitch + Environment.NewLine);
+            textBoxMpuRoll.AppendText(datas.MpuRoll + Environment.NewLine);
+            textBoxMpuYaw.AppendText(datas.MpuYaw + Environment.NewLine);
+            textBoxSpeed.AppendText(datas.AirSpeed + Environment.NewLine);
             #endregion
         }
 
@@ -470,24 +528,56 @@ namespace AlbaAnalysis {
                         MessageBox.Show("ファイルが空です。");
                         return;
                     }
+                    for (int i = 0; i < datas.Count() - 1; i++) {
+                        if (string.IsNullOrEmpty(datas[i]))
+                            return;
+                    }
 
-                    // for (int i = 0; i < aveData.Count(); i++)
-                    //     aveData[i] = 0.ToString();
-                    if (datas.Count() == DataOrder.dataMembers) {
-                        for (int i = 0; i < datas.Count() - 1; i++) {
-                            if (string.IsNullOrEmpty(datas[i]))
-                                return;
-                        }
-                        /*    for (int i = 0; i < datas.Count() - 1; i++) {
-                                aveData[i] = ((double.Parse(aveData[i]) + Constants.averageLevel * double.Parse(datas[i])) / (Constants.averageLevel + Constants.filterLevel)).ToString();
-                            }
-                            datas = SerialProcess.fiterDatas(datas, aveData);*/
+                    if (datas[0] == "con" && datas.Count() == Enum.GetNames(typeof(ControlDataOrder)).Length) {
+                        serialEntity.MpuXR = datas[1];
+                        serialEntity.MpuYR = datas[2];
+                        serialEntity.MpuZR = datas[3];
+                        serialEntity.VoltageR = datas[4];
+                        serialEntity.MpuXL = datas[5];
+                        serialEntity.MpuYL = datas[6];
+                        serialEntity.MpuZL = datas[7];
+                        serialEntity.VoltageL = datas[8];
+
                         BeginInvoke(new Handler(showChart), datas, data, 0);
                         BeginInvoke(new Handler(showText), datas, data, 0);
                         BeginInvoke(new Handler(checkSteer), datas, data, 0);
-                        //csv読み込みの速度向上
-                        System.Threading.Thread.Sleep(100);
+
                     }
+                    else if (datas[0] == "inp" && datas.Count() == Enum.GetNames(typeof(InputDataOrder)).Length) {
+                        serialEntity.ErebonRInput = datas[1];
+                        serialEntity.DrugR = datas[2];
+                        serialEntity.ErebonLInput = datas[3];
+                        serialEntity.DrugL = datas[4];
+
+                        BeginInvoke(new Handler(showChart), datas, data, 0);
+                        BeginInvoke(new Handler(showText), datas, data, 0);
+                        BeginInvoke(new Handler(checkSteer), datas, data, 0);
+                    }
+                    else if (datas[0] == "mpu" && datas.Count() == Enum.GetNames(typeof(MpuDataOrder)).Length) {
+                        serialEntity.MpuRoll = datas[1];
+                        serialEntity.MpuPitch = datas[2];
+                        serialEntity.MpuYaw = datas[3];
+
+                        BeginInvoke(new Handler(showChart), datas, data, 0);
+                        BeginInvoke(new Handler(showText), datas, data, 0);
+                        BeginInvoke(new Handler(checkSteer), datas, data, 0);
+                    }
+                    else if (datas[0] == "kei" && datas.Count() == Enum.GetNames(typeof(KeikiDataOrder)).Length) {
+                        serialEntity.AirSpeed = datas[1];
+                        serialEntity.Sonar = datas[2];
+                        serialEntity.Cadence = datas[3];
+
+                        BeginInvoke(new Handler(showChart), datas, data, 0);
+                        BeginInvoke(new Handler(showText), datas, data, 0);
+                        BeginInvoke(new Handler(checkSteer), datas, data, 0);
+                    }
+                    //csv読み込みの速度向上
+                    System.Threading.Thread.Sleep(100);
                 } while (fw.EndOfStream != true);
                 fw.Dispose();
                 fw.Close();

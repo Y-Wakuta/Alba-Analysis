@@ -6,6 +6,27 @@ using System.Threading.Tasks;
 
 namespace AlbaAnalysis.Entity {
     public class SerialEntity {
+        public string MpuXR;
+        public string MpuYR;
+        public string MpuZR;
+        public string VoltageR;
+        public string MpuXL;
+        public string MpuYL;
+        public string MpuZL;
+        public string VoltageL;
+        public string ErebonRInput;
+        public string DrugR;
+        public string ErebonLInput;
+        public string DrugL;
+        public string MpuRoll;
+        public string MpuPitch;
+        public string MpuYaw;
+        public string AirSpeed;
+        public string Sonar;
+        public string Cadence;
+        //public const int Latitude = 24;
+        //public const int Longitude = 25;
+        public string Time;
     }
     /// <summary>
     /// マクロを定義
@@ -16,30 +37,34 @@ namespace AlbaAnalysis.Entity {
         public const double batteryVoltageLimit = 200;
     }
 
-    public static class DataOrder {
-        public const int MpuXR = 0;
-        public const int MpuYR = 1;
-        public const int MpuZR = 2;
-        public const int VoltageR = 3;
-        public const int MpuXL = 4;
-        public const int MpuYL = 5;
-        public const int MpuZL = 6;
-        public const int VoltageL = 7;
-        public const int ErebonRInput = 8;
-        public const int DrugR = 12;
-        public const int ErebonLInput = 16;
-        public const int DrugL = 17;
-        public const int MpuRoll = 18;
-        public const int MpuPitch = 19;
-        public const int MpuYaw = 20;
-        public const int AirSpeed = 21;
-        public const int Sonar = 22;
-        public const int Cadence = 23;
-        //public const int Latitude = 24;
-        //public const int Longitude = 25;
-        public const int Time = 24;
+    public enum ControlDataOrder {
+        MpuXR,
+        MpuYR,
+        MpuZR,
+        VoltageR,
+        MpuXL,
+        MpuYL,
+        MpuZL,
+        VoltageL,
+    }
 
-        public const int dataMembers = 24;
+    public enum InputDataOrder {
+        ErebonRInput,
+        DrugR,
+        ErebonLInput,
+        DrugL,
+    }
+
+    public enum MpuDataOrder {
+        MpuRoll,
+        MpuPitch,
+        MpuYaw,
+    }
+
+    public enum KeikiDataOrder {
+        AirSpeed,
+        Sonar,
+        Cadence,
     }
 
     /// <summary>
@@ -63,6 +88,5 @@ namespace AlbaAnalysis.Entity {
     public class CadenceView {
         public string cadence { get; set; }
         public string time { get; set; }
-
     }
 }
