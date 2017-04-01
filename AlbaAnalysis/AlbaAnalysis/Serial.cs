@@ -25,9 +25,8 @@ namespace AlbaAnalysis {
 
         DateTime start = DateTime.Now;
         List<SerialEntity> saveData = new List<SerialEntity>();
-        string[] aveData = new string[40];
         string _resultPath = null;
-        SerialRoutine SerialProcess = new SerialRoutine();
+        SerialRoutine serialRoutine = new SerialRoutine();
         Stopwatch sw;
         int csvFlag = 0;
         string path = null;
@@ -44,11 +43,11 @@ namespace AlbaAnalysis {
             buttonLDrug.Enabled = false;
             buttonConnect.Enabled = true;
 
-            rollVerticalProgressBar.Maximum = 20;
-            rollVerticalProgressBar.Maximum = 0;
+            rollVerticalProgressBar.Maximum = Constants.PHASE_NUM - Constants.NEUTRAL_PHASE;
+            rollVerticalProgressBar.Maximum = Constants.NEUTRAL_PHASE - Constants.PHASE_NUM;
 
-            pitchVerticalProgressBar.Maximum = 20;
-            pitchVerticalProgressBar.Maximum = 0;
+            pitchVerticalProgressBar.Maximum = Constants.PHASE_NUM - Constants.NEUTRAL_PHASE;
+            pitchVerticalProgressBar.Maximum = Constants.NEUTRAL_PHASE - Constants.PHASE_NUM;
         }
 
         /// <summary>
@@ -260,13 +259,9 @@ namespace AlbaAnalysis {
             else
                 buttonLDrug.BackColor = Color.LightGray;
 
-            if (int.Parse(datas.ErebonRInput) > rollVerticalProgressBar.Maximum)
-                rollVerticalProgressBar.Maximum = int.Parse(datas.ErebonRInput);
-            rollVerticalProgressBar.Value = int.Parse(datas.ErebonRInput);
+            rollVerticalProgressBar.Value = int.Parse(datas.ErebonRInput) - Constants.NEUTRAL_PHASE;
 
-            if (int.Parse(datas.ErebonLInput) > pitchVerticalProgressBar.Maximum)
-                pitchVerticalProgressBar.Maximum = int.Parse(datas.ErebonLInput);
-            pitchVerticalProgressBar.Value = int.Parse(datas.ErebonLInput);
+            pitchVerticalProgressBar.Value = int.Parse(datas.ErebonLInput) - Constants.NEUTRAL_PHASE;
         }
 
 
@@ -463,7 +458,7 @@ namespace AlbaAnalysis {
         private void buttonClose_Click_1(object sender, EventArgs e) {
             var pathItem = new filePath();
             path = @"../../../Log/" + "TF" + DateTime.Now.ToString("MMdd_hhmm") + ".csv";
-            SerialProcess.writeDatas(saveData, path, true);
+            serialRoutine.writeDatas(saveData, path, true);
             AddAllPath();
             serialPort1.DiscardInBuffer();
             serialPort1.Close();
