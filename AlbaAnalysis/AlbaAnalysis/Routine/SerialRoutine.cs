@@ -22,10 +22,10 @@ namespace AlbaAnalysis.Routine {
         public void writeDatas(List<SerialEntity> se, string path, bool append) {
             var sw = new StreamWriter(path, append);
             foreach (var d in se) {
-                sw.Write(d.MpuXR + "," + d.MpuYR + "," + d.MpuZR + "," + d.VoltageR + "," + d.MpuXL + "," + d.MpuYL + "," + d.MpuZL
-                            + "," + d.VoltageL + "," + d.ErebonRInput + "," + d.DrugR + "," + d.ErebonLInput + "," + d.DrugL
+                sw.Write(d.Time + "," + d.MpuXR + "," + d.MpuYR + "," + d.MpuZR + "," + d.MpuXR_A + "," + d.MpuYR_A + "," + d.MpuZR_A + "," + d.VoltageR + "," + d.MpuXL + "," + d.MpuYL + "," + d.MpuZL + "," + d.MpuXL_A + "," + d.MpuYL_A + "," + d.MpuZL_A
+                           + "," + d.VoltageL + "," + d.ErebonRInput + "," + d.DrugR + "," + d.ErebonLInput + "," + d.DrugL
                              + "," + d.MpuRoll + "," + d.MpuPitch + "," + d.MpuYaw
-                              + "," + d.AirSpeed + "," + d.Sonar + "," + d.Cadence);
+                              + "," + d.AirSpeed + "," + d.Sonar + "," + d.Cadence + "\n");
             }
             sw.Close();
         }

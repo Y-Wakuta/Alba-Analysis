@@ -6,28 +6,41 @@ using System.Threading.Tasks;
 
 namespace AlbaAnalysis.Entity {
     public class SerialEntity {
-        public string MpuXR;
-        public string MpuYR;
-        public string MpuZR;
-        public string VoltageR;
-        public string MpuXL;
-        public string MpuYL;
-        public string MpuZL;
-        public string VoltageL;
-        public string ErebonRInput;
-        public string DrugR;
-        public string ErebonLInput;
-        public string DrugL;
-        public string MpuRoll;
-        public string MpuPitch;
-        public string MpuYaw;
-        public string AirSpeed;
-        public string Sonar;
-        public string Cadence;
+
+        public SerialEntity Clone() {
+            return (SerialEntity)MemberwiseClone();
+        }
+        public string MpuXR = "0";
+        public string MpuYR = "0";
+        public string MpuZR = "0";
+        public string MpuXR_A = "0";
+        public string MpuYR_A = "0";
+        public string MpuZR_A = "0";
+        public string VoltageR = "0";
+        public string MpuXL = "0";
+        public string MpuYL = "0";
+        public string MpuZL = "0";
+        public string MpuXL_A = "0";
+        public string MpuYL_A = "0";
+        public string MpuZL_A = "0";
+        public string VoltageL = "0";
+        public string ErebonRInput = "0";
+        public string DrugR = "0";
+        public string ErebonLInput = "0";
+        public string DrugL = "0";
+        public string MpuRoll = "0";
+        public string MpuPitch = "0";
+        public string MpuYaw = "0";
+        public string AirSpeed = "0";
+        public string Sonar = "0";
+        public string Cadence = "0";
         //public const int Latitude = 24;
         //public const int Longitude = 25;
-        public string Time;
+        public string Time = "0";
     }
+
+
+
     /// <summary>
     /// マクロを定義
     /// </summary>
@@ -43,10 +56,16 @@ namespace AlbaAnalysis.Entity {
         MpuXR,
         MpuYR,
         MpuZR,
+        MpuXR_A,
+        MpuYR_A,
+        MpuZR_A,
         VoltageR,
         MpuXL,
         MpuYL,
         MpuZL,
+        MpuXL_A,
+        MpuYL_A,
+        MpuZL_A,
         VoltageL,
     }
 

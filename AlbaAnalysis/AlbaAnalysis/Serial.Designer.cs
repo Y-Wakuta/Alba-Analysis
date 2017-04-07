@@ -97,13 +97,13 @@
             this.chartLBattery = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartRBattery = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.rollVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
             this.chartRollInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartPitchInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartDrugInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pitchVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
             this.buttonRDrug = new System.Windows.Forms.Button();
             this.buttonLDrug = new System.Windows.Forms.Button();
-            this.rollVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
             this.groupBox1.SuspendLayout();
             this.groupBoxAllData.SuspendLayout();
             this.groupBoxSerialConfig.SuspendLayout();
@@ -656,7 +656,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(2539, 873);
+            this.tabPage2.Size = new System.Drawing.Size(2542, 873);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "WingEdge";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -745,6 +745,13 @@
             this.tabPage3.Text = "Control";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // rollVerticalProgressBar
+            // 
+            this.rollVerticalProgressBar.Location = new System.Drawing.Point(142, 16);
+            this.rollVerticalProgressBar.Name = "rollVerticalProgressBar";
+            this.rollVerticalProgressBar.Size = new System.Drawing.Size(107, 814);
+            this.rollVerticalProgressBar.TabIndex = 20;
+            // 
             // chartRollInput
             // 
             this.chartRollInput.BackColor = System.Drawing.Color.LightGray;
@@ -807,7 +814,7 @@
             series9.Color = System.Drawing.Color.Red;
             series9.Legend = "Legend1";
             series9.LegendText = "PitchInput";
-            series9.Name = "Pitch";
+            series9.Name = "PitchInput";
             this.chartPitchInput.Series.Add(series9);
             this.chartPitchInput.Size = new System.Drawing.Size(1019, 544);
             this.chartPitchInput.TabIndex = 18;
@@ -841,7 +848,7 @@
             series10.Color = System.Drawing.Color.Red;
             series10.Legend = "Legend1";
             series10.LegendText = "DrugInput";
-            series10.Name = "RBattery";
+            series10.Name = "DrugInput";
             this.chartDrugInput.Series.Add(series10);
             this.chartDrugInput.Size = new System.Drawing.Size(1230, 381);
             this.chartDrugInput.TabIndex = 17;
@@ -873,13 +880,6 @@
             this.buttonLDrug.TabIndex = 3;
             this.buttonLDrug.Text = "左ドラッグラダー";
             this.buttonLDrug.UseVisualStyleBackColor = true;
-            // 
-            // rollVerticalProgressBar
-            // 
-            this.rollVerticalProgressBar.Location = new System.Drawing.Point(142, 16);
-            this.rollVerticalProgressBar.Name = "rollVerticalProgressBar";
-            this.rollVerticalProgressBar.Size = new System.Drawing.Size(107, 814);
-            this.rollVerticalProgressBar.TabIndex = 20;
             // 
             // SerialForm
             // 
