@@ -32,6 +32,7 @@ namespace AlbaAnalysis {
         string path = null;
         CadenceView cadenceView = new CadenceView();
         SerialEntity serialEntity = new SerialEntity();
+        string pathBase = @"../../../Log/";
 
         public SerialForm() {
             InitializeComponent();
@@ -80,7 +81,7 @@ namespace AlbaAnalysis {
                 }
 
             }
-            AddAllPath();
+            AddAllPath(pathBase);
             #region comboBoxBaudの設定
             List<bauditems> baudList = new List<bauditems>();
 
@@ -90,8 +91,8 @@ namespace AlbaAnalysis {
             };
             baudList.Add(baud1);
             bauditems baud2 = new bauditems() {
-                NAME = "9600bps",
-                RATE = 9600
+                NAME = "14400bps",
+                RATE = 14400
             };
             baudList.Add(baud2);
             bauditems baud3 = new bauditems() {
@@ -174,11 +175,11 @@ namespace AlbaAnalysis {
                 if (string.IsNullOrEmpty(datas[i]))
                     return;
                 try {
-                    int.Parse(datas[i]);
+                    double.Parse(datas[i]);
                 }
                 catch (Exception) {
-                    //datas[i] = 0.ToString();
-                    continue;
+                    datas[i] = 0.ToString();
+                    // return;
                 }
             }
 
@@ -280,8 +281,10 @@ namespace AlbaAnalysis {
                 buttonLDrug.BackColor = Color.LightGray;
 
             try {
+                rollVerticalProgressBar.Value = int.Parse(datas.ErebonRInput) + 1;
                 rollVerticalProgressBar.Value = int.Parse(datas.ErebonRInput);
 
+                pitchVerticalProgressBar.Value = int.Parse(datas.ErebonLInput) + 1;
                 pitchVerticalProgressBar.Value = int.Parse(datas.ErebonLInput);
             }
             catch {
@@ -304,8 +307,6 @@ namespace AlbaAnalysis {
         /// <param name="datas">配列化した受信データ</param>
         /// <param name="i"></param>
         private void showChart(SerialEntity datas, string data, int i) {
-
-
             #region グラフ設定
             try {
                 chartSpeed.Series["Speed"].Points.AddXY(datas.Time, double.Parse(datas.AirSpeed));
@@ -326,34 +327,44 @@ namespace AlbaAnalysis {
             }
 
             chartSpeed.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-            chartSpeed.ChartAreas[0].AxisX.Minimum = 0;
+            chartSpeed.ChartAreas[0].AxisX.Minimum = double.Parse(datas.Time) - 40;
+            chartSpeed.ChartAreas[0].AxisX.Interval = 10;
 
             chartMpuPitch.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-            chartMpuPitch.ChartAreas[0].AxisX.Minimum = 0;
+            chartMpuPitch.ChartAreas[0].AxisX.Minimum = double.Parse(datas.Time) - 40;
+            chartMpuPitch.ChartAreas[0].AxisX.Interval = 10;
 
             chartCadence.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-            chartCadence.ChartAreas[0].AxisX.Minimum = 0;
+            chartCadence.ChartAreas[0].AxisX.Minimum = double.Parse(datas.Time) - 40;
+            chartCadence.ChartAreas[0].AxisX.Interval = 10;
 
             chartRBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-            chartRBattery.ChartAreas[0].AxisX.Minimum = 0;
+            chartRBattery.ChartAreas[0].AxisX.Minimum = double.Parse(datas.Time) - 40;
+            chartRBattery.ChartAreas[0].AxisX.Interval = 10;
 
             chartLBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-            chartLBattery.ChartAreas[0].AxisX.Minimum = 0;
+            chartLBattery.ChartAreas[0].AxisX.Minimum = double.Parse(datas.Time) - 40;
+            chartLBattery.ChartAreas[0].AxisX.Interval = 10;
 
             chartMpuYaw.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-            chartMpuYaw.ChartAreas[0].AxisX.Minimum = 0;
+            chartMpuYaw.ChartAreas[0].AxisX.Minimum = double.Parse(datas.Time) - 40;
+            chartMpuYaw.ChartAreas[0].AxisX.Interval = 10;
 
             chartMpuRoll.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-            chartMpuRoll.ChartAreas[0].AxisX.Minimum = 0;
+            chartMpuRoll.ChartAreas[0].AxisX.Minimum = double.Parse(datas.Time) - 40;
+            chartMpuRoll.ChartAreas[0].AxisX.Interval = 10;
 
             chartRollInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-            chartRollInput.ChartAreas[0].AxisX.Minimum = 0;
+            chartRollInput.ChartAreas[0].AxisX.Minimum = double.Parse(datas.Time) - 40;
+            chartRollInput.ChartAreas[0].AxisX.Interval = 10;
 
             chartDrugInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-            chartDrugInput.ChartAreas[0].AxisX.Minimum = 0;
+            chartDrugInput.ChartAreas[0].AxisX.Minimum = double.Parse(datas.Time) - 40;
+            chartDrugInput.ChartAreas[0].AxisX.Interval = 10;
 
             chartPitchInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-            chartPitchInput.ChartAreas[0].AxisX.Minimum = 0;
+            chartPitchInput.ChartAreas[0].AxisX.Minimum = double.Parse(datas.Time) - 40;
+            chartPitchInput.ChartAreas[0].AxisX.Interval = 10;
 
             #endregion
         }
@@ -486,9 +497,9 @@ namespace AlbaAnalysis {
 
         private void buttonClose_Click_1(object sender, EventArgs e) {
             var pathItem = new filePath();
-            path = @"../../../Log/" + "TF" + DateTime.Now.ToString("MMdd_hhmm") + ".csv";
+            path = pathBase + "TF" + DateTime.Now.ToString("MMdd_hhmm") + ".csv";
             serialRoutine.writeDatas(saveData, path, true);
-            AddAllPath();
+            AddAllPath(pathBase);
             serialPort1.DiscardInBuffer();
             serialPort1.Close();
             buttonConnect.Enabled = true;
@@ -543,65 +554,53 @@ namespace AlbaAnalysis {
                         fw.Close();
                         return;
                     }
-                    var data = fw.ReadLine();
-                    string[] datas = null;
+                    var csvLine = fw.ReadLine();
+                    string[] csvdatas = null;
                     try {
-                        datas = data.Split(',');
+                        csvdatas = csvLine.Split(',');
                     }
                     catch (Exception) {
                         MessageBox.Show("ファイルが空です。");
                         return;
                     }
-                    for (int i = 0; i < datas.Count() - 1; i++) {
-                        if (string.IsNullOrEmpty(datas[i]))
+                    for (int i = 0; i < csvdatas.Count() - 1; i++) {
+                        if (string.IsNullOrEmpty(csvdatas[i]))
                             return;
                     }
+                    if (csvdatas.Count() == 25) {
+                        serialEntity.Time = csvdatas[0];
+                        serialEntity.MpuXR = csvdatas[1];
+                        serialEntity.MpuYR = csvdatas[2];
+                        serialEntity.MpuZR = csvdatas[3];
+                        serialEntity.MpuXR_A = csvdatas[4];
+                        serialEntity.MpuYR_A = csvdatas[5];
+                        serialEntity.MpuZR_A = csvdatas[6];
+                        serialEntity.VoltageR = csvdatas[7];
+                        serialEntity.MpuXL = csvdatas[8];
+                        serialEntity.MpuYL = csvdatas[9];
+                        serialEntity.MpuZL = csvdatas[10];
+                        serialEntity.MpuXL_A = csvdatas[11];
+                        serialEntity.MpuYL_A = csvdatas[12];
+                        serialEntity.MpuZL_A = csvdatas[13];
+                        serialEntity.VoltageL = csvdatas[14];
+                        serialEntity.ErebonRInput = csvdatas[15];
+                        serialEntity.DrugR = csvdatas[16];
+                        serialEntity.ErebonLInput = csvdatas[17];
+                        serialEntity.DrugL = csvdatas[18];
+                        serialEntity.MpuRoll = csvdatas[19];
+                        serialEntity.MpuPitch = csvdatas[20];
+                        serialEntity.MpuYaw = csvdatas[21];
+                        serialEntity.AirSpeed = csvdatas[22];
+                        serialEntity.Sonar = csvdatas[23];
+                        serialEntity.Cadence = csvdatas[24];
 
-                    if (datas[0] == "con" && datas.Count() == Enum.GetNames(typeof(ControlDataOrder)).Length) {
-                        serialEntity.MpuXR = datas[1];
-                        serialEntity.MpuYR = datas[2];
-                        serialEntity.MpuZR = datas[3];
-                        serialEntity.VoltageR = datas[4];
-                        serialEntity.MpuXL = datas[5];
-                        serialEntity.MpuYL = datas[6];
-                        serialEntity.MpuZL = datas[7];
-                        serialEntity.VoltageL = datas[8];
-
-                        BeginInvoke(new Handler(showChart), serialEntity, data, 0);
-                        BeginInvoke(new Handler(showText), serialEntity, data, 0);
-                        BeginInvoke(new Handler(checkSteer), serialEntity, data, 0);
-
+                        BeginInvoke(new Handler(showChart), serialEntity, csvLine, 0);
+                        BeginInvoke(new Handler(showText), serialEntity, csvLine, 0);
+                        BeginInvoke(new Handler(checkSteer), serialEntity, csvLine, 0);
                     }
-                    else if (datas[0] == "inp" && datas.Count() == Enum.GetNames(typeof(InputDataOrder)).Length) {
-                        serialEntity.ErebonRInput = datas[1];
-                        serialEntity.DrugR = datas[2];
-                        serialEntity.ErebonLInput = datas[3];
-                        serialEntity.DrugL = datas[4];
 
-                        BeginInvoke(new Handler(showChart), serialEntity, data, 0);
-                        BeginInvoke(new Handler(showText), serialEntity, data, 0);
-                        BeginInvoke(new Handler(checkSteer), serialEntity, data, 0);
-                    }
-                    else if (datas[0] == "mpu" && datas.Count() == Enum.GetNames(typeof(MpuDataOrder)).Length) {
-                        serialEntity.MpuRoll = datas[1];
-                        serialEntity.MpuPitch = datas[2];
-                        serialEntity.MpuYaw = datas[3];
-
-                        BeginInvoke(new Handler(showChart), serialEntity, data, 0);
-                        BeginInvoke(new Handler(showText), serialEntity, data, 0);
-                        BeginInvoke(new Handler(checkSteer), serialEntity, data, 0);
-                    }
-                    else if (datas[0] == "kei" && datas.Count() == Enum.GetNames(typeof(KeikiDataOrder)).Length) {
-                        serialEntity.AirSpeed = datas[1];
-                        serialEntity.Sonar = datas[2];
-                        serialEntity.Cadence = datas[3];
-
-                        BeginInvoke(new Handler(showChart), serialEntity, data, 0);
-                        BeginInvoke(new Handler(showText), serialEntity, data, 0);
-                        BeginInvoke(new Handler(checkSteer), serialEntity, data, 0);
-                    }
                     //csv読み込みの速度向上
-                    System.Threading.Thread.Sleep(100);
+                    System.Threading.Thread.Sleep(50);
                 } while (fw.EndOfStream != true);
                 fw.Dispose();
                 fw.Close();
@@ -627,10 +626,10 @@ namespace AlbaAnalysis {
 
         }
 
-        private void AddAllPath() {
+        private void AddAllPath(string path) {
             comboBoxFiles.Items.Clear();
             string[] _path = null;
-            _path = Directory.GetFiles(@"C:\Users\rocko\Dropbox\Albatross\TF電装データ", "*");
+            _path = Directory.GetFiles(path, "*");
             comboBoxFiles.Items.AddRange(_path);
             //  comboBoxFiles.SelectedIndex = 0;
         }
