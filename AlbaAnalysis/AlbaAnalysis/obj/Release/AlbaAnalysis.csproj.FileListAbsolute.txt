@@ -7,3 +7,6 @@ C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\obj\Relea
 C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\obj\Release\AlbaAnalysis.exe
 C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\obj\Release\AlbaAnalysis.pdb
 C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\obj\Release\AlbaAnalysis.csprojResolveAssemblyReference.cache
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.csprojResolveAssemblyReference.cache
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.exe
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.pdb
