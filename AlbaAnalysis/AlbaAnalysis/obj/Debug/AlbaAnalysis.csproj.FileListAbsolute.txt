@@ -16,3 +16,4 @@ C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Debug\AlbaA
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Debug\AlbaAnalysis.exe
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Debug\AlbaAnalysis.pdb
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Debug\AlbaAnalysis.Detail.resources
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Debug\AlbaAnalysis.csprojResolveAssemblyReference.cache
