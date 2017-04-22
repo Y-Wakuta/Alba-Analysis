@@ -58,7 +58,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SerialForm));
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rollProgressBar = new AlbaAnalysis.VerticalProgressBar();
+            this.rollProgressBar = new System.Windows.Forms.ProgressBar();
             this.buttonLDrug = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.pitchProgressBar = new System.Windows.Forms.ProgressBar();
@@ -138,22 +138,22 @@
             this.groupBox1.Controls.Add(this.textBoxMpuPitch);
             this.groupBox1.Location = new System.Drawing.Point(1169, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1378, 308);
+            this.groupBox1.Size = new System.Drawing.Size(1378, 291);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "センサ詳細情報";
             // 
             // rollProgressBar
             // 
-            this.rollProgressBar.Location = new System.Drawing.Point(921, 23);
+            this.rollProgressBar.Location = new System.Drawing.Point(620, 192);
             this.rollProgressBar.Name = "rollProgressBar";
-            this.rollProgressBar.Size = new System.Drawing.Size(73, 231);
+            this.rollProgressBar.Size = new System.Drawing.Size(331, 70);
             this.rollProgressBar.TabIndex = 20;
             // 
             // buttonLDrug
             // 
             this.buttonLDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLDrug.Location = new System.Drawing.Point(682, 135);
+            this.buttonLDrug.Location = new System.Drawing.Point(787, 27);
             this.buttonLDrug.Name = "buttonLDrug";
             this.buttonLDrug.Size = new System.Drawing.Size(164, 72);
             this.buttonLDrug.TabIndex = 3;
@@ -164,7 +164,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label15.Location = new System.Drawing.Point(383, 24);
+            this.label15.Location = new System.Drawing.Point(349, 24);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(95, 24);
             this.label15.TabIndex = 41;
@@ -172,15 +172,15 @@
             // 
             // pitchProgressBar
             // 
-            this.pitchProgressBar.Location = new System.Drawing.Point(849, 24);
+            this.pitchProgressBar.Location = new System.Drawing.Point(620, 109);
             this.pitchProgressBar.Name = "pitchProgressBar";
-            this.pitchProgressBar.Size = new System.Drawing.Size(72, 231);
+            this.pitchProgressBar.Size = new System.Drawing.Size(331, 70);
             this.pitchProgressBar.TabIndex = 9;
             // 
             // buttonRDrug
             // 
             this.buttonRDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRDrug.Location = new System.Drawing.Point(682, 52);
+            this.buttonRDrug.Location = new System.Drawing.Point(620, 25);
             this.buttonRDrug.Name = "buttonRDrug";
             this.buttonRDrug.Size = new System.Drawing.Size(161, 72);
             this.buttonRDrug.TabIndex = 5;
@@ -191,7 +191,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label12.Location = new System.Drawing.Point(545, 24);
+            this.label12.Location = new System.Drawing.Point(486, 24);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(97, 24);
             this.label12.TabIndex = 38;
@@ -201,7 +201,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label11.Location = new System.Drawing.Point(1000, 24);
+            this.label11.Location = new System.Drawing.Point(938, 24);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(0, 24);
             this.label11.TabIndex = 37;
@@ -218,13 +218,13 @@
             // 
             // textBoxCadence
             // 
-            this.textBoxCadence.Location = new System.Drawing.Point(522, 50);
+            this.textBoxCadence.Location = new System.Drawing.Point(461, 49);
             this.textBoxCadence.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCadence.Multiline = true;
             this.textBoxCadence.Name = "textBoxCadence";
             this.textBoxCadence.ReadOnly = true;
             this.textBoxCadence.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxCadence.Size = new System.Drawing.Size(155, 225);
+            this.textBoxCadence.Size = new System.Drawing.Size(148, 216);
             this.textBoxCadence.TabIndex = 20;
             // 
             // textBoxSpeed
@@ -235,25 +235,25 @@
             this.textBoxSpeed.Name = "textBoxSpeed";
             this.textBoxSpeed.ReadOnly = true;
             this.textBoxSpeed.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxSpeed.Size = new System.Drawing.Size(148, 225);
+            this.textBoxSpeed.Size = new System.Drawing.Size(148, 212);
             this.textBoxSpeed.TabIndex = 15;
             // 
             // textBoxMpuRoll
             // 
-            this.textBoxMpuRoll.Location = new System.Drawing.Point(352, 52);
+            this.textBoxMpuRoll.Location = new System.Drawing.Point(309, 49);
             this.textBoxMpuRoll.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxMpuRoll.Multiline = true;
             this.textBoxMpuRoll.Name = "textBoxMpuRoll";
             this.textBoxMpuRoll.ReadOnly = true;
             this.textBoxMpuRoll.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMpuRoll.Size = new System.Drawing.Size(155, 223);
+            this.textBoxMpuRoll.Size = new System.Drawing.Size(148, 213);
             this.textBoxMpuRoll.TabIndex = 12;
             // 
             // label_mpuData
             // 
             this.label_mpuData.AutoSize = true;
             this.label_mpuData.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label_mpuData.Location = new System.Drawing.Point(201, 26);
+            this.label_mpuData.Location = new System.Drawing.Point(184, 26);
             this.label_mpuData.Name = "label_mpuData";
             this.label_mpuData.Size = new System.Drawing.Size(110, 24);
             this.label_mpuData.TabIndex = 8;
@@ -261,25 +261,26 @@
             // 
             // textBoxMpuPitch
             // 
-            this.textBoxMpuPitch.Location = new System.Drawing.Point(176, 52);
+            this.textBoxMpuPitch.Location = new System.Drawing.Point(157, 50);
             this.textBoxMpuPitch.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxMpuPitch.Multiline = true;
             this.textBoxMpuPitch.Name = "textBoxMpuPitch";
             this.textBoxMpuPitch.ReadOnly = true;
             this.textBoxMpuPitch.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMpuPitch.Size = new System.Drawing.Size(155, 223);
+            this.textBoxMpuPitch.Size = new System.Drawing.Size(148, 212);
             this.textBoxMpuPitch.TabIndex = 4;
             this.textBoxMpuPitch.Text = "`";
             // 
             // textBoxAllData
             // 
-            this.textBoxAllData.Location = new System.Drawing.Point(13, 26);
+            this.textBoxAllData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxAllData.Location = new System.Drawing.Point(3, 24);
             this.textBoxAllData.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxAllData.Multiline = true;
             this.textBoxAllData.Name = "textBoxAllData";
             this.textBoxAllData.ReadOnly = true;
             this.textBoxAllData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxAllData.Size = new System.Drawing.Size(1113, 147);
+            this.textBoxAllData.Size = new System.Drawing.Size(1146, 150);
             this.textBoxAllData.TabIndex = 27;
             // 
             // groupBoxAllData
@@ -288,7 +289,7 @@
             this.groupBoxAllData.Controls.Add(this.textBoxAllData);
             this.groupBoxAllData.Location = new System.Drawing.Point(11, 121);
             this.groupBoxAllData.Name = "groupBoxAllData";
-            this.groupBoxAllData.Size = new System.Drawing.Size(1152, 199);
+            this.groupBoxAllData.Size = new System.Drawing.Size(1152, 177);
             this.groupBoxAllData.TabIndex = 27;
             this.groupBoxAllData.TabStop = false;
             this.groupBoxAllData.Text = "受信データ";
@@ -312,7 +313,7 @@
             legend1.Position.X = 79F;
             legend1.Position.Y = 2F;
             this.chartDrugInput.Legends.Add(legend1);
-            this.chartDrugInput.Location = new System.Drawing.Point(1028, 130);
+            this.chartDrugInput.Location = new System.Drawing.Point(1916, 355);
             this.chartDrugInput.Margin = new System.Windows.Forms.Padding(1);
             this.chartDrugInput.Name = "chartDrugInput";
             series1.BorderWidth = 2;
@@ -323,7 +324,7 @@
             series1.LegendText = "DrugInput";
             series1.Name = "DrugInput";
             this.chartDrugInput.Series.Add(series1);
-            this.chartDrugInput.Size = new System.Drawing.Size(648, 284);
+            this.chartDrugInput.Size = new System.Drawing.Size(631, 316);
             this.chartDrugInput.TabIndex = 17;
             this.chartDrugInput.Text = "chart4";
             // 
@@ -346,7 +347,7 @@
             legend2.Position.X = 79F;
             legend2.Position.Y = 2F;
             this.chartPitchInput.Legends.Add(legend2);
-            this.chartPitchInput.Location = new System.Drawing.Point(1063, 192);
+            this.chartPitchInput.Location = new System.Drawing.Point(1916, 681);
             this.chartPitchInput.Margin = new System.Windows.Forms.Padding(1);
             this.chartPitchInput.Name = "chartPitchInput";
             series2.BorderWidth = 2;
@@ -357,7 +358,7 @@
             series2.LegendText = "PitchInput";
             series2.Name = "PitchInput";
             this.chartPitchInput.Series.Add(series2);
-            this.chartPitchInput.Size = new System.Drawing.Size(404, 311);
+            this.chartPitchInput.Size = new System.Drawing.Size(634, 311);
             this.chartPitchInput.TabIndex = 18;
             this.chartPitchInput.Text = "chart4";
             // 
@@ -380,7 +381,7 @@
             legend3.Position.X = 79F;
             legend3.Position.Y = 2F;
             this.chartRollInput.Legends.Add(legend3);
-            this.chartRollInput.Location = new System.Drawing.Point(1667, 144);
+            this.chartRollInput.Location = new System.Drawing.Point(1920, 25);
             this.chartRollInput.Margin = new System.Windows.Forms.Padding(1);
             this.chartRollInput.Name = "chartRollInput";
             series3.BorderWidth = 2;
@@ -391,7 +392,7 @@
             series3.LegendText = "RollInput";
             series3.Name = "RollInput";
             this.chartRollInput.Series.Add(series3);
-            this.chartRollInput.Size = new System.Drawing.Size(742, 387);
+            this.chartRollInput.Size = new System.Drawing.Size(620, 316);
             this.chartRollInput.TabIndex = 19;
             this.chartRollInput.Text = "chart4";
             // 
@@ -554,7 +555,7 @@
             legend4.Position.X = 79F;
             legend4.Position.Y = 2F;
             this.chartRBattery.Legends.Add(legend4);
-            this.chartRBattery.Location = new System.Drawing.Point(978, 192);
+            this.chartRBattery.Location = new System.Drawing.Point(1291, 25);
             this.chartRBattery.Margin = new System.Windows.Forms.Padding(1);
             this.chartRBattery.Name = "chartRBattery";
             series4.BorderWidth = 2;
@@ -565,7 +566,7 @@
             series4.LegendText = "RBattery";
             series4.Name = "RBattery";
             this.chartRBattery.Series.Add(series4);
-            this.chartRBattery.Size = new System.Drawing.Size(562, 394);
+            this.chartRBattery.Size = new System.Drawing.Size(611, 316);
             this.chartRBattery.TabIndex = 16;
             this.chartRBattery.Text = "chart4";
             // 
@@ -588,7 +589,7 @@
             legend5.Position.X = 79F;
             legend5.Position.Y = 2F;
             this.chartLBattery.Legends.Add(legend5);
-            this.chartLBattery.Location = new System.Drawing.Point(1148, 216);
+            this.chartLBattery.Location = new System.Drawing.Point(1293, 343);
             this.chartLBattery.Margin = new System.Windows.Forms.Padding(1);
             this.chartLBattery.Name = "chartLBattery";
             series5.BorderWidth = 2;
@@ -599,7 +600,7 @@
             series5.LegendText = "LBattery";
             series5.Name = "LBattery";
             this.chartLBattery.Series.Add(series5);
-            this.chartLBattery.Size = new System.Drawing.Size(764, 394);
+            this.chartLBattery.Size = new System.Drawing.Size(609, 316);
             this.chartLBattery.TabIndex = 17;
             this.chartLBattery.Text = "chart4";
             // 
@@ -625,7 +626,7 @@
             legend6.Position.X = 79F;
             legend6.Position.Y = 2F;
             this.chartMpuPitch.Legends.Add(legend6);
-            this.chartMpuPitch.Location = new System.Drawing.Point(919, 173);
+            this.chartMpuPitch.Location = new System.Drawing.Point(10, 408);
             this.chartMpuPitch.Margin = new System.Windows.Forms.Padding(1);
             this.chartMpuPitch.Name = "chartMpuPitch";
             series6.BorderWidth = 2;
@@ -635,7 +636,7 @@
             series6.Legend = "Legend1";
             series6.Name = "MPitch";
             this.chartMpuPitch.Series.Add(series6);
-            this.chartMpuPitch.Size = new System.Drawing.Size(473, 408);
+            this.chartMpuPitch.Size = new System.Drawing.Size(648, 408);
             this.chartMpuPitch.TabIndex = 20;
             this.chartMpuPitch.Text = "Mpitch";
             // 
@@ -657,7 +658,7 @@
             legend7.Position.X = 79F;
             legend7.Position.Y = 2F;
             this.chartSpeed.Legends.Add(legend7);
-            this.chartSpeed.Location = new System.Drawing.Point(1105, 77);
+            this.chartSpeed.Location = new System.Drawing.Point(10, 25);
             this.chartSpeed.Margin = new System.Windows.Forms.Padding(1);
             this.chartSpeed.Name = "chartSpeed";
             series7.BorderWidth = 2;
@@ -668,7 +669,7 @@
             series7.LegendText = "Speed";
             series7.Name = "Speed";
             this.chartSpeed.Series.Add(series7);
-            this.chartSpeed.Size = new System.Drawing.Size(887, 441);
+            this.chartSpeed.Size = new System.Drawing.Size(646, 372);
             this.chartSpeed.TabIndex = 18;
             this.chartSpeed.Text = "chart6";
             title1.Name = "Speed";
@@ -692,7 +693,7 @@
             legend8.Position.X = 79F;
             legend8.Position.Y = 2F;
             this.chartMpuRoll.Legends.Add(legend8);
-            this.chartMpuRoll.Location = new System.Drawing.Point(1249, 119);
+            this.chartMpuRoll.Location = new System.Drawing.Point(660, 408);
             this.chartMpuRoll.Margin = new System.Windows.Forms.Padding(1);
             this.chartMpuRoll.Name = "chartMpuRoll";
             series8.BorderWidth = 2;
@@ -702,7 +703,7 @@
             series8.Legend = "Legend1";
             series8.Name = "MRoll";
             this.chartMpuRoll.Series.Add(series8);
-            this.chartMpuRoll.Size = new System.Drawing.Size(868, 441);
+            this.chartMpuRoll.Size = new System.Drawing.Size(631, 408);
             this.chartMpuRoll.TabIndex = 19;
             this.chartMpuRoll.Text = "MpuRoll";
             // 
@@ -724,7 +725,7 @@
             legend9.Position.X = 79F;
             legend9.Position.Y = 2F;
             this.chartMpuYaw.Legends.Add(legend9);
-            this.chartMpuYaw.Location = new System.Drawing.Point(4, 77);
+            this.chartMpuYaw.Location = new System.Drawing.Point(1293, 672);
             this.chartMpuYaw.Margin = new System.Windows.Forms.Padding(1);
             this.chartMpuYaw.Name = "chartMpuYaw";
             series9.BorderWidth = 2;
@@ -734,7 +735,7 @@
             series9.Legend = "Legend1";
             series9.Name = "MYaw";
             this.chartMpuYaw.Series.Add(series9);
-            this.chartMpuYaw.Size = new System.Drawing.Size(651, 408);
+            this.chartMpuYaw.Size = new System.Drawing.Size(609, 346);
             this.chartMpuYaw.TabIndex = 13;
             this.chartMpuYaw.Text = "MpuYaw";
             // 
@@ -756,7 +757,7 @@
             legend10.Position.X = 79F;
             legend10.Position.Y = 2F;
             this.chartCadence.Legends.Add(legend10);
-            this.chartCadence.Location = new System.Drawing.Point(727, 154);
+            this.chartCadence.Location = new System.Drawing.Point(658, 25);
             this.chartCadence.Margin = new System.Windows.Forms.Padding(1);
             this.chartCadence.Name = "chartCadence";
             series10.BorderWidth = 2;
@@ -766,7 +767,7 @@
             series10.Legend = "Legend1";
             series10.Name = "Cadence";
             this.chartCadence.Series.Add(series10);
-            this.chartCadence.Size = new System.Drawing.Size(753, 441);
+            this.chartCadence.Size = new System.Drawing.Size(631, 372);
             this.chartCadence.TabIndex = 17;
             this.chartCadence.Text = "Cadence";
             this.chartCadence.Click += new System.EventHandler(this.chartCadence_Click);
@@ -784,9 +785,9 @@
             this.groupBox2.Controls.Add(this.chartCadence);
             this.groupBox2.Controls.Add(this.chartMpuYaw);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 326);
+            this.groupBox2.Location = new System.Drawing.Point(0, 307);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(2550, 1064);
+            this.groupBox2.Size = new System.Drawing.Size(2550, 1083);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "グラフデータ";
@@ -875,7 +876,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartMpuRoll;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartMpuYaw;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartCadence;
-        private VerticalProgressBar rollProgressBar;
+        private System.Windows.Forms.ProgressBar rollProgressBar;
         private System.Windows.Forms.GroupBox groupBox2;
     }
 }
