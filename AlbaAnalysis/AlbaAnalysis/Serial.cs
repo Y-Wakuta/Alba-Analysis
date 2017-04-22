@@ -44,11 +44,11 @@ namespace AlbaAnalysis {
             buttonLDrug.Enabled = false;
             buttonConnect.Enabled = true;
 
-            rollVerticalProgressBar.Maximum = Constants.PHASE_NUM;
-            rollVerticalProgressBar.Minimum = 0;
+            rollProgressBar.Maximum = Constants.PHASE_NUM;
+            rollProgressBar.Minimum = 0;
 
-            pitchVerticalProgressBar.Maximum = Constants.PHASE_NUM;
-            pitchVerticalProgressBar.Minimum = 0;
+            pitchProgressBar.Maximum = Constants.PHASE_NUM;
+            pitchProgressBar.Minimum = 0;
         }
 
         /// <summary>
@@ -156,6 +156,7 @@ namespace AlbaAnalysis {
         }
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e) {
+            SuspendLayout();
             string data = null;
             sw = new Stopwatch();
             sw.Start();
@@ -263,6 +264,7 @@ namespace AlbaAnalysis {
                 BeginInvoke(new Handler(showText), tempSerial, data, 0);
                 BeginInvoke(new Handler(checkSteer), tempSerial, data, 0);
             }
+            ResumeLayout();
         }
 
         /// <summary>
@@ -281,11 +283,11 @@ namespace AlbaAnalysis {
                 buttonLDrug.BackColor = Color.LightGray;
 
             try {
-                rollVerticalProgressBar.Value = int.Parse(datas.ErebonRInput) + 1;
-                rollVerticalProgressBar.Value = int.Parse(datas.ErebonRInput);
+                rollProgressBar.Value = int.Parse(datas.ErebonRInput) + 1;
+                rollProgressBar.Value = int.Parse(datas.ErebonRInput);
 
-                pitchVerticalProgressBar.Value = int.Parse(datas.ErebonLInput) + 1;
-                pitchVerticalProgressBar.Value = int.Parse(datas.ErebonLInput);
+                pitchProgressBar.Value = int.Parse(datas.ErebonLInput) + 1;
+                pitchProgressBar.Value = int.Parse(datas.ErebonLInput);
             }
             catch {
                 return;
@@ -446,12 +448,9 @@ namespace AlbaAnalysis {
         private void showText(SerialEntity datas, string data, int i = 0) {
             #region textboxへの表示
             textBoxAllData.AppendText(data + Environment.NewLine);
-            textBoxBatteryDataR.AppendText(datas.VoltageR + Environment.NewLine);
-            textBoxBatteryDataL.AppendText(datas.VoltageL + Environment.NewLine);
             textBoxCadence.AppendText(datas.Cadence + Environment.NewLine);
             textBoxMpuPitch.AppendText(datas.MpuPitch + Environment.NewLine);
             textBoxMpuRoll.AppendText(datas.MpuRoll + Environment.NewLine);
-            textBoxMpuYaw.AppendText(datas.MpuYaw + Environment.NewLine);
             textBoxSpeed.AppendText(datas.AirSpeed + Environment.NewLine);
             #endregion
         }
@@ -462,14 +461,9 @@ namespace AlbaAnalysis {
         void ClearTextBox() {
             textBoxAllData.Clear();
             textBoxMpuPitch.Clear();
-            textBoxBatteryDataR.Clear();
-            textBoxBatteryDataL.Clear();
-            textBoxBatteryDataR.Clear();
-            textBoxBatteryDataL.Clear();
             textBoxCadence.Clear();
             textBoxMpuPitch.Clear();
             textBoxMpuRoll.Clear();
-            textBoxMpuYaw.Clear();
             textBoxSpeed.Clear();
         }
 
@@ -528,6 +522,7 @@ namespace AlbaAnalysis {
         }
 
         private async void buttonRunCsv_Click(object sender, EventArgs e) {
+
             clearForm();
             buttonStopCsv.Enabled = true;
             buttonStopCsv.Focus();
@@ -549,6 +544,7 @@ namespace AlbaAnalysis {
                 }
 
                 do {
+                    SuspendLayout();
                     if (csvFlag == 1) {
                         fw.Dispose();
                         fw.Close();
@@ -598,9 +594,9 @@ namespace AlbaAnalysis {
                         BeginInvoke(new Handler(showText), serialEntity, csvLine, 0);
                         BeginInvoke(new Handler(checkSteer), serialEntity, csvLine, 0);
                     }
-
+                    ResumeLayout();
                     //csv読み込みの速度向上
-                    System.Threading.Thread.Sleep(50);
+                    System.Threading.Thread.Sleep(150);
                 } while (fw.EndOfStream != true);
                 fw.Dispose();
                 fw.Close();
@@ -642,6 +638,7 @@ namespace AlbaAnalysis {
             var detail = new Detail(cadenceView);
             detail.Show();
         }
+
     }
 }
 
