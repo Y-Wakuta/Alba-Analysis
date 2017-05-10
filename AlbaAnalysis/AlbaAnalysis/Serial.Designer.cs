@@ -58,6 +58,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SerialForm));
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.rollProgressBar = new System.Windows.Forms.ProgressBar();
             this.buttonLDrug = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -97,12 +103,6 @@
             this.chartMpuYaw = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartCadence = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBoxAllData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartDrugInput)).BeginInit();
@@ -154,6 +154,62 @@
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "センサ詳細情報";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("MS UI Gothic", 18F);
+            this.label4.Location = new System.Drawing.Point(629, 202);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(44, 42);
+            this.label4.TabIndex = 47;
+            this.label4.Text = "R";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("MS UI Gothic", 18F);
+            this.label3.Location = new System.Drawing.Point(629, 128);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 42);
+            this.label3.TabIndex = 46;
+            this.label3.Text = "P";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("MS UI Gothic", 27F);
+            this.textBox2.Location = new System.Drawing.Point(1101, 67);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(254, 70);
+            this.textBox2.TabIndex = 45;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 15F);
+            this.label2.Location = new System.Drawing.Point(1095, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(154, 35);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "受信数/s";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 27F);
+            this.textBox1.Location = new System.Drawing.Point(1101, 188);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(254, 70);
+            this.textBox1.TabIndex = 43;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 15F);
+            this.label1.Location = new System.Drawing.Point(1095, 147);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(120, 35);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "欠損率";
             // 
             // rollProgressBar
             // 
@@ -799,66 +855,10 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox2.Location = new System.Drawing.Point(0, 303);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(2547, 1200);
+            this.groupBox2.Size = new System.Drawing.Size(2520, 1200);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "グラフデータ";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 15F);
-            this.label1.Location = new System.Drawing.Point(1095, 147);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 35);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "欠損率";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 27F);
-            this.textBox1.Location = new System.Drawing.Point(1101, 188);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(254, 70);
-            this.textBox1.TabIndex = 43;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 15F);
-            this.label2.Location = new System.Drawing.Point(1095, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(154, 35);
-            this.label2.TabIndex = 44;
-            this.label2.Text = "受信数/s";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("MS UI Gothic", 27F);
-            this.textBox2.Location = new System.Drawing.Point(1101, 67);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(254, 70);
-            this.textBox2.TabIndex = 45;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("MS UI Gothic", 18F);
-            this.label3.Location = new System.Drawing.Point(629, 128);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 42);
-            this.label3.TabIndex = 46;
-            this.label3.Text = "P";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("MS UI Gothic", 18F);
-            this.label4.Location = new System.Drawing.Point(629, 202);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 42);
-            this.label4.TabIndex = 47;
-            this.label4.Text = "R";
             // 
             // SerialForm
             // 

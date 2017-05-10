@@ -7,8 +7,8 @@
     <ProjectGuid>{4BB0D172-6ACE-4BB6-A8E7-A46269E7262E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AlbaAnalysis</RootNamespace>
-    <AssemblyName>AlbaAnalysis</AssemblyName>
+    <RootNamespace>AlbaAnalysis2017</RootNamespace>
+    <AssemblyName>AlbaAnalysis2017</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -81,6 +81,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Serial.resx">
       <DependentUpon>Serial.cs</DependentUpon>
