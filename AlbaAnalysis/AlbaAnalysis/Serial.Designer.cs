@@ -60,10 +60,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.rollProgressBar = new System.Windows.Forms.ProgressBar();
             this.buttonLDrug = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -131,10 +127,6 @@
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.rollProgressBar);
             this.groupBox1.Controls.Add(this.buttonLDrug);
             this.groupBox1.Controls.Add(this.label15);
@@ -148,9 +140,9 @@
             this.groupBox1.Controls.Add(this.textBoxMpuRoll);
             this.groupBox1.Controls.Add(this.label_mpuData);
             this.groupBox1.Controls.Add(this.textBoxMpuPitch);
-            this.groupBox1.Location = new System.Drawing.Point(1169, 12);
+            this.groupBox1.Location = new System.Drawing.Point(1188, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1378, 291);
+            this.groupBox1.Size = new System.Drawing.Size(1359, 292);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "センサ詳細情報";
@@ -159,7 +151,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MS UI Gothic", 18F);
-            this.label4.Location = new System.Drawing.Point(629, 202);
+            this.label4.Location = new System.Drawing.Point(768, 202);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 42);
             this.label4.TabIndex = 47;
@@ -169,61 +161,25 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS UI Gothic", 18F);
-            this.label3.Location = new System.Drawing.Point(629, 128);
+            this.label3.Location = new System.Drawing.Point(768, 128);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 42);
             this.label3.TabIndex = 46;
             this.label3.Text = "P";
             // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("MS UI Gothic", 27F);
-            this.textBox2.Location = new System.Drawing.Point(1101, 67);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(254, 70);
-            this.textBox2.TabIndex = 45;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 15F);
-            this.label2.Location = new System.Drawing.Point(1095, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(154, 35);
-            this.label2.TabIndex = 44;
-            this.label2.Text = "受信数/s";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 27F);
-            this.textBox1.Location = new System.Drawing.Point(1101, 188);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(254, 70);
-            this.textBox1.TabIndex = 43;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 15F);
-            this.label1.Location = new System.Drawing.Point(1095, 147);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 35);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "欠損率";
-            // 
             // rollProgressBar
             // 
-            this.rollProgressBar.Location = new System.Drawing.Point(679, 188);
+            this.rollProgressBar.Location = new System.Drawing.Point(818, 188);
             this.rollProgressBar.Name = "rollProgressBar";
-            this.rollProgressBar.Size = new System.Drawing.Size(410, 70);
+            this.rollProgressBar.Size = new System.Drawing.Size(459, 77);
             this.rollProgressBar.TabIndex = 20;
             // 
             // buttonLDrug
             // 
             this.buttonLDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLDrug.Location = new System.Drawing.Point(866, 25);
+            this.buttonLDrug.Location = new System.Drawing.Point(1033, 22);
             this.buttonLDrug.Name = "buttonLDrug";
-            this.buttonLDrug.Size = new System.Drawing.Size(223, 72);
+            this.buttonLDrug.Size = new System.Drawing.Size(244, 72);
             this.buttonLDrug.TabIndex = 3;
             this.buttonLDrug.Text = "左ドラッグラダー";
             this.buttonLDrug.UseVisualStyleBackColor = true;
@@ -232,7 +188,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label15.Location = new System.Drawing.Point(340, 24);
+            this.label15.Location = new System.Drawing.Point(438, 24);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(95, 24);
             this.label15.TabIndex = 41;
@@ -240,15 +196,15 @@
             // 
             // pitchProgressBar
             // 
-            this.pitchProgressBar.Location = new System.Drawing.Point(679, 112);
+            this.pitchProgressBar.Location = new System.Drawing.Point(818, 112);
             this.pitchProgressBar.Name = "pitchProgressBar";
-            this.pitchProgressBar.Size = new System.Drawing.Size(410, 70);
+            this.pitchProgressBar.Size = new System.Drawing.Size(459, 70);
             this.pitchProgressBar.TabIndex = 9;
             // 
             // buttonRDrug
             // 
             this.buttonRDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRDrug.Location = new System.Drawing.Point(636, 25);
+            this.buttonRDrug.Location = new System.Drawing.Point(804, 24);
             this.buttonRDrug.Name = "buttonRDrug";
             this.buttonRDrug.Size = new System.Drawing.Size(223, 72);
             this.buttonRDrug.TabIndex = 5;
@@ -259,7 +215,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label12.Location = new System.Drawing.Point(486, 24);
+            this.label12.Location = new System.Drawing.Point(614, 24);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(97, 24);
             this.label12.TabIndex = 38;
@@ -269,7 +225,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label11.Location = new System.Drawing.Point(938, 24);
+            this.label11.Location = new System.Drawing.Point(1077, 24);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(0, 24);
             this.label11.TabIndex = 37;
@@ -278,7 +234,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label10.Location = new System.Drawing.Point(35, 26);
+            this.label10.Location = new System.Drawing.Point(83, 26);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(72, 24);
             this.label10.TabIndex = 36;
@@ -286,7 +242,7 @@
             // 
             // textBoxCadence
             // 
-            this.textBoxCadence.Location = new System.Drawing.Point(461, 49);
+            this.textBoxCadence.Location = new System.Drawing.Point(589, 49);
             this.textBoxCadence.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCadence.Multiline = true;
             this.textBoxCadence.Name = "textBoxCadence";
@@ -297,7 +253,7 @@
             // 
             // textBoxSpeed
             // 
-            this.textBoxSpeed.Location = new System.Drawing.Point(5, 50);
+            this.textBoxSpeed.Location = new System.Drawing.Point(53, 50);
             this.textBoxSpeed.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSpeed.Multiline = true;
             this.textBoxSpeed.Name = "textBoxSpeed";
@@ -308,7 +264,7 @@
             // 
             // textBoxMpuRoll
             // 
-            this.textBoxMpuRoll.Location = new System.Drawing.Point(309, 49);
+            this.textBoxMpuRoll.Location = new System.Drawing.Point(407, 49);
             this.textBoxMpuRoll.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxMpuRoll.Multiline = true;
             this.textBoxMpuRoll.Name = "textBoxMpuRoll";
@@ -321,7 +277,7 @@
             // 
             this.label_mpuData.AutoSize = true;
             this.label_mpuData.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label_mpuData.Location = new System.Drawing.Point(180, 26);
+            this.label_mpuData.Location = new System.Drawing.Point(251, 26);
             this.label_mpuData.Name = "label_mpuData";
             this.label_mpuData.Size = new System.Drawing.Size(110, 24);
             this.label_mpuData.TabIndex = 8;
@@ -329,7 +285,7 @@
             // 
             // textBoxMpuPitch
             // 
-            this.textBoxMpuPitch.Location = new System.Drawing.Point(157, 50);
+            this.textBoxMpuPitch.Location = new System.Drawing.Point(228, 50);
             this.textBoxMpuPitch.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxMpuPitch.Multiline = true;
             this.textBoxMpuPitch.Name = "textBoxMpuPitch";
@@ -348,7 +304,7 @@
             this.textBoxAllData.Name = "textBoxAllData";
             this.textBoxAllData.ReadOnly = true;
             this.textBoxAllData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxAllData.Size = new System.Drawing.Size(1146, 150);
+            this.textBoxAllData.Size = new System.Drawing.Size(1165, 150);
             this.textBoxAllData.TabIndex = 27;
             // 
             // groupBoxAllData
@@ -357,7 +313,7 @@
             this.groupBoxAllData.Controls.Add(this.textBoxAllData);
             this.groupBoxAllData.Location = new System.Drawing.Point(11, 121);
             this.groupBoxAllData.Name = "groupBoxAllData";
-            this.groupBoxAllData.Size = new System.Drawing.Size(1152, 177);
+            this.groupBoxAllData.Size = new System.Drawing.Size(1171, 177);
             this.groupBoxAllData.TabIndex = 27;
             this.groupBoxAllData.TabStop = false;
             this.groupBoxAllData.Text = "受信データ";
@@ -572,7 +528,7 @@
             this.tabControl2.Location = new System.Drawing.Point(12, 6);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1133, 105);
+            this.tabControl2.Size = new System.Drawing.Size(1167, 105);
             this.tabControl2.TabIndex = 28;
             // 
             // tabPage4
@@ -585,7 +541,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 31);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1125, 70);
+            this.tabPage4.Size = new System.Drawing.Size(1159, 70);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "シリアル通信";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -853,9 +809,9 @@
             this.groupBox2.Controls.Add(this.chartCadence);
             this.groupBox2.Controls.Add(this.chartMpuYaw);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 303);
+            this.groupBox2.Location = new System.Drawing.Point(0, 304);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(2520, 1200);
+            this.groupBox2.Size = new System.Drawing.Size(2547, 1200);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "グラフデータ";
@@ -948,10 +904,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
     }
 }
 
