@@ -33,7 +33,7 @@ namespace AlbaAnalysis {
         CadenceView cadenceView = new CadenceView();
         SerialEntity serialEntity = new SerialEntity();
         string pathBase = @"../../../Log/";
-        SerialEntity lastSerialEntity =null;             //1つ前のserialEntityをcsvでの処理用に保持する
+        SerialEntity lastSerialEntity = null;             //1つ前のserialEntityをcsvでの処理用に保持する
 
         public SerialForm() {
             InitializeComponent();
@@ -345,15 +345,15 @@ namespace AlbaAnalysis {
 
 
                     chartMpuPitch.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartMpuPitch.ChartAreas[0].AxisX.Minimum = double.Parse(datas.Time) - 40;
+                    chartMpuPitch.ChartAreas[0].AxisX.Minimum = 0;
                     chartMpuPitch.ChartAreas[0].AxisX.Interval = 10;
 
                     chartMpuYaw.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartMpuYaw.ChartAreas[0].AxisX.Minimum = double.Parse(datas.Time) - 40;
+                    chartMpuYaw.ChartAreas[0].AxisX.Minimum = 0;
                     chartMpuYaw.ChartAreas[0].AxisX.Interval = 10;
 
                     chartMpuRoll.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartMpuRoll.ChartAreas[0].AxisX.Minimum = double.Parse(datas.Time) - 40;
+                    chartMpuRoll.ChartAreas[0].AxisX.Minimum = 0;
                     chartMpuRoll.ChartAreas[0].AxisX.Interval = 10;
                 }
                 else if (InputEnum.input == ie) {
@@ -363,15 +363,15 @@ namespace AlbaAnalysis {
 
 
                     chartRollInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartRollInput.ChartAreas[0].AxisX.Minimum = double.Parse(datas.Time) - 40;
+                    chartRollInput.ChartAreas[0].AxisX.Minimum = 0;
                     chartRollInput.ChartAreas[0].AxisX.Interval = 10;
 
                     chartDrugInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartDrugInput.ChartAreas[0].AxisX.Minimum = double.Parse(datas.Time) - 40;
+                    chartDrugInput.ChartAreas[0].AxisX.Minimum = 0;
                     chartDrugInput.ChartAreas[0].AxisX.Interval = 10;
 
                     chartPitchInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartPitchInput.ChartAreas[0].AxisX.Minimum = double.Parse(datas.Time) - 40;
+                    chartPitchInput.ChartAreas[0].AxisX.Minimum = 0;
                     chartPitchInput.ChartAreas[0].AxisX.Interval = 10;
                 }
                 cadenceView.cadence = datas.Cadence;
@@ -415,7 +415,7 @@ namespace AlbaAnalysis {
                 textBoxBatteryDataR.AppendText(datas.VoltageR + Environment.NewLine);
                 textBoxBatteryDataL.AppendText(datas.VoltageL + Environment.NewLine);
             }
-            else if(InputEnum.mpu== ie) {
+            else if (InputEnum.mpu == ie) {
                 textBoxMpuPitch.AppendText(datas.MpuPitch + Environment.NewLine);
                 textBoxMpuRoll.AppendText(datas.MpuRoll + Environment.NewLine);
                 textBoxMpuYaw.AppendText(datas.MpuYaw + Environment.NewLine);
@@ -564,7 +564,7 @@ namespace AlbaAnalysis {
                             lastSerialEntity = serialEntity.Clone();
                             return;
                         }
-                      var targetEnum=  serialRoutine.GetTargetEntity(serialEntity, lastSerialEntity);
+                        var targetEnum = serialRoutine.GetTargetEntity(serialEntity, lastSerialEntity);
 
                         BeginInvoke(new Handler(showChart), serialEntity, csvLine, targetEnum);
                         BeginInvoke(new Handler(showText), serialEntity, csvLine, targetEnum);
