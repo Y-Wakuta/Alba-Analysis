@@ -72,5 +72,45 @@ namespace AlbaAnalysis.Routine {
                 System.Media.SystemSounds.Beep.Play();
             }
         }
+
+        #region 同じentityか判定する
+        public bool IsSameControlEntity(SerialEntity se, SerialEntity lastSe) {
+            if (se.VoltageL == lastSe.VoltageL && se.VoltageR == lastSe.VoltageR)
+                return true;
+            return false;
+        }
+
+        public bool IsSameKeikiEntity(SerialEntity se, SerialEntity lastSe) {
+            if (se.AirSpeed == lastSe.AirSpeed && se.Cadence == lastSe.Cadence)
+                return true;
+            return false;
+        }
+
+        public bool IsSameMpuEntity(SerialEntity se, SerialEntity lastSe) {
+            if (se.MpuPitch == lastSe.MpuPitch && se.MpuYaw == lastSe.MpuYaw && se.MpuRoll == lastSe.MpuRoll)
+                return true;
+            return false;
+        }
+
+        public bool IsSameInputEntity(SerialEntity se, SerialEntity lastSe) {
+            if (se.ErebonLInput == lastSe.ErebonLInput && se.ErebonRInput == lastSe.ErebonRInput && se.DrugL == lastSe.DrugL && se.DrugR == lastSe.DrugR)
+                return true;
+            return false;
+        }
+
+        public InputEnum GetTargetEntity(SerialEntity se, SerialEntity lastSe) {
+            if (IsSameControlEntity(se, lastSe) && IsSameKeikiEntity(se, lastSe) && IsSameMpuEntity(se, lastSe))
+                return InputEnum.input;
+            else if (IsSameControlEntity(se, lastSe) && IsSameKeikiEntity(se, lastSe) && IsSameInputEntity(se, lastSe))
+                return InputEnum.mpu;
+            else if (IsSameControlEntity(se, lastSe) && IsSameMpuEntity(se, lastSe) && IsSameInputEntity(se, lastSe))
+                return InputEnum.keiki;
+            else if (IsSameKeikiEntity(se, lastSe) && IsSameMpuEntity(se, lastSe) && IsSameInputEntity(se, lastSe))
+                return InputEnum.control;
+            else
+                return InputEnum.control;     //ここはnullにするべきな気もするがなんとなくこうした。
+        }
+
+        #endregion
     }
 }

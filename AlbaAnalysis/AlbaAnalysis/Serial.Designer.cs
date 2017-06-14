@@ -132,7 +132,7 @@
             this.textBoxMpuPitch.Name = "textBoxMpuPitch";
             this.textBoxMpuPitch.ReadOnly = true;
             this.textBoxMpuPitch.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMpuPitch.Size = new System.Drawing.Size(155, 271);
+            this.textBoxMpuPitch.Size = new System.Drawing.Size(155, 422);
             this.textBoxMpuPitch.TabIndex = 4;
             this.textBoxMpuPitch.Text = "`";
             // 
@@ -142,13 +142,13 @@
             // 
             // textBoxBatteryDataL
             // 
-            this.textBoxBatteryDataL.Location = new System.Drawing.Point(1026, 50);
+            this.textBoxBatteryDataL.Location = new System.Drawing.Point(1043, 50);
             this.textBoxBatteryDataL.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxBatteryDataL.Multiline = true;
             this.textBoxBatteryDataL.Name = "textBoxBatteryDataL";
             this.textBoxBatteryDataL.ReadOnly = true;
             this.textBoxBatteryDataL.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxBatteryDataL.Size = new System.Drawing.Size(155, 273);
+            this.textBoxBatteryDataL.Size = new System.Drawing.Size(155, 424);
             this.textBoxBatteryDataL.TabIndex = 6;
             // 
             // textBoxBatteryDataR
@@ -159,7 +159,7 @@
             this.textBoxBatteryDataR.Name = "textBoxBatteryDataR";
             this.textBoxBatteryDataR.ReadOnly = true;
             this.textBoxBatteryDataR.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxBatteryDataR.Size = new System.Drawing.Size(155, 273);
+            this.textBoxBatteryDataR.Size = new System.Drawing.Size(155, 424);
             this.textBoxBatteryDataR.TabIndex = 7;
             // 
             // label_mpuData
@@ -212,7 +212,7 @@
             this.groupBox1.Controls.Add(this.textBoxBatteryDataL);
             this.groupBox1.Location = new System.Drawing.Point(1169, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1378, 499);
+            this.groupBox1.Size = new System.Drawing.Size(1378, 500);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "センサ詳細情報";
@@ -274,7 +274,7 @@
             this.textBoxCadence.Name = "textBoxCadence";
             this.textBoxCadence.ReadOnly = true;
             this.textBoxCadence.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxCadence.Size = new System.Drawing.Size(155, 273);
+            this.textBoxCadence.Size = new System.Drawing.Size(155, 424);
             this.textBoxCadence.TabIndex = 20;
             // 
             // textBoxMpuYaw
@@ -285,7 +285,7 @@
             this.textBoxMpuYaw.Name = "textBoxMpuYaw";
             this.textBoxMpuYaw.ReadOnly = true;
             this.textBoxMpuYaw.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMpuYaw.Size = new System.Drawing.Size(155, 271);
+            this.textBoxMpuYaw.Size = new System.Drawing.Size(155, 422);
             this.textBoxMpuYaw.TabIndex = 16;
             // 
             // textBoxSpeed
@@ -296,7 +296,7 @@
             this.textBoxSpeed.Name = "textBoxSpeed";
             this.textBoxSpeed.ReadOnly = true;
             this.textBoxSpeed.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxSpeed.Size = new System.Drawing.Size(155, 273);
+            this.textBoxSpeed.Size = new System.Drawing.Size(155, 424);
             this.textBoxSpeed.TabIndex = 15;
             // 
             // textBoxMpuRoll
@@ -307,7 +307,7 @@
             this.textBoxMpuRoll.Name = "textBoxMpuRoll";
             this.textBoxMpuRoll.ReadOnly = true;
             this.textBoxMpuRoll.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMpuRoll.Size = new System.Drawing.Size(155, 271);
+            this.textBoxMpuRoll.Size = new System.Drawing.Size(155, 422);
             this.textBoxMpuRoll.TabIndex = 12;
             // 
             // textBoxAllData
@@ -460,7 +460,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl1.Location = new System.Drawing.Point(0, 511);
+            this.tabControl1.Location = new System.Drawing.Point(0, 512);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(2547, 908);
@@ -656,7 +656,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(2542, 873);
+            this.tabPage2.Size = new System.Drawing.Size(2539, 873);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "WingEdge";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -680,7 +680,7 @@
             legend6.Position.X = 79F;
             legend6.Position.Y = 2F;
             this.chartLBattery.Legends.Add(legend6);
-            this.chartLBattery.Location = new System.Drawing.Point(852, 18);
+            this.chartLBattery.Location = new System.Drawing.Point(1284, 18);
             this.chartLBattery.Margin = new System.Windows.Forms.Padding(1);
             this.chartLBattery.Name = "chartLBattery";
             series6.BorderWidth = 2;
@@ -691,7 +691,7 @@
             series6.LegendText = "LBattery";
             series6.Name = "LBattery";
             this.chartLBattery.Series.Add(series6);
-            this.chartLBattery.Size = new System.Drawing.Size(764, 394);
+            this.chartLBattery.Size = new System.Drawing.Size(1244, 738);
             this.chartLBattery.TabIndex = 17;
             this.chartLBattery.Text = "chart4";
             // 
@@ -714,7 +714,7 @@
             legend7.Position.X = 79F;
             legend7.Position.Y = 2F;
             this.chartRBattery.Legends.Add(legend7);
-            this.chartRBattery.Location = new System.Drawing.Point(20, 18);
+            this.chartRBattery.Location = new System.Drawing.Point(8, 18);
             this.chartRBattery.Margin = new System.Windows.Forms.Padding(1);
             this.chartRBattery.Name = "chartRBattery";
             series7.BorderWidth = 2;
@@ -725,7 +725,7 @@
             series7.LegendText = "RBattery";
             series7.Name = "RBattery";
             this.chartRBattery.Series.Add(series7);
-            this.chartRBattery.Size = new System.Drawing.Size(805, 394);
+            this.chartRBattery.Size = new System.Drawing.Size(1234, 738);
             this.chartRBattery.TabIndex = 16;
             this.chartRBattery.Text = "chart4";
             // 
@@ -740,7 +740,7 @@
             this.tabPage3.Controls.Add(this.buttonLDrug);
             this.tabPage3.Location = new System.Drawing.Point(4, 31);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(2542, 873);
+            this.tabPage3.Size = new System.Drawing.Size(2539, 873);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Control";
             this.tabPage3.UseVisualStyleBackColor = true;
