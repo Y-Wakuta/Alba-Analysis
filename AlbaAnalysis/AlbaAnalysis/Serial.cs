@@ -111,40 +111,33 @@ namespace AlbaAnalysis {
             ClearTextBox();
             #region グラフ設定
 
+            InitChart(chartSpeed, "Speed[m/s]");
+            chartSpeed.ChartAreas[0].AxisY.Maximum = 10.0;
+            chartSpeed.ChartAreas[0].AxisY.Minimum = 0;
 
-            chartSpeed.ChartAreas[0].AxisX.Title = "Time[s]";
-            chartSpeed.ChartAreas[0].AxisY.Title = "Speed[m/s]";
+            InitChart(chartMpuPitch, "MPitch");
+            InitChart(chartCadence, "Cadence[/m]");
+            chartCadence.ChartAreas[0].AxisY.Maximum = 100.0;
+            chartCadence.ChartAreas[0].AxisY.Minimum = 0;
 
-            chartMpuPitch.ChartAreas[0].AxisX.Title = "Time[s]";
-            chartMpuPitch.ChartAreas[0].AxisY.Title = "MPitch";
-
-            chartCadence.ChartAreas[0].AxisX.Title = "Time[s]";
-            chartCadence.ChartAreas[0].AxisY.Title = "Cadence[/m]";
-
-            chartRBattery.ChartAreas[0].AxisX.Title = "Time[s]";
-            chartRBattery.ChartAreas[0].AxisY.Title = "RBattery[V]";
-
-            chartLBattery.ChartAreas[0].AxisX.Title = "Time[s]";
-            chartLBattery.ChartAreas[0].AxisY.Title = "LBattery[V]";
-
-            chartMpuYaw.ChartAreas[0].AxisX.Title = "Time[s]";
-            chartMpuYaw.ChartAreas[0].AxisY.Title = "MpuYaw";
-
-            chartMpuRoll.ChartAreas[0].AxisX.Title = "Time[s]";
-            chartMpuRoll.ChartAreas[0].AxisY.Title = "MpuRoll";
-
-            chartRollInput.ChartAreas[0].AxisX.Title = "Time[s]";
-            chartRollInput.ChartAreas[0].AxisY.Title = "RollInput";
-
-            chartPitchInput.ChartAreas[0].AxisX.Title = "Time[s]";
-            chartPitchInput.ChartAreas[0].AxisY.Title = "PitchInput";
-
-            chartDrugInput.ChartAreas[0].AxisX.Title = "Time[s]";
-            chartDrugInput.ChartAreas[0].AxisY.Title = "DrugInput";
-
+            InitChart(chartRBattery, "RBattery[V]");
+            InitChart(chartLBattery, "LBattery[V]");
+            InitChart(chartMpuYaw, "MpuYaw");
+            InitChart(chartMpuRoll, "MpuRoll");
+            InitChart(chartRollInput, "RollInput");
+            InitChart(chartPitchInput, "PitchInput");
+            InitChart(chartDrugInput, "DrugInput");
 
             #endregion
         }
+        public void InitChart(Chart chart, string YAxisTitle) {
+            chart.ChartAreas[0].AxisX.Title = "Time[s]";
+            chart.ChartAreas[0].AxisY.Title = YAxisTitle;
+            chart.ChartAreas[0].AxisX.Minimum = 0;
+            chart.ChartAreas[0].AxisX.Interval = 20;
+        }
+
+
 
         private void SerialForm_FormClosing(object sender, FormClosingEventArgs e) {
             serialPort1.Dispose();
@@ -284,7 +277,7 @@ namespace AlbaAnalysis {
 
                 try {
                     rollVerticalProgressBar.Value = int.Parse(datas.ErebonRInput) + 1;
-                    rollVerticalProgressBar.Value = int.Parse(datas.ErebonRInput);
+                    rollVerticalProgressBar.Value = int.Parse(datas.ErebonRInput);          //progressBarは値が下がる時はすぐに変位するので、それを利用して表示
 
                     pitchVerticalProgressBar.Value = int.Parse(datas.ErebonLInput) + 1;
                     pitchVerticalProgressBar.Value = int.Parse(datas.ErebonLInput);
@@ -318,65 +311,32 @@ namespace AlbaAnalysis {
 
 
                     chartSpeed.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartSpeed.ChartAreas[0].AxisY.Maximum = 10.0 ;
-                    chartSpeed.ChartAreas[0].AxisY.Minimum = 0;
-                    chartSpeed.ChartAreas[0].AxisX.Minimum = 0;
-                    chartSpeed.ChartAreas[0].AxisX.Interval = 20;
-
                     chartCadence.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartCadence.ChartAreas[0].AxisY.Maximum = 100.0;
-                    chartCadence.ChartAreas[0].AxisX.Minimum = 0;
-                    chartCadence.ChartAreas[0].AxisY.Minimum = 0;
-                    chartCadence.ChartAreas[0].AxisX.Interval = 20;
                 }
                 else if (InputEnum.control == ie) {
                     chartRBattery.Series["RBattery"].Points.AddXY(datas.Time, double.Parse(datas.VoltageR));
                     chartLBattery.Series["LBattery"].Points.AddXY(datas.Time, double.Parse(datas.VoltageL));
 
-
                     chartRBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartRBattery.ChartAreas[0].AxisX.Minimum = 0;
-                    chartRBattery.ChartAreas[0].AxisX.Interval = 20;
-
                     chartLBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartLBattery.ChartAreas[0].AxisX.Minimum = 0;
-                    chartLBattery.ChartAreas[0].AxisX.Interval = 20;
                 }
                 else if (InputEnum.mpu == ie) {
                     chartMpuPitch.Series["MPitch"].Points.AddXY(datas.Time, double.Parse(datas.MpuPitch));
                     chartMpuYaw.Series["MYaw"].Points.AddXY(datas.Time, double.Parse(datas.MpuYaw));
                     chartMpuRoll.Series["MRoll"].Points.AddXY(datas.Time, double.Parse(datas.MpuRoll));
 
-
                     chartMpuPitch.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartMpuPitch.ChartAreas[0].AxisX.Minimum = 0;
-                    chartMpuPitch.ChartAreas[0].AxisX.Interval = 20;
-
                     chartMpuYaw.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartMpuYaw.ChartAreas[0].AxisX.Minimum = 0;
-                    chartMpuYaw.ChartAreas[0].AxisX.Interval = 20;
-
                     chartMpuRoll.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartMpuRoll.ChartAreas[0].AxisX.Minimum = 0;
-                    chartMpuRoll.ChartAreas[0].AxisX.Interval = 20;
                 }
                 else if (InputEnum.input == ie) {
                     chartDrugInput.Series["DrugInput"].Points.AddXY(datas.Time, double.Parse(datas.DrugR) - double.Parse(datas.DrugL));
                     chartRollInput.Series["RollInput"].Points.AddXY(datas.Time, double.Parse(datas.ErebonRInput));
                     chartPitchInput.Series["PitchInput"].Points.AddXY(datas.Time, double.Parse(datas.ErebonLInput));
 
-
                     chartRollInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartRollInput.ChartAreas[0].AxisX.Minimum = 0;
-                    chartRollInput.ChartAreas[0].AxisX.Interval = 20;
-
                     chartDrugInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartDrugInput.ChartAreas[0].AxisX.Minimum = 0;
-                    chartDrugInput.ChartAreas[0].AxisX.Interval = 20;
-
                     chartPitchInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartPitchInput.ChartAreas[0].AxisX.Minimum = 0;
-                    chartPitchInput.ChartAreas[0].AxisX.Interval = 20;
                 }
                 cadenceView.cadence = datas.Cadence;
                 cadenceView.time = datas.Time;

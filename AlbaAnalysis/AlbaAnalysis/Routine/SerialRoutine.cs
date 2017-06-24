@@ -73,6 +73,8 @@ namespace AlbaAnalysis.Routine {
             }
         }
 
+ 
+
         #region 同じentityか判定する
         public bool IsSameControlEntity(SerialEntity se, SerialEntity lastSe) {
             if (se.VoltageL == lastSe.VoltageL && se.VoltageR == lastSe.VoltageR)
