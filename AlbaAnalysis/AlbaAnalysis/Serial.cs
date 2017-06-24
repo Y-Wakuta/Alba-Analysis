@@ -463,8 +463,10 @@ namespace AlbaAnalysis {
         }
 
         private void buttonClose_Click_1(object sender, EventArgs e) {
+            var commentForm = new AdditionalFileNameDialog();
+            commentForm.ShowDialog();
             var pathItem = new filePath();
-            path = pathBase + "TF" + DateTime.Now.ToString("MMdd_hhmm") + ".csv";
+            path = pathBase + "TF" + DateTime.Now.ToString("MMdd_hhmm") + commentForm.GetComment() + ".csv";
             serialRoutine.writeDatas(saveData, path, true);
             AddAllPath(pathBase);
             serialPort1.DiscardInBuffer();
