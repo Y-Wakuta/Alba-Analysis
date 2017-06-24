@@ -546,7 +546,7 @@
             series2.LegendText = "Speed";
             series2.Name = "Speed";
             this.chartSpeed.Series.Add(series2);
-            this.chartSpeed.Size = new System.Drawing.Size(887, 441);
+            this.chartSpeed.Size = new System.Drawing.Size(1640, 422);
             this.chartSpeed.TabIndex = 18;
             this.chartSpeed.Text = "chart6";
             title1.Name = "Speed";
@@ -634,7 +634,7 @@
             legend5.Position.X = 79F;
             legend5.Position.Y = 2F;
             this.chartCadence.Legends.Add(legend5);
-            this.chartCadence.Location = new System.Drawing.Point(1785, 16);
+            this.chartCadence.Location = new System.Drawing.Point(1793, 448);
             this.chartCadence.Margin = new System.Windows.Forms.Padding(1);
             this.chartCadence.Name = "chartCadence";
             series5.BorderWidth = 2;
@@ -644,7 +644,7 @@
             series5.Legend = "Legend1";
             series5.Name = "Cadence";
             this.chartCadence.Series.Add(series5);
-            this.chartCadence.Size = new System.Drawing.Size(753, 441);
+            this.chartCadence.Size = new System.Drawing.Size(753, 419);
             this.chartCadence.TabIndex = 17;
             this.chartCadence.Text = "Cadence";
             this.chartCadence.Click += new System.EventHandler(this.chartCadence_Click);
@@ -656,7 +656,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(2539, 873);
+            this.tabPage2.Size = new System.Drawing.Size(2542, 873);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "WingEdge";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -740,7 +740,7 @@
             this.tabPage3.Controls.Add(this.buttonLDrug);
             this.tabPage3.Location = new System.Drawing.Point(4, 31);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(2539, 873);
+            this.tabPage3.Size = new System.Drawing.Size(2542, 873);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Control";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -864,7 +864,7 @@
             // buttonRDrug
             // 
             this.buttonRDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRDrug.Location = new System.Drawing.Point(287, 37);
+            this.buttonRDrug.Location = new System.Drawing.Point(719, 40);
             this.buttonRDrug.Name = "buttonRDrug";
             this.buttonRDrug.Size = new System.Drawing.Size(312, 109);
             this.buttonRDrug.TabIndex = 5;
@@ -874,7 +874,7 @@
             // buttonLDrug
             // 
             this.buttonLDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLDrug.Location = new System.Drawing.Point(626, 37);
+            this.buttonLDrug.Location = new System.Drawing.Point(369, 40);
             this.buttonLDrug.Name = "buttonLDrug";
             this.buttonLDrug.Size = new System.Drawing.Size(310, 109);
             this.buttonLDrug.TabIndex = 3;

@@ -17,3 +17,4 @@ C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\Alb
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.csproj.GenerateResource.Cache
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.exe
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.pdb
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.AdditionalFileNameDialog.resources
