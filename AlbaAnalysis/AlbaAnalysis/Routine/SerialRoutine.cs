@@ -108,7 +108,7 @@ namespace AlbaAnalysis.Routine {
             else if (IsSameKeikiEntity(se, lastSe) && IsSameMpuEntity(se, lastSe) && IsSameInputEntity(se, lastSe))
                 return InputEnum.control;
             else
-                return InputEnum.control;     //ここはnullにするべきな気もするがなんとなくこうした。
+                return InputEnum.keiki;     //ここはnullにするべきな気もするがなんとなくこうした。
         }
 
         #endregion
