@@ -547,12 +547,12 @@ namespace AlbaAnalysis {
                     }
 
                     //csv読み込みの速度向上
-                    System.Threading.Thread.Sleep(30);
+                    System.Threading.Thread.Sleep(50);
                 } while (fw.EndOfStream != true);
                 fw.Dispose();
                 fw.Close();
+                MessageBox.Show("ファイルの読み込みを終了しました。");
             });
-            MessageBox.Show("ファイルの読み込みを終了しました。");
             comboBoxFiles.DroppedDown = true;
             comboBoxFiles.Focus();
         }
