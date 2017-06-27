@@ -437,6 +437,7 @@ namespace AlbaAnalysis {
             commentForm.ShowDialog();
             var pathItem = new filePath();
             path = pathBase + "TF" + DateTime.Now.ToString("MMdd_hhmm") + commentForm.GetComment() + ".csv";
+            SaveAllCharts(commentForm.GetComment());
             serialRoutine.writeDatas(saveData, path, true);
             AddAllPath(pathBase);
             serialPort1.DiscardInBuffer();
@@ -452,7 +453,6 @@ namespace AlbaAnalysis {
         private void buttonNext_Click_1(object sender, EventArgs e) {
             clearForm();
             buttonConnect.Focus();
-            SaveAllCharts();
         }
 
         private void clearForm() {
@@ -559,7 +559,6 @@ namespace AlbaAnalysis {
         private void buttonStopCsv_Click(object sender, EventArgs e) {
             csvFlag = 1;
             buttonRunCsv.Focus();
-            SaveAllCharts();
         }
 
         private void buttonOpenCsv_Click(object sender, EventArgs e) {
@@ -596,14 +595,10 @@ namespace AlbaAnalysis {
             detail.Show();
         }
 
-        private void SaveChart(Chart chart) {
-            chart.SaveImage(@"../../../Log/chart/" + chart.Name + ".jpeg", ChartImageFormat.Jpeg);
-        }
-
-        private void SaveAllCharts() {
+        private void SaveAllCharts(string comment) {
             var nowTime = DateTime.Now.ToString("MMdd_hhmm");
             try {
-                var dir = System.IO.Directory.CreateDirectory(@"../../../Log/chart/" + nowTime);
+                var dir = System.IO.Directory.CreateDirectory(@"../../../Log/chart/" + nowTime + comment);
             }
             catch (IOException io) { }
             chartSpeed.SaveImage(@"../../../Log/chart/" + nowTime + "/" + chartSpeed.Name + ".jpeg", ChartImageFormat.Jpeg);
