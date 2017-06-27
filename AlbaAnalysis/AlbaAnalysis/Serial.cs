@@ -575,9 +575,15 @@ namespace AlbaAnalysis {
 
         private void AddAllPath(string path) {
             comboBoxFiles.Items.Clear();
-            string[] _path = null;
-            _path = Directory.GetFiles(path, "*");
-            comboBoxFiles.Items.AddRange(_path);
+            List<string> _pathArray = null;
+            _pathArray = Directory.GetFiles(path, "*").ToList();
+            var _tempPathArray = new List<string>(_pathArray.ToList());         //foreach内でlistの要素を削除するため値渡しでコピー
+            foreach (var p in _tempPathArray) {
+                var file = new System.IO.FileInfo(p);
+                if (file.Length == 0)
+                    _pathArray.Remove(p);
+            }
+            comboBoxFiles.Items.AddRange(_pathArray.ToArray());
             //  comboBoxFiles.SelectedIndex = 0;
         }
 
