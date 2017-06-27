@@ -267,29 +267,27 @@ namespace AlbaAnalysis {
         /// <param name="data">配列化した受信データ</param>
         /// <param name="i"></param>
         private async void checkSteer(SerialEntity datas, string data, InputEnum ie) {
-            await Task.Run(() => {
-                if (InputEnum.input == ie) {
-                    if (datas.DrugR == 1.ToString())
-                        buttonRDrug.BackColor = Color.LightCoral;
-                    else buttonRDrug.BackColor = Color.LightGray;
+            if (InputEnum.input == ie) {
+                if (datas.DrugR == 1.ToString())
+                    buttonRDrug.BackColor = Color.LightCoral;
+                else buttonRDrug.BackColor = Color.LightGray;
 
-                    if (datas.DrugL == 1.ToString())
-                        buttonLDrug.BackColor = Color.LightCoral;
-                    else
-                        buttonLDrug.BackColor = Color.LightGray;
+                if (datas.DrugL == 1.ToString())
+                    buttonLDrug.BackColor = Color.LightCoral;
+                else
+                    buttonLDrug.BackColor = Color.LightGray;
 
-                    try {
-                        rollVerticalProgressBar.Value = int.Parse(datas.ErebonRInput) + 1;
-                        rollVerticalProgressBar.Value = int.Parse(datas.ErebonRInput);          //progressBarは値が下がる時はすぐに変位するので、それを利用して表示
+                try {
+                    rollVerticalProgressBar.Value = int.Parse(datas.ErebonRInput) + 1;
+                    rollVerticalProgressBar.Value = int.Parse(datas.ErebonRInput);          //progressBarは値が下がる時はすぐに変位するので、それを利用して表示
 
-                        pitchVerticalProgressBar.Value = int.Parse(datas.ErebonLInput) + 1;
-                        pitchVerticalProgressBar.Value = int.Parse(datas.ErebonLInput);
-                    }
-                    catch {
-                        return;
-                    }
+                    pitchVerticalProgressBar.Value = int.Parse(datas.ErebonLInput) + 1;
+                    pitchVerticalProgressBar.Value = int.Parse(datas.ErebonLInput);
                 }
-            });
+                catch {
+                    return;
+                }
+            }
         }
 
 
