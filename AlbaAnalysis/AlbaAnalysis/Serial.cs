@@ -134,7 +134,7 @@ namespace AlbaAnalysis {
             chart.ChartAreas[0].AxisX.Title = "Time[s]";
             chart.ChartAreas[0].AxisY.Title = YAxisTitle;
             chart.ChartAreas[0].AxisX.Minimum = 0;
-            chart.ChartAreas[0].AxisX.Interval = 20;
+            chart.ChartAreas[0].AxisX.Interval = 30;
         }
 
 
@@ -309,46 +309,46 @@ namespace AlbaAnalysis {
         private async void showChart(SerialEntity datas, string data, InputEnum ie) {
             #region グラフ設定
             //await Task.Run(() => {
-                try {
-                    if (InputEnum.keiki == ie) {
-                        chartSpeed.Series["Speed"].Points.AddXY(datas.Time, double.Parse(datas.AirSpeed));
-                        chartCadence.Series["Cadence"].Points.AddXY(datas.Time, double.Parse(datas.Cadence));
+            try {
+                if (InputEnum.keiki == ie) {
+                    chartSpeed.Series["Speed"].Points.AddXY(datas.Time, double.Parse(datas.AirSpeed));
+                    chartCadence.Series["Cadence"].Points.AddXY(datas.Time, double.Parse(datas.Cadence));
 
 
-                        chartSpeed.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                        chartCadence.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    }
-                    else if (InputEnum.control == ie) {
-                        chartRBattery.Series["RBattery"].Points.AddXY(datas.Time, double.Parse(datas.VoltageR));
-                        chartLBattery.Series["LBattery"].Points.AddXY(datas.Time, double.Parse(datas.VoltageL));
-
-                        chartRBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                        chartLBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    }
-                    else if (InputEnum.mpu == ie) {
-                        chartMpuPitch.Series["MPitch"].Points.AddXY(datas.Time, double.Parse(datas.MpuPitch));
-                        chartMpuYaw.Series["MYaw"].Points.AddXY(datas.Time, double.Parse(datas.MpuYaw));
-                        chartMpuRoll.Series["MRoll"].Points.AddXY(datas.Time, double.Parse(datas.MpuRoll));
-
-                        chartMpuPitch.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                        chartMpuYaw.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                        chartMpuRoll.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    }
-                    else if (InputEnum.input == ie) {
-                        chartDrugInput.Series["DrugInput"].Points.AddXY(datas.Time, double.Parse(datas.DrugR) - double.Parse(datas.DrugL));
-                        chartRollInput.Series["RollInput"].Points.AddXY(datas.Time, double.Parse(datas.ErebonRInput));
-                        chartPitchInput.Series["PitchInput"].Points.AddXY(datas.Time, double.Parse(datas.ErebonLInput));
-
-                        chartRollInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                        chartDrugInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                        chartPitchInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    }
-                    cadenceView.cadence = datas.Cadence;
-                    cadenceView.time = datas.Time;
+                    chartSpeed.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
+                    chartCadence.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
                 }
-                catch (Exception) {
-                    return;
+                else if (InputEnum.control == ie) {
+                    chartRBattery.Series["RBattery"].Points.AddXY(datas.Time, double.Parse(datas.VoltageR));
+                    chartLBattery.Series["LBattery"].Points.AddXY(datas.Time, double.Parse(datas.VoltageL));
+
+                    chartRBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
+                    chartLBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
                 }
+                else if (InputEnum.mpu == ie) {
+                    chartMpuPitch.Series["MPitch"].Points.AddXY(datas.Time, double.Parse(datas.MpuPitch));
+                    chartMpuYaw.Series["MYaw"].Points.AddXY(datas.Time, double.Parse(datas.MpuYaw));
+                    chartMpuRoll.Series["MRoll"].Points.AddXY(datas.Time, double.Parse(datas.MpuRoll));
+
+                    chartMpuPitch.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
+                    chartMpuYaw.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
+                    chartMpuRoll.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
+                }
+                else if (InputEnum.input == ie) {
+                    chartDrugInput.Series["DrugInput"].Points.AddXY(datas.Time, double.Parse(datas.DrugR) - double.Parse(datas.DrugL));
+                    chartRollInput.Series["RollInput"].Points.AddXY(datas.Time, double.Parse(datas.ErebonRInput));
+                    chartPitchInput.Series["PitchInput"].Points.AddXY(datas.Time, double.Parse(datas.ErebonLInput));
+
+                    chartRollInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
+                    chartDrugInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
+                    chartPitchInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
+                }
+                cadenceView.cadence = datas.Cadence;
+                cadenceView.time = datas.Time;
+            }
+            catch (Exception) {
+                return;
+            }
             //});
             #endregion
         }
@@ -376,22 +376,22 @@ namespace AlbaAnalysis {
         /// <param name="i"></param>
         private async void showText(SerialEntity datas, string data, InputEnum ie) {
             //await Task.Run(() => {
-                #region textboxへの表示
-                textBoxAllData.AppendText(data + Environment.NewLine);
-                if (InputEnum.keiki == ie) {
-                    textBoxSpeed.AppendText(datas.AirSpeed + Environment.NewLine);
-                    textBoxCadence.AppendText(datas.Cadence + Environment.NewLine);
-                }
-                else if (InputEnum.control == ie) {
-                    textBoxBatteryDataR.AppendText(datas.VoltageR + Environment.NewLine);
-                    textBoxBatteryDataL.AppendText(datas.VoltageL + Environment.NewLine);
-                }
-                else if (InputEnum.mpu == ie) {
-                    textBoxMpuPitch.AppendText(datas.MpuPitch + Environment.NewLine);
-                    textBoxMpuRoll.AppendText(datas.MpuRoll + Environment.NewLine);
-                    textBoxMpuYaw.AppendText(datas.MpuYaw + Environment.NewLine);
-                }
-                #endregion
+            #region textboxへの表示
+            textBoxAllData.AppendText(data + Environment.NewLine);
+            if (InputEnum.keiki == ie) {
+                textBoxSpeed.AppendText(datas.AirSpeed + Environment.NewLine);
+                textBoxCadence.AppendText(datas.Cadence + Environment.NewLine);
+            }
+            else if (InputEnum.control == ie) {
+                textBoxBatteryDataR.AppendText(datas.VoltageR + Environment.NewLine);
+                textBoxBatteryDataL.AppendText(datas.VoltageL + Environment.NewLine);
+            }
+            else if (InputEnum.mpu == ie) {
+                textBoxMpuPitch.AppendText(datas.MpuPitch + Environment.NewLine);
+                textBoxMpuRoll.AppendText(datas.MpuRoll + Environment.NewLine);
+                textBoxMpuYaw.AppendText(datas.MpuYaw + Environment.NewLine);
+            }
+            #endregion
             //});
         }
 
