@@ -454,6 +454,7 @@ namespace AlbaAnalysis {
         private void buttonNext_Click_1(object sender, EventArgs e) {
             clearForm();
             buttonConnect.Focus();
+            SaveAllCharts();
         }
 
         private void clearForm() {
@@ -501,7 +502,7 @@ namespace AlbaAnalysis {
                         csvdatas = csvLine.Split(',');
                     }
                     catch (Exception) {
-                       // MessageBox.Show("ファイルが空です。");
+                        // MessageBox.Show("ファイルが空です。");
                         continue;
                     }
                     for (int i = 0; i < csvdatas.Count() - 1; i++) {
@@ -560,6 +561,7 @@ namespace AlbaAnalysis {
         private void buttonStopCsv_Click(object sender, EventArgs e) {
             csvFlag = 1;
             buttonRunCsv.Focus();
+            SaveAllCharts();
         }
 
         private void buttonOpenCsv_Click(object sender, EventArgs e) {
@@ -594,6 +596,28 @@ namespace AlbaAnalysis {
         private void chartCadence_Click(object sender, EventArgs e) {
             var detail = new Detail(cadenceView);
             detail.Show();
+        }
+
+        private void SaveChart(Chart chart) {
+            chart.SaveImage(@"../../../Log/chart/" + chart.Name + ".jpeg", ChartImageFormat.Jpeg);
+        }
+
+        private void SaveAllCharts() {
+            var nowTime = DateTime.Now.ToString("MMdd_hhmm");
+            try {
+                var dir = System.IO.Directory.CreateDirectory(@"../../../Log/chart/" + nowTime);
+            }
+            catch (IOException io) { }
+            chartSpeed.SaveImage(@"../../../Log/chart/" + nowTime + "/" + chartSpeed.Name + ".jpeg", ChartImageFormat.Jpeg);
+            chartMpuPitch.SaveImage(@"../../../Log/chart/" + nowTime + "/" + chartMpuPitch.Name + ".jpeg", ChartImageFormat.Jpeg);
+            chartCadence.SaveImage(@"../../../Log/chart/" + nowTime + "/" + chartCadence.Name + ".jpeg", ChartImageFormat.Jpeg);
+            chartRBattery.SaveImage(@"../../../Log/chart/" + nowTime + "/" + chartRBattery + ".jpeg", ChartImageFormat.Jpeg);
+            chartLBattery.SaveImage(@"../../../Log/chart/" + nowTime + "/" + chartLBattery.Name + ".jpeg", ChartImageFormat.Jpeg);
+            chartMpuYaw.SaveImage(@"../../../Log/chart/" + nowTime + "/" + chartMpuYaw.Name + ".jpeg", ChartImageFormat.Jpeg);
+            chartMpuRoll.SaveImage(@"../../../Log/chart/" + nowTime + "/" + chartMpuRoll.Name + ".jpeg", ChartImageFormat.Jpeg);
+            chartRollInput.SaveImage(@"../../../Log/chart/" + nowTime + "/" + chartRollInput.Name + ".jpeg", ChartImageFormat.Jpeg);
+            chartPitchInput.SaveImage(@"../../../Log/chart/" + nowTime + "/" + chartPitchInput.Name + ".jpeg", ChartImageFormat.Jpeg);
+            chartDrugInput.SaveImage(@"../../../Log/chart/" + nowTime + "/" + chartDrugInput.Name + ".jpeg", ChartImageFormat.Jpeg);
         }
     }
 }
