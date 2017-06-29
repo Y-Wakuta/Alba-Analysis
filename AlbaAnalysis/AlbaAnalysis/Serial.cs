@@ -45,10 +45,10 @@ namespace AlbaAnalysis {
             buttonLDrug.Enabled = false;
             buttonConnect.Enabled = true;
 
-            rollVerticalProgressBar.Maximum = Constants.PHASE_NUM;
+            rollVerticalProgressBar.Maximum = 100;
             rollVerticalProgressBar.Minimum = 0;
 
-            pitchVerticalProgressBar.Maximum = Constants.PHASE_NUM;
+            pitchVerticalProgressBar.Maximum = 100;
             pitchVerticalProgressBar.Minimum = 0;
         }
 
@@ -278,11 +278,14 @@ namespace AlbaAnalysis {
                     buttonLDrug.BackColor = Color.LightGray;
 
                 try {
-                    rollVerticalProgressBar.Value = int.Parse(datas.ErebonRInput) + 1;
-                    rollVerticalProgressBar.Value = int.Parse(datas.ErebonRInput);          //progressBarは値が下がる時はすぐに変位するので、それを利用して表示
+                    var RInput = double.Parse(datas.ErebonRInput) * 100.0 + 50.0;
+                    rollVerticalProgressBar.Value = (int)RInput + 1;
+                    rollVerticalProgressBar.Value = (int)RInput;          //progressBarは値が下がる時はすぐに変位するので、それを利用して表示
 
-                    pitchVerticalProgressBar.Value = int.Parse(datas.ErebonLInput) + 1;
-                    pitchVerticalProgressBar.Value = int.Parse(datas.ErebonLInput);
+                    var LInput = double.Parse(datas.ErebonLInput) * 100.0 + 50.0;
+
+                    pitchVerticalProgressBar.Value = (int)LInput + 1;
+                    pitchVerticalProgressBar.Value = (int)LInput;
                 }
                 catch {
                     return;
