@@ -578,7 +578,7 @@ namespace AlbaAnalysis {
         private void AddAllPath(string path) {
             comboBoxFiles.Items.Clear();
             List<string> _pathArray = null;
-            _pathArray = Directory.GetFiles(path, "*").ToList();
+            _pathArray = Directory.GetFiles(path, "*.csv",SearchOption.AllDirectories).ToList();
             var _tempPathArray = new List<string>(_pathArray.ToList());         //foreach内でlistの要素を削除するため値渡しでコピー
             foreach (var p in _tempPathArray) {
                 var file = new System.IO.FileInfo(p);
