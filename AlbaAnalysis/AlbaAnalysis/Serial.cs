@@ -151,114 +151,91 @@ namespace AlbaAnalysis {
 
         private async void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e) {
             string data = null;
-            await Task.Run(() => {
-                sw = new Stopwatch();
-                sw.Start();
+            sw = new Stopwatch();
+            sw.Start();
+            try {
+                data = serialPort1.ReadLine();
+            }
+            catch (Exception) {
+                return;
+            }
+            sw.Stop();
+            if (sw.ElapsedMilliseconds > 5000)
+                serialPort1.DiscardInBuffer();
+
+            var datas = data.Split(',');
+
+            for (int i = 1; i < datas.Count() - 1; i++) {
+                if (string.IsNullOrEmpty(datas[i]))
+                    return;
                 try {
-                    data = serialPort1.ReadLine();
+                    double.Parse(datas[i]);
                 }
                 catch (Exception) {
-                    return;
+                    datas[i] = 0.ToString();
+                    // return;
                 }
-                sw.Stop();
-                if (sw.ElapsedMilliseconds > 5000)
-                    serialPort1.DiscardInBuffer();
+            }
 
-                var datas = data.Split(',');
+            var temp = Enum.GetNames(typeof(ControlDataOrder)).Length;
 
-                for (int i = 1; i < datas.Count() - 1; i++) {
-                    if (string.IsNullOrEmpty(datas[i]))
-                        return;
-                    try {
-                        double.Parse(datas[i]);
-                    }
-                    catch (Exception) {
-                        datas[i] = 0.ToString();
-                        // return;
-                    }
-                }
+            if (datas[0] == "con" && datas.Count() == Enum.GetNames(typeof(ControlDataOrder)).Length + 2) {
 
-                var temp = Enum.GetNames(typeof(ControlDataOrder)).Length;
+                serialRoutine.CopyASCon(ref serialEntity, datas);
+                DateTime end = DateTime.Now;
+                TimeSpan time = end - start;
+                serialEntity.Time = time.TotalSeconds.ToString();
 
-                if (datas[0] == "con" && datas.Count() == Enum.GetNames(typeof(ControlDataOrder)).Length + 2) {
-                    serialEntity.MpuXR = datas[1];
-                    serialEntity.MpuYR = datas[2];
-                    serialEntity.MpuZR = datas[3];
-                    serialEntity.MpuXR_A = datas[4];
-                    serialEntity.MpuYR_A = datas[5];
-                    serialEntity.MpuZR_A = datas[6];
-                    serialEntity.VoltageR = datas[7];
-                    serialEntity.MpuXL = datas[8];
-                    serialEntity.MpuYL = datas[9];
-                    serialEntity.MpuZL = datas[10];
-                    serialEntity.MpuXL_A = datas[11];
-                    serialEntity.MpuYL_A = datas[12];
-                    serialEntity.MpuZL_A = datas[13];
-                    serialEntity.VoltageL = datas[14];
+                var tempSerial = new SerialEntity();
+                tempSerial = serialEntity.Clone();
+                saveData.Add(tempSerial);
 
-                    DateTime end = DateTime.Now;
-                    TimeSpan time = end - start;
-                    serialEntity.Time = time.TotalSeconds.ToString();
+                BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.control);
+                BeginInvoke(new Handler(showText), tempSerial, data, InputEnum.control);
+                BeginInvoke(new Handler(checkSteer), tempSerial, data, InputEnum.control);
 
-                    var tempSerial = new SerialEntity();
-                    tempSerial = serialEntity.Clone();
-                    saveData.Add(tempSerial);
+            }
+            else if (datas[0] == "inp" && datas.Count() == Enum.GetNames(typeof(InputDataOrder)).Length + 1) {
+                serialRoutine.CopyASInp(ref serialEntity, datas);
+                DateTime end = DateTime.Now;
+                TimeSpan time = end - start;
+                serialEntity.Time = time.TotalSeconds.ToString();
 
-                    BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.control);
-                    BeginInvoke(new Handler(showText), tempSerial, data, InputEnum.control);
-                    BeginInvoke(new Handler(checkSteer), tempSerial, data, InputEnum.control);
+                var tempSerial = new SerialEntity();
+                tempSerial = serialEntity.Clone();
+                saveData.Add(tempSerial);
+                BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.input);
+                BeginInvoke(new Handler(showText), tempSerial, data, InputEnum.input);
+                BeginInvoke(new Handler(checkSteer), tempSerial, data, InputEnum.input);
+            }
 
-                }
-                else if (datas[0] == "inp" && datas.Count() == Enum.GetNames(typeof(InputDataOrder)).Length + 1) {
-                    serialEntity.ErebonRInput = datas[1];
-                    serialEntity.DrugR = datas[2];
-                    serialEntity.ErebonLInput = datas[3];
-                    serialEntity.DrugL = datas[4];
-                    DateTime end = DateTime.Now;
-                    TimeSpan time = end - start;
-                    serialEntity.Time = time.TotalSeconds.ToString();
-
-                    var tempSerial = new SerialEntity();
-                    tempSerial = serialEntity.Clone();
-                    saveData.Add(tempSerial);
-                    BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.input);
-                    BeginInvoke(new Handler(showText), tempSerial, data, InputEnum.input);
-                    BeginInvoke(new Handler(checkSteer), tempSerial, data, InputEnum.input);
-                }
-
-                else if (datas[0] == "mpu" && datas.Count() == Enum.GetNames(typeof(MpuDataOrder)).Length + 1) {
-                    serialEntity.MpuRoll = datas[1];
-                    serialEntity.MpuPitch = datas[2];
-                    serialEntity.MpuYaw = datas[3];
-
-                    DateTime end = DateTime.Now;
-                    TimeSpan time = end - start;
-                    serialEntity.Time = time.TotalSeconds.ToString();
+            else if (datas[0] == "mpu" && datas.Count() == Enum.GetNames(typeof(MpuDataOrder)).Length + 1) {
+                serialRoutine.CopyASMpu(ref serialEntity, datas);
+                DateTime end = DateTime.Now;
+                TimeSpan time = end - start;
+                serialEntity.Time = time.TotalSeconds.ToString();
 
 
-                    var tempSerial = new SerialEntity();
-                    tempSerial = serialEntity.Clone();
-                    saveData.Add(tempSerial);
-                    BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.mpu);
-                    BeginInvoke(new Handler(showText), tempSerial, data, InputEnum.mpu);
-                    BeginInvoke(new Handler(checkSteer), tempSerial, data, InputEnum.mpu);
-                }
-                else if (datas[0] == "kei" && datas.Count() == Enum.GetNames(typeof(KeikiDataOrder)).Length + 1) {
-                    serialEntity.AirSpeed = datas[1];
-                    serialEntity.Sonar = datas[2];
-                    serialEntity.Cadence = datas[3];
-                    DateTime end = DateTime.Now;
-                    TimeSpan time = end - start;
-                    serialEntity.Time = time.TotalSeconds.ToString();
+                var tempSerial = new SerialEntity();
+                tempSerial = serialEntity.Clone();
+                saveData.Add(tempSerial);
+                BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.mpu);
+                BeginInvoke(new Handler(showText), tempSerial, data, InputEnum.mpu);
+                BeginInvoke(new Handler(checkSteer), tempSerial, data, InputEnum.mpu);
+            }
+            else if (datas[0] == "kei" && datas.Count() == Enum.GetNames(typeof(KeikiDataOrder)).Length + 1) {
+                serialRoutine.CopyASKei(ref serialEntity, datas);
+                DateTime end = DateTime.Now;
+                TimeSpan time = end - start;
+                serialEntity.Time = time.TotalSeconds.ToString();
 
-                    var tempSerial = new SerialEntity();
-                    tempSerial = serialEntity.Clone();
-                    saveData.Add(tempSerial);
-                    BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.keiki);
-                    BeginInvoke(new Handler(showText), tempSerial, data, InputEnum.keiki);
-                    BeginInvoke(new Handler(checkSteer), tempSerial, data, InputEnum.keiki);
-                }
-            });
+                var tempSerial = new SerialEntity();
+                tempSerial = serialEntity.Clone();
+                saveData.Add(tempSerial);
+                BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.keiki);
+                BeginInvoke(new Handler(showText), tempSerial, data, InputEnum.keiki);
+                BeginInvoke(new Handler(checkSteer), tempSerial, data, InputEnum.keiki);
+            }
         }
 
         /// <summary>
@@ -309,12 +286,11 @@ namespace AlbaAnalysis {
         /// <param name="i"></param>
         private async void showChart(SerialEntity datas, string data, InputEnum ie) {
             #region グラフ設定
-            //await Task.Run(() => {
             try {
                 if (InputEnum.keiki == ie) {
+
                     chartSpeed.Series["Speed"].Points.AddXY(datas.Time, double.Parse(datas.AirSpeed));
                     chartCadence.Series["Cadence"].Points.AddXY(datas.Time, double.Parse(datas.Cadence));
-
 
                     chartSpeed.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
                     chartCadence.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
@@ -375,7 +351,7 @@ namespace AlbaAnalysis {
         /// </summary>
         /// <param name="datas">配列化した受信データ</param>
         /// <param name="i"></param>
-        private async void showText(SerialEntity datas, string data, InputEnum ie) {
+        private void showText(SerialEntity datas, string data, InputEnum ie) {
             //await Task.Run(() => {
             #region textboxへの表示
             textBoxAllData.AppendText(data + Environment.NewLine);
@@ -511,31 +487,7 @@ namespace AlbaAnalysis {
                             return;
                     }
                     if (csvdatas.Count() == 25) {
-                        serialEntity.Time = csvdatas[0];
-                        serialEntity.MpuXR = csvdatas[1];
-                        serialEntity.MpuYR = csvdatas[2];
-                        serialEntity.MpuZR = csvdatas[3];
-                        serialEntity.MpuXR_A = csvdatas[4];
-                        serialEntity.MpuYR_A = csvdatas[5];
-                        serialEntity.MpuZR_A = csvdatas[6];
-                        serialEntity.VoltageR = csvdatas[7];
-                        serialEntity.MpuXL = csvdatas[8];
-                        serialEntity.MpuYL = csvdatas[9];
-                        serialEntity.MpuZL = csvdatas[10];
-                        serialEntity.MpuXL_A = csvdatas[11];
-                        serialEntity.MpuYL_A = csvdatas[12];
-                        serialEntity.MpuZL_A = csvdatas[13];
-                        serialEntity.VoltageL = csvdatas[14];
-                        serialEntity.ErebonRInput = csvdatas[15];
-                        serialEntity.DrugR = csvdatas[16];
-                        serialEntity.ErebonLInput = csvdatas[17];
-                        serialEntity.DrugL = csvdatas[18];
-                        serialEntity.MpuRoll = csvdatas[19];
-                        serialEntity.MpuPitch = csvdatas[20];
-                        serialEntity.MpuYaw = csvdatas[21];
-                        serialEntity.AirSpeed = csvdatas[22];
-                        serialEntity.Sonar = csvdatas[23];
-                        serialEntity.Cadence = csvdatas[24];
+                        serialRoutine.CopyASCsv(ref serialEntity, csvdatas);
                         if (lastSerialEntity == null) {
                             lastSerialEntity = serialEntity.Clone();
                             return;
