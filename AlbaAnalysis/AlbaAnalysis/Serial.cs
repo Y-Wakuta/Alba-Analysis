@@ -186,8 +186,7 @@ namespace AlbaAnalysis {
                 TimeSpan time = end - start;
                 serialEntity.Time = time.TotalSeconds.ToString();
 
-                var tempSerial = new SerialEntity();
-                tempSerial = serialEntity.Clone();
+                var tempSerial = serialEntity.Clone();
                 saveData.Add(tempSerial);
 
                 BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.control);
@@ -201,8 +200,7 @@ namespace AlbaAnalysis {
                 TimeSpan time = end - start;
                 serialEntity.Time = time.TotalSeconds.ToString();
 
-                var tempSerial = new SerialEntity();
-                tempSerial = serialEntity.Clone();
+                var tempSerial = serialEntity.Clone();
                 saveData.Add(tempSerial);
                 BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.input);
                 BeginInvoke(new Handler(showText), tempSerial, data, InputEnum.input);
@@ -215,9 +213,7 @@ namespace AlbaAnalysis {
                 TimeSpan time = end - start;
                 serialEntity.Time = time.TotalSeconds.ToString();
 
-
-                var tempSerial = new SerialEntity();
-                tempSerial = serialEntity.Clone();
+                var tempSerial = serialEntity.Clone();
                 saveData.Add(tempSerial);
                 BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.mpu);
                 BeginInvoke(new Handler(showText), tempSerial, data, InputEnum.mpu);
@@ -229,8 +225,7 @@ namespace AlbaAnalysis {
                 TimeSpan time = end - start;
                 serialEntity.Time = time.TotalSeconds.ToString();
 
-                var tempSerial = new SerialEntity();
-                tempSerial = serialEntity.Clone();
+                var tempSerial = serialEntity.Clone();
                 saveData.Add(tempSerial);
                 BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.keiki);
                 BeginInvoke(new Handler(showText), tempSerial, data, InputEnum.keiki);
@@ -530,7 +525,7 @@ namespace AlbaAnalysis {
         private void AddAllPath(string path) {
             comboBoxFiles.Items.Clear();
             List<string> _pathArray = null;
-            _pathArray = Directory.GetFiles(path, "*.csv",SearchOption.AllDirectories).ToList();
+            _pathArray = Directory.GetFiles(path, "*.csv", SearchOption.AllDirectories).ToList();
             var _tempPathArray = new List<string>(_pathArray.ToList());         //foreach内でlistの要素を削除するため値渡しでコピー
             foreach (var p in _tempPathArray) {
                 var file = new System.IO.FileInfo(p);
