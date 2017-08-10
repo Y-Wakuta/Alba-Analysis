@@ -76,11 +76,13 @@
             this.textBoxAllData = new System.Windows.Forms.TextBox();
             this.groupBoxAllData = new System.Windows.Forms.GroupBox();
             this.comboBoxPort = new System.Windows.Forms.ComboBox();
+            this.portNamesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxSerialConfig = new System.Windows.Forms.GroupBox();
             this.buttonStopCsv = new System.Windows.Forms.Button();
             this.buttonOpenCsv = new System.Windows.Forms.Button();
             this.buttonRunCsv = new System.Windows.Forms.Button();
             this.comboBoxFiles = new System.Windows.Forms.ComboBox();
+            this.filePathBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonNext = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonConnect = new System.Windows.Forms.Button();
@@ -106,7 +108,9 @@
             this.buttonLDrug = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxAllData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.portNamesBindingSource)).BeginInit();
             this.groupBoxSerialConfig.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filePathBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bauditemsBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -336,6 +340,7 @@
             // 
             // comboBoxPort
             // 
+            this.comboBoxPort.DataSource = this.portNamesBindingSource;
             this.comboBoxPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPort.FormattingEnabled = true;
             this.comboBoxPort.Location = new System.Drawing.Point(6, 38);
@@ -343,6 +348,10 @@
             this.comboBoxPort.Name = "comboBoxPort";
             this.comboBoxPort.Size = new System.Drawing.Size(348, 29);
             this.comboBoxPort.TabIndex = 2;
+            // 
+            // portNamesBindingSource
+            // 
+            this.portNamesBindingSource.DataSource = typeof(AlbaAnalysis.Entity.portNames);
             // 
             // groupBoxSerialConfig
             // 
@@ -398,6 +407,7 @@
             // 
             // comboBoxFiles
             // 
+            this.comboBoxFiles.DataSource = this.filePathBindingSource;
             this.comboBoxFiles.DisplayMember = "pathName";
             this.comboBoxFiles.FormattingEnabled = true;
             this.comboBoxFiles.Location = new System.Drawing.Point(6, 91);
@@ -406,6 +416,10 @@
             this.comboBoxFiles.TabIndex = 34;
             this.comboBoxFiles.ValueMember = "pathName";
             this.comboBoxFiles.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiles_SelectedIndexChanged);
+            // 
+            // filePathBindingSource
+            // 
+            this.filePathBindingSource.DataSource = typeof(AlbaAnalysis.Entity.filePath);
             // 
             // buttonNext
             // 
@@ -452,7 +466,10 @@
             this.comboBoxBaud.Size = new System.Drawing.Size(356, 29);
             this.comboBoxBaud.TabIndex = 3;
             this.comboBoxBaud.ValueMember = "RATE";
-            this.comboBoxBaud.SelectedIndexChanged += new System.EventHandler(this.comboBoxBaud_SelectedIndexChanged);
+            // 
+            // bauditemsBindingSource
+            // 
+            this.bauditemsBindingSource.DataSource = typeof(AlbaAnalysis.Entity.BaudRateEntity);
             // 
             // tabControl1
             // 
@@ -460,10 +477,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl1.Location = new System.Drawing.Point(0, 512);
+            this.tabControl1.Location = new System.Drawing.Point(0, 482);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(2547, 908);
+            this.tabControl1.Size = new System.Drawing.Size(2550, 908);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -476,7 +493,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(2539, 873);
+            this.tabPage1.Size = new System.Drawing.Size(2542, 873);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Core";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -487,6 +504,7 @@
             chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             chartArea1.AxisX.LabelStyle.Format = "#.#";
             chartArea1.AxisX.ScrollBar.ButtonColor = System.Drawing.Color.Black;
+            chartArea1.AxisX.Title = "Time[s]";
             chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea1.AxisY.IsLabelAutoFit = false;
             chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -521,8 +539,13 @@
             // 
             this.chartSpeed.BackColor = System.Drawing.Color.LightGray;
             chartArea2.AxisX.LabelStyle.Format = "#.#";
+            chartArea2.AxisX.Minimum = 0D;
+            chartArea2.AxisX.Title = "Time[s]";
             chartArea2.AxisY.IsLabelAutoFit = false;
             chartArea2.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY.Maximum = 10D;
+            chartArea2.AxisY.Minimum = 0D;
+            chartArea2.AxisY.Title = "Speed[m/s]";
             chartArea2.Name = "ChartArea1";
             chartArea2.Position.Auto = false;
             chartArea2.Position.Height = 100F;
@@ -556,6 +579,7 @@
             // 
             this.chartMpuRoll.BackColor = System.Drawing.Color.LightGray;
             chartArea3.AxisX.LabelStyle.Format = "#.#";
+            chartArea3.AxisX.Title = "Time[s]";
             chartArea3.AxisY.IsLabelAutoFit = false;
             chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea3.Name = "ChartArea1";
@@ -588,8 +612,10 @@
             // 
             this.chartMpuYaw.BackColor = System.Drawing.Color.LightGray;
             chartArea4.AxisX.LabelStyle.Format = "#.#";
+            chartArea4.AxisX.Minimum = 0D;
             chartArea4.AxisY.IsLabelAutoFit = false;
             chartArea4.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.AxisY.Title = "MpuYaw";
             chartArea4.Name = "ChartArea1";
             chartArea4.Position.Auto = false;
             chartArea4.Position.Height = 100F;
@@ -622,6 +648,8 @@
             chartArea5.AxisX.LabelStyle.Format = "#.#";
             chartArea5.AxisY.IsLabelAutoFit = false;
             chartArea5.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.AxisY.Maximum = 100D;
+            chartArea5.AxisY.Minimum = 0D;
             chartArea5.Name = "ChartArea1";
             chartArea5.Position.Auto = false;
             chartArea5.Position.Height = 100F;
@@ -656,7 +684,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(2539, 873);
+            this.tabPage2.Size = new System.Drawing.Size(2542, 873);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "WingEdge";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -740,7 +768,7 @@
             this.tabPage3.Controls.Add(this.buttonLDrug);
             this.tabPage3.Location = new System.Drawing.Point(4, 31);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(2539, 873);
+            this.tabPage3.Size = new System.Drawing.Size(2542, 873);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Control";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -900,12 +928,13 @@
             this.Text = "シリアルデータ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SerialForm_FormClosing);
-            this.Load += new System.EventHandler(this.Serial_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBoxAllData.ResumeLayout(false);
             this.groupBoxAllData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.portNamesBindingSource)).EndInit();
             this.groupBoxSerialConfig.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.filePathBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bauditemsBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -928,7 +957,6 @@
 
         #endregion
         private System.Windows.Forms.TextBox textBoxMpuPitch;
-        private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.TextBox textBoxBatteryDataL;
         private System.Windows.Forms.TextBox textBoxBatteryDataR;
         private System.Windows.Forms.Label label_mpuData;
@@ -975,6 +1003,9 @@
         private System.Windows.Forms.Button buttonRDrug;
         private System.Windows.Forms.Button buttonLDrug;
         private VerticalProgressBar rollVerticalProgressBar;
+        public System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.BindingSource portNamesBindingSource;
+        private System.Windows.Forms.BindingSource filePathBindingSource;
     }
 }
 

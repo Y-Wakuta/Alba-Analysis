@@ -73,8 +73,7 @@ namespace AlbaAnalysis.Routine {
             }
         }
 
-
-        public void CopyASCsv(ref SerialEntity se, string[] data) {
+        public void CopyASCsv(SerialEntity se, string[] data) {
             se.Time = data[0];
             se.MpuXR = data[1];
             se.MpuYR = data[2];
@@ -102,7 +101,7 @@ namespace AlbaAnalysis.Routine {
             se.Cadence = data[24];
         }
 
-        public void CopyASCon(ref SerialEntity se,string[] data) {
+        public void CopyASCon( SerialEntity se,string[] data) {
             se.MpuXR = data[1];
             se.MpuYR = data[2];
             se.MpuZR = data[3];
@@ -119,20 +118,20 @@ namespace AlbaAnalysis.Routine {
             se.VoltageL = data[14];
         }
 
-        public void  CopyASInp(ref SerialEntity se,string[] data) {
+        public void  CopyASInp( SerialEntity se,string[] data) {
             se.ErebonRInput = data[1];
             se.DrugR = data[2];
             se.ErebonLInput = data[3];
             se.DrugL = data[4];
         }
 
-        public void CopyASMpu(ref SerialEntity se,string[] data) {
+        public void CopyASMpu( SerialEntity se,string[] data) {
             se.MpuRoll = data[1];
             se.MpuPitch = data[2];
             se.MpuYaw = data[3];
         }
 
-        public void CopyASKei(ref SerialEntity se,string[] data) {
+        public void CopyASKei( SerialEntity se,string[] data) {
             se.AirSpeed = data[1];
             se.Sonar = data[2];
             se.Cadence = data[3];

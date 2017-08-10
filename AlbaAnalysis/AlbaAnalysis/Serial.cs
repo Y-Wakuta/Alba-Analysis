@@ -23,20 +23,19 @@ namespace AlbaAnalysis {
 
     public partial class SerialForm : Form {
 
-        DateTime start = DateTime.Now;
         List<SerialEntity> saveData = new List<SerialEntity>();
-        string _resultPath = null;
         SerialRoutine serialRoutine = new SerialRoutine();
-        Stopwatch sw;
         int csvFlag = 0;
-        string path = null;
         CadenceView cadenceView = new CadenceView();
         SerialEntity serialEntity = new SerialEntity();
-        string pathBase = @"../../../Log/";
         SerialEntity lastSerialEntity = null;             //1つ前のserialEntityをcsvでの処理用に保持する
+        AlbaAnalysisDataHandler _ad;
+        DateTime start;
 
         public SerialForm() {
             InitializeComponent();
+            _ad = new AlbaAnalysisDataHandler(bauditemsBindingSource, portNamesBindingSource, filePathBindingSource);
+
             buttonNext.Enabled = false;
 
             buttonClose.Enabled = false;
@@ -45,113 +44,42 @@ namespace AlbaAnalysis {
             buttonLDrug.Enabled = false;
             buttonConnect.Enabled = true;
 
-            rollVerticalProgressBar.Maximum = 100;
-            rollVerticalProgressBar.Minimum = 0;
-
-            pitchVerticalProgressBar.Maximum = 100;
-            pitchVerticalProgressBar.Minimum = 0;
-        }
-
-        /// <summary>
-        /// シリアルポートとボートレートを取得
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Serial_Load(object sender, EventArgs e) {
+            bauditemsBindingSource.PositionChanged += (s, e) => {
+                serialPort1.BaudRate = ((BaudRateEntity)(bauditemsBindingSource.Current)).rate;
+            };
+            portNamesBindingSource.PositionChanged += (s, e) => {
+                serialPort1.PortName = ((portNames)portNamesBindingSource.Current).portName;
+            };
             buttonConnect.Focus();
-
-            string[] Portlist = SerialPort.GetPortNames();
-
-            SerialPort _serialport = new SerialPort();
-
-            comboBoxPort.Items.Clear();
-            comboBoxFiles.Items.Clear();
-
-            foreach (var Port in Portlist)
-                comboBoxPort.Items.Add(Port);
-
-            if (comboBoxPort.Items.Count == 0)
-                comboBoxPort.Items.Add("利用可能なシリアルポートは存在しません。");
-            else if (comboBoxPort.Items.Count > 0) {
-                comboBoxPort.SelectedIndex = 0;
-                try {
-                    serialPort1.PortName = comboBoxPort.SelectedItem.ToString();
-                }
-                catch (Exception exc) {
-                    MessageBox.Show(exc.Message);
-                }
-
-            }
-            AddAllPath(pathBase);
-            #region comboBoxBaudの設定
-            List<bauditems> baudList = new List<bauditems>();
-
-            bauditems baud1 = new bauditems() {
-                NAME = "4800bps",
-                RATE = 4800
-            };
-            baudList.Add(baud1);
-            bauditems baud2 = new bauditems() {
-                NAME = "14400bps",
-                RATE = 14400
-            };
-            baudList.Add(baud2);
-            bauditems baud3 = new bauditems() {
-                NAME = "115200bps",
-                RATE = 115200
-            };
-            baudList.Add(baud3);
-            comboBoxBaud.SelectedText = "NAME";
-            comboBoxBaud.SelectedValue = "RATE";
-            bauditemsBindingSource.DataSource = baudList;
-            comboBoxBaud.SelectedIndex = 2;
-            #endregion
-
 
             ClearTextBox();
             #region グラフ設定
 
-            InitChart(chartSpeed, "Speed[m/s]");
-            chartSpeed.ChartAreas[0].AxisY.Maximum = 10.0;
-            chartSpeed.ChartAreas[0].AxisY.Minimum = 0;
-
             InitChart(chartMpuPitch, "MPitch");
             InitChart(chartCadence, "Cadence[/m]");
-            chartCadence.ChartAreas[0].AxisY.Maximum = 100.0;
-            chartCadence.ChartAreas[0].AxisY.Minimum = 0;
-
             InitChart(chartRBattery, "RBattery[V]");
             InitChart(chartLBattery, "LBattery[V]");
-            InitChart(chartMpuYaw, "MpuYaw");
             InitChart(chartMpuRoll, "MpuRoll");
             InitChart(chartRollInput, "RollInput");
             InitChart(chartPitchInput, "PitchInput");
             InitChart(chartDrugInput, "DrugInput");
-
             #endregion
         }
+
         public void InitChart(Chart chart, string YAxisTitle) {
-            chart.ChartAreas[0].AxisX.Title = "Time[s]";
             chart.ChartAreas[0].AxisY.Title = YAxisTitle;
             chart.ChartAreas[0].AxisX.Minimum = 0;
             chart.ChartAreas[0].AxisX.Interval = 30;
         }
-
-
 
         private void SerialForm_FormClosing(object sender, FormClosingEventArgs e) {
             serialPort1.Dispose();
             serialPort1.Close();
         }
 
-        private void comboBoxBaud_TextChanged(object sender, EventArgs e) {
-            if (comboBoxBaud.SelectedIndex != -1)
-                serialPort1.BaudRate = (int)comboBoxBaud.SelectedValue;
-        }
-
         private async void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e) {
             string data = null;
-            sw = new Stopwatch();
+            var sw = new Stopwatch();
             sw.Start();
             try {
                 data = serialPort1.ReadLine();
@@ -173,7 +101,6 @@ namespace AlbaAnalysis {
                 }
                 catch (Exception) {
                     datas[i] = 0.ToString();
-                    // return;
                 }
             }
 
@@ -181,7 +108,7 @@ namespace AlbaAnalysis {
 
             if (datas[0] == "con" && datas.Count() == Enum.GetNames(typeof(ControlDataOrder)).Length + 2) {
 
-                serialRoutine.CopyASCon(ref serialEntity, datas);
+                serialRoutine.CopyASCon(serialEntity, datas);
                 DateTime end = DateTime.Now;
                 TimeSpan time = end - start;
                 serialEntity.Time = time.TotalSeconds.ToString();
@@ -195,7 +122,7 @@ namespace AlbaAnalysis {
 
             }
             else if (datas[0] == "inp" && datas.Count() == Enum.GetNames(typeof(InputDataOrder)).Length + 1) {
-                serialRoutine.CopyASInp(ref serialEntity, datas);
+                serialRoutine.CopyASInp(serialEntity, datas);
                 DateTime end = DateTime.Now;
                 TimeSpan time = end - start;
                 serialEntity.Time = time.TotalSeconds.ToString();
@@ -208,7 +135,7 @@ namespace AlbaAnalysis {
             }
 
             else if (datas[0] == "mpu" && datas.Count() == Enum.GetNames(typeof(MpuDataOrder)).Length + 1) {
-                serialRoutine.CopyASMpu(ref serialEntity, datas);
+                serialRoutine.CopyASMpu(serialEntity, datas);
                 DateTime end = DateTime.Now;
                 TimeSpan time = end - start;
                 serialEntity.Time = time.TotalSeconds.ToString();
@@ -220,7 +147,7 @@ namespace AlbaAnalysis {
                 BeginInvoke(new Handler(checkSteer), tempSerial, data, InputEnum.mpu);
             }
             else if (datas[0] == "kei" && datas.Count() == Enum.GetNames(typeof(KeikiDataOrder)).Length + 1) {
-                serialRoutine.CopyASKei(ref serialEntity, datas);
+                serialRoutine.CopyASKei(serialEntity, datas);
                 DateTime end = DateTime.Now;
                 TimeSpan time = end - start;
                 serialEntity.Time = time.TotalSeconds.ToString();
@@ -265,7 +192,6 @@ namespace AlbaAnalysis {
             }
         }
 
-
         /// <summary>
         /// 操舵入力表示用のボタンをNextButtonを押したときに色を戻します
         /// </summary>
@@ -283,7 +209,6 @@ namespace AlbaAnalysis {
             #region グラフ設定
             try {
                 if (InputEnum.keiki == ie) {
-
                     chartSpeed.Series["Speed"].Points.AddXY(datas.Time, double.Parse(datas.AirSpeed));
                     chartCadence.Series["Cadence"].Points.AddXY(datas.Time, double.Parse(datas.Cadence));
 
@@ -385,6 +310,7 @@ namespace AlbaAnalysis {
         }
 
         private void buttonConnect_Click_1(object sender, EventArgs e) {
+
             if (serialPort1.IsOpen == false) {
                 try {
                     serialPort1.Open();
@@ -403,17 +329,17 @@ namespace AlbaAnalysis {
                 buttonRunCsv.Enabled = false;
                 buttonOpenCsv.Enabled = false;
                 buttonClose.Focus();
+                start = DateTime.Now;
+
             }
         }
 
         private void buttonClose_Click_1(object sender, EventArgs e) {
             var commentForm = new AdditionalFileNameDialog();
             commentForm.ShowDialog();
-            var pathItem = new filePath();
-            path = pathBase + "TF" + DateTime.Now.ToString("MMdd_hhmm") + commentForm.GetComment() + ".csv";
             SaveAllCharts(commentForm.GetComment());
-            serialRoutine.writeDatas(saveData, path, true);
-            AddAllPath(pathBase);
+            serialRoutine.writeDatas(saveData, _ad.pathBase + "TF" + DateTime.Now.ToString("MMdd_hhmm") + commentForm.GetComment() + ".csv", true);
+            _ad.resetFileList();
             serialPort1.DiscardInBuffer();
             serialPort1.Close();
             buttonConnect.Enabled = true;
@@ -436,16 +362,11 @@ namespace AlbaAnalysis {
             saveData.Clear();
         }
 
-        private void comboBoxBaud_SelectedIndexChanged(object sender, EventArgs e) {
-            if (comboBoxBaud.SelectedIndex != -1)
-                serialPort1.BaudRate = (int)comboBoxBaud.SelectedValue;
-        }
-
         private async void buttonRunCsv_Click(object sender, EventArgs e) {
             clearForm();
             buttonStopCsv.Enabled = true;
             buttonStopCsv.Focus();
-            _resultPath = comboBoxFiles.Text;
+            var _resultPath = (filePathBindingSource.Current).ToString();
             csvFlag = 0;
             StreamReader fw;
             await Task.Run(() => {
@@ -482,7 +403,7 @@ namespace AlbaAnalysis {
                             return;
                     }
                     if (csvdatas.Count() == 25) {
-                        serialRoutine.CopyASCsv(ref serialEntity, csvdatas);
+                        serialRoutine.CopyASCsv(serialEntity, csvdatas);
                         if (lastSerialEntity == null) {
                             lastSerialEntity = serialEntity.Clone();
                             return;
@@ -494,7 +415,6 @@ namespace AlbaAnalysis {
                         BeginInvoke(new Handler(showText), serialEntity, csvLine, targetEnum);
                         BeginInvoke(new Handler(checkSteer), serialEntity, csvLine, targetEnum);
                     }
-
                     //csv読み込みの速度向上
                     System.Threading.Thread.Sleep(50);
                 } while (fw.EndOfStream != true);
@@ -516,24 +436,8 @@ namespace AlbaAnalysis {
                 MessageBox.Show("ファイルの再生を終了してください。");
                 return;
             }
-            _resultPath = comboBoxFiles.Text;
-            Process p = Process.Start("excel", _resultPath);
+            var p = Process.Start("excel", ((filePath)(filePathBindingSource.Current)).pathName);
             p.WaitForExit();
-
-        }
-
-        private void AddAllPath(string path) {
-            comboBoxFiles.Items.Clear();
-            List<string> _pathArray = null;
-            _pathArray = Directory.GetFiles(path, "*.csv", SearchOption.AllDirectories).ToList();
-            var _tempPathArray = new List<string>(_pathArray.ToList());         //foreach内でlistの要素を削除するため値渡しでコピー
-            foreach (var p in _tempPathArray) {
-                var file = new System.IO.FileInfo(p);
-                if (file.Length == 0)
-                    _pathArray.Remove(p);
-            }
-            comboBoxFiles.Items.AddRange(_pathArray.ToArray());
-            //  comboBoxFiles.SelectedIndex = 0;
         }
 
         private void comboBoxFiles_SelectedIndexChanged(object sender, EventArgs e) {

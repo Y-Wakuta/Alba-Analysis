@@ -57,12 +57,14 @@
     <Compile Include="AdditionalFileNameDialog.Designer.cs">
       <DependentUpon>AdditionalFileNameDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="AlbaAnalysisDataHandler.cs" />
     <Compile Include="Detail.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Detail.Designer.cs">
       <DependentUpon>Detail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entity\BaudRateEntity.cs" />
     <Compile Include="Entity\SerialEntity.cs" />
     <Compile Include="Routine\SerialRoutine.cs" />
     <Compile Include="Serial.cs">
@@ -97,9 +99,11 @@
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.BatteryDataL.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.BatteryDataR.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.bauditems.datasource" />
+    <None Include="Properties\DataSources\AlbaAnalysis.Entity.BaudRateEntity.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.Cadence.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.filePath.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.MpuData.datasource" />
+    <None Include="Properties\DataSources\AlbaAnalysis.Entity.portNames.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.Time.datasource" />
     <None Include="Properties\DataSources\Serial.bauditems.datasource" />
     <None Include="Properties\DataSources\Serial.portNames.datasource" />
