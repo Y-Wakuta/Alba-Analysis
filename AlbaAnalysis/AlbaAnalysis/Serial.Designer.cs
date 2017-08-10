@@ -503,11 +503,13 @@
             this.chartMpuPitch.BackColor = System.Drawing.Color.LightGray;
             chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             chartArea1.AxisX.LabelStyle.Format = "#.#";
+            chartArea1.AxisX.Minimum = 0D;
             chartArea1.AxisX.ScrollBar.ButtonColor = System.Drawing.Color.Black;
-            chartArea1.AxisX.Title = "Time[s]";
             chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea1.AxisY.IsLabelAutoFit = false;
             chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.Minimum = 0D;
+            chartArea1.AxisY.Title = "MPitch";
             chartArea1.AxisY.TitleFont = new System.Drawing.Font("Meiryo UI", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             chartArea1.Name = "ChartArea1";
             chartArea1.Position.Auto = false;
@@ -540,7 +542,6 @@
             this.chartSpeed.BackColor = System.Drawing.Color.LightGray;
             chartArea2.AxisX.LabelStyle.Format = "#.#";
             chartArea2.AxisX.Minimum = 0D;
-            chartArea2.AxisX.Title = "Time[s]";
             chartArea2.AxisY.IsLabelAutoFit = false;
             chartArea2.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea2.AxisY.Maximum = 10D;
@@ -579,9 +580,10 @@
             // 
             this.chartMpuRoll.BackColor = System.Drawing.Color.LightGray;
             chartArea3.AxisX.LabelStyle.Format = "#.#";
-            chartArea3.AxisX.Title = "Time[s]";
+            chartArea3.AxisX.Minimum = 0D;
             chartArea3.AxisY.IsLabelAutoFit = false;
             chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisY.Title = "MpuRoll";
             chartArea3.Name = "ChartArea1";
             chartArea3.Position.Auto = false;
             chartArea3.Position.Height = 100F;
@@ -646,10 +648,12 @@
             // 
             this.chartCadence.BackColor = System.Drawing.Color.LightGray;
             chartArea5.AxisX.LabelStyle.Format = "#.#";
+            chartArea5.AxisX.Minimum = 0D;
             chartArea5.AxisY.IsLabelAutoFit = false;
             chartArea5.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea5.AxisY.Maximum = 100D;
             chartArea5.AxisY.Minimum = 0D;
+            chartArea5.AxisY.Title = "Cadence[/m]";
             chartArea5.Name = "ChartArea1";
             chartArea5.Position.Auto = false;
             chartArea5.Position.Height = 100F;
@@ -693,8 +697,10 @@
             // 
             this.chartLBattery.BackColor = System.Drawing.Color.LightGray;
             chartArea6.AxisX.LabelStyle.Format = "#.#";
+            chartArea6.AxisX.Minimum = 0D;
             chartArea6.AxisY.IsLabelAutoFit = false;
             chartArea6.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.AxisY.Title = "LBattery[V]";
             chartArea6.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea6.Name = "ChartArea1";
             chartArea6.Position.Auto = false;
@@ -727,8 +733,10 @@
             // 
             this.chartRBattery.BackColor = System.Drawing.Color.LightGray;
             chartArea7.AxisX.LabelStyle.Format = "#.#";
+            chartArea7.AxisX.Minimum = 0D;
             chartArea7.AxisY.IsLabelAutoFit = false;
             chartArea7.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea7.AxisY.Title = "RBattery[V";
             chartArea7.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea7.Name = "ChartArea1";
             chartArea7.Position.Auto = false;
@@ -784,8 +792,10 @@
             // 
             this.chartRollInput.BackColor = System.Drawing.Color.LightGray;
             chartArea8.AxisX.LabelStyle.Format = "#.#";
+            chartArea8.AxisX.Minimum = 0D;
             chartArea8.AxisY.IsLabelAutoFit = false;
             chartArea8.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea8.AxisY.Title = "RollInput";
             chartArea8.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea8.Name = "ChartArea1";
             chartArea8.Position.Auto = false;
@@ -818,8 +828,10 @@
             // 
             this.chartPitchInput.BackColor = System.Drawing.Color.LightGray;
             chartArea9.AxisX.LabelStyle.Format = "#.#";
+            chartArea9.AxisX.Minimum = 0D;
             chartArea9.AxisY.IsLabelAutoFit = false;
             chartArea9.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea9.AxisY.Title = "PitchInput";
             chartArea9.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea9.Name = "ChartArea1";
             chartArea9.Position.Auto = false;
@@ -852,8 +864,10 @@
             // 
             this.chartDrugInput.BackColor = System.Drawing.Color.LightGray;
             chartArea10.AxisX.LabelStyle.Format = "#.#";
+            chartArea10.AxisX.Minimum = 0D;
             chartArea10.AxisY.IsLabelAutoFit = false;
             chartArea10.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea10.AxisY.Title = "DrugInput";
             chartArea10.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea10.Name = "ChartArea1";
             chartArea10.Position.Auto = false;
