@@ -7,13 +7,14 @@ C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\obj\Relea
 C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\obj\Release\AlbaAnalysis.exe
 C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\obj\Release\AlbaAnalysis.pdb
 C:\Users\rocko\Documents\Visual Studio 2015\Projects\Alba\AlbaAnalysis\obj\Release\AlbaAnalysis.csprojResolveAssemblyReference.cache
-C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.csprojResolveAssemblyReference.cache
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Release\AlbaAnalysis.exe.config
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Release\AlbaAnalysis.exe
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Release\AlbaAnalysis.pdb
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.AdditionalFileNameDialog.resources
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.Detail.resources
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.Properties.Resources.resources
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.SerialForm.resources
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.csproj.GenerateResource.Cache
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.exe
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.pdb
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.csprojResolveAssemblyReference.cache

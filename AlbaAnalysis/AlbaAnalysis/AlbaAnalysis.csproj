@@ -51,6 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdditionalFileNameDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdditionalFileNameDialog.Designer.cs">
+      <DependentUpon>AdditionalFileNameDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Detail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,9 @@
     <Compile Include="VerticalProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="AdditionalFileNameDialog.resx">
+      <DependentUpon>AdditionalFileNameDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Detail.resx">
       <DependentUpon>Detail.cs</DependentUpon>
     </EmbeddedResource>

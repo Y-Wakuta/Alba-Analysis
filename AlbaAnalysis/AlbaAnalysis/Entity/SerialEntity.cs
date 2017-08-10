@@ -39,8 +39,6 @@ namespace AlbaAnalysis.Entity {
         public string Time = "0";
     }
 
-
-
     /// <summary>
     /// マクロを定義
     /// </summary>
@@ -109,5 +107,12 @@ namespace AlbaAnalysis.Entity {
     public class CadenceView {
         public string cadence { get; set; }
         public string time { get; set; }
+    }
+
+    public enum InputEnum {
+        control = 0,
+        input = 1,
+        mpu = 2,
+        keiki = 3
     }
 }

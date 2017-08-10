@@ -72,5 +72,110 @@ namespace AlbaAnalysis.Routine {
                 System.Media.SystemSounds.Beep.Play();
             }
         }
+
+
+        public void CopyASCsv(ref SerialEntity se, string[] data) {
+            se.Time = data[0];
+            se.MpuXR = data[1];
+            se.MpuYR = data[2];
+            se.MpuZR = data[3];
+            se.MpuXR_A = data[4];
+            se.MpuYR_A = data[5];
+            se.MpuZR_A = data[6];
+            se.VoltageR = data[7];
+            se.MpuXL = data[8];
+            se.MpuYL = data[9];
+            se.MpuZL = data[10];
+            se.MpuXL_A = data[11];
+            se.MpuYL_A = data[12];
+            se.MpuZL_A = data[13];
+            se.VoltageL = data[14];
+            se.ErebonRInput = data[15];
+            se.DrugR = data[16];
+            se.ErebonLInput = data[17];
+            se.DrugL = data[18];
+            se.MpuRoll = data[19];
+            se.MpuPitch = data[20];
+            se.MpuYaw = data[21];
+            se.AirSpeed = data[22];
+            se.Sonar = data[23];
+            se.Cadence = data[24];
+        }
+
+        public void CopyASCon(ref SerialEntity se,string[] data) {
+            se.MpuXR = data[1];
+            se.MpuYR = data[2];
+            se.MpuZR = data[3];
+            se.MpuXR_A = data[4];
+            se.MpuYR_A = data[5];
+            se.MpuZR_A = data[6];
+            se.VoltageR = data[7];
+            se.MpuXL = data[8];
+            se.MpuYL = data[9];
+            se.MpuZL = data[10];
+            se.MpuXL_A = data[11];
+            se.MpuYL_A = data[12];
+            se.MpuZL_A = data[13];
+            se.VoltageL = data[14];
+        }
+
+        public void  CopyASInp(ref SerialEntity se,string[] data) {
+            se.ErebonRInput = data[1];
+            se.DrugR = data[2];
+            se.ErebonLInput = data[3];
+            se.DrugL = data[4];
+        }
+
+        public void CopyASMpu(ref SerialEntity se,string[] data) {
+            se.MpuRoll = data[1];
+            se.MpuPitch = data[2];
+            se.MpuYaw = data[3];
+        }
+
+        public void CopyASKei(ref SerialEntity se,string[] data) {
+            se.AirSpeed = data[1];
+            se.Sonar = data[2];
+            se.Cadence = data[3];
+        }
+
+        #region 同じentityか判定する
+        public bool IsSameControlEntity(SerialEntity se, SerialEntity lastSe) {
+            if (se.VoltageL == lastSe.VoltageL && se.VoltageR == lastSe.VoltageR)
+                return true;
+            return false;
+        }
+
+        public bool IsSameKeikiEntity(SerialEntity se, SerialEntity lastSe) {
+            if (se.AirSpeed == lastSe.AirSpeed && se.Cadence == lastSe.Cadence)
+                return true;
+            return false;
+        }
+
+        public bool IsSameMpuEntity(SerialEntity se, SerialEntity lastSe) {
+            if (se.MpuPitch == lastSe.MpuPitch && se.MpuYaw == lastSe.MpuYaw && se.MpuRoll == lastSe.MpuRoll)
+                return true;
+            return false;
+        }
+
+        public bool IsSameInputEntity(SerialEntity se, SerialEntity lastSe) {
+            if (se.ErebonLInput == lastSe.ErebonLInput && se.ErebonRInput == lastSe.ErebonRInput && se.DrugL == lastSe.DrugL && se.DrugR == lastSe.DrugR)
+                return true;
+            return false;
+        }
+
+        public InputEnum GetTargetEntity(SerialEntity se, SerialEntity lastSe) {
+            if (IsSameControlEntity(se, lastSe) && IsSameKeikiEntity(se, lastSe) && IsSameMpuEntity(se, lastSe))
+                return InputEnum.input;
+            else if (IsSameControlEntity(se, lastSe) && IsSameKeikiEntity(se, lastSe) && IsSameInputEntity(se, lastSe))
+                return InputEnum.mpu;
+            else if (IsSameControlEntity(se, lastSe) && IsSameMpuEntity(se, lastSe) && IsSameInputEntity(se, lastSe))
+                return InputEnum.keiki;
+            else if (IsSameKeikiEntity(se, lastSe) && IsSameMpuEntity(se, lastSe) && IsSameInputEntity(se, lastSe))
+                return InputEnum.control;
+            else
+                return InputEnum.keiki;     //ここはnullにするべきな気もするがなんとなくこうした。
+        }
+
+        #endregion
     }
 }
