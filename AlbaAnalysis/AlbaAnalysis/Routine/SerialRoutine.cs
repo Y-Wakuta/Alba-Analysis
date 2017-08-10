@@ -59,19 +59,6 @@ namespace AlbaAnalysis.Routine {
             }
             return resultDatas;
         }
-        /// <summary>
-        /// batteryの電圧が低下したときにブザーを鳴らします
-        /// </summary>
-        /// <param name="datas"></param>
-        /// <returns></returns>
-        public void checkBattery(string[] datas) {
-            if (double.Parse(datas[6]) < Constants.batteryVoltageLimit) {
-                System.Media.SystemSounds.Beep.Play();
-            }
-            else if (double.Parse(datas[7]) < Constants.batteryVoltageLimit) {
-                System.Media.SystemSounds.Beep.Play();
-            }
-        }
 
         public void CopyASCsv(SerialEntity se, string[] data) {
             se.Time = data[0];
