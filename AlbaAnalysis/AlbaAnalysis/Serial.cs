@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,8 +16,6 @@ using System.Diagnostics;
 namespace AlbaAnalysis {
 
     delegate void Handler(SerialEntity strs, string str, InputEnum ie);
-    delegate void voidMethod();
-
 
     public partial class SerialForm : Form {
 
@@ -55,21 +51,7 @@ namespace AlbaAnalysis {
             ClearTextBox();
             #region グラフ設定
 
-            InitChart(chartMpuPitch, "MPitch");
-            InitChart(chartCadence, "Cadence[/m]");
-            InitChart(chartRBattery, "RBattery[V]");
-            InitChart(chartLBattery, "LBattery[V]");
-            InitChart(chartMpuRoll, "MpuRoll");
-            InitChart(chartRollInput, "RollInput");
-            InitChart(chartPitchInput, "PitchInput");
-            InitChart(chartDrugInput, "DrugInput");
             #endregion
-        }
-
-        public void InitChart(Chart chart, string YAxisTitle) {
-            chart.ChartAreas[0].AxisY.Title = YAxisTitle;
-            chart.ChartAreas[0].AxisX.Minimum = 0;
-            chart.ChartAreas[0].AxisX.Interval = 30;
         }
 
         private void SerialForm_FormClosing(object sender, FormClosingEventArgs e) {
@@ -398,10 +380,8 @@ namespace AlbaAnalysis {
                         // MessageBox.Show("ファイルが空です。");
                         continue;
                     }
-                    for (int i = 0; i < csvdatas.Count() - 1; i++) {
-                        if (string.IsNullOrEmpty(csvdatas[i]))
-                            return;
-                    }
+                    if (csvdatas.Any(d => string.IsNullOrEmpty(d)))
+                        return;
                     if (csvdatas.Count() == 25) {
                         serialRoutine.CopyASCsv(serialEntity, csvdatas);
                         if (lastSerialEntity == null) {
