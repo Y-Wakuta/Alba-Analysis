@@ -20,25 +20,19 @@ namespace AlbaAnalysis {
     public partial class SerialForm : Form {
 
         List<SerialEntity> saveData = new List<SerialEntity>();
-        SerialRoutine serialRoutine = new SerialRoutine();
         int csvFlag = 0;
         CadenceView cadenceView = new CadenceView();
         SerialEntity serialEntity = new SerialEntity();
-        SerialEntity lastSerialEntity = null;             //1つ前のserialEntityをcsvでの処理用に保持する
+        SerialEntity lastSerialEntity = null;
         AlbaAnalysisDataHandler _ad;
         DateTime start;
 
         public SerialForm() {
             InitializeComponent();
             _ad = new AlbaAnalysisDataHandler(bauditemsBindingSource, portNamesBindingSource, filePathBindingSource);
+            initializeButtonEnable();
 
-            buttonNext.Enabled = false;
-
-            buttonClose.Enabled = false;
-            buttonStopCsv.Enabled = false;
-            buttonRDrug.Enabled = false;
-            buttonLDrug.Enabled = false;
-            buttonConnect.Enabled = true;
+            buttonConnect.Focus();
 
             bauditemsBindingSource.PositionChanged += (s, e) => {
                 serialPort1.BaudRate = ((BaudRateEntity)(bauditemsBindingSource.Current)).rate;
@@ -46,12 +40,7 @@ namespace AlbaAnalysis {
             portNamesBindingSource.PositionChanged += (s, e) => {
                 serialPort1.PortName = ((portNames)portNamesBindingSource.Current).portName;
             };
-            buttonConnect.Focus();
-
             ClearTextBox();
-            #region グラフ設定
-
-            #endregion
         }
 
         private void SerialForm_FormClosing(object sender, FormClosingEventArgs e) {
@@ -72,9 +61,7 @@ namespace AlbaAnalysis {
             sw.Stop();
             if (sw.ElapsedMilliseconds > 5000)
                 serialPort1.DiscardInBuffer();
-
             var datas = data.Split(',');
-
             for (int i = 1; i < datas.Count() - 1; i++) {
                 if (string.IsNullOrEmpty(datas[i]))
                     return;
@@ -289,31 +276,22 @@ namespace AlbaAnalysis {
                 serialPort1.RtsEnable = true;
             }
             if (serialPort1.IsOpen == true) {
-                buttonConnect.Enabled = false;
-                buttonClose.Enabled = true;
-                buttonNext.Enabled = false;
-                buttonRunCsv.Enabled = false;
-                buttonOpenCsv.Enabled = false;
+                connectButtonEnable();
                 buttonClose.Focus();
                 start = DateTime.Now;
-
             }
         }
 
         private void buttonClose_Click_1(object sender, EventArgs e) {
             var commentForm = new AdditionalFileNameDialog();
+            serialPort1.DataReceived -= serialPort1_DataReceived;
             commentForm.ShowDialog();
             SaveAllCharts(commentForm.GetComment());
-            serialRoutine.writeDatas(saveData, _ad.pathBase + "TF" + DateTime.Now.ToString("MMdd_hhmm") + commentForm.GetComment() + ".csv", true);
+            SerialRoutine.writeDatas(saveData, _ad.pathBase + "TF" + DateTime.Now.ToString("MMdd_hhmm") + commentForm.GetComment() + ".csv", true);
             _ad.resetFileList();
             serialPort1.DiscardInBuffer();
             serialPort1.Close();
-            buttonConnect.Enabled = true;
-            buttonNext.Enabled = true;
-            buttonClose.Enabled = false;
-            buttonNext.Enabled = true;
-            buttonRunCsv.Enabled = true;
-            buttonOpenCsv.Enabled = true;
+            closeButtonEnable();
         }
 
         private void buttonNext_Click_1(object sender, EventArgs e) {
@@ -430,6 +408,32 @@ namespace AlbaAnalysis {
             chartRollInput.SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + chartRollInput.Name + ".jpeg", ChartImageFormat.Jpeg);
             chartPitchInput.SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + chartPitchInput.Name + ".jpeg", ChartImageFormat.Jpeg);
             chartDrugInput.SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + chartDrugInput.Name + ".jpeg", ChartImageFormat.Jpeg);
+        }
+
+        private void initializeButtonEnable() {
+            buttonNext.Enabled = false;
+            buttonClose.Enabled = false;
+            buttonStopCsv.Enabled = false;
+            buttonRDrug.Enabled = false;
+            buttonLDrug.Enabled = false;
+            buttonConnect.Enabled = true;
+        }
+
+        private void connectButtonEnable() {
+            buttonConnect.Enabled = false;
+            buttonClose.Enabled = true;
+            buttonNext.Enabled = false;
+            buttonRunCsv.Enabled = false;
+            buttonOpenCsv.Enabled = false;
+        }
+
+        private void closeButtonEnable() {
+            buttonConnect.Enabled = true;
+            buttonNext.Enabled = true;
+            buttonClose.Enabled = false;
+            buttonNext.Enabled = true;
+            buttonRunCsv.Enabled = true;
+            buttonOpenCsv.Enabled = true;
         }
     }
 }
