@@ -19,7 +19,7 @@ namespace AlbaAnalysis.Routine {
         /// </summary>
         /// <param name="se">配列化していない受信データ</param>
         /// <param name="path"></param>
-        public void writeDatas(List<SerialEntity> se, string path, bool append) {
+        public static void writeDatas(List<SerialEntity> se, string path, bool append) {
             var sw = new StreamWriter(path, append);
             foreach (var d in se) {
                 sw.Write(d.Time + "," + d.MpuXR + "," + d.MpuYR + "," + d.MpuZR + "," + d.MpuXR_A + "," + d.MpuYR_A + "," + d.MpuZR_A + "," + d.VoltageR + "," + d.MpuXL + "," + d.MpuYL + "," + d.MpuZL + "," + d.MpuXL_A + "," + d.MpuYL_A + "," + d.MpuZL_A
@@ -60,7 +60,7 @@ namespace AlbaAnalysis.Routine {
             return resultDatas;
         }
 
-        public void CopyASCsv(SerialEntity se, string[] data) {
+        public static void CopyASCsv(SerialEntity se, string[] data) {
             se.Time = data[0];
             se.MpuXR = data[1];
             se.MpuYR = data[2];
@@ -88,7 +88,7 @@ namespace AlbaAnalysis.Routine {
             se.Cadence = data[24];
         }
 
-        public void CopyASCon( SerialEntity se,string[] data) {
+        public static void CopyASCon( SerialEntity se,string[] data) {
             se.MpuXR = data[1];
             se.MpuYR = data[2];
             se.MpuZR = data[3];
@@ -105,51 +105,51 @@ namespace AlbaAnalysis.Routine {
             se.VoltageL = data[14];
         }
 
-        public void  CopyASInp( SerialEntity se,string[] data) {
+        public static void  CopyASInp( SerialEntity se,string[] data) {
             se.ErebonRInput = data[1];
             se.DrugR = data[2];
             se.ErebonLInput = data[3];
             se.DrugL = data[4];
         }
 
-        public void CopyASMpu( SerialEntity se,string[] data) {
+        public static void CopyASMpu( SerialEntity se,string[] data) {
             se.MpuRoll = data[1];
             se.MpuPitch = data[2];
             se.MpuYaw = data[3];
         }
 
-        public void CopyASKei( SerialEntity se,string[] data) {
+        public static void CopyASKei( SerialEntity se,string[] data) {
             se.AirSpeed = data[1];
             se.Sonar = data[2];
             se.Cadence = data[3];
         }
 
         #region 同じentityか判定する
-        public bool IsSameControlEntity(SerialEntity se, SerialEntity lastSe) {
+        public static bool IsSameControlEntity(SerialEntity se, SerialEntity lastSe) {
             if (se.VoltageL == lastSe.VoltageL && se.VoltageR == lastSe.VoltageR)
                 return true;
             return false;
         }
 
-        public bool IsSameKeikiEntity(SerialEntity se, SerialEntity lastSe) {
+        public static bool IsSameKeikiEntity(SerialEntity se, SerialEntity lastSe) {
             if (se.AirSpeed == lastSe.AirSpeed && se.Cadence == lastSe.Cadence)
                 return true;
             return false;
         }
 
-        public bool IsSameMpuEntity(SerialEntity se, SerialEntity lastSe) {
+        public static bool IsSameMpuEntity(SerialEntity se, SerialEntity lastSe) {
             if (se.MpuPitch == lastSe.MpuPitch && se.MpuYaw == lastSe.MpuYaw && se.MpuRoll == lastSe.MpuRoll)
                 return true;
             return false;
         }
 
-        public bool IsSameInputEntity(SerialEntity se, SerialEntity lastSe) {
+        public static bool IsSameInputEntity(SerialEntity se, SerialEntity lastSe) {
             if (se.ErebonLInput == lastSe.ErebonLInput && se.ErebonRInput == lastSe.ErebonRInput && se.DrugL == lastSe.DrugL && se.DrugR == lastSe.DrugR)
                 return true;
             return false;
         }
 
-        public InputEnum GetTargetEntity(SerialEntity se, SerialEntity lastSe) {
+        public static InputEnum GetTargetEntity(SerialEntity se, SerialEntity lastSe) {
             if (IsSameControlEntity(se, lastSe) && IsSameKeikiEntity(se, lastSe) && IsSameMpuEntity(se, lastSe))
                 return InputEnum.input;
             else if (IsSameControlEntity(se, lastSe) && IsSameKeikiEntity(se, lastSe) && IsSameInputEntity(se, lastSe))

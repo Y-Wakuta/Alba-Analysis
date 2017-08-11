@@ -85,26 +85,21 @@ namespace AlbaAnalysis {
                     datas[i] = 0.ToString();
                 }
             }
-
-            var temp = Enum.GetNames(typeof(ControlDataOrder)).Length;
-
             if (datas[0] == "con" && datas.Count() == Enum.GetNames(typeof(ControlDataOrder)).Length + 2) {
 
-                serialRoutine.CopyASCon(serialEntity, datas);
+                SerialRoutine.CopyASCon(serialEntity, datas);
                 DateTime end = DateTime.Now;
                 TimeSpan time = end - start;
                 serialEntity.Time = time.TotalSeconds.ToString();
 
                 var tempSerial = serialEntity.Clone();
                 saveData.Add(tempSerial);
-
                 BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.control);
                 BeginInvoke(new Handler(showText), tempSerial, data, InputEnum.control);
                 BeginInvoke(new Handler(checkSteer), tempSerial, data, InputEnum.control);
-
             }
             else if (datas[0] == "inp" && datas.Count() == Enum.GetNames(typeof(InputDataOrder)).Length + 1) {
-                serialRoutine.CopyASInp(serialEntity, datas);
+                SerialRoutine.CopyASInp(serialEntity, datas);
                 DateTime end = DateTime.Now;
                 TimeSpan time = end - start;
                 serialEntity.Time = time.TotalSeconds.ToString();
@@ -117,7 +112,7 @@ namespace AlbaAnalysis {
             }
 
             else if (datas[0] == "mpu" && datas.Count() == Enum.GetNames(typeof(MpuDataOrder)).Length + 1) {
-                serialRoutine.CopyASMpu(serialEntity, datas);
+                SerialRoutine.CopyASMpu(serialEntity, datas);
                 DateTime end = DateTime.Now;
                 TimeSpan time = end - start;
                 serialEntity.Time = time.TotalSeconds.ToString();
@@ -129,7 +124,7 @@ namespace AlbaAnalysis {
                 BeginInvoke(new Handler(checkSteer), tempSerial, data, InputEnum.mpu);
             }
             else if (datas[0] == "kei" && datas.Count() == Enum.GetNames(typeof(KeikiDataOrder)).Length + 1) {
-                serialRoutine.CopyASKei(serialEntity, datas);
+                SerialRoutine.CopyASKei(serialEntity, datas);
                 DateTime end = DateTime.Now;
                 TimeSpan time = end - start;
                 serialEntity.Time = time.TotalSeconds.ToString();
@@ -149,28 +144,17 @@ namespace AlbaAnalysis {
         /// <param name="i"></param>
         private async void checkSteer(SerialEntity datas, string data, InputEnum ie) {
             if (InputEnum.input == ie) {
-                if (datas.DrugR == 1.ToString())
-                    buttonRDrug.BackColor = Color.LightCoral;
-                else buttonRDrug.BackColor = Color.LightGray;
-
-                if (datas.DrugL == 1.ToString())
-                    buttonLDrug.BackColor = Color.LightCoral;
-                else
-                    buttonLDrug.BackColor = Color.LightGray;
-
+                buttonRDrug.BackColor = datas.DrugR == 1.ToString() ? Color.LightCoral : buttonRDrug.BackColor = Color.LightGray;
+                buttonLDrug.BackColor = datas.DrugL == 1.ToString() ? Color.LightCoral : buttonLDrug.BackColor = Color.LightGray;
                 try {
                     var RInput = double.Parse(datas.ErebonRInput) * 100.0 + 50.0;
                     rollVerticalProgressBar.Value = (int)RInput + 1;
                     rollVerticalProgressBar.Value = (int)RInput;          //progressBarは値が下がる時はすぐに変位するので、それを利用して表示
 
                     var LInput = double.Parse(datas.ErebonLInput) * 100.0 + 50.0;
-
                     pitchVerticalProgressBar.Value = (int)LInput + 1;
                     pitchVerticalProgressBar.Value = (int)LInput;
-                }
-                catch {
-                    return;
-                }
+                }catch(Exception e) { }
             }
         }
 
@@ -377,18 +361,17 @@ namespace AlbaAnalysis {
                         csvdatas = csvLine.Split(',');
                     }
                     catch (Exception) {
-                        // MessageBox.Show("ファイルが空です。");
                         continue;
                     }
                     if (csvdatas.Any(d => string.IsNullOrEmpty(d)))
                         return;
                     if (csvdatas.Count() == 25) {
-                        serialRoutine.CopyASCsv(serialEntity, csvdatas);
+                        SerialRoutine.CopyASCsv(serialEntity, csvdatas);
                         if (lastSerialEntity == null) {
                             lastSerialEntity = serialEntity.Clone();
                             return;
                         }
-                        var targetEnum = serialRoutine.GetTargetEntity(serialEntity, lastSerialEntity);
+                        var targetEnum = SerialRoutine.GetTargetEntity(serialEntity, lastSerialEntity);
                         lastSerialEntity = serialEntity.Clone();
 
                         BeginInvoke(new Handler(showChart), serialEntity, csvLine, targetEnum);
@@ -432,7 +415,7 @@ namespace AlbaAnalysis {
         private void SaveAllCharts(string comment) {
             var nowTime = DateTime.Now.ToString("MMdd_hhmm");
             try {
-                var dir = System.IO.Directory.CreateDirectory(@"../../../Log/chart/" + nowTime + comment);
+                System.IO.Directory.CreateDirectory(@"../../../Log/chart/" + nowTime + comment);
             }
             catch (IOException io) {
                 MessageBox.Show(io.Message);
