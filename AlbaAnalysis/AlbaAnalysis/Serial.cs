@@ -121,20 +121,13 @@ namespace AlbaAnalysis {
         /// <param name="data">配列化した受信データ</param>
         /// <param name="i"></param>
         private async void checkSteer(SerialEntity datas, string data, InputEnum ie) {
-            if (InputEnum.input == ie) {
-                buttonRDrug.BackColor = datas.DrugR == 1.ToString() ? Color.LightCoral : buttonRDrug.BackColor = Color.LightGray;
-                buttonLDrug.BackColor = datas.DrugL == 1.ToString() ? Color.LightCoral : buttonLDrug.BackColor = Color.LightGray;
-                try {
-                    var RInput = double.Parse(datas.ErebonRInput) * 100.0 + 50.0;
-                    rollVerticalProgressBar.Value = (int)RInput + 1;
-                    rollVerticalProgressBar.Value = (int)RInput;          //progressBarは値が下がる時はすぐに変位するので、それを利用して表示
+            if (InputEnum.input != ie)
+                return;
 
-                    var LInput = double.Parse(datas.ErebonLInput) * 100.0 + 50.0;
-                    pitchVerticalProgressBar.Value = (int)LInput + 1;
-                    pitchVerticalProgressBar.Value = (int)LInput;
-                }
-                catch (Exception e) { }
-            }
+            buttonRDrug.BackColor = datas.DrugR == 1.ToString() ? Color.LightCoral : buttonRDrug.BackColor = Color.LightGray;
+            buttonLDrug.BackColor = datas.DrugL == 1.ToString() ? Color.LightCoral : buttonLDrug.BackColor = Color.LightGray;
+            rollVerticalProgressBar.SetValue(datas.ErebonRInput);
+            pitchVerticalProgressBar.SetValue(datas.ErebonLInput);
         }
 
         /// <summary>
