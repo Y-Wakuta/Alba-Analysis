@@ -12,6 +12,7 @@ using AlbaAnalysis.Entity;
 using AlbaAnalysis.Routine;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace AlbaAnalysis {
 
@@ -40,7 +41,6 @@ namespace AlbaAnalysis {
             portNamesBindingSource.PositionChanged += (s, e) => {
                 serialPort1.PortName = ((portNames)portNamesBindingSource.Current).portName;
             };
-            ClearTextBox();
         }
 
         private void SerialForm_FormClosing(object sender, FormClosingEventArgs e) {
@@ -141,7 +141,8 @@ namespace AlbaAnalysis {
                     var LInput = double.Parse(datas.ErebonLInput) * 100.0 + 50.0;
                     pitchVerticalProgressBar.Value = (int)LInput + 1;
                     pitchVerticalProgressBar.Value = (int)LInput;
-                }catch(Exception e) { }
+                }
+                catch (Exception e) { }
             }
         }
 
@@ -207,16 +208,11 @@ namespace AlbaAnalysis {
         /// Nextボタンを押したときにグラフをクリアします
         /// </summary>
         void ClearChart() {
-            chartSpeed.Series["Speed"].Points.Clear();
-            chartMpuPitch.Series["MPitch"].Points.Clear();
-            chartCadence.Series["Cadence"].Points.Clear();
-            chartRBattery.Series["RBattery"].Points.Clear();
-            chartLBattery.Series["LBattery"].Points.Clear();
-            chartMpuYaw.Series["MYaw"].Points.Clear();
-            chartMpuRoll.Series["MRoll"].Points.Clear();
-            chartRollInput.Series["RollInput"].Points.Clear();
-            chartPitchInput.Series["PitchInput"].Points.Clear();
-            chartDrugInput.Series["DrugInput"].Points.Clear();
+            var fls = typeof(SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("Chart"));
+            foreach (var fi in fls) {
+                var chart = (Chart)fi.GetValue(this);
+                chart.Series[0].Points.Clear();
+            }
         }
 
         /// <summary>
@@ -249,22 +245,15 @@ namespace AlbaAnalysis {
         /// Nextボタンを押したときにtextBoxをクリアします
         /// </summary>
         void ClearTextBox() {
-            textBoxAllData.Clear();
-            textBoxMpuPitch.Clear();
-            textBoxBatteryDataR.Clear();
-            textBoxBatteryDataL.Clear();
-            textBoxBatteryDataR.Clear();
-            textBoxBatteryDataL.Clear();
-            textBoxCadence.Clear();
-            textBoxMpuPitch.Clear();
-            textBoxMpuRoll.Clear();
-            textBoxMpuYaw.Clear();
-            textBoxSpeed.Clear();
+            var fls = typeof(AlbaAnalysis.SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("TextBox"));
+            foreach (var f in fls) {
+                var tb = (TextBox)f.GetValue(this);
+                tb.Clear();
+            }
         }
 
         private void buttonConnect_Click_1(object sender, EventArgs e) {
-
-            if (serialPort1.IsOpen == false) {
+            if (!serialPort1.IsOpen) {
                 try {
                     serialPort1.Open();
                     serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialPort1_DataReceived);
@@ -275,7 +264,7 @@ namespace AlbaAnalysis {
                 serialPort1.DtrEnable = true;
                 serialPort1.RtsEnable = true;
             }
-            if (serialPort1.IsOpen == true) {
+            if (serialPort1.IsOpen) {
                 connectButtonEnable();
                 buttonClose.Focus();
                 start = DateTime.Now;
@@ -398,16 +387,11 @@ namespace AlbaAnalysis {
             catch (IOException io) {
                 MessageBox.Show(io.Message);
             }
-            chartSpeed.SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + chartSpeed.Name + ".jpeg", ChartImageFormat.Jpeg);
-            chartMpuPitch.SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + chartMpuPitch.Name + ".jpeg", ChartImageFormat.Jpeg);
-            chartCadence.SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + chartCadence.Name + ".jpeg", ChartImageFormat.Jpeg);
-            chartRBattery.SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + chartRBattery + ".jpeg", ChartImageFormat.Jpeg);
-            chartLBattery.SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + chartLBattery.Name + ".jpeg", ChartImageFormat.Jpeg);
-            chartMpuYaw.SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + chartMpuYaw.Name + ".jpeg", ChartImageFormat.Jpeg);
-            chartMpuRoll.SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + chartMpuRoll.Name + ".jpeg", ChartImageFormat.Jpeg);
-            chartRollInput.SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + chartRollInput.Name + ".jpeg", ChartImageFormat.Jpeg);
-            chartPitchInput.SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + chartPitchInput.Name + ".jpeg", ChartImageFormat.Jpeg);
-            chartDrugInput.SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + chartDrugInput.Name + ".jpeg", ChartImageFormat.Jpeg);
+            var fls = typeof(SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("Chart"));
+            foreach (var f in fls) {
+                var c = (Chart)f.GetValue(this);
+                c.SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + c.Name + ".jpeg", ChartImageFormat.Jpeg);
+            }
         }
 
         private void initializeButtonEnable() {

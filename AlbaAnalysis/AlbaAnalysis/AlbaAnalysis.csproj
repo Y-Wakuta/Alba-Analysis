@@ -58,6 +58,12 @@
       <DependentUpon>AdditionalFileNameDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="AlbaAnalysisDataHandler.cs" />
+    <Compile Include="AlbaCharts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AlbaCharts.Designer.cs">
+      <DependentUpon>AlbaCharts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Detail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     <EmbeddedResource Include="AdditionalFileNameDialog.resx">
       <DependentUpon>AdditionalFileNameDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AlbaCharts.resx">
+      <DependentUpon>AlbaCharts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Detail.resx">
       <DependentUpon>Detail.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,6 +110,7 @@
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.bauditems.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.BaudRateEntity.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.Cadence.datasource" />
+    <None Include="Properties\DataSources\AlbaAnalysis.Entity.DetailEntity.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.filePath.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.MpuData.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.portNames.datasource" />
