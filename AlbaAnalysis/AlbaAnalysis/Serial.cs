@@ -81,9 +81,7 @@ namespace AlbaAnalysis {
 
                 var tempSerial = serialEntity.Clone();
                 saveData.Add(tempSerial);
-                BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.control);
-                BeginInvoke(new Handler(showText), tempSerial, data, InputEnum.control);
-                BeginInvoke(new Handler(checkSteer), tempSerial, data, InputEnum.control);
+                InvokeControls(tempSerial, data, InputEnum.control);
             }
             else if (datas[0] == "inp" && datas.Count() == Enum.GetNames(typeof(InputDataOrder)).Length + 1) {
                 SerialRoutine.CopyASInp(serialEntity, datas);
@@ -93,11 +91,8 @@ namespace AlbaAnalysis {
 
                 var tempSerial = serialEntity.Clone();
                 saveData.Add(tempSerial);
-                BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.input);
-                BeginInvoke(new Handler(showText), tempSerial, data, InputEnum.input);
-                BeginInvoke(new Handler(checkSteer), tempSerial, data, InputEnum.input);
+                InvokeControls(tempSerial, data, InputEnum.input);
             }
-
             else if (datas[0] == "mpu" && datas.Count() == Enum.GetNames(typeof(MpuDataOrder)).Length + 1) {
                 SerialRoutine.CopyASMpu(serialEntity, datas);
                 DateTime end = DateTime.Now;
@@ -106,9 +101,7 @@ namespace AlbaAnalysis {
 
                 var tempSerial = serialEntity.Clone();
                 saveData.Add(tempSerial);
-                BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.mpu);
-                BeginInvoke(new Handler(showText), tempSerial, data, InputEnum.mpu);
-                BeginInvoke(new Handler(checkSteer), tempSerial, data, InputEnum.mpu);
+                InvokeControls(tempSerial, data, InputEnum.mpu);
             }
             else if (datas[0] == "kei" && datas.Count() == Enum.GetNames(typeof(KeikiDataOrder)).Length + 1) {
                 SerialRoutine.CopyASKei(serialEntity, datas);
@@ -118,9 +111,7 @@ namespace AlbaAnalysis {
 
                 var tempSerial = serialEntity.Clone();
                 saveData.Add(tempSerial);
-                BeginInvoke(new Handler(showChart), tempSerial, data, InputEnum.keiki);
-                BeginInvoke(new Handler(showText), tempSerial, data, InputEnum.keiki);
-                BeginInvoke(new Handler(checkSteer), tempSerial, data, InputEnum.keiki);
+                InvokeControls(tempSerial, data, InputEnum.keiki);
             }
         }
 
@@ -340,10 +331,7 @@ namespace AlbaAnalysis {
                         }
                         var targetEnum = SerialRoutine.GetTargetEntity(serialEntity, lastSerialEntity);
                         lastSerialEntity = serialEntity.Clone();
-
-                        BeginInvoke(new Handler(showChart), serialEntity, csvLine, targetEnum);
-                        BeginInvoke(new Handler(showText), serialEntity, csvLine, targetEnum);
-                        BeginInvoke(new Handler(checkSteer), serialEntity, csvLine, targetEnum);
+                        InvokeControls(serialEntity, csvLine, targetEnum);
                     }
                     //csv読み込みの速度向上
                     System.Threading.Thread.Sleep(50);
@@ -354,6 +342,12 @@ namespace AlbaAnalysis {
             });
             comboBoxFiles.DroppedDown = true;
             comboBoxFiles.Focus();
+        }
+
+        void InvokeControls(SerialEntity se, string dataStr, InputEnum ie) {
+            BeginInvoke(new Handler(showChart), se, dataStr, ie);
+            BeginInvoke(new Handler(showText), se, dataStr, ie);
+            BeginInvoke(new Handler(checkSteer), se, dataStr, ie);
         }
 
         private void buttonStopCsv_Click(object sender, EventArgs e) {
