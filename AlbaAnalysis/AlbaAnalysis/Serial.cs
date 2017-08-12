@@ -19,10 +19,8 @@ namespace AlbaAnalysis {
     delegate void Handler(SerialEntity strs, string str, InputEnum ie);
 
     public partial class SerialForm : Form {
-
         List<SerialEntity> saveData = new List<SerialEntity>();
         int csvFlag = 0;
-        CadenceView cadenceView = new CadenceView();
         SerialEntity serialEntity = new SerialEntity();
         SerialEntity lastSerialEntity = null;
         AlbaAnalysisDataHandler _ad;
@@ -32,7 +30,6 @@ namespace AlbaAnalysis {
             InitializeComponent();
             _ad = new AlbaAnalysisDataHandler(bauditemsBindingSource, portNamesBindingSource, filePathBindingSource);
             initializeButtonEnable();
-
             buttonConnect.Focus();
 
             bauditemsBindingSource.PositionChanged += (s, e) => {
@@ -73,7 +70,6 @@ namespace AlbaAnalysis {
                 }
             }
             if (datas[0] == "con" && datas.Count() == Enum.GetNames(typeof(ControlDataOrder)).Length + 2) {
-
                 SerialRoutine.CopyASCon(serialEntity, datas);
                 DateTime end = DateTime.Now;
                 TimeSpan time = end - start;
@@ -147,39 +143,23 @@ namespace AlbaAnalysis {
             #region グラフ設定
             try {
                 if (InputEnum.keiki == ie) {
-                    chartSpeed.Series["Speed"].Points.AddXY(datas.Time, double.Parse(datas.AirSpeed));
-                    chartCadence.Series["Cadence"].Points.AddXY(datas.Time, double.Parse(datas.Cadence));
-
-                    chartSpeed.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartCadence.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
+                    chartSpeed.AddXY(datas.Time, datas.AirSpeed);
+                    chartCadence.AddXY(datas.Time, datas.Cadence);
                 }
                 else if (InputEnum.control == ie) {
-                    chartRBattery.Series["RBattery"].Points.AddXY(datas.Time, double.Parse(datas.VoltageR));
-                    chartLBattery.Series["LBattery"].Points.AddXY(datas.Time, double.Parse(datas.VoltageL));
-
-                    chartRBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartLBattery.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
+                    chartRBattery.AddXY(datas.Time, datas.VoltageR);
+                    chartLBattery.AddXY(datas.Time, datas.VoltageL);
                 }
                 else if (InputEnum.mpu == ie) {
-                    chartMpuPitch.Series["MPitch"].Points.AddXY(datas.Time, double.Parse(datas.MpuPitch));
-                    chartMpuYaw.Series["MYaw"].Points.AddXY(datas.Time, double.Parse(datas.MpuYaw));
-                    chartMpuRoll.Series["MRoll"].Points.AddXY(datas.Time, double.Parse(datas.MpuRoll));
-
-                    chartMpuPitch.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartMpuYaw.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartMpuRoll.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
+                    chartMpuPitch.AddXY(datas.Time, datas.MpuPitch);
+                    chartMpuYaw.AddXY(datas.Time, datas.MpuYaw);
+                    chartMpuRoll.AddXY(datas.Time, datas.MpuRoll);
                 }
                 else if (InputEnum.input == ie) {
-                    chartDrugInput.Series["DrugInput"].Points.AddXY(datas.Time, double.Parse(datas.DrugR) - double.Parse(datas.DrugL));
-                    chartRollInput.Series["RollInput"].Points.AddXY(datas.Time, double.Parse(datas.ErebonRInput));
-                    chartPitchInput.Series["PitchInput"].Points.AddXY(datas.Time, double.Parse(datas.ErebonLInput));
-
-                    chartRollInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartDrugInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
-                    chartPitchInput.ChartAreas[0].AxisX.Maximum = double.Parse(datas.Time);
+                    chartDrugInput.AddXY(datas.Time, (double.Parse(datas.DrugR) - double.Parse(datas.DrugL)).ToString());
+                    chartRollInput.AddXY(datas.Time, datas.ErebonRInput);
+                    chartPitchInput.AddXY(datas.Time, datas.ErebonLInput);
                 }
-                cadenceView.cadence = datas.Cadence;
-                cadenceView.time = datas.Time;
             }
             catch (Exception) {
                 return;
@@ -192,7 +172,7 @@ namespace AlbaAnalysis {
         /// Nextボタンを押したときにグラフをクリアします
         /// </summary>
         void ClearChart() {
-            var fls = typeof(SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("Chart"));
+            var fls = typeof(SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("AlbaChart"));
             foreach (var fi in fls) {
                 var chart = (Chart)fi.GetValue(this);
                 chart.Series[0].Points.Clear();
@@ -333,8 +313,6 @@ namespace AlbaAnalysis {
                 fw.Close();
                 MessageBox.Show("ファイルの読み込みを終了しました。");
             });
-            comboBoxFiles.DroppedDown = true;
-            comboBoxFiles.Focus();
         }
 
         void InvokeControls(SerialEntity se, string dataStr, InputEnum ie) {
@@ -359,11 +337,6 @@ namespace AlbaAnalysis {
 
         private void comboBoxFiles_SelectedIndexChanged(object sender, EventArgs e) {
             buttonRunCsv.Focus();
-        }
-
-        private void chartCadence_Click(object sender, EventArgs e) {
-            var detail = new Detail(cadenceView);
-            detail.Show();
         }
 
         private void SaveAllCharts(string comment) {

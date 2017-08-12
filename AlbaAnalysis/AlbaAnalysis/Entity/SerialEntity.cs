@@ -96,8 +96,8 @@ namespace AlbaAnalysis.Entity {
         public string pathName { get; set; }
     }
 
-    public class CadenceView {
-        public string cadence { get; set; }
+    public class DetailEntity {
+        public string value { get; set; }
         public string time { get; set; }
     }
 

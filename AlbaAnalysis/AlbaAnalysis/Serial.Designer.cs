@@ -90,19 +90,20 @@
             this.bauditemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.chartMpuPitch = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartMpuRoll = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartMpuYaw = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartCadence = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            // this.chartMpuPitch = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartMpuPitch = new AlbaChart();
+            this.chartSpeed = new AlbaChart();
+            this.chartMpuRoll = new AlbaChart();
+            this.chartMpuYaw = new AlbaChart();
+            this.chartCadence = new AlbaChart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.chartLBattery = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartRBattery = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartLBattery = new AlbaChart();
+            this.chartRBattery = new AlbaChart();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.rollVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
-            this.chartRollInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartPitchInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartDrugInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartRollInput = new AlbaChart();
+            this.chartPitchInput = new AlbaChart();
+            this.chartDrugInput = new AlbaChart();
             this.pitchVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
             this.buttonRDrug = new System.Windows.Forms.Button();
             this.buttonLDrug = new System.Windows.Forms.Button();
@@ -316,7 +317,7 @@
             // 
             // textBoxAllData
             // 
-            this.textBoxAllData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxAllData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxAllData.Location = new System.Drawing.Point(20, 26);
             this.textBoxAllData.Margin = new System.Windows.Forms.Padding(2);
@@ -679,7 +680,6 @@
             this.chartCadence.Size = new System.Drawing.Size(753, 419);
             this.chartCadence.TabIndex = 17;
             this.chartCadence.Text = "Cadence";
-            this.chartCadence.Click += new System.EventHandler(this.chartCadence_Click);
             // 
             // tabPage2
             // 
@@ -688,7 +688,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(2542, 873);
+            this.tabPage2.Size = new System.Drawing.Size(2539, 873);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "WingEdge";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -776,7 +776,7 @@
             this.tabPage3.Controls.Add(this.buttonLDrug);
             this.tabPage3.Location = new System.Drawing.Point(4, 31);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(2542, 873);
+            this.tabPage3.Size = new System.Drawing.Size(2539, 873);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Control";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1001,18 +1001,18 @@
         private System.Windows.Forms.Button buttonStopCsv;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartMpuPitch;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartSpeed;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartMpuRoll;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartMpuYaw;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartCadence;
+        private AlbaChart chartMpuPitch;
+        private AlbaChart chartSpeed;
+        private AlbaChart chartMpuRoll;
+        private AlbaChart chartMpuYaw;
+        private AlbaChart chartCadence;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartLBattery;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartRBattery;
+        private AlbaChart chartLBattery;
+        private AlbaChart chartRBattery;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartRollInput;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartPitchInput;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartDrugInput;
+        private AlbaChart chartRollInput;
+        private AlbaChart chartPitchInput;
+        private AlbaChart chartDrugInput;
         private VerticalProgressBar pitchVerticalProgressBar;
         private System.Windows.Forms.Button buttonRDrug;
         private System.Windows.Forms.Button buttonLDrug;
