@@ -88,7 +88,7 @@ namespace AlbaAnalysis.Routine {
             se.Cadence = data[24];
         }
 
-        public static void CopyASCon( SerialEntity se,string[] data) {
+        public static void CopyASCon(SerialEntity se, string[] data) {
             se.MpuXR = data[1];
             se.MpuYR = data[2];
             se.MpuZR = data[3];
@@ -105,20 +105,31 @@ namespace AlbaAnalysis.Routine {
             se.VoltageL = data[14];
         }
 
-        public static void  CopyASInp( SerialEntity se,string[] data) {
+        public static void copyDatas2Entity(SerialEntity se, string[] datas, InputEnum ie) {
+            if (ie == InputEnum.keiki)
+                SerialRoutine.CopyASKei(se, datas);
+            else if (ie == InputEnum.mpu)
+                SerialRoutine.CopyASMpu(se, datas);
+            else if (ie == InputEnum.input)
+                SerialRoutine.CopyASInp(se, datas);
+            else if (ie == InputEnum.control)
+                SerialRoutine.CopyASCon(se, datas);
+        }
+
+        public static void CopyASInp(SerialEntity se, string[] data) {
             se.ErebonRInput = data[1];
             se.DrugR = data[2];
             se.ErebonLInput = data[3];
             se.DrugL = data[4];
         }
 
-        public static void CopyASMpu( SerialEntity se,string[] data) {
+        public static void CopyASMpu(SerialEntity se, string[] data) {
             se.MpuRoll = data[1];
             se.MpuPitch = data[2];
             se.MpuYaw = data[3];
         }
 
-        public static void CopyASKei( SerialEntity se,string[] data) {
+        public static void CopyASKei(SerialEntity se, string[] data) {
             se.AirSpeed = data[1];
             se.Sonar = data[2];
             se.Cadence = data[3];

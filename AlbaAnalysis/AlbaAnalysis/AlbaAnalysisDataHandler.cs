@@ -25,7 +25,6 @@ namespace AlbaAnalysis {
             _baudS = baudS;
             _portS = portS;
             _fileS = fileS;
-
             _baudBl = new BindingList<BaudRateEntity>(setBaudList());
             _baudS.DataSource = _baudBl;
 

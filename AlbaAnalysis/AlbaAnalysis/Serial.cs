@@ -21,7 +21,6 @@ namespace AlbaAnalysis {
     public partial class SerialForm : Form {
         List<SerialEntity> saveData = new List<SerialEntity>();
         int csvFlag = 0;
-        SerialEntity serialEntity = new SerialEntity();
         SerialEntity lastSerialEntity = null;
         AlbaAnalysisDataHandler _ad;
         DateTime start;
@@ -58,57 +57,31 @@ namespace AlbaAnalysis {
             sw.Stop();
             if (sw.ElapsedMilliseconds > 5000)
                 serialPort1.DiscardInBuffer();
-            var datas = data.Split(',');
-            for (int i = 1; i < datas.Count() - 1; i++) {
-                if (string.IsNullOrEmpty(datas[i]))
-                    return;
-                try {
-                    double.Parse(datas[i]);
-                }
-                catch (Exception) {
-                    datas[i] = 0.ToString();
-                }
+            var dataArray = data.Split(',');
+            for (int i = 1; i < dataArray.Count() - 1; i++) {
+                if (!int.TryParse(dataArray[i], out var tmp))
+                    dataArray[i] = 0.ToString();
             }
-            if (datas[0] == "con" && datas.Count() == Enum.GetNames(typeof(ControlDataOrder)).Length + 2) {
-                SerialRoutine.CopyASCon(serialEntity, datas);
-                DateTime end = DateTime.Now;
-                TimeSpan time = end - start;
-                serialEntity.Time = time.TotalSeconds.ToString();
+            if (dataArray.First().Equals("con") && dataArray.Count() == Enum.GetNames(typeof(ControlDataOrder)).Length + 2)
+                ProccessSerialDatas(InputEnum.control, dataArray, data);
+            else if (dataArray.First().Equals("inp") && dataArray.Count() == Enum.GetNames(typeof(InputDataOrder)).Length + 1)
+                ProccessSerialDatas(InputEnum.input, dataArray, data);
+            else if (dataArray.First().Equals("mpu") && dataArray.Count() == Enum.GetNames(typeof(MpuDataOrder)).Length + 1)
+                ProccessSerialDatas(InputEnum.mpu, dataArray, data);
+            else if (dataArray.First().Equals("kei") && dataArray.Count() == Enum.GetNames(typeof(KeikiDataOrder)).Length + 1)
+                ProccessSerialDatas(InputEnum.keiki, dataArray, data);
+        }
 
-                var tempSerial = serialEntity.Clone();
-                saveData.Add(tempSerial);
-                InvokeControls(tempSerial, data, InputEnum.control);
-            }
-            else if (datas[0] == "inp" && datas.Count() == Enum.GetNames(typeof(InputDataOrder)).Length + 1) {
-                SerialRoutine.CopyASInp(serialEntity, datas);
-                DateTime end = DateTime.Now;
-                TimeSpan time = end - start;
-                serialEntity.Time = time.TotalSeconds.ToString();
+        private void ProccessSerialDatas(InputEnum ie, string[] datas, string data) {
+            var serialEntity = new SerialEntity();
+            SerialRoutine.copyDatas2Entity(serialEntity, datas, ie);
+            var end = DateTime.Now;
+            var time = end - start;
+            serialEntity.Time = time.TotalSeconds.ToString();
 
-                var tempSerial = serialEntity.Clone();
-                saveData.Add(tempSerial);
-                InvokeControls(tempSerial, data, InputEnum.input);
-            }
-            else if (datas[0] == "mpu" && datas.Count() == Enum.GetNames(typeof(MpuDataOrder)).Length + 1) {
-                SerialRoutine.CopyASMpu(serialEntity, datas);
-                DateTime end = DateTime.Now;
-                TimeSpan time = end - start;
-                serialEntity.Time = time.TotalSeconds.ToString();
-
-                var tempSerial = serialEntity.Clone();
-                saveData.Add(tempSerial);
-                InvokeControls(tempSerial, data, InputEnum.mpu);
-            }
-            else if (datas[0] == "kei" && datas.Count() == Enum.GetNames(typeof(KeikiDataOrder)).Length + 1) {
-                SerialRoutine.CopyASKei(serialEntity, datas);
-                DateTime end = DateTime.Now;
-                TimeSpan time = end - start;
-                serialEntity.Time = time.TotalSeconds.ToString();
-
-                var tempSerial = serialEntity.Clone();
-                saveData.Add(tempSerial);
-                InvokeControls(tempSerial, data, InputEnum.keiki);
-            }
+            var tempSerial = serialEntity.Clone();
+            saveData.Add(tempSerial);
+            InvokeControls(tempSerial, data, ie);
         }
 
         /// <summary>
@@ -120,8 +93,8 @@ namespace AlbaAnalysis {
             if (InputEnum.input != ie)
                 return;
 
-            buttonRDrug.BackColor = datas.DrugR == 1.ToString() ? Color.LightCoral : buttonRDrug.BackColor = Color.LightGray;
-            buttonLDrug.BackColor = datas.DrugL == 1.ToString() ? Color.LightCoral : buttonLDrug.BackColor = Color.LightGray;
+            buttonRDrug.BackColor = datas.DrugR == 1.ToString() ? Color.LightCoral : Color.LightGray;
+            buttonLDrug.BackColor = datas.DrugL == 1.ToString() ? Color.LightCoral : Color.LightGray;
             rollVerticalProgressBar.SetValue(datas.ErebonRInput);
             pitchVerticalProgressBar.SetValue(datas.ErebonLInput);
         }
@@ -288,15 +261,11 @@ namespace AlbaAnalysis {
                     }
                     var csvLine = fw.ReadLine();
                     string[] csvdatas = null;
-                    try {
-                        csvdatas = csvLine.Split(',');
-                    }
-                    catch (Exception) {
-                        continue;
-                    }
+                    csvdatas = csvLine.Split(',');
                     if (csvdatas.Any(d => string.IsNullOrEmpty(d)))
-                        return;
+                        continue;
                     if (csvdatas.Count() == 25) {
+                        var serialEntity = new SerialEntity();
                         SerialRoutine.CopyASCsv(serialEntity, csvdatas);
                         if (lastSerialEntity == null) {
                             lastSerialEntity = serialEntity.Clone();

@@ -90,7 +90,6 @@
             this.bauditemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            // this.chartMpuPitch = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartMpuPitch = new AlbaChart();
             this.chartSpeed = new AlbaChart();
             this.chartMpuRoll = new AlbaChart();
