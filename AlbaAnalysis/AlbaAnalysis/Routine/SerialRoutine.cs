@@ -107,13 +107,13 @@ namespace AlbaAnalysis.Routine {
 
         public static void copyDatas2Entity(SerialEntity se, string[] datas, InputEnum ie) {
             if (ie == InputEnum.keiki)
-                SerialRoutine.CopyASKei(se, datas);
+                CopyASKei(se, datas);
             else if (ie == InputEnum.mpu)
-                SerialRoutine.CopyASMpu(se, datas);
+                CopyASMpu(se, datas);
             else if (ie == InputEnum.input)
-                SerialRoutine.CopyASInp(se, datas);
+                CopyASInp(se, datas);
             else if (ie == InputEnum.control)
-                SerialRoutine.CopyASCon(se, datas);
+                CopyASCon(se, datas);
         }
 
         public static void CopyASInp(SerialEntity se, string[] data) {
@@ -170,7 +170,7 @@ namespace AlbaAnalysis.Routine {
             else if (IsSameKeikiEntity(se, lastSe) && IsSameMpuEntity(se, lastSe) && IsSameInputEntity(se, lastSe))
                 return InputEnum.control;
             else
-                return InputEnum.keiki;     //ここはnullにするべきな気もするがなんとなくこうした。
+                return InputEnum.notAccepted;     //ここはnullにするべきな気もするがなんとなくこうした。
         }
 
         #endregion

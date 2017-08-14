@@ -21,7 +21,6 @@ namespace AlbaAnalysis {
     public partial class SerialForm : Form {
         List<SerialEntity> saveData = new List<SerialEntity>();
         int csvFlag = 0;
-        SerialEntity lastSerialEntity = null;
         AlbaAnalysisDataHandler _ad;
         DateTime start;
 
@@ -146,10 +145,8 @@ namespace AlbaAnalysis {
         /// </summary>
         void ClearChart() {
             var fls = typeof(SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("AlbaChart"));
-            foreach (var fi in fls) {
-                var chart = (Chart)fi.GetValue(this);
-                chart.Series[0].Points.Clear();
-            }
+            foreach (var fi in fls)
+                ((Chart)fi.GetValue(this)).Series[0].Points.Clear();
         }
 
         /// <summary>
@@ -236,50 +233,44 @@ namespace AlbaAnalysis {
             clearForm();
             buttonStopCsv.Enabled = true;
             buttonStopCsv.Focus();
+            SerialEntity lastSerialEntity = null;
             var _resultPath = (filePathBindingSource.Current).ToString();
             csvFlag = 0;
-            StreamReader fw;
             await Task.Run(() => {
                 start = DateTime.Now;
                 if (string.IsNullOrEmpty(_resultPath)) {
                     MessageBox.Show("パスを選択してください");
                     return;
                 }
-                try {
-                    fw = new StreamReader(_resultPath);
-                }
-                catch (Exception exc) {
-                    MessageBox.Show(exc.Message);
-                    return;
-                }
-
-                do {
-                    if (csvFlag == 1) {
-                        fw.Dispose();
-                        fw.Close();
-                        return;
-                    }
-                    var csvLine = fw.ReadLine();
-                    string[] csvdatas = null;
-                    csvdatas = csvLine.Split(',');
-                    if (csvdatas.Any(d => string.IsNullOrEmpty(d)))
-                        continue;
-                    if (csvdatas.Count() == 25) {
-                        var serialEntity = new SerialEntity();
-                        SerialRoutine.CopyASCsv(serialEntity, csvdatas);
-                        if (lastSerialEntity == null) {
-                            lastSerialEntity = serialEntity.Clone();
+                using (var fw = new StreamReader(_resultPath)) {
+                    do {
+                        if (csvFlag == 1) {
+                            fw.Dispose();
+                            fw.Close();
                             return;
                         }
-                        var targetEnum = SerialRoutine.GetTargetEntity(serialEntity, lastSerialEntity);
-                        lastSerialEntity = serialEntity.Clone();
-                        InvokeControls(serialEntity, csvLine, targetEnum);
-                    }
-                    //csv読み込みの速度向上
-                    System.Threading.Thread.Sleep(50);
-                } while (fw.EndOfStream != true);
-                fw.Dispose();
-                fw.Close();
+                        var csvLine = fw.ReadLine();
+                        string[] csvdatas = null;
+                        csvdatas = csvLine.Split(',');
+                        if (csvdatas.Any(d => string.IsNullOrEmpty(d)))
+                            continue;
+                        if (csvdatas.Count() == 25) {
+                            var serialEntity = new SerialEntity();
+                            SerialRoutine.CopyASCsv(serialEntity, csvdatas);
+                            if (lastSerialEntity == null) {
+                                lastSerialEntity = serialEntity.Clone();
+                                continue;
+                            }
+                            var targetEnum = SerialRoutine.GetTargetEntity(serialEntity, lastSerialEntity);
+                            if (targetEnum == InputEnum.notAccepted)
+                                continue;
+                            lastSerialEntity = serialEntity.Clone();
+                            InvokeControls(serialEntity, csvLine, targetEnum);
+                        }
+                        //csv読み込みの速度向上
+                        System.Threading.Thread.Sleep(50);
+                    } while (fw.EndOfStream != true);
+                }
                 MessageBox.Show("ファイルの読み込みを終了しました。");
             });
         }
@@ -317,10 +308,8 @@ namespace AlbaAnalysis {
                 MessageBox.Show(io.Message);
             }
             var fls = typeof(SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("Chart"));
-            foreach (var f in fls) {
-                var c = (Chart)f.GetValue(this);
-                c.SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + c.Name + ".jpeg", ChartImageFormat.Jpeg);
-            }
+            foreach (var f in fls)
+                ((Chart)f.GetValue(this)).SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + c.Name + ".jpeg", ChartImageFormat.Jpeg);
         }
 
         private void initializeButtonEnable() {

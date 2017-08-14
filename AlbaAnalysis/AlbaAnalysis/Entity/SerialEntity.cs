@@ -103,8 +103,9 @@ namespace AlbaAnalysis.Entity {
 
     public enum InputEnum {
         control = 0,
-        input = 1,
-        mpu = 2,
-        keiki = 3
+        input,
+        mpu,
+        keiki,
+        notAccepted
     }
 }
