@@ -180,29 +180,26 @@ namespace AlbaAnalysis {
         /// </summary>
         void ClearTextBox() {
             var fls = typeof(AlbaAnalysis.SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("TextBox"));
-            foreach (var f in fls) {
-                var tb = (TextBox)f.GetValue(this);
-                tb.Clear();
-            }
+            foreach (var f in fls)
+                ((TextBox)f.GetValue(this)).Clear();
         }
 
         private void buttonConnect_Click_1(object sender, EventArgs e) {
-            if (!serialPort1.IsOpen) {
-                try {
-                    serialPort1.Open();
-                    serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialPort1_DataReceived);
-                }
-                catch (Exception) {
-                    MessageBox.Show("利用可能なシリアルポートがありません");
-                }
-                serialPort1.DtrEnable = true;
-                serialPort1.RtsEnable = true;
+            if (serialPort1.IsOpen)
+                return;
+
+            try {
+                serialPort1.Open();
             }
-            if (serialPort1.IsOpen) {
-                connectButtonEnable();
-                buttonClose.Focus();
-                start = DateTime.Now;
+            catch (Exception) {
+                MessageBox.Show("利用可能なシリアルポートがありません");
             }
+            serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialPort1_DataReceived);
+            serialPort1.DtrEnable = true;
+            serialPort1.RtsEnable = true;
+            connectButtonEnable();
+            buttonClose.Focus();
+            start = DateTime.Now;
         }
 
         private void buttonClose_Click_1(object sender, EventArgs e) {
@@ -309,7 +306,7 @@ namespace AlbaAnalysis {
             }
             var fls = typeof(SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("Chart"));
             foreach (var f in fls)
-                ((Chart)f.GetValue(this)).SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + c.Name + ".jpeg", ChartImageFormat.Jpeg);
+                ((Chart)f.GetValue(this)).SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + ((Chart)f.GetValue(this)).Name + ".jpeg", ChartImageFormat.Jpeg);
         }
 
         private void initializeButtonEnable() {
