@@ -20,14 +20,14 @@ namespace AlbaAnalysis.Routine {
         /// <param name="se">配列化していない受信データ</param>
         /// <param name="path"></param>
         public static void writeDatas(List<SerialEntity> se, string path, bool append) {
-            var sw = new StreamWriter(path, append);
-            foreach (var d in se) {
-                sw.Write(d.Time + "," + d.MpuXR + "," + d.MpuYR + "," + d.MpuZR + "," + d.MpuXR_A + "," + d.MpuYR_A + "," + d.MpuZR_A + "," + d.VoltageR + "," + d.MpuXL + "," + d.MpuYL + "," + d.MpuZL + "," + d.MpuXL_A + "," + d.MpuYL_A + "," + d.MpuZL_A
-                           + "," + d.VoltageL + "," + d.ErebonRInput + "," + d.DrugR + "," + d.ErebonLInput + "," + d.DrugL
-                             + "," + d.MpuRoll + "," + d.MpuPitch + "," + d.MpuYaw
-                              + "," + d.AirSpeed + "," + d.Sonar + "," + d.Cadence + "\n");
+            using (var sw = new StreamWriter(path, append)) {
+                foreach (var d in se) {
+                    sw.Write(d.Time + "," + d.MpuXR + "," + d.MpuYR + "," + d.MpuZR + "," + d.MpuXR_A + "," + d.MpuYR_A + "," + d.MpuZR_A + "," + d.VoltageR + "," + d.MpuXL + "," + d.MpuYL + "," + d.MpuZL + "," + d.MpuXL_A + "," + d.MpuYL_A + "," + d.MpuZL_A
+                               + "," + d.VoltageL + "," + d.ErebonRInput + "," + d.DrugR + "," + d.ErebonLInput + "," + d.DrugL
+                                 + "," + d.MpuRoll + "," + d.MpuPitch + "," + d.MpuYaw
+                                  + "," + d.AirSpeed + "," + d.Sonar + "," + d.Cadence + "\n");
+                }
             }
-            sw.Close();
         }
         /// <summary>
         /// シリアルから来てるデータにフィルタをかけます(操舵入力を除く)
@@ -170,9 +170,8 @@ namespace AlbaAnalysis.Routine {
             else if (IsSameKeikiEntity(se, lastSe) && IsSameMpuEntity(se, lastSe) && IsSameInputEntity(se, lastSe))
                 return InputEnum.control;
             else
-                return InputEnum.notAccepted;     //ここはnullにするべきな気もするがなんとなくこうした。
+                return InputEnum.notAccepted;
         }
-
         #endregion
     }
 }

@@ -43,11 +43,7 @@ namespace AlbaAnalysis.Entity {
     /// マクロを定義
     /// </summary>
     public class Constants {
-        public const double averageLevel = 4.0;
         public const double filterLevel = 8.0;
-        public const double batteryVoltageLimit = 200;
-        public const int PHASE_NUM = 15;
-        public const int NEUTRAL_PHASE = 7;
     }
 
     public enum ControlDataOrder {
