@@ -22,10 +22,11 @@ namespace AlbaAnalysis.Routine {
         public static void writeDatas(List<SerialEntity> se, string path, bool append) {
             using (var sw = new StreamWriter(path, append)) {
                 foreach (var d in se) {
-                    sw.Write(d.Time + "," + d.MpuXR + "," + d.MpuYR + "," + d.MpuZR + "," + d.MpuXR_A + "," + d.MpuYR_A + "," + d.MpuZR_A + "," + d.VoltageR + "," + d.MpuXL + "," + d.MpuYL + "," + d.MpuZL + "," + d.MpuXL_A + "," + d.MpuYL_A + "," + d.MpuZL_A
-                               + "," + d.VoltageL + "," + d.ErebonRInput + "," + d.DrugR + "," + d.ErebonLInput + "," + d.DrugL
-                                 + "," + d.MpuRoll + "," + d.MpuPitch + "," + d.MpuYaw
-                                  + "," + d.AirSpeed + "," + d.Sonar + "," + d.Cadence + "\n");
+                    var dataStrArray = new[] { d.Time,d.MpuXR,d.MpuYR,d.MpuZR,d.MpuXR_A,d.MpuYR_A,d.MpuZR_A,d.VoltageR,d.MpuXL,d.MpuYL,d.MpuZL,d.MpuXL_A,d.MpuYL_A,d.MpuZL_A
+                              ,d.VoltageL,d.ErebonRInput,d.DrugR,d.ErebonLInput,d.DrugL
+                                ,d.MpuRoll,d.MpuPitch,d.MpuYaw
+                                 ,d.AirSpeed,d.Sonar,d.Cadence +Environment.NewLine};
+                    sw.Write(String.Join(",", dataStrArray));
                 }
             }
         }
