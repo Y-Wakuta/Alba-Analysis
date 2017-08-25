@@ -10,7 +10,7 @@ namespace AlbaAnalysis.Entity {
         public SerialEntity Clone() {
             return (SerialEntity)MemberwiseClone();
         }
-        [DisplayOrder(name ="MPUXR")]
+        [DisplayOrder(name ="MPUXR",order =0)]
         public string MpuXR = "0";
         public string MpuYR = "0";
         public string MpuZR = "0";
