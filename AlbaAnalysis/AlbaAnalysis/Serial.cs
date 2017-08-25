@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.IO;
 using AlbaAnalysis.Entity;
+using AlbaAnalysis.Entity;
 using AlbaAnalysis.Routine;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Diagnostics;
@@ -333,6 +334,12 @@ namespace AlbaAnalysis {
             buttonNext.Enabled = true;
             buttonRunCsv.Enabled = true;
             buttonOpenCsv.Enabled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            using (var config = new ConfigDialog()) {
+                config.ShowDialog();
+            }
         }
     }
 }

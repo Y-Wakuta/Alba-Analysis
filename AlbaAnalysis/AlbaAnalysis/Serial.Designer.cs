@@ -90,22 +90,23 @@
             this.bauditemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.chartMpuPitch = new AlbaChart();
-            this.chartSpeed = new AlbaChart();
-            this.chartMpuRoll = new AlbaChart();
-            this.chartMpuYaw = new AlbaChart();
-            this.chartCadence = new AlbaChart();
+            this.chartMpuPitch = new AlbaAnalysis.AlbaChart();
+            this.chartSpeed = new AlbaAnalysis.AlbaChart();
+            this.chartMpuRoll = new AlbaAnalysis.AlbaChart();
+            this.chartMpuYaw = new AlbaAnalysis.AlbaChart();
+            this.chartCadence = new AlbaAnalysis.AlbaChart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.chartLBattery = new AlbaChart();
-            this.chartRBattery = new AlbaChart();
+            this.chartLBattery = new AlbaAnalysis.AlbaChart();
+            this.chartRBattery = new AlbaAnalysis.AlbaChart();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.rollVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
-            this.chartRollInput = new AlbaChart();
-            this.chartPitchInput = new AlbaChart();
-            this.chartDrugInput = new AlbaChart();
+            this.chartRollInput = new AlbaAnalysis.AlbaChart();
+            this.chartPitchInput = new AlbaAnalysis.AlbaChart();
+            this.chartDrugInput = new AlbaAnalysis.AlbaChart();
             this.pitchVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
             this.buttonRDrug = new System.Windows.Forms.Button();
             this.buttonLDrug = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxAllData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.portNamesBindingSource)).BeginInit();
@@ -316,7 +317,7 @@
             // 
             // textBoxAllData
             // 
-            this.textBoxAllData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.textBoxAllData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxAllData.Location = new System.Drawing.Point(20, 26);
             this.textBoxAllData.Margin = new System.Windows.Forms.Padding(2);
@@ -356,6 +357,7 @@
             // groupBoxSerialConfig
             // 
             this.groupBoxSerialConfig.AutoSize = true;
+            this.groupBoxSerialConfig.Controls.Add(this.button1);
             this.groupBoxSerialConfig.Controls.Add(this.buttonStopCsv);
             this.groupBoxSerialConfig.Controls.Add(this.buttonOpenCsv);
             this.groupBoxSerialConfig.Controls.Add(this.buttonRunCsv);
@@ -375,7 +377,7 @@
             // buttonStopCsv
             // 
             this.buttonStopCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonStopCsv.Location = new System.Drawing.Point(869, 77);
+            this.buttonStopCsv.Location = new System.Drawing.Point(766, 77);
             this.buttonStopCsv.Name = "buttonStopCsv";
             this.buttonStopCsv.Size = new System.Drawing.Size(134, 52);
             this.buttonStopCsv.TabIndex = 37;
@@ -386,7 +388,7 @@
             // buttonOpenCsv
             // 
             this.buttonOpenCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonOpenCsv.Location = new System.Drawing.Point(1008, 77);
+            this.buttonOpenCsv.Location = new System.Drawing.Point(905, 77);
             this.buttonOpenCsv.Name = "buttonOpenCsv";
             this.buttonOpenCsv.Size = new System.Drawing.Size(135, 52);
             this.buttonOpenCsv.TabIndex = 36;
@@ -397,7 +399,7 @@
             // buttonRunCsv
             // 
             this.buttonRunCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRunCsv.Location = new System.Drawing.Point(731, 77);
+            this.buttonRunCsv.Location = new System.Drawing.Point(628, 77);
             this.buttonRunCsv.Name = "buttonRunCsv";
             this.buttonRunCsv.Size = new System.Drawing.Size(133, 52);
             this.buttonRunCsv.TabIndex = 35;
@@ -412,7 +414,7 @@
             this.comboBoxFiles.FormattingEnabled = true;
             this.comboBoxFiles.Location = new System.Drawing.Point(6, 91);
             this.comboBoxFiles.Name = "comboBoxFiles";
-            this.comboBoxFiles.Size = new System.Drawing.Size(720, 29);
+            this.comboBoxFiles.Size = new System.Drawing.Size(615, 29);
             this.comboBoxFiles.TabIndex = 34;
             this.comboBoxFiles.ValueMember = "pathName";
             this.comboBoxFiles.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiles_SelectedIndexChanged);
@@ -477,10 +479,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl1.Location = new System.Drawing.Point(0, 482);
+            this.tabControl1.Location = new System.Drawing.Point(0, 512);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(2550, 908);
+            this.tabControl1.Size = new System.Drawing.Size(2547, 908);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -493,7 +495,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(2542, 873);
+            this.tabPage1.Size = new System.Drawing.Size(2539, 873);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Core";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -503,6 +505,7 @@
             this.chartMpuPitch.BackColor = System.Drawing.Color.LightGray;
             chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             chartArea1.AxisX.LabelStyle.Format = "#.#";
+            chartArea1.AxisX.Maximum = 0.1D;
             chartArea1.AxisX.Minimum = 0D;
             chartArea1.AxisX.ScrollBar.ButtonColor = System.Drawing.Color.Black;
             chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -528,7 +531,7 @@
             this.chartMpuPitch.Name = "chartMpuPitch";
             series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series1.Color = System.Drawing.Color.Blue;
             series1.Legend = "Legend1";
             series1.Name = "MPitch";
@@ -541,6 +544,7 @@
             // 
             this.chartSpeed.BackColor = System.Drawing.Color.LightGray;
             chartArea2.AxisX.LabelStyle.Format = "#.#";
+            chartArea2.AxisX.Maximum = 0.1D;
             chartArea2.AxisX.Minimum = 0D;
             chartArea2.AxisY.IsLabelAutoFit = false;
             chartArea2.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -564,7 +568,7 @@
             this.chartSpeed.Name = "chartSpeed";
             series2.BorderWidth = 2;
             series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             series2.Legend = "Legend1";
             series2.LegendText = "Speed";
@@ -580,9 +584,11 @@
             // 
             this.chartMpuRoll.BackColor = System.Drawing.Color.LightGray;
             chartArea3.AxisX.LabelStyle.Format = "#.#";
+            chartArea3.AxisX.Maximum = 0.1D;
             chartArea3.AxisX.Minimum = 0D;
             chartArea3.AxisY.IsLabelAutoFit = false;
             chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisY.Minimum = 0D;
             chartArea3.AxisY.Title = "MpuRoll";
             chartArea3.Name = "ChartArea1";
             chartArea3.Position.Auto = false;
@@ -601,7 +607,7 @@
             this.chartMpuRoll.Name = "chartMpuRoll";
             series3.BorderWidth = 2;
             series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             series3.Legend = "Legend1";
             series3.Name = "MRoll";
@@ -614,9 +620,11 @@
             // 
             this.chartMpuYaw.BackColor = System.Drawing.Color.LightGray;
             chartArea4.AxisX.LabelStyle.Format = "#.#";
+            chartArea4.AxisX.Maximum = 0.1D;
             chartArea4.AxisX.Minimum = 0D;
             chartArea4.AxisY.IsLabelAutoFit = false;
             chartArea4.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.AxisY.Minimum = 0D;
             chartArea4.AxisY.Title = "MpuYaw";
             chartArea4.Name = "ChartArea1";
             chartArea4.Position.Auto = false;
@@ -635,7 +643,7 @@
             this.chartMpuYaw.Name = "chartMpuYaw";
             series4.BorderWidth = 2;
             series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             series4.Legend = "Legend1";
             series4.Name = "MYaw";
@@ -648,6 +656,7 @@
             // 
             this.chartCadence.BackColor = System.Drawing.Color.LightGray;
             chartArea5.AxisX.LabelStyle.Format = "#.#";
+            chartArea5.AxisX.Maximum = 0.1D;
             chartArea5.AxisX.Minimum = 0D;
             chartArea5.AxisY.IsLabelAutoFit = false;
             chartArea5.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -671,7 +680,7 @@
             this.chartCadence.Name = "chartCadence";
             series5.BorderWidth = 2;
             series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series5.Color = System.Drawing.Color.Lime;
             series5.Legend = "Legend1";
             series5.Name = "Cadence";
@@ -687,7 +696,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(2539, 873);
+            this.tabPage2.Size = new System.Drawing.Size(2542, 873);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "WingEdge";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -696,9 +705,11 @@
             // 
             this.chartLBattery.BackColor = System.Drawing.Color.LightGray;
             chartArea6.AxisX.LabelStyle.Format = "#.#";
+            chartArea6.AxisX.Maximum = 0.1D;
             chartArea6.AxisX.Minimum = 0D;
             chartArea6.AxisY.IsLabelAutoFit = false;
             chartArea6.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.AxisY.Minimum = 0D;
             chartArea6.AxisY.Title = "LBattery[V]";
             chartArea6.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea6.Name = "ChartArea1";
@@ -718,7 +729,7 @@
             this.chartLBattery.Name = "chartLBattery";
             series6.BorderWidth = 2;
             series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series6.Color = System.Drawing.Color.Blue;
             series6.Legend = "Legend1";
             series6.LegendText = "LBattery";
@@ -732,9 +743,11 @@
             // 
             this.chartRBattery.BackColor = System.Drawing.Color.LightGray;
             chartArea7.AxisX.LabelStyle.Format = "#.#";
+            chartArea7.AxisX.Maximum = 0.1D;
             chartArea7.AxisX.Minimum = 0D;
             chartArea7.AxisY.IsLabelAutoFit = false;
             chartArea7.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea7.AxisY.Minimum = 0D;
             chartArea7.AxisY.Title = "RBattery[V";
             chartArea7.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea7.Name = "ChartArea1";
@@ -754,7 +767,7 @@
             this.chartRBattery.Name = "chartRBattery";
             series7.BorderWidth = 2;
             series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series7.Color = System.Drawing.Color.Red;
             series7.Legend = "Legend1";
             series7.LegendText = "RBattery";
@@ -775,7 +788,7 @@
             this.tabPage3.Controls.Add(this.buttonLDrug);
             this.tabPage3.Location = new System.Drawing.Point(4, 31);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(2539, 873);
+            this.tabPage3.Size = new System.Drawing.Size(2542, 873);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Control";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -791,9 +804,11 @@
             // 
             this.chartRollInput.BackColor = System.Drawing.Color.LightGray;
             chartArea8.AxisX.LabelStyle.Format = "#.#";
+            chartArea8.AxisX.Maximum = 0.1D;
             chartArea8.AxisX.Minimum = 0D;
             chartArea8.AxisY.IsLabelAutoFit = false;
             chartArea8.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea8.AxisY.Minimum = 0D;
             chartArea8.AxisY.Title = "RollInput";
             chartArea8.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea8.Name = "ChartArea1";
@@ -813,7 +828,7 @@
             this.chartRollInput.Name = "chartRollInput";
             series8.BorderWidth = 2;
             series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series8.Color = System.Drawing.Color.Red;
             series8.Legend = "Legend1";
             series8.LegendText = "RollInput";
@@ -827,9 +842,11 @@
             // 
             this.chartPitchInput.BackColor = System.Drawing.Color.LightGray;
             chartArea9.AxisX.LabelStyle.Format = "#.#";
+            chartArea9.AxisX.Maximum = 0.1D;
             chartArea9.AxisX.Minimum = 0D;
             chartArea9.AxisY.IsLabelAutoFit = false;
             chartArea9.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea9.AxisY.Minimum = 0D;
             chartArea9.AxisY.Title = "PitchInput";
             chartArea9.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea9.Name = "ChartArea1";
@@ -849,7 +866,7 @@
             this.chartPitchInput.Name = "chartPitchInput";
             series9.BorderWidth = 2;
             series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series9.Color = System.Drawing.Color.Red;
             series9.Legend = "Legend1";
             series9.LegendText = "PitchInput";
@@ -863,9 +880,11 @@
             // 
             this.chartDrugInput.BackColor = System.Drawing.Color.LightGray;
             chartArea10.AxisX.LabelStyle.Format = "#.#";
+            chartArea10.AxisX.Maximum = 0.1D;
             chartArea10.AxisX.Minimum = 0D;
             chartArea10.AxisY.IsLabelAutoFit = false;
             chartArea10.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea10.AxisY.Minimum = 0D;
             chartArea10.AxisY.Title = "DrugInput";
             chartArea10.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea10.Name = "ChartArea1";
@@ -885,7 +904,7 @@
             this.chartDrugInput.Name = "chartDrugInput";
             series10.BorderWidth = 2;
             series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series10.Color = System.Drawing.Color.Red;
             series10.Legend = "Legend1";
             series10.LegendText = "DrugInput";
@@ -921,6 +940,17 @@
             this.buttonLDrug.TabIndex = 3;
             this.buttonLDrug.Text = "左ドラッグラダー";
             this.buttonLDrug.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button1.Location = new System.Drawing.Point(1046, 77);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 52);
+            this.button1.TabIndex = 38;
+            this.button1.Text = "Config";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // SerialForm
             // 
@@ -1019,6 +1049,7 @@
         public System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.BindingSource portNamesBindingSource;
         private System.Windows.Forms.BindingSource filePathBindingSource;
+        private System.Windows.Forms.Button button1;
     }
 }
 

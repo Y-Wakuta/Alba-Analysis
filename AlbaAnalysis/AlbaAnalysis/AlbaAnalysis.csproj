@@ -51,23 +51,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdditionalFileNameDialog.cs">
+    <Compile Include="AdditionalPanel\AdditionalFileNameDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdditionalFileNameDialog.Designer.cs">
+    <Compile Include="AdditionalPanel\AdditionalFileNameDialog.Designer.cs">
       <DependentUpon>AdditionalFileNameDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="AlbaAnalysisDataHandler.cs" />
+    <Compile Include="AdditionalPanel\ConfigDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdditionalPanel\ConfigDialog.Designer.cs">
+      <DependentUpon>ConfigDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DisplayOrderAttribute.cs" />
+    <Compile Include="Entity\ControlEnum.cs" />
     <Compile Include="UserControls\AlbaChart.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserControls\AlbaChart.Designer.cs">
       <DependentUpon>AlbaChart.cs</DependentUpon>
     </Compile>
-    <Compile Include="Detail.cs">
+    <Compile Include="AdditionalPanel\Detail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Detail.Designer.cs">
+    <Compile Include="AdditionalPanel\Detail.Designer.cs">
       <DependentUpon>Detail.cs</DependentUpon>
     </Compile>
     <Compile Include="Entity\BaudRateEntity.cs" />
@@ -84,10 +92,13 @@
     <Compile Include="UserControls\VerticalProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="AdditionalFileNameDialog.resx">
+    <EmbeddedResource Include="AdditionalPanel\AdditionalFileNameDialog.resx">
       <DependentUpon>AdditionalFileNameDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Detail.resx">
+    <EmbeddedResource Include="AdditionalPanel\ConfigDialog.resx">
+      <DependentUpon>ConfigDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdditionalPanel\Detail.resx">
       <DependentUpon>Detail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
