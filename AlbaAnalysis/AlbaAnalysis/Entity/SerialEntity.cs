@@ -10,6 +10,7 @@ namespace AlbaAnalysis.Entity {
         public SerialEntity Clone() {
             return (SerialEntity)MemberwiseClone();
         }
+        [DisplayOrder(name ="MPUXR")]
         public string MpuXR = "0";
         public string MpuYR = "0";
         public string MpuZR = "0";
@@ -46,42 +47,7 @@ namespace AlbaAnalysis.Entity {
         public const double filterLevel = 8.0;
     }
 
-    public enum ControlDataOrder {
-        MpuXR,
-        MpuYR,
-        MpuZR,
-        MpuXR_A,
-        MpuYR_A,
-        MpuZR_A,
-        VoltageR,
-        MpuXL,
-        MpuYL,
-        MpuZL,
-        MpuXL_A,
-        MpuYL_A,
-        MpuZL_A,
-        VoltageL,
-    }
-
-    public enum InputDataOrder {
-        ErebonRInput,
-        DrugR,
-        ErebonLInput,
-        DrugL,
-    }
-
-    public enum MpuDataOrder {
-        MpuRoll,
-        MpuPitch,
-        MpuYaw,
-    }
-
-    public enum KeikiDataOrder {
-        AirSpeed,
-        Sonar,
-        Cadence,
-    }
-
+   
     public class portNames {
         public string portName { get; set; }
     }
@@ -95,13 +61,5 @@ namespace AlbaAnalysis.Entity {
     public class DetailEntity {
         public string value { get; set; }
         public string time { get; set; }
-    }
-
-    public enum InputEnum {
-        control = 0,
-        input,
-        mpu,
-        keiki,
-        notAccepted
     }
 }
