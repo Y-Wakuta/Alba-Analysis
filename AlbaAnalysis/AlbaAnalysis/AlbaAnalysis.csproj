@@ -57,7 +57,7 @@
     <Compile Include="AdditionalPanel\AdditionalFileNameDialog.Designer.cs">
       <DependentUpon>AdditionalFileNameDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="AlbaAnalysisDataHandler.cs" />
+    <Compile Include="AlbaAnalysis\AlbaAnalysisDataHandler.cs" />
     <Compile Include="AdditionalPanel\ConfigDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,11 +81,11 @@
     <Compile Include="Entity\BaudRateEntity.cs" />
     <Compile Include="Entity\SerialEntity.cs" />
     <Compile Include="Routine\SerialRoutine.cs" />
-    <Compile Include="Serial.cs">
+    <Compile Include="AlbaAnalysis\AlbaAnalysis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Serial.Designer.cs">
-      <DependentUpon>Serial.cs</DependentUpon>
+    <Compile Include="AlbaAnalysis\AlbaAnalysis.Designer.cs">
+      <DependentUpon>AlbaAnalysis.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,8 +110,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Serial.resx">
-      <DependentUpon>Serial.cs</DependentUpon>
+    <EmbeddedResource Include="AlbaAnalysis\AlbaAnalysis.resx">
+      <DependentUpon>AlbaAnalysis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\AlbaChart.resx">
       <DependentUpon>AlbaChart.cs</DependentUpon>
