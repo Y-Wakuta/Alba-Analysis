@@ -23,21 +23,30 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
+            this.dataGridViewConfigAttribute = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.displayOrderAttributeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isDisplayDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConfigAttribute)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.displayOrderAttributeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.textBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -45,6 +54,13 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(90, 91);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(339, 28);
+            this.textBox1.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -57,24 +73,13 @@
             this.tabPage1.Text = "名称変更";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(925, 616);
-            this.tabControl1.TabIndex = 2;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.10811F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 190F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162F));
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridViewConfigAttribute, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.button2, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -88,37 +93,76 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(911, 575);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
-            // dataGridView1
+            // dataGridViewConfigAttribute
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 3);
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.Size = new System.Drawing.Size(905, 501);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridViewConfigAttribute.AutoGenerateColumns = false;
+            this.dataGridViewConfigAttribute.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewConfigAttribute.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameDataGridViewTextBoxColumn,
+            this.orderDataGridViewTextBoxColumn,
+            this.isDisplayDataGridViewCheckBoxColumn});
+            this.tableLayoutPanel1.SetColumnSpan(this.dataGridViewConfigAttribute, 3);
+            this.dataGridViewConfigAttribute.DataSource = this.displayOrderAttributeBindingSource;
+            this.dataGridViewConfigAttribute.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewConfigAttribute.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewConfigAttribute.Name = "dataGridViewConfigAttribute";
+            this.dataGridViewConfigAttribute.RowTemplate.Height = 30;
+            this.dataGridViewConfigAttribute.Size = new System.Drawing.Size(905, 502);
+            this.dataGridViewConfigAttribute.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("メイリオ", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button1.Location = new System.Drawing.Point(562, 511);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(184, 61);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "適用";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
             this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button2.Font = new System.Drawing.Font("メイリオ", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button2.Location = new System.Drawing.Point(752, 510);
+            this.button2.Location = new System.Drawing.Point(752, 511);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(156, 62);
+            this.button2.Size = new System.Drawing.Size(156, 61);
             this.button2.TabIndex = 3;
             this.button2.Text = "キャンセル";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // tabControl1
             // 
-            this.button1.Font = new System.Drawing.Font("メイリオ", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(562, 510);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(184, 62);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "適用";
-            this.button1.UseVisualStyleBackColor = true;
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(925, 616);
+            this.tabControl1.TabIndex = 2;
+            // 
+            // displayOrderAttributeBindingSource
+            // 
+            this.displayOrderAttributeBindingSource.DataSource = typeof(AlbaAnalysis.DisplayOrderAttribute);
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // orderDataGridViewTextBoxColumn
+            // 
+            this.orderDataGridViewTextBoxColumn.DataPropertyName = "order";
+            this.orderDataGridViewTextBoxColumn.HeaderText = "order";
+            this.orderDataGridViewTextBoxColumn.Name = "orderDataGridViewTextBoxColumn";
+            // 
+            // isDisplayDataGridViewCheckBoxColumn
+            // 
+            this.isDisplayDataGridViewCheckBoxColumn.DataPropertyName = "IsDisplay";
+            this.isDisplayDataGridViewCheckBoxColumn.HeaderText = "IsDisplay";
+            this.isDisplayDataGridViewCheckBoxColumn.Name = "isDisplayDataGridViewCheckBoxColumn";
             // 
             // ConfigDialog
             // 
@@ -128,10 +172,13 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "ConfigDialog";
             this.Text = "ConfigDialog";
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConfigAttribute)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.displayOrderAttributeBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -141,9 +188,14 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewConfigAttribute;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.BindingSource displayOrderAttributeBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isDisplayDataGridViewCheckBoxColumn;
     }
 }

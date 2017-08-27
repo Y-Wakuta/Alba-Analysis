@@ -78,6 +78,7 @@
             this.comboBoxPort = new System.Windows.Forms.ComboBox();
             this.portNamesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxSerialConfig = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.buttonStopCsv = new System.Windows.Forms.Button();
             this.buttonOpenCsv = new System.Windows.Forms.Button();
             this.buttonRunCsv = new System.Windows.Forms.Button();
@@ -106,7 +107,6 @@
             this.pitchVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
             this.buttonRDrug = new System.Windows.Forms.Button();
             this.buttonLDrug = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxAllData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.portNamesBindingSource)).BeginInit();
@@ -373,6 +373,17 @@
             this.groupBoxSerialConfig.TabIndex = 13;
             this.groupBoxSerialConfig.TabStop = false;
             this.groupBoxSerialConfig.Text = "シリアル設定";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button1.Location = new System.Drawing.Point(1046, 77);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 52);
+            this.button1.TabIndex = 38;
+            this.button1.Text = "Config";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonStopCsv
             // 
@@ -696,7 +707,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(2542, 873);
+            this.tabPage2.Size = new System.Drawing.Size(2539, 873);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "WingEdge";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -788,7 +799,7 @@
             this.tabPage3.Controls.Add(this.buttonLDrug);
             this.tabPage3.Location = new System.Drawing.Point(4, 31);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(2542, 873);
+            this.tabPage3.Size = new System.Drawing.Size(2539, 873);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Control";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -940,17 +951,6 @@
             this.buttonLDrug.TabIndex = 3;
             this.buttonLDrug.Text = "左ドラッグラダー";
             this.buttonLDrug.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(1046, 77);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 52);
-            this.button1.TabIndex = 38;
-            this.button1.Text = "Config";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // SerialForm
             // 
