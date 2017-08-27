@@ -22,7 +22,13 @@ namespace AlbaAnalysis.AdditionalPanel {
                 var test = Attribute.GetCustomAttribute(f, typeof(DisplayOrderAttribute)) as DisplayOrderAttribute;
                 attrList.Add(test);
             }
-            return attrList.OrderBy(a => a.order).Select(a => new DisplayOrderAttribute { name = a.name, order = a.order, IsDisplay = a.IsDisplay }).ToList();
+            return attrList.OrderBy(a => a.order).ToList();
+        }
+
+        public string GetSEName(string str) {
+            var field = typeof(SerialEntity).GetField(str);
+            var attr = Attribute.GetCustomAttribute(field, typeof(DisplayOrderAttribute)) as DisplayOrderAttribute;
+            return attr != null ? attr.name : str + "Attribute not Found";
         }
     }
 }

@@ -75,7 +75,7 @@ namespace AlbaAnalysis.Entity {
         [DisplayOrder(name = "MPUヨー", order = 20)]
         public string MpuYaw = "0";
 
-        [DisplayOrder(name = "MPUXR", order = 21)]
+        [DisplayOrder(name = "気速", order = 21)]
         public string AirSpeed = "0";
 
         [DisplayOrder(order = 22, IsDisplay = false)]
@@ -86,7 +86,7 @@ namespace AlbaAnalysis.Entity {
         //public const int Latitude = 24;
         //public const int Longitude = 25;
 
-        [DisplayOrder(name = "", order = 24)]
+        [DisplayOrder(name = "時間", order = 24)]
         public string Time = "0";
         #endregion
     }

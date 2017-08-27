@@ -20,9 +20,10 @@ namespace AlbaAnalysis {
         public ConfigDialog() {
             InitializeComponent();
             _cddh = new ConfigDialogDataHandler(displayOrderAttributeBindingSource);
-          
         }
 
- 
+        private void buttonCancel_Click(object sender, EventArgs e) {
+            Close();
+        }
     }
 }
