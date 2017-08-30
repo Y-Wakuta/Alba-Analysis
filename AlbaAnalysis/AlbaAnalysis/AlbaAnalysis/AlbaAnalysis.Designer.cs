@@ -63,7 +63,6 @@
             this.portNamesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxSerialConfig = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.buttonStopCsv = new System.Windows.Forms.Button();
             this.buttonOpenCsv = new System.Windows.Forms.Button();
             this.buttonRunCsv = new System.Windows.Forms.Button();
             this.comboBoxFiles = new System.Windows.Forms.ComboBox();
@@ -112,6 +111,8 @@
             this.textBoxBatteryDataL = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonStopCsv = new System.Windows.Forms.Button();
             this.groupBoxAllData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.portNamesBindingSource)).BeginInit();
             this.groupBoxSerialConfig.SuspendLayout();
@@ -137,6 +138,7 @@
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -172,10 +174,10 @@
             this.comboBoxPort.DataSource = this.portNamesBindingSource;
             this.comboBoxPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPort.FormattingEnabled = true;
-            this.comboBoxPort.Location = new System.Drawing.Point(6, 38);
+            this.comboBoxPort.Location = new System.Drawing.Point(2, 2);
             this.comboBoxPort.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxPort.Name = "comboBoxPort";
-            this.comboBoxPort.Size = new System.Drawing.Size(348, 29);
+            this.comboBoxPort.Size = new System.Drawing.Size(341, 29);
             this.comboBoxPort.TabIndex = 2;
             // 
             // portNamesBindingSource
@@ -185,16 +187,7 @@
             // groupBoxSerialConfig
             // 
             this.groupBoxSerialConfig.AutoSize = true;
-            this.groupBoxSerialConfig.Controls.Add(this.button1);
-            this.groupBoxSerialConfig.Controls.Add(this.buttonStopCsv);
-            this.groupBoxSerialConfig.Controls.Add(this.buttonOpenCsv);
-            this.groupBoxSerialConfig.Controls.Add(this.buttonRunCsv);
-            this.groupBoxSerialConfig.Controls.Add(this.comboBoxFiles);
-            this.groupBoxSerialConfig.Controls.Add(this.buttonNext);
-            this.groupBoxSerialConfig.Controls.Add(this.buttonClose);
-            this.groupBoxSerialConfig.Controls.Add(this.buttonConnect);
-            this.groupBoxSerialConfig.Controls.Add(this.comboBoxBaud);
-            this.groupBoxSerialConfig.Controls.Add(this.comboBoxPort);
+            this.groupBoxSerialConfig.Controls.Add(this.tableLayoutPanel6);
             this.groupBoxSerialConfig.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxSerialConfig.Location = new System.Drawing.Point(3, 3);
             this.groupBoxSerialConfig.Name = "groupBoxSerialConfig";
@@ -205,32 +198,23 @@
             // 
             // button1
             // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(1046, 77);
+            this.button1.Location = new System.Drawing.Point(1032, 58);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 52);
+            this.button1.Size = new System.Drawing.Size(109, 49);
             this.button1.TabIndex = 38;
             this.button1.Text = "Config";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // buttonStopCsv
-            // 
-            this.buttonStopCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonStopCsv.Location = new System.Drawing.Point(766, 77);
-            this.buttonStopCsv.Name = "buttonStopCsv";
-            this.buttonStopCsv.Size = new System.Drawing.Size(134, 52);
-            this.buttonStopCsv.TabIndex = 37;
-            this.buttonStopCsv.Text = "Stop Csv";
-            this.buttonStopCsv.UseVisualStyleBackColor = true;
-            this.buttonStopCsv.Click += new System.EventHandler(this.buttonStopCsv_Click);
-            // 
             // buttonOpenCsv
             // 
+            this.buttonOpenCsv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonOpenCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonOpenCsv.Location = new System.Drawing.Point(905, 77);
+            this.buttonOpenCsv.Location = new System.Drawing.Point(744, 58);
             this.buttonOpenCsv.Name = "buttonOpenCsv";
-            this.buttonOpenCsv.Size = new System.Drawing.Size(135, 52);
+            this.buttonOpenCsv.Size = new System.Drawing.Size(137, 49);
             this.buttonOpenCsv.TabIndex = 36;
             this.buttonOpenCsv.Text = "Open Csv";
             this.buttonOpenCsv.UseVisualStyleBackColor = true;
@@ -238,10 +222,11 @@
             // 
             // buttonRunCsv
             // 
+            this.buttonRunCsv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonRunCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRunCsv.Location = new System.Drawing.Point(628, 77);
+            this.buttonRunCsv.Location = new System.Drawing.Point(601, 58);
             this.buttonRunCsv.Name = "buttonRunCsv";
-            this.buttonRunCsv.Size = new System.Drawing.Size(133, 52);
+            this.buttonRunCsv.Size = new System.Drawing.Size(137, 49);
             this.buttonRunCsv.TabIndex = 35;
             this.buttonRunCsv.Text = "Run Csv";
             this.buttonRunCsv.UseVisualStyleBackColor = true;
@@ -249,12 +234,14 @@
             // 
             // comboBoxFiles
             // 
+            this.comboBoxFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.tableLayoutPanel6.SetColumnSpan(this.comboBoxFiles, 2);
             this.comboBoxFiles.DataSource = this.filePathBindingSource;
             this.comboBoxFiles.DisplayMember = "pathName";
             this.comboBoxFiles.FormattingEnabled = true;
-            this.comboBoxFiles.Location = new System.Drawing.Point(6, 91);
+            this.comboBoxFiles.Location = new System.Drawing.Point(3, 58);
             this.comboBoxFiles.Name = "comboBoxFiles";
-            this.comboBoxFiles.Size = new System.Drawing.Size(615, 29);
+            this.comboBoxFiles.Size = new System.Drawing.Size(592, 29);
             this.comboBoxFiles.TabIndex = 34;
             this.comboBoxFiles.ValueMember = "pathName";
             this.comboBoxFiles.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiles_SelectedIndexChanged);
@@ -265,10 +252,11 @@
             // 
             // buttonNext
             // 
+            this.buttonNext.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonNext.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNext.Location = new System.Drawing.Point(1009, 19);
+            this.buttonNext.Location = new System.Drawing.Point(1032, 3);
             this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(134, 52);
+            this.buttonNext.Size = new System.Drawing.Size(109, 49);
             this.buttonNext.TabIndex = 33;
             this.buttonNext.Text = "Next>>";
             this.buttonNext.UseVisualStyleBackColor = true;
@@ -276,10 +264,11 @@
             // 
             // buttonClose
             // 
+            this.buttonClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonClose.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonClose.Location = new System.Drawing.Point(869, 19);
+            this.buttonClose.Location = new System.Drawing.Point(887, 3);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(134, 52);
+            this.buttonClose.Size = new System.Drawing.Size(139, 49);
             this.buttonClose.TabIndex = 31;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = true;
@@ -287,10 +276,11 @@
             // 
             // buttonConnect
             // 
+            this.buttonConnect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonConnect.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonConnect.Location = new System.Drawing.Point(731, 19);
+            this.buttonConnect.Location = new System.Drawing.Point(744, 3);
             this.buttonConnect.Name = "buttonConnect";
-            this.buttonConnect.Size = new System.Drawing.Size(133, 52);
+            this.buttonConnect.Size = new System.Drawing.Size(137, 49);
             this.buttonConnect.TabIndex = 29;
             this.buttonConnect.Text = "Connect";
             this.buttonConnect.UseVisualStyleBackColor = true;
@@ -298,14 +288,18 @@
             // 
             // comboBoxBaud
             // 
+            this.comboBoxBaud.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel6.SetColumnSpan(this.comboBoxBaud, 2);
             this.comboBoxBaud.DataSource = this.bauditemsBindingSource;
             this.comboBoxBaud.DisplayMember = "NAME";
             this.comboBoxBaud.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBaud.FormattingEnabled = true;
-            this.comboBoxBaud.Location = new System.Drawing.Point(370, 38);
+            this.comboBoxBaud.Location = new System.Drawing.Point(347, 2);
             this.comboBoxBaud.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxBaud.Name = "comboBoxBaud";
-            this.comboBoxBaud.Size = new System.Drawing.Size(356, 29);
+            this.comboBoxBaud.Size = new System.Drawing.Size(392, 29);
             this.comboBoxBaud.TabIndex = 3;
             this.comboBoxBaud.ValueMember = "RATE";
             // 
@@ -923,7 +917,7 @@
             this.label10.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label10.Location = new System.Drawing.Point(3, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(172, 27);
+            this.label10.Size = new System.Drawing.Size(167, 27);
             this.label10.TabIndex = 36;
             this.label10.Text = "Speed";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -961,7 +955,7 @@
             this.textBoxSpeed.Name = "textBoxSpeed";
             this.textBoxSpeed.ReadOnly = true;
             this.textBoxSpeed.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxSpeed.Size = new System.Drawing.Size(174, 423);
+            this.textBoxSpeed.Size = new System.Drawing.Size(169, 423);
             this.textBoxSpeed.TabIndex = 15;
             // 
             // textBoxMpuRoll
@@ -981,9 +975,9 @@
             this.label_mpuData.AutoSize = true;
             this.label_mpuData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_mpuData.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label_mpuData.Location = new System.Drawing.Point(181, 0);
+            this.label_mpuData.Location = new System.Drawing.Point(176, 0);
             this.label_mpuData.Name = "label_mpuData";
-            this.label_mpuData.Size = new System.Drawing.Size(174, 27);
+            this.label_mpuData.Size = new System.Drawing.Size(179, 27);
             this.label_mpuData.TabIndex = 8;
             this.label_mpuData.Text = "MPUPitch";
             this.label_mpuData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -991,13 +985,13 @@
             // textBoxMpuPitch
             // 
             this.textBoxMpuPitch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxMpuPitch.Location = new System.Drawing.Point(180, 29);
+            this.textBoxMpuPitch.Location = new System.Drawing.Point(175, 29);
             this.textBoxMpuPitch.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxMpuPitch.Multiline = true;
             this.textBoxMpuPitch.Name = "textBoxMpuPitch";
             this.textBoxMpuPitch.ReadOnly = true;
             this.textBoxMpuPitch.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMpuPitch.Size = new System.Drawing.Size(176, 423);
+            this.textBoxMpuPitch.Size = new System.Drawing.Size(181, 423);
             this.textBoxMpuPitch.TabIndex = 4;
             this.textBoxMpuPitch.Text = "`";
             // 
@@ -1066,8 +1060,8 @@
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 8;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.72067F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.27933F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.32402F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.67598F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 169F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 185F));
@@ -1096,6 +1090,46 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.8326F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(1382, 454);
             this.tableLayoutPanel5.TabIndex = 42;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 6;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.60518F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.39482F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
+            this.tableLayoutPanel6.Controls.Add(this.comboBoxBaud, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.comboBoxFiles, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.comboBoxPort, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.buttonClose, 4, 0);
+            this.tableLayoutPanel6.Controls.Add(this.buttonConnect, 3, 0);
+            this.tableLayoutPanel6.Controls.Add(this.button1, 5, 1);
+            this.tableLayoutPanel6.Controls.Add(this.buttonNext, 5, 0);
+            this.tableLayoutPanel6.Controls.Add(this.buttonRunCsv, 2, 1);
+            this.tableLayoutPanel6.Controls.Add(this.buttonOpenCsv, 3, 1);
+            this.tableLayoutPanel6.Controls.Add(this.buttonStopCsv, 4, 1);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 24);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1144, 110);
+            this.tableLayoutPanel6.TabIndex = 39;
+            // 
+            // buttonStopCsv
+            // 
+            this.buttonStopCsv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonStopCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonStopCsv.Location = new System.Drawing.Point(887, 58);
+            this.buttonStopCsv.Name = "buttonStopCsv";
+            this.buttonStopCsv.Size = new System.Drawing.Size(139, 49);
+            this.buttonStopCsv.TabIndex = 39;
+            this.buttonStopCsv.Text = "Stop Csv";
+            this.buttonStopCsv.UseVisualStyleBackColor = true;
             // 
             // SerialForm
             // 
@@ -1142,6 +1176,7 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            this.tableLayoutPanel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1159,7 +1194,6 @@
         private System.Windows.Forms.Button buttonRunCsv;
         private System.Windows.Forms.ComboBox comboBoxFiles;
         private System.Windows.Forms.Button buttonOpenCsv;
-        private System.Windows.Forms.Button buttonStopCsv;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private AlbaChart chartMpuPitch;
@@ -1203,6 +1237,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.Button buttonStopCsv;
     }
 }
 
