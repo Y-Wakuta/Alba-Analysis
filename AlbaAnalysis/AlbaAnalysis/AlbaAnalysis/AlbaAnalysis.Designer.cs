@@ -46,15 +46,15 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SerialForm));
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.textBoxAllData = new System.Windows.Forms.TextBox();
@@ -62,16 +62,18 @@
             this.comboBoxPort = new System.Windows.Forms.ComboBox();
             this.portNamesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxSerialConfig = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.buttonOpenCsv = new System.Windows.Forms.Button();
-            this.buttonRunCsv = new System.Windows.Forms.Button();
-            this.comboBoxFiles = new System.Windows.Forms.ComboBox();
-            this.filePathBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.buttonNext = new System.Windows.Forms.Button();
-            this.buttonClose = new System.Windows.Forms.Button();
-            this.buttonConnect = new System.Windows.Forms.Button();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.comboBoxBaud = new System.Windows.Forms.ComboBox();
             this.bauditemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBoxFiles = new System.Windows.Forms.ComboBox();
+            this.filePathBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.buttonConnect = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.buttonNext = new System.Windows.Forms.Button();
+            this.buttonRunCsv = new System.Windows.Forms.Button();
+            this.buttonOpenCsv = new System.Windows.Forms.Button();
+            this.buttonStopCsv = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -85,39 +87,38 @@
             this.chartLBattery = new AlbaAnalysis.AlbaChart();
             this.chartRBattery = new AlbaAnalysis.AlbaChart();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.rollVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
-            this.chartRollInput = new AlbaAnalysis.AlbaChart();
-            this.chartPitchInput = new AlbaAnalysis.AlbaChart();
-            this.chartDrugInput = new AlbaAnalysis.AlbaChart();
-            this.pitchVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonRDrug = new System.Windows.Forms.Button();
+            this.chartDrugInput = new AlbaAnalysis.AlbaChart();
             this.buttonLDrug = new System.Windows.Forms.Button();
+            this.chartRollInput = new AlbaAnalysis.AlbaChart();
+            this.rollVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
+            this.chartPitchInput = new AlbaAnalysis.AlbaChart();
+            this.pitchVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxBatteryDataR = new System.Windows.Forms.TextBox();
+            this.label_batteryDataR = new System.Windows.Forms.Label();
+            this.textBoxBatteryDataL = new System.Windows.Forms.TextBox();
+            this.textBoxMpuPitch = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxSpeed = new System.Windows.Forms.TextBox();
+            this.textBoxMpuYaw = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label_mpuData = new System.Windows.Forms.Label();
+            this.textBoxMpuRoll = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.textBoxCadence = new System.Windows.Forms.TextBox();
-            this.textBoxMpuYaw = new System.Windows.Forms.TextBox();
-            this.textBoxSpeed = new System.Windows.Forms.TextBox();
-            this.textBoxMpuRoll = new System.Windows.Forms.TextBox();
-            this.label_mpuData = new System.Windows.Forms.Label();
-            this.textBoxMpuPitch = new System.Windows.Forms.TextBox();
-            this.label_batteryDataR = new System.Windows.Forms.Label();
             this.label_batteryDataL = new System.Windows.Forms.Label();
-            this.textBoxBatteryDataL = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonStopCsv = new System.Windows.Forms.Button();
             this.groupBoxAllData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.portNamesBindingSource)).BeginInit();
             this.groupBoxSerialConfig.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.filePathBindingSource)).BeginInit();
+            this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bauditemsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePathBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -131,14 +132,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartLBattery)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartRBattery)).BeginInit();
             this.tabPage3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDrugInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartRollInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPitchInput)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartDrugInput)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -154,7 +154,7 @@
             this.textBoxAllData.Name = "textBoxAllData";
             this.textBoxAllData.ReadOnly = true;
             this.textBoxAllData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxAllData.Size = new System.Drawing.Size(1144, 311);
+            this.textBoxAllData.Size = new System.Drawing.Size(1145, 311);
             this.textBoxAllData.TabIndex = 27;
             // 
             // groupBoxAllData
@@ -164,7 +164,7 @@
             this.groupBoxAllData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxAllData.Location = new System.Drawing.Point(3, 146);
             this.groupBoxAllData.Name = "groupBoxAllData";
-            this.groupBoxAllData.Size = new System.Drawing.Size(1150, 338);
+            this.groupBoxAllData.Size = new System.Drawing.Size(1151, 338);
             this.groupBoxAllData.TabIndex = 27;
             this.groupBoxAllData.TabStop = false;
             this.groupBoxAllData.Text = "受信データ";
@@ -177,7 +177,7 @@
             this.comboBoxPort.Location = new System.Drawing.Point(2, 2);
             this.comboBoxPort.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxPort.Name = "comboBoxPort";
-            this.comboBoxPort.Size = new System.Drawing.Size(341, 29);
+            this.comboBoxPort.Size = new System.Drawing.Size(340, 29);
             this.comboBoxPort.TabIndex = 2;
             // 
             // portNamesBindingSource
@@ -191,100 +191,39 @@
             this.groupBoxSerialConfig.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxSerialConfig.Location = new System.Drawing.Point(3, 3);
             this.groupBoxSerialConfig.Name = "groupBoxSerialConfig";
-            this.groupBoxSerialConfig.Size = new System.Drawing.Size(1150, 137);
+            this.groupBoxSerialConfig.Size = new System.Drawing.Size(1151, 137);
             this.groupBoxSerialConfig.TabIndex = 13;
             this.groupBoxSerialConfig.TabStop = false;
             this.groupBoxSerialConfig.Text = "シリアル設定";
             // 
-            // button1
+            // tableLayoutPanel6
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(1032, 58);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 49);
-            this.button1.TabIndex = 38;
-            this.button1.Text = "Config";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // buttonOpenCsv
-            // 
-            this.buttonOpenCsv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonOpenCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonOpenCsv.Location = new System.Drawing.Point(744, 58);
-            this.buttonOpenCsv.Name = "buttonOpenCsv";
-            this.buttonOpenCsv.Size = new System.Drawing.Size(137, 49);
-            this.buttonOpenCsv.TabIndex = 36;
-            this.buttonOpenCsv.Text = "Open Csv";
-            this.buttonOpenCsv.UseVisualStyleBackColor = true;
-            this.buttonOpenCsv.Click += new System.EventHandler(this.buttonOpenCsv_Click);
-            // 
-            // buttonRunCsv
-            // 
-            this.buttonRunCsv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonRunCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRunCsv.Location = new System.Drawing.Point(601, 58);
-            this.buttonRunCsv.Name = "buttonRunCsv";
-            this.buttonRunCsv.Size = new System.Drawing.Size(137, 49);
-            this.buttonRunCsv.TabIndex = 35;
-            this.buttonRunCsv.Text = "Run Csv";
-            this.buttonRunCsv.UseVisualStyleBackColor = true;
-            this.buttonRunCsv.Click += new System.EventHandler(this.buttonRunCsv_Click);
-            // 
-            // comboBoxFiles
-            // 
-            this.comboBoxFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.tableLayoutPanel6.SetColumnSpan(this.comboBoxFiles, 2);
-            this.comboBoxFiles.DataSource = this.filePathBindingSource;
-            this.comboBoxFiles.DisplayMember = "pathName";
-            this.comboBoxFiles.FormattingEnabled = true;
-            this.comboBoxFiles.Location = new System.Drawing.Point(3, 58);
-            this.comboBoxFiles.Name = "comboBoxFiles";
-            this.comboBoxFiles.Size = new System.Drawing.Size(592, 29);
-            this.comboBoxFiles.TabIndex = 34;
-            this.comboBoxFiles.ValueMember = "pathName";
-            this.comboBoxFiles.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiles_SelectedIndexChanged);
-            // 
-            // filePathBindingSource
-            // 
-            this.filePathBindingSource.DataSource = typeof(AlbaAnalysis.Entity.filePath);
-            // 
-            // buttonNext
-            // 
-            this.buttonNext.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonNext.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNext.Location = new System.Drawing.Point(1032, 3);
-            this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(109, 49);
-            this.buttonNext.TabIndex = 33;
-            this.buttonNext.Text = "Next>>";
-            this.buttonNext.UseVisualStyleBackColor = true;
-            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click_1);
-            // 
-            // buttonClose
-            // 
-            this.buttonClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonClose.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonClose.Location = new System.Drawing.Point(887, 3);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(139, 49);
-            this.buttonClose.TabIndex = 31;
-            this.buttonClose.Text = "Close";
-            this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click_1);
-            // 
-            // buttonConnect
-            // 
-            this.buttonConnect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonConnect.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonConnect.Location = new System.Drawing.Point(744, 3);
-            this.buttonConnect.Name = "buttonConnect";
-            this.buttonConnect.Size = new System.Drawing.Size(137, 49);
-            this.buttonConnect.TabIndex = 29;
-            this.buttonConnect.Text = "Connect";
-            this.buttonConnect.UseVisualStyleBackColor = true;
-            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click_1);
+            this.tableLayoutPanel6.ColumnCount = 6;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.60518F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.39482F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 116F));
+            this.tableLayoutPanel6.Controls.Add(this.comboBoxBaud, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.comboBoxFiles, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.comboBoxPort, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.buttonClose, 4, 0);
+            this.tableLayoutPanel6.Controls.Add(this.buttonConnect, 3, 0);
+            this.tableLayoutPanel6.Controls.Add(this.button1, 5, 1);
+            this.tableLayoutPanel6.Controls.Add(this.buttonNext, 5, 0);
+            this.tableLayoutPanel6.Controls.Add(this.buttonRunCsv, 2, 1);
+            this.tableLayoutPanel6.Controls.Add(this.buttonOpenCsv, 3, 1);
+            this.tableLayoutPanel6.Controls.Add(this.buttonStopCsv, 4, 1);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 24);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1145, 110);
+            this.tableLayoutPanel6.TabIndex = 39;
             // 
             // comboBoxBaud
             // 
@@ -296,7 +235,7 @@
             this.comboBoxBaud.DisplayMember = "NAME";
             this.comboBoxBaud.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBaud.FormattingEnabled = true;
-            this.comboBoxBaud.Location = new System.Drawing.Point(347, 2);
+            this.comboBoxBaud.Location = new System.Drawing.Point(346, 2);
             this.comboBoxBaud.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxBaud.Name = "comboBoxBaud";
             this.comboBoxBaud.Size = new System.Drawing.Size(392, 29);
@@ -306,6 +245,107 @@
             // bauditemsBindingSource
             // 
             this.bauditemsBindingSource.DataSource = typeof(AlbaAnalysis.Entity.BaudRateEntity);
+            // 
+            // comboBoxFiles
+            // 
+            this.comboBoxFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.tableLayoutPanel6.SetColumnSpan(this.comboBoxFiles, 2);
+            this.comboBoxFiles.DataSource = this.filePathBindingSource;
+            this.comboBoxFiles.DisplayMember = "pathName";
+            this.comboBoxFiles.FormattingEnabled = true;
+            this.comboBoxFiles.Location = new System.Drawing.Point(3, 58);
+            this.comboBoxFiles.Name = "comboBoxFiles";
+            this.comboBoxFiles.Size = new System.Drawing.Size(591, 29);
+            this.comboBoxFiles.TabIndex = 34;
+            this.comboBoxFiles.ValueMember = "pathName";
+            this.comboBoxFiles.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiles_SelectedIndexChanged);
+            // 
+            // filePathBindingSource
+            // 
+            this.filePathBindingSource.DataSource = typeof(AlbaAnalysis.Entity.filePath);
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonClose.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonClose.Location = new System.Drawing.Point(886, 3);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(139, 49);
+            this.buttonClose.TabIndex = 31;
+            this.buttonClose.Text = "Close";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click_1);
+            // 
+            // buttonConnect
+            // 
+            this.buttonConnect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonConnect.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonConnect.Location = new System.Drawing.Point(743, 3);
+            this.buttonConnect.Name = "buttonConnect";
+            this.buttonConnect.Size = new System.Drawing.Size(137, 49);
+            this.buttonConnect.TabIndex = 29;
+            this.buttonConnect.Text = "Connect";
+            this.buttonConnect.UseVisualStyleBackColor = true;
+            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click_1);
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button1.Location = new System.Drawing.Point(1031, 58);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 49);
+            this.button1.TabIndex = 38;
+            this.button1.Text = "Config";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // buttonNext
+            // 
+            this.buttonNext.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonNext.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonNext.Location = new System.Drawing.Point(1031, 3);
+            this.buttonNext.Name = "buttonNext";
+            this.buttonNext.Size = new System.Drawing.Size(111, 49);
+            this.buttonNext.TabIndex = 33;
+            this.buttonNext.Text = "Next>>";
+            this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click_1);
+            // 
+            // buttonRunCsv
+            // 
+            this.buttonRunCsv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonRunCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonRunCsv.Location = new System.Drawing.Point(600, 58);
+            this.buttonRunCsv.Name = "buttonRunCsv";
+            this.buttonRunCsv.Size = new System.Drawing.Size(137, 49);
+            this.buttonRunCsv.TabIndex = 35;
+            this.buttonRunCsv.Text = "Run Csv";
+            this.buttonRunCsv.UseVisualStyleBackColor = true;
+            this.buttonRunCsv.Click += new System.EventHandler(this.buttonRunCsv_Click);
+            // 
+            // buttonOpenCsv
+            // 
+            this.buttonOpenCsv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonOpenCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonOpenCsv.Location = new System.Drawing.Point(743, 58);
+            this.buttonOpenCsv.Name = "buttonOpenCsv";
+            this.buttonOpenCsv.Size = new System.Drawing.Size(137, 49);
+            this.buttonOpenCsv.TabIndex = 36;
+            this.buttonOpenCsv.Text = "Open Csv";
+            this.buttonOpenCsv.UseVisualStyleBackColor = true;
+            this.buttonOpenCsv.Click += new System.EventHandler(this.buttonOpenCsv_Click);
+            // 
+            // buttonStopCsv
+            // 
+            this.buttonStopCsv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonStopCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonStopCsv.Location = new System.Drawing.Point(886, 58);
+            this.buttonStopCsv.Name = "buttonStopCsv";
+            this.buttonStopCsv.Size = new System.Drawing.Size(139, 49);
+            this.buttonStopCsv.TabIndex = 39;
+            this.buttonStopCsv.Text = "Stop Csv";
+            this.buttonStopCsv.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
@@ -336,7 +376,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.68886F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.31114F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 807F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 809F));
             this.tableLayoutPanel2.Controls.Add(this.chartCadence, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.chartSpeed, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.chartMpuPitch, 0, 1);
@@ -375,7 +415,7 @@
             legend1.Position.X = 79F;
             legend1.Position.Y = 2F;
             this.chartCadence.Legends.Add(legend1);
-            this.chartCadence.Location = new System.Drawing.Point(1723, 431);
+            this.chartCadence.Location = new System.Drawing.Point(1721, 431);
             this.chartCadence.Margin = new System.Windows.Forms.Padding(1);
             this.chartCadence.Name = "chartCadence";
             series1.BorderWidth = 2;
@@ -385,7 +425,7 @@
             series1.Legend = "Legend1";
             series1.Name = "Cadence";
             this.chartCadence.Series.Add(series1);
-            this.chartCadence.Size = new System.Drawing.Size(806, 424);
+            this.chartCadence.Size = new System.Drawing.Size(808, 424);
             this.chartCadence.TabIndex = 17;
             this.chartCadence.Text = "Cadence";
             // 
@@ -414,7 +454,7 @@
             legend2.Position.X = 79F;
             legend2.Position.Y = 2F;
             this.chartSpeed.Legends.Add(legend2);
-            this.chartSpeed.Location = new System.Drawing.Point(874, 1);
+            this.chartSpeed.Location = new System.Drawing.Point(873, 1);
             this.chartSpeed.Margin = new System.Windows.Forms.Padding(1);
             this.chartSpeed.Name = "chartSpeed";
             series2.BorderWidth = 2;
@@ -425,7 +465,7 @@
             series2.LegendText = "Speed";
             series2.Name = "Speed";
             this.chartSpeed.Series.Add(series2);
-            this.chartSpeed.Size = new System.Drawing.Size(1655, 428);
+            this.chartSpeed.Size = new System.Drawing.Size(1656, 428);
             this.chartSpeed.TabIndex = 18;
             this.chartSpeed.Text = "chart6";
             title1.Name = "Speed";
@@ -468,7 +508,7 @@
             series3.Legend = "Legend1";
             series3.Name = "MPitch";
             this.chartMpuPitch.Series.Add(series3);
-            this.chartMpuPitch.Size = new System.Drawing.Size(871, 424);
+            this.chartMpuPitch.Size = new System.Drawing.Size(870, 424);
             this.chartMpuPitch.TabIndex = 20;
             this.chartMpuPitch.Text = "Mpitch";
             // 
@@ -495,7 +535,7 @@
             legend4.Position.X = 79F;
             legend4.Position.Y = 2F;
             this.chartMpuYaw.Legends.Add(legend4);
-            this.chartMpuYaw.Location = new System.Drawing.Point(874, 431);
+            this.chartMpuYaw.Location = new System.Drawing.Point(873, 431);
             this.chartMpuYaw.Margin = new System.Windows.Forms.Padding(1);
             this.chartMpuYaw.Name = "chartMpuYaw";
             series4.BorderWidth = 2;
@@ -505,7 +545,7 @@
             series4.Legend = "Legend1";
             series4.Name = "MYaw";
             this.chartMpuYaw.Series.Add(series4);
-            this.chartMpuYaw.Size = new System.Drawing.Size(847, 424);
+            this.chartMpuYaw.Size = new System.Drawing.Size(846, 424);
             this.chartMpuYaw.TabIndex = 13;
             this.chartMpuYaw.Text = "MpuYaw";
             // 
@@ -542,7 +582,7 @@
             series5.Legend = "Legend1";
             series5.Name = "MRoll";
             this.chartMpuRoll.Series.Add(series5);
-            this.chartMpuRoll.Size = new System.Drawing.Size(871, 428);
+            this.chartMpuRoll.Size = new System.Drawing.Size(870, 428);
             this.chartMpuRoll.TabIndex = 19;
             this.chartMpuRoll.Text = "MpuRoll";
             // 
@@ -660,14 +700,92 @@
             this.tabPage3.Text = "Control";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // rollVerticalProgressBar
+            // tableLayoutPanel4
             // 
-            this.rollVerticalProgressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rollVerticalProgressBar.Location = new System.Drawing.Point(87, 3);
-            this.rollVerticalProgressBar.Name = "rollVerticalProgressBar";
-            this.tableLayoutPanel4.SetRowSpan(this.rollVerticalProgressBar, 4);
-            this.rollVerticalProgressBar.Size = new System.Drawing.Size(86, 856);
-            this.rollVerticalProgressBar.TabIndex = 20;
+            this.tableLayoutPanel4.ColumnCount = 5;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.72727F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.27273F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 518F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 534F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1309F));
+            this.tableLayoutPanel4.Controls.Add(this.buttonRDrug, 3, 1);
+            this.tableLayoutPanel4.Controls.Add(this.chartDrugInput, 4, 3);
+            this.tableLayoutPanel4.Controls.Add(this.buttonLDrug, 2, 1);
+            this.tableLayoutPanel4.Controls.Add(this.chartRollInput, 4, 0);
+            this.tableLayoutPanel4.Controls.Add(this.rollVerticalProgressBar, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.chartPitchInput, 2, 2);
+            this.tableLayoutPanel4.Controls.Add(this.pitchVerticalProgressBar, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 4;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.15337F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 74.84663F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 252F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 446F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(2536, 862);
+            this.tableLayoutPanel4.TabIndex = 21;
+            // 
+            // buttonRDrug
+            // 
+            this.buttonRDrug.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonRDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonRDrug.Location = new System.Drawing.Point(695, 44);
+            this.buttonRDrug.Name = "buttonRDrug";
+            this.buttonRDrug.Size = new System.Drawing.Size(528, 116);
+            this.buttonRDrug.TabIndex = 5;
+            this.buttonRDrug.Text = "右ドラッグラダー";
+            this.buttonRDrug.UseVisualStyleBackColor = true;
+            // 
+            // chartDrugInput
+            // 
+            this.chartDrugInput.BackColor = System.Drawing.Color.LightGray;
+            chartArea8.AxisX.LabelStyle.Format = "#.#";
+            chartArea8.AxisX.Maximum = 0.1D;
+            chartArea8.AxisX.Minimum = 0D;
+            chartArea8.AxisY.IsLabelAutoFit = false;
+            chartArea8.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea8.AxisY.Minimum = 0D;
+            chartArea8.AxisY.Title = "DrugInput";
+            chartArea8.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea8.Name = "ChartArea1";
+            chartArea8.Position.Auto = false;
+            chartArea8.Position.Height = 100F;
+            chartArea8.Position.Width = 94F;
+            this.chartDrugInput.ChartAreas.Add(chartArea8);
+            this.chartDrugInput.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend8.Name = "Legend1";
+            legend8.Position.Auto = false;
+            legend8.Position.Height = 9.476309F;
+            legend8.Position.Width = 20F;
+            legend8.Position.X = 79F;
+            legend8.Position.Y = 2F;
+            this.chartDrugInput.Legends.Add(legend8);
+            this.chartDrugInput.Location = new System.Drawing.Point(1227, 416);
+            this.chartDrugInput.Margin = new System.Windows.Forms.Padding(1);
+            this.chartDrugInput.Name = "chartDrugInput";
+            series8.BorderWidth = 2;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series8.Color = System.Drawing.Color.Red;
+            series8.Legend = "Legend1";
+            series8.LegendText = "DrugInput";
+            series8.Name = "DrugInput";
+            this.chartDrugInput.Series.Add(series8);
+            this.chartDrugInput.Size = new System.Drawing.Size(1308, 445);
+            this.chartDrugInput.TabIndex = 17;
+            this.chartDrugInput.Text = "chart4";
+            // 
+            // buttonLDrug
+            // 
+            this.buttonLDrug.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonLDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonLDrug.Location = new System.Drawing.Point(177, 44);
+            this.buttonLDrug.Name = "buttonLDrug";
+            this.buttonLDrug.Size = new System.Drawing.Size(512, 116);
+            this.buttonLDrug.TabIndex = 3;
+            this.buttonLDrug.Text = "左ドラッグラダー";
+            this.buttonLDrug.UseVisualStyleBackColor = true;
             // 
             // chartRollInput
             // 
@@ -693,7 +811,7 @@
             legend9.Position.X = 79F;
             legend9.Position.Y = 2F;
             this.chartRollInput.Legends.Add(legend9);
-            this.chartRollInput.Location = new System.Drawing.Point(1229, 1);
+            this.chartRollInput.Location = new System.Drawing.Point(1227, 1);
             this.chartRollInput.Margin = new System.Windows.Forms.Padding(1);
             this.chartRollInput.Name = "chartRollInput";
             this.tableLayoutPanel4.SetRowSpan(this.chartRollInput, 3);
@@ -705,9 +823,18 @@
             series9.LegendText = "RollInput";
             series9.Name = "RollInput";
             this.chartRollInput.Series.Add(series9);
-            this.chartRollInput.Size = new System.Drawing.Size(1306, 413);
+            this.chartRollInput.Size = new System.Drawing.Size(1308, 413);
             this.chartRollInput.TabIndex = 19;
             this.chartRollInput.Text = "chart4";
+            // 
+            // rollVerticalProgressBar
+            // 
+            this.rollVerticalProgressBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rollVerticalProgressBar.Location = new System.Drawing.Point(86, 3);
+            this.rollVerticalProgressBar.Name = "rollVerticalProgressBar";
+            this.tableLayoutPanel4.SetRowSpan(this.rollVerticalProgressBar, 4);
+            this.rollVerticalProgressBar.Size = new System.Drawing.Size(85, 856);
+            this.rollVerticalProgressBar.TabIndex = 20;
             // 
             // chartPitchInput
             // 
@@ -734,7 +861,7 @@
             legend10.Position.X = 79F;
             legend10.Position.Y = 2F;
             this.chartPitchInput.Legends.Add(legend10);
-            this.chartPitchInput.Location = new System.Drawing.Point(177, 164);
+            this.chartPitchInput.Location = new System.Drawing.Point(175, 164);
             this.chartPitchInput.Margin = new System.Windows.Forms.Padding(1);
             this.chartPitchInput.Name = "chartPitchInput";
             this.tableLayoutPanel4.SetRowSpan(this.chartPitchInput, 2);
@@ -750,75 +877,14 @@
             this.chartPitchInput.TabIndex = 18;
             this.chartPitchInput.Text = "chart4";
             // 
-            // chartDrugInput
-            // 
-            this.chartDrugInput.BackColor = System.Drawing.Color.LightGray;
-            chartArea8.AxisX.LabelStyle.Format = "#.#";
-            chartArea8.AxisX.Maximum = 0.1D;
-            chartArea8.AxisX.Minimum = 0D;
-            chartArea8.AxisY.IsLabelAutoFit = false;
-            chartArea8.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea8.AxisY.Minimum = 0D;
-            chartArea8.AxisY.Title = "DrugInput";
-            chartArea8.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea8.Name = "ChartArea1";
-            chartArea8.Position.Auto = false;
-            chartArea8.Position.Height = 100F;
-            chartArea8.Position.Width = 94F;
-            this.chartDrugInput.ChartAreas.Add(chartArea8);
-            this.chartDrugInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend8.Name = "Legend1";
-            legend8.Position.Auto = false;
-            legend8.Position.Height = 9.476309F;
-            legend8.Position.Width = 20F;
-            legend8.Position.X = 79F;
-            legend8.Position.Y = 2F;
-            this.chartDrugInput.Legends.Add(legend8);
-            this.chartDrugInput.Location = new System.Drawing.Point(1229, 416);
-            this.chartDrugInput.Margin = new System.Windows.Forms.Padding(1);
-            this.chartDrugInput.Name = "chartDrugInput";
-            series8.BorderWidth = 2;
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series8.Color = System.Drawing.Color.Red;
-            series8.Legend = "Legend1";
-            series8.LegendText = "DrugInput";
-            series8.Name = "DrugInput";
-            this.chartDrugInput.Series.Add(series8);
-            this.chartDrugInput.Size = new System.Drawing.Size(1306, 445);
-            this.chartDrugInput.TabIndex = 17;
-            this.chartDrugInput.Text = "chart4";
-            // 
             // pitchVerticalProgressBar
             // 
             this.pitchVerticalProgressBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pitchVerticalProgressBar.Location = new System.Drawing.Point(3, 3);
             this.pitchVerticalProgressBar.Name = "pitchVerticalProgressBar";
             this.tableLayoutPanel4.SetRowSpan(this.pitchVerticalProgressBar, 4);
-            this.pitchVerticalProgressBar.Size = new System.Drawing.Size(78, 856);
+            this.pitchVerticalProgressBar.Size = new System.Drawing.Size(77, 856);
             this.pitchVerticalProgressBar.TabIndex = 9;
-            // 
-            // buttonRDrug
-            // 
-            this.buttonRDrug.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonRDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRDrug.Location = new System.Drawing.Point(697, 44);
-            this.buttonRDrug.Name = "buttonRDrug";
-            this.buttonRDrug.Size = new System.Drawing.Size(528, 116);
-            this.buttonRDrug.TabIndex = 5;
-            this.buttonRDrug.Text = "右ドラッグラダー";
-            this.buttonRDrug.UseVisualStyleBackColor = true;
-            // 
-            // buttonLDrug
-            // 
-            this.buttonLDrug.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonLDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLDrug.Location = new System.Drawing.Point(179, 44);
-            this.buttonLDrug.Name = "buttonLDrug";
-            this.buttonLDrug.Size = new System.Drawing.Size(512, 116);
-            this.buttonLDrug.TabIndex = 3;
-            this.buttonLDrug.Text = "左ドラッグラダー";
-            this.buttonLDrug.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -845,61 +911,13 @@
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.tableLayoutPanel5);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(1159, 3);
+            this.groupBox1.Location = new System.Drawing.Point(1160, 3);
             this.groupBox1.Name = "groupBox1";
             this.tableLayoutPanel1.SetRowSpan(this.groupBox1, 2);
-            this.groupBox1.Size = new System.Drawing.Size(1388, 481);
+            this.groupBox1.Size = new System.Drawing.Size(1387, 481);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "センサ詳細情報";
-            // 
-            // textBoxBatteryDataR
-            // 
-            this.textBoxBatteryDataR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxBatteryDataR.Location = new System.Drawing.Point(892, 29);
-            this.textBoxBatteryDataR.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxBatteryDataR.Multiline = true;
-            this.textBoxBatteryDataR.Name = "textBoxBatteryDataR";
-            this.textBoxBatteryDataR.ReadOnly = true;
-            this.textBoxBatteryDataR.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxBatteryDataR.Size = new System.Drawing.Size(180, 423);
-            this.textBoxBatteryDataR.TabIndex = 7;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label15.Location = new System.Drawing.Point(361, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(163, 27);
-            this.label15.TabIndex = 41;
-            this.label15.Text = "MPURoll";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label14.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label14.Location = new System.Drawing.Point(530, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(172, 27);
-            this.label14.TabIndex = 40;
-            this.label14.Text = "MPUYaw";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label12.Location = new System.Drawing.Point(708, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(179, 27);
-            this.label12.TabIndex = 38;
-            this.label12.Text = "Cadence";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label11
             // 
@@ -909,153 +927,6 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(0, 24);
             this.label11.TabIndex = 37;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label10.Location = new System.Drawing.Point(3, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(167, 27);
-            this.label10.TabIndex = 36;
-            this.label10.Text = "Speed";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxCadence
-            // 
-            this.textBoxCadence.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxCadence.Location = new System.Drawing.Point(707, 29);
-            this.textBoxCadence.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxCadence.Multiline = true;
-            this.textBoxCadence.Name = "textBoxCadence";
-            this.textBoxCadence.ReadOnly = true;
-            this.textBoxCadence.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxCadence.Size = new System.Drawing.Size(181, 423);
-            this.textBoxCadence.TabIndex = 20;
-            // 
-            // textBoxMpuYaw
-            // 
-            this.textBoxMpuYaw.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxMpuYaw.Location = new System.Drawing.Point(529, 29);
-            this.textBoxMpuYaw.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxMpuYaw.Multiline = true;
-            this.textBoxMpuYaw.Name = "textBoxMpuYaw";
-            this.textBoxMpuYaw.ReadOnly = true;
-            this.textBoxMpuYaw.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMpuYaw.Size = new System.Drawing.Size(174, 423);
-            this.textBoxMpuYaw.TabIndex = 16;
-            // 
-            // textBoxSpeed
-            // 
-            this.textBoxSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxSpeed.Location = new System.Drawing.Point(2, 29);
-            this.textBoxSpeed.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxSpeed.Multiline = true;
-            this.textBoxSpeed.Name = "textBoxSpeed";
-            this.textBoxSpeed.ReadOnly = true;
-            this.textBoxSpeed.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxSpeed.Size = new System.Drawing.Size(169, 423);
-            this.textBoxSpeed.TabIndex = 15;
-            // 
-            // textBoxMpuRoll
-            // 
-            this.textBoxMpuRoll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxMpuRoll.Location = new System.Drawing.Point(360, 29);
-            this.textBoxMpuRoll.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxMpuRoll.Multiline = true;
-            this.textBoxMpuRoll.Name = "textBoxMpuRoll";
-            this.textBoxMpuRoll.ReadOnly = true;
-            this.textBoxMpuRoll.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMpuRoll.Size = new System.Drawing.Size(165, 423);
-            this.textBoxMpuRoll.TabIndex = 12;
-            // 
-            // label_mpuData
-            // 
-            this.label_mpuData.AutoSize = true;
-            this.label_mpuData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_mpuData.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label_mpuData.Location = new System.Drawing.Point(176, 0);
-            this.label_mpuData.Name = "label_mpuData";
-            this.label_mpuData.Size = new System.Drawing.Size(179, 27);
-            this.label_mpuData.TabIndex = 8;
-            this.label_mpuData.Text = "MPUPitch";
-            this.label_mpuData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxMpuPitch
-            // 
-            this.textBoxMpuPitch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxMpuPitch.Location = new System.Drawing.Point(175, 29);
-            this.textBoxMpuPitch.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxMpuPitch.Multiline = true;
-            this.textBoxMpuPitch.Name = "textBoxMpuPitch";
-            this.textBoxMpuPitch.ReadOnly = true;
-            this.textBoxMpuPitch.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMpuPitch.Size = new System.Drawing.Size(181, 423);
-            this.textBoxMpuPitch.TabIndex = 4;
-            this.textBoxMpuPitch.Text = "`";
-            // 
-            // label_batteryDataR
-            // 
-            this.label_batteryDataR.AutoSize = true;
-            this.label_batteryDataR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_batteryDataR.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label_batteryDataR.Location = new System.Drawing.Point(893, 0);
-            this.label_batteryDataR.Name = "label_batteryDataR";
-            this.label_batteryDataR.Size = new System.Drawing.Size(178, 27);
-            this.label_batteryDataR.TabIndex = 11;
-            this.label_batteryDataR.Text = "batteryR";
-            this.label_batteryDataR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label_batteryDataL
-            // 
-            this.label_batteryDataL.AutoSize = true;
-            this.label_batteryDataL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_batteryDataL.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label_batteryDataL.Location = new System.Drawing.Point(1077, 0);
-            this.label_batteryDataL.Name = "label_batteryDataL";
-            this.label_batteryDataL.Size = new System.Drawing.Size(175, 27);
-            this.label_batteryDataL.TabIndex = 10;
-            this.label_batteryDataL.Text = "batteryL";
-            this.label_batteryDataL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxBatteryDataL
-            // 
-            this.textBoxBatteryDataL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxBatteryDataL.Location = new System.Drawing.Point(1076, 29);
-            this.textBoxBatteryDataL.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxBatteryDataL.Multiline = true;
-            this.textBoxBatteryDataL.Name = "textBoxBatteryDataL";
-            this.textBoxBatteryDataL.ReadOnly = true;
-            this.textBoxBatteryDataL.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxBatteryDataL.Size = new System.Drawing.Size(177, 423);
-            this.textBoxBatteryDataL.TabIndex = 6;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 5;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.72727F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.27273F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 518F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 534F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1307F));
-            this.tableLayoutPanel4.Controls.Add(this.buttonRDrug, 3, 1);
-            this.tableLayoutPanel4.Controls.Add(this.chartDrugInput, 4, 3);
-            this.tableLayoutPanel4.Controls.Add(this.buttonLDrug, 2, 1);
-            this.tableLayoutPanel4.Controls.Add(this.chartRollInput, 4, 0);
-            this.tableLayoutPanel4.Controls.Add(this.rollVerticalProgressBar, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.chartPitchInput, 2, 2);
-            this.tableLayoutPanel4.Controls.Add(this.pitchVerticalProgressBar, 0, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 4;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.15337F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 74.84663F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 252F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 446F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(2536, 862);
-            this.tableLayoutPanel4.TabIndex = 21;
             // 
             // tableLayoutPanel5
             // 
@@ -1067,7 +938,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 185F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 184F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 181F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
             this.tableLayoutPanel5.Controls.Add(this.textBoxBatteryDataR, 5, 1);
             this.tableLayoutPanel5.Controls.Add(this.label_batteryDataR, 5, 0);
             this.tableLayoutPanel5.Controls.Add(this.textBoxBatteryDataL, 6, 1);
@@ -1088,48 +959,177 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.167401F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.8326F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1382, 454);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1381, 454);
             this.tableLayoutPanel5.TabIndex = 42;
             // 
-            // tableLayoutPanel6
+            // textBoxBatteryDataR
             // 
-            this.tableLayoutPanel6.ColumnCount = 6;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.60518F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.39482F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
-            this.tableLayoutPanel6.Controls.Add(this.comboBoxBaud, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.comboBoxFiles, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(this.comboBoxPort, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.buttonClose, 4, 0);
-            this.tableLayoutPanel6.Controls.Add(this.buttonConnect, 3, 0);
-            this.tableLayoutPanel6.Controls.Add(this.button1, 5, 1);
-            this.tableLayoutPanel6.Controls.Add(this.buttonNext, 5, 0);
-            this.tableLayoutPanel6.Controls.Add(this.buttonRunCsv, 2, 1);
-            this.tableLayoutPanel6.Controls.Add(this.buttonOpenCsv, 3, 1);
-            this.tableLayoutPanel6.Controls.Add(this.buttonStopCsv, 4, 1);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 24);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 2;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1144, 110);
-            this.tableLayoutPanel6.TabIndex = 39;
+            this.textBoxBatteryDataR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxBatteryDataR.Location = new System.Drawing.Point(889, 29);
+            this.textBoxBatteryDataR.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxBatteryDataR.Multiline = true;
+            this.textBoxBatteryDataR.Name = "textBoxBatteryDataR";
+            this.textBoxBatteryDataR.ReadOnly = true;
+            this.textBoxBatteryDataR.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxBatteryDataR.Size = new System.Drawing.Size(180, 423);
+            this.textBoxBatteryDataR.TabIndex = 7;
             // 
-            // buttonStopCsv
+            // label_batteryDataR
             // 
-            this.buttonStopCsv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonStopCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonStopCsv.Location = new System.Drawing.Point(887, 58);
-            this.buttonStopCsv.Name = "buttonStopCsv";
-            this.buttonStopCsv.Size = new System.Drawing.Size(139, 49);
-            this.buttonStopCsv.TabIndex = 39;
-            this.buttonStopCsv.Text = "Stop Csv";
-            this.buttonStopCsv.UseVisualStyleBackColor = true;
+            this.label_batteryDataR.AutoSize = true;
+            this.label_batteryDataR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_batteryDataR.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label_batteryDataR.Location = new System.Drawing.Point(890, 0);
+            this.label_batteryDataR.Name = "label_batteryDataR";
+            this.label_batteryDataR.Size = new System.Drawing.Size(178, 27);
+            this.label_batteryDataR.TabIndex = 11;
+            this.label_batteryDataR.Text = "batteryR";
+            this.label_batteryDataR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBoxBatteryDataL
+            // 
+            this.textBoxBatteryDataL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxBatteryDataL.Location = new System.Drawing.Point(1073, 29);
+            this.textBoxBatteryDataL.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxBatteryDataL.Multiline = true;
+            this.textBoxBatteryDataL.Name = "textBoxBatteryDataL";
+            this.textBoxBatteryDataL.ReadOnly = true;
+            this.textBoxBatteryDataL.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxBatteryDataL.Size = new System.Drawing.Size(177, 423);
+            this.textBoxBatteryDataL.TabIndex = 6;
+            // 
+            // textBoxMpuPitch
+            // 
+            this.textBoxMpuPitch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxMpuPitch.Location = new System.Drawing.Point(174, 29);
+            this.textBoxMpuPitch.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxMpuPitch.Multiline = true;
+            this.textBoxMpuPitch.Name = "textBoxMpuPitch";
+            this.textBoxMpuPitch.ReadOnly = true;
+            this.textBoxMpuPitch.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxMpuPitch.Size = new System.Drawing.Size(179, 423);
+            this.textBoxMpuPitch.TabIndex = 4;
+            this.textBoxMpuPitch.Text = "`";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label12.Location = new System.Drawing.Point(705, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(179, 27);
+            this.label12.TabIndex = 38;
+            this.label12.Text = "Cadence";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBoxSpeed
+            // 
+            this.textBoxSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxSpeed.Location = new System.Drawing.Point(2, 29);
+            this.textBoxSpeed.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSpeed.Multiline = true;
+            this.textBoxSpeed.Name = "textBoxSpeed";
+            this.textBoxSpeed.ReadOnly = true;
+            this.textBoxSpeed.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxSpeed.Size = new System.Drawing.Size(168, 423);
+            this.textBoxSpeed.TabIndex = 15;
+            // 
+            // textBoxMpuYaw
+            // 
+            this.textBoxMpuYaw.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxMpuYaw.Location = new System.Drawing.Point(526, 29);
+            this.textBoxMpuYaw.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxMpuYaw.Multiline = true;
+            this.textBoxMpuYaw.Name = "textBoxMpuYaw";
+            this.textBoxMpuYaw.ReadOnly = true;
+            this.textBoxMpuYaw.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxMpuYaw.Size = new System.Drawing.Size(174, 423);
+            this.textBoxMpuYaw.TabIndex = 16;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label10.Location = new System.Drawing.Point(3, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(166, 27);
+            this.label10.TabIndex = 36;
+            this.label10.Text = "Speed";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_mpuData
+            // 
+            this.label_mpuData.AutoSize = true;
+            this.label_mpuData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_mpuData.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label_mpuData.Location = new System.Drawing.Point(175, 0);
+            this.label_mpuData.Name = "label_mpuData";
+            this.label_mpuData.Size = new System.Drawing.Size(177, 27);
+            this.label_mpuData.TabIndex = 8;
+            this.label_mpuData.Text = "MPUPitch";
+            this.label_mpuData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBoxMpuRoll
+            // 
+            this.textBoxMpuRoll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxMpuRoll.Location = new System.Drawing.Point(357, 29);
+            this.textBoxMpuRoll.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxMpuRoll.Multiline = true;
+            this.textBoxMpuRoll.Name = "textBoxMpuRoll";
+            this.textBoxMpuRoll.ReadOnly = true;
+            this.textBoxMpuRoll.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxMpuRoll.Size = new System.Drawing.Size(165, 423);
+            this.textBoxMpuRoll.TabIndex = 12;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label15.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label15.Location = new System.Drawing.Point(358, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(163, 27);
+            this.label15.TabIndex = 41;
+            this.label15.Text = "MPURoll";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label14.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label14.Location = new System.Drawing.Point(527, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(172, 27);
+            this.label14.TabIndex = 40;
+            this.label14.Text = "MPUYaw";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBoxCadence
+            // 
+            this.textBoxCadence.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxCadence.Location = new System.Drawing.Point(704, 29);
+            this.textBoxCadence.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCadence.Multiline = true;
+            this.textBoxCadence.Name = "textBoxCadence";
+            this.textBoxCadence.ReadOnly = true;
+            this.textBoxCadence.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxCadence.Size = new System.Drawing.Size(181, 423);
+            this.textBoxCadence.TabIndex = 20;
+            // 
+            // label_batteryDataL
+            // 
+            this.label_batteryDataL.AutoSize = true;
+            this.label_batteryDataL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_batteryDataL.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label_batteryDataL.Location = new System.Drawing.Point(1074, 0);
+            this.label_batteryDataL.Name = "label_batteryDataL";
+            this.label_batteryDataL.Size = new System.Drawing.Size(175, 27);
+            this.label_batteryDataL.TabIndex = 10;
+            this.label_batteryDataL.Text = "batteryL";
+            this.label_batteryDataL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SerialForm
             // 
@@ -1151,8 +1151,9 @@
             this.groupBoxAllData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.portNamesBindingSource)).EndInit();
             this.groupBoxSerialConfig.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.filePathBindingSource)).EndInit();
+            this.tableLayoutPanel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bauditemsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePathBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -1166,17 +1167,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartLBattery)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartRBattery)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartDrugInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartRollInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPitchInput)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartDrugInput)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
-            this.tableLayoutPanel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

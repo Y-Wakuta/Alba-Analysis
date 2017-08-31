@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.IO;
 using AlbaAnalysis.Entity;
-using AlbaAnalysis.Entity;
 using AlbaAnalysis.Routine;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Diagnostics;
