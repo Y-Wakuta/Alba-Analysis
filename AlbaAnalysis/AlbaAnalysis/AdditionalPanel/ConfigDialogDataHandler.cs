@@ -5,30 +5,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ComponentModel;
+using System.IO;
 
 using AlbaAnalysis.Entity;
+using AlbaAnalysis.Database;
+
 
 namespace AlbaAnalysis.AdditionalPanel {
     public class ConfigDialogDataHandler {
 
+        BindingList<ConfigEntity> _configBl;
+
         public ConfigDialogDataHandler(BindingSource abd) {
-            var List = new BindingList<DisplayOrderAttribute>(GetNamesOrdered());
-            abd.DataSource = List;
+            _configBl = new BindingList<ConfigEntity>(ConfigRoutine.GetConfigs());
+            abd.DataSource = _configBl;
         }
 
-        public List<DisplayOrderAttribute> GetNamesOrdered() {
-            var attrList = new List<DisplayOrderAttribute>();
-            foreach (var f in typeof(SerialEntity).GetFields()) {
-                var test = Attribute.GetCustomAttribute(f, typeof(DisplayOrderAttribute)) as DisplayOrderAttribute;
-                attrList.Add(test);
-            }
-            return attrList.OrderBy(a => a.order).ToList();
+        public void Update() {
+            ConfigRoutine.ClearDB();
+            ConfigRoutine.Insert2DB(_configBl.ToList());
         }
 
-        public string GetSEName(string str) {
-            var field = typeof(SerialEntity).GetField(str);
-            var attr = Attribute.GetCustomAttribute(field, typeof(DisplayOrderAttribute)) as DisplayOrderAttribute;
-            return attr != null ? attr.name : str + "Attribute not Found";
-        }
     }
 }

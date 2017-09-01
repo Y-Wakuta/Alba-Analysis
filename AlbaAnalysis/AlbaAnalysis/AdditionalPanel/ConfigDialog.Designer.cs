@@ -29,18 +29,21 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewConfigAttribute = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isDisplayDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.displayOrderAttributeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dispnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusdisplayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filterlevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.configEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.buttonAdapt = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConfigAttribute)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.displayOrderAttributeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configEntityBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +53,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(917, 581);
+            this.tabPage2.Size = new System.Drawing.Size(1543, 735);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -68,20 +71,22 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(917, 581);
+            this.tabPage1.Size = new System.Drawing.Size(1543, 735);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "名称変更";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.10811F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 190F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 243F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 233F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 215F));
             this.tableLayoutPanel1.Controls.Add(this.dataGridViewConfigAttribute, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.buttonAdapt, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.buttonCancel, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.buttonAdapt, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 3, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -90,7 +95,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.65217F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(911, 575);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1537, 729);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // dataGridViewConfigAttribute
@@ -98,17 +103,25 @@
             this.dataGridViewConfigAttribute.AutoGenerateColumns = false;
             this.dataGridViewConfigAttribute.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewConfigAttribute.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
-            this.orderDataGridViewTextBoxColumn,
-            this.isDisplayDataGridViewCheckBoxColumn});
-            this.tableLayoutPanel1.SetColumnSpan(this.dataGridViewConfigAttribute, 3);
-            this.dataGridViewConfigAttribute.DataSource = this.displayOrderAttributeBindingSource;
+            this.dispnameDataGridViewTextBoxColumn,
+            this.statusdisplayDataGridViewTextBoxColumn,
+            this.filterlevelDataGridViewTextBoxColumn});
+            this.tableLayoutPanel1.SetColumnSpan(this.dataGridViewConfigAttribute, 4);
+            this.dataGridViewConfigAttribute.DataSource = this.configEntityBindingSource;
             this.dataGridViewConfigAttribute.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewConfigAttribute.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewConfigAttribute.Name = "dataGridViewConfigAttribute";
             this.dataGridViewConfigAttribute.RowTemplate.Height = 30;
-            this.dataGridViewConfigAttribute.Size = new System.Drawing.Size(905, 502);
+            this.dataGridViewConfigAttribute.Size = new System.Drawing.Size(1531, 638);
             this.dataGridViewConfigAttribute.TabIndex = 0;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -116,43 +129,27 @@
             this.nameDataGridViewTextBoxColumn.HeaderText = "name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             // 
-            // orderDataGridViewTextBoxColumn
+            // dispnameDataGridViewTextBoxColumn
             // 
-            this.orderDataGridViewTextBoxColumn.DataPropertyName = "order";
-            this.orderDataGridViewTextBoxColumn.HeaderText = "order";
-            this.orderDataGridViewTextBoxColumn.Name = "orderDataGridViewTextBoxColumn";
+            this.dispnameDataGridViewTextBoxColumn.DataPropertyName = "disp_name";
+            this.dispnameDataGridViewTextBoxColumn.HeaderText = "disp_name";
+            this.dispnameDataGridViewTextBoxColumn.Name = "dispnameDataGridViewTextBoxColumn";
             // 
-            // isDisplayDataGridViewCheckBoxColumn
+            // statusdisplayDataGridViewTextBoxColumn
             // 
-            this.isDisplayDataGridViewCheckBoxColumn.DataPropertyName = "IsDisplay";
-            this.isDisplayDataGridViewCheckBoxColumn.HeaderText = "IsDisplay";
-            this.isDisplayDataGridViewCheckBoxColumn.Name = "isDisplayDataGridViewCheckBoxColumn";
+            this.statusdisplayDataGridViewTextBoxColumn.DataPropertyName = "status_display";
+            this.statusdisplayDataGridViewTextBoxColumn.HeaderText = "status_display";
+            this.statusdisplayDataGridViewTextBoxColumn.Name = "statusdisplayDataGridViewTextBoxColumn";
             // 
-            // displayOrderAttributeBindingSource
+            // filterlevelDataGridViewTextBoxColumn
             // 
-            this.displayOrderAttributeBindingSource.DataSource = typeof(AlbaAnalysis.DisplayOrderAttribute);
+            this.filterlevelDataGridViewTextBoxColumn.DataPropertyName = "filter_level";
+            this.filterlevelDataGridViewTextBoxColumn.HeaderText = "filter_level";
+            this.filterlevelDataGridViewTextBoxColumn.Name = "filterlevelDataGridViewTextBoxColumn";
             // 
-            // buttonAdapt
+            // configEntityBindingSource
             // 
-            this.buttonAdapt.Font = new System.Drawing.Font("メイリオ", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonAdapt.Location = new System.Drawing.Point(562, 511);
-            this.buttonAdapt.Name = "buttonAdapt";
-            this.buttonAdapt.Size = new System.Drawing.Size(184, 61);
-            this.buttonAdapt.TabIndex = 2;
-            this.buttonAdapt.Text = "適用";
-            this.buttonAdapt.UseVisualStyleBackColor = true;
-            // 
-            // buttonCancel
-            // 
-            this.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonCancel.Font = new System.Drawing.Font("メイリオ", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonCancel.Location = new System.Drawing.Point(752, 511);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(156, 61);
-            this.buttonCancel.TabIndex = 3;
-            this.buttonCancel.Text = "キャンセル";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            this.configEntityBindingSource.DataSource = typeof(AlbaAnalysis.Database.ConfigEntity);
             // 
             // tabControl1
             // 
@@ -162,14 +159,48 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(925, 616);
+            this.tabControl1.Size = new System.Drawing.Size(1551, 770);
             this.tabControl1.TabIndex = 2;
+            // 
+            // buttonAdapt
+            // 
+            this.buttonAdapt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAdapt.Font = new System.Drawing.Font("メイリオ", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonAdapt.Location = new System.Drawing.Point(849, 647);
+            this.buttonAdapt.Name = "buttonAdapt";
+            this.buttonAdapt.Size = new System.Drawing.Size(237, 79);
+            this.buttonAdapt.TabIndex = 6;
+            this.buttonAdapt.Text = "適用";
+            this.buttonAdapt.UseVisualStyleBackColor = true;
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonCancel.Font = new System.Drawing.Font("メイリオ", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonCancel.Location = new System.Drawing.Point(1092, 647);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(227, 79);
+            this.buttonCancel.TabIndex = 11;
+            this.buttonCancel.Text = "キャンセル";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Font = new System.Drawing.Font("メイリオ", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button1.Location = new System.Drawing.Point(1325, 647);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(209, 79);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "リセット";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ConfigDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(925, 616);
+            this.ClientSize = new System.Drawing.Size(1551, 770);
             this.Controls.Add(this.tabControl1);
             this.Name = "ConfigDialog";
             this.Text = "ConfigDialog";
@@ -178,7 +209,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConfigAttribute)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.displayOrderAttributeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configEntityBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -191,12 +222,15 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView dataGridViewConfigAttribute;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dispnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusdisplayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn filterlevelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource configEntityBindingSource;
         private System.Windows.Forms.Button buttonAdapt;
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.BindingSource displayOrderAttributeBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orderDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn isDisplayDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.Button button1;
     }
 }

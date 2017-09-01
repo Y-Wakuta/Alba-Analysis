@@ -88,8 +88,8 @@
       <DependentUpon>ConfigDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Database\ConfigEntity.cs" />
+    <Compile Include="Database\ConfigRoutine.cs" />
     <Compile Include="Database\Context.cs" />
-    <Compile Include="Entity\DisplayOrderAttribute.cs" />
     <Compile Include="Entity\ControlEnum.cs" />
     <Compile Include="UserControls\AlbaChart.cs">
       <SubType>Component</SubType>
@@ -143,6 +143,7 @@
     </EmbeddedResource>
     <None Include="Config.sqlite3" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\AlbaAnalysis.Database.ConfigEntity.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.BatteryDataL.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.BatteryDataR.datasource" />
     <None Include="Properties\DataSources\AlbaAnalysis.Entity.bauditems.datasource" />

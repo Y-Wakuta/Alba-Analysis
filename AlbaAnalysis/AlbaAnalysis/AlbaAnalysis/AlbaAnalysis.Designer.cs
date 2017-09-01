@@ -177,7 +177,7 @@
             this.comboBoxPort.Location = new System.Drawing.Point(2, 2);
             this.comboBoxPort.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxPort.Name = "comboBoxPort";
-            this.comboBoxPort.Size = new System.Drawing.Size(340, 29);
+            this.comboBoxPort.Size = new System.Drawing.Size(337, 29);
             this.comboBoxPort.TabIndex = 2;
             // 
             // portNamesBindingSource
@@ -204,7 +204,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 116F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
             this.tableLayoutPanel6.Controls.Add(this.comboBoxBaud, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.comboBoxFiles, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.comboBoxPort, 0, 0);
@@ -235,10 +235,10 @@
             this.comboBoxBaud.DisplayMember = "NAME";
             this.comboBoxBaud.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBaud.FormattingEnabled = true;
-            this.comboBoxBaud.Location = new System.Drawing.Point(346, 2);
+            this.comboBoxBaud.Location = new System.Drawing.Point(343, 2);
             this.comboBoxBaud.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxBaud.Name = "comboBoxBaud";
-            this.comboBoxBaud.Size = new System.Drawing.Size(392, 29);
+            this.comboBoxBaud.Size = new System.Drawing.Size(390, 29);
             this.comboBoxBaud.TabIndex = 3;
             this.comboBoxBaud.ValueMember = "RATE";
             // 
@@ -255,7 +255,7 @@
             this.comboBoxFiles.FormattingEnabled = true;
             this.comboBoxFiles.Location = new System.Drawing.Point(3, 58);
             this.comboBoxFiles.Name = "comboBoxFiles";
-            this.comboBoxFiles.Size = new System.Drawing.Size(591, 29);
+            this.comboBoxFiles.Size = new System.Drawing.Size(586, 29);
             this.comboBoxFiles.TabIndex = 34;
             this.comboBoxFiles.ValueMember = "pathName";
             this.comboBoxFiles.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiles_SelectedIndexChanged);
@@ -268,7 +268,7 @@
             // 
             this.buttonClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonClose.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonClose.Location = new System.Drawing.Point(886, 3);
+            this.buttonClose.Location = new System.Drawing.Point(881, 3);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(139, 49);
             this.buttonClose.TabIndex = 31;
@@ -280,7 +280,7 @@
             // 
             this.buttonConnect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonConnect.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonConnect.Location = new System.Drawing.Point(743, 3);
+            this.buttonConnect.Location = new System.Drawing.Point(738, 3);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(137, 49);
             this.buttonConnect.TabIndex = 29;
@@ -292,9 +292,9 @@
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(1031, 58);
+            this.button1.Location = new System.Drawing.Point(1026, 58);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 49);
+            this.button1.Size = new System.Drawing.Size(116, 49);
             this.button1.TabIndex = 38;
             this.button1.Text = "Config";
             this.button1.UseVisualStyleBackColor = true;
@@ -304,9 +304,9 @@
             // 
             this.buttonNext.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonNext.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNext.Location = new System.Drawing.Point(1031, 3);
+            this.buttonNext.Location = new System.Drawing.Point(1026, 3);
             this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(111, 49);
+            this.buttonNext.Size = new System.Drawing.Size(116, 49);
             this.buttonNext.TabIndex = 33;
             this.buttonNext.Text = "Next>>";
             this.buttonNext.UseVisualStyleBackColor = true;
@@ -316,7 +316,7 @@
             // 
             this.buttonRunCsv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonRunCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRunCsv.Location = new System.Drawing.Point(600, 58);
+            this.buttonRunCsv.Location = new System.Drawing.Point(595, 58);
             this.buttonRunCsv.Name = "buttonRunCsv";
             this.buttonRunCsv.Size = new System.Drawing.Size(137, 49);
             this.buttonRunCsv.TabIndex = 35;
@@ -328,7 +328,7 @@
             // 
             this.buttonOpenCsv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonOpenCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonOpenCsv.Location = new System.Drawing.Point(743, 58);
+            this.buttonOpenCsv.Location = new System.Drawing.Point(738, 58);
             this.buttonOpenCsv.Name = "buttonOpenCsv";
             this.buttonOpenCsv.Size = new System.Drawing.Size(137, 49);
             this.buttonOpenCsv.TabIndex = 36;
@@ -340,7 +340,7 @@
             // 
             this.buttonStopCsv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonStopCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonStopCsv.Location = new System.Drawing.Point(886, 58);
+            this.buttonStopCsv.Location = new System.Drawing.Point(881, 58);
             this.buttonStopCsv.Name = "buttonStopCsv";
             this.buttonStopCsv.Size = new System.Drawing.Size(139, 49);
             this.buttonStopCsv.TabIndex = 39;
@@ -376,7 +376,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.68886F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.31114F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 809F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 814F));
             this.tableLayoutPanel2.Controls.Add(this.chartCadence, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.chartSpeed, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.chartMpuPitch, 0, 1);
@@ -415,7 +415,7 @@
             legend1.Position.X = 79F;
             legend1.Position.Y = 2F;
             this.chartCadence.Legends.Add(legend1);
-            this.chartCadence.Location = new System.Drawing.Point(1721, 431);
+            this.chartCadence.Location = new System.Drawing.Point(1716, 431);
             this.chartCadence.Margin = new System.Windows.Forms.Padding(1);
             this.chartCadence.Name = "chartCadence";
             series1.BorderWidth = 2;
@@ -425,7 +425,7 @@
             series1.Legend = "Legend1";
             series1.Name = "Cadence";
             this.chartCadence.Series.Add(series1);
-            this.chartCadence.Size = new System.Drawing.Size(808, 424);
+            this.chartCadence.Size = new System.Drawing.Size(813, 424);
             this.chartCadence.TabIndex = 17;
             this.chartCadence.Text = "Cadence";
             // 
@@ -454,7 +454,7 @@
             legend2.Position.X = 79F;
             legend2.Position.Y = 2F;
             this.chartSpeed.Legends.Add(legend2);
-            this.chartSpeed.Location = new System.Drawing.Point(873, 1);
+            this.chartSpeed.Location = new System.Drawing.Point(870, 1);
             this.chartSpeed.Margin = new System.Windows.Forms.Padding(1);
             this.chartSpeed.Name = "chartSpeed";
             series2.BorderWidth = 2;
@@ -465,7 +465,7 @@
             series2.LegendText = "Speed";
             series2.Name = "Speed";
             this.chartSpeed.Series.Add(series2);
-            this.chartSpeed.Size = new System.Drawing.Size(1656, 428);
+            this.chartSpeed.Size = new System.Drawing.Size(1659, 428);
             this.chartSpeed.TabIndex = 18;
             this.chartSpeed.Text = "chart6";
             title1.Name = "Speed";
@@ -508,7 +508,7 @@
             series3.Legend = "Legend1";
             series3.Name = "MPitch";
             this.chartMpuPitch.Series.Add(series3);
-            this.chartMpuPitch.Size = new System.Drawing.Size(870, 424);
+            this.chartMpuPitch.Size = new System.Drawing.Size(867, 424);
             this.chartMpuPitch.TabIndex = 20;
             this.chartMpuPitch.Text = "Mpitch";
             // 
@@ -535,7 +535,7 @@
             legend4.Position.X = 79F;
             legend4.Position.Y = 2F;
             this.chartMpuYaw.Legends.Add(legend4);
-            this.chartMpuYaw.Location = new System.Drawing.Point(873, 431);
+            this.chartMpuYaw.Location = new System.Drawing.Point(870, 431);
             this.chartMpuYaw.Margin = new System.Windows.Forms.Padding(1);
             this.chartMpuYaw.Name = "chartMpuYaw";
             series4.BorderWidth = 2;
@@ -545,7 +545,7 @@
             series4.Legend = "Legend1";
             series4.Name = "MYaw";
             this.chartMpuYaw.Series.Add(series4);
-            this.chartMpuYaw.Size = new System.Drawing.Size(846, 424);
+            this.chartMpuYaw.Size = new System.Drawing.Size(844, 424);
             this.chartMpuYaw.TabIndex = 13;
             this.chartMpuYaw.Text = "MpuYaw";
             // 
@@ -582,7 +582,7 @@
             series5.Legend = "Legend1";
             series5.Name = "MRoll";
             this.chartMpuRoll.Series.Add(series5);
-            this.chartMpuRoll.Size = new System.Drawing.Size(870, 428);
+            this.chartMpuRoll.Size = new System.Drawing.Size(867, 428);
             this.chartMpuRoll.TabIndex = 19;
             this.chartMpuRoll.Text = "MpuRoll";
             // 
@@ -707,7 +707,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.27273F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 518F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 534F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1309F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1314F));
             this.tableLayoutPanel4.Controls.Add(this.buttonRDrug, 3, 1);
             this.tableLayoutPanel4.Controls.Add(this.chartDrugInput, 4, 3);
             this.tableLayoutPanel4.Controls.Add(this.buttonLDrug, 2, 1);
@@ -730,7 +730,7 @@
             // 
             this.buttonRDrug.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonRDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRDrug.Location = new System.Drawing.Point(695, 44);
+            this.buttonRDrug.Location = new System.Drawing.Point(690, 44);
             this.buttonRDrug.Name = "buttonRDrug";
             this.buttonRDrug.Size = new System.Drawing.Size(528, 116);
             this.buttonRDrug.TabIndex = 5;
@@ -761,7 +761,7 @@
             legend8.Position.X = 79F;
             legend8.Position.Y = 2F;
             this.chartDrugInput.Legends.Add(legend8);
-            this.chartDrugInput.Location = new System.Drawing.Point(1227, 416);
+            this.chartDrugInput.Location = new System.Drawing.Point(1222, 416);
             this.chartDrugInput.Margin = new System.Windows.Forms.Padding(1);
             this.chartDrugInput.Name = "chartDrugInput";
             series8.BorderWidth = 2;
@@ -772,7 +772,7 @@
             series8.LegendText = "DrugInput";
             series8.Name = "DrugInput";
             this.chartDrugInput.Series.Add(series8);
-            this.chartDrugInput.Size = new System.Drawing.Size(1308, 445);
+            this.chartDrugInput.Size = new System.Drawing.Size(1313, 445);
             this.chartDrugInput.TabIndex = 17;
             this.chartDrugInput.Text = "chart4";
             // 
@@ -780,7 +780,7 @@
             // 
             this.buttonLDrug.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonLDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLDrug.Location = new System.Drawing.Point(177, 44);
+            this.buttonLDrug.Location = new System.Drawing.Point(172, 44);
             this.buttonLDrug.Name = "buttonLDrug";
             this.buttonLDrug.Size = new System.Drawing.Size(512, 116);
             this.buttonLDrug.TabIndex = 3;
@@ -811,7 +811,7 @@
             legend9.Position.X = 79F;
             legend9.Position.Y = 2F;
             this.chartRollInput.Legends.Add(legend9);
-            this.chartRollInput.Location = new System.Drawing.Point(1227, 1);
+            this.chartRollInput.Location = new System.Drawing.Point(1222, 1);
             this.chartRollInput.Margin = new System.Windows.Forms.Padding(1);
             this.chartRollInput.Name = "chartRollInput";
             this.tableLayoutPanel4.SetRowSpan(this.chartRollInput, 3);
@@ -823,17 +823,17 @@
             series9.LegendText = "RollInput";
             series9.Name = "RollInput";
             this.chartRollInput.Series.Add(series9);
-            this.chartRollInput.Size = new System.Drawing.Size(1308, 413);
+            this.chartRollInput.Size = new System.Drawing.Size(1313, 413);
             this.chartRollInput.TabIndex = 19;
             this.chartRollInput.Text = "chart4";
             // 
             // rollVerticalProgressBar
             // 
             this.rollVerticalProgressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rollVerticalProgressBar.Location = new System.Drawing.Point(86, 3);
+            this.rollVerticalProgressBar.Location = new System.Drawing.Point(84, 3);
             this.rollVerticalProgressBar.Name = "rollVerticalProgressBar";
             this.tableLayoutPanel4.SetRowSpan(this.rollVerticalProgressBar, 4);
-            this.rollVerticalProgressBar.Size = new System.Drawing.Size(85, 856);
+            this.rollVerticalProgressBar.Size = new System.Drawing.Size(82, 856);
             this.rollVerticalProgressBar.TabIndex = 20;
             // 
             // chartPitchInput
@@ -861,7 +861,7 @@
             legend10.Position.X = 79F;
             legend10.Position.Y = 2F;
             this.chartPitchInput.Legends.Add(legend10);
-            this.chartPitchInput.Location = new System.Drawing.Point(175, 164);
+            this.chartPitchInput.Location = new System.Drawing.Point(170, 164);
             this.chartPitchInput.Margin = new System.Windows.Forms.Padding(1);
             this.chartPitchInput.Name = "chartPitchInput";
             this.tableLayoutPanel4.SetRowSpan(this.chartPitchInput, 2);
@@ -883,7 +883,7 @@
             this.pitchVerticalProgressBar.Location = new System.Drawing.Point(3, 3);
             this.pitchVerticalProgressBar.Name = "pitchVerticalProgressBar";
             this.tableLayoutPanel4.SetRowSpan(this.pitchVerticalProgressBar, 4);
-            this.pitchVerticalProgressBar.Size = new System.Drawing.Size(77, 856);
+            this.pitchVerticalProgressBar.Size = new System.Drawing.Size(75, 856);
             this.pitchVerticalProgressBar.TabIndex = 9;
             // 
             // tableLayoutPanel1
@@ -938,7 +938,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 185F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 184F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 181F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
             this.tableLayoutPanel5.Controls.Add(this.textBoxBatteryDataR, 5, 1);
             this.tableLayoutPanel5.Controls.Add(this.label_batteryDataR, 5, 0);
             this.tableLayoutPanel5.Controls.Add(this.textBoxBatteryDataL, 6, 1);
@@ -965,7 +965,7 @@
             // textBoxBatteryDataR
             // 
             this.textBoxBatteryDataR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxBatteryDataR.Location = new System.Drawing.Point(889, 29);
+            this.textBoxBatteryDataR.Location = new System.Drawing.Point(884, 29);
             this.textBoxBatteryDataR.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxBatteryDataR.Multiline = true;
             this.textBoxBatteryDataR.Name = "textBoxBatteryDataR";
@@ -979,7 +979,7 @@
             this.label_batteryDataR.AutoSize = true;
             this.label_batteryDataR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_batteryDataR.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label_batteryDataR.Location = new System.Drawing.Point(890, 0);
+            this.label_batteryDataR.Location = new System.Drawing.Point(885, 0);
             this.label_batteryDataR.Name = "label_batteryDataR";
             this.label_batteryDataR.Size = new System.Drawing.Size(178, 27);
             this.label_batteryDataR.TabIndex = 11;
@@ -989,7 +989,7 @@
             // textBoxBatteryDataL
             // 
             this.textBoxBatteryDataL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxBatteryDataL.Location = new System.Drawing.Point(1073, 29);
+            this.textBoxBatteryDataL.Location = new System.Drawing.Point(1068, 29);
             this.textBoxBatteryDataL.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxBatteryDataL.Multiline = true;
             this.textBoxBatteryDataL.Name = "textBoxBatteryDataL";
@@ -1001,13 +1001,13 @@
             // textBoxMpuPitch
             // 
             this.textBoxMpuPitch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxMpuPitch.Location = new System.Drawing.Point(174, 29);
+            this.textBoxMpuPitch.Location = new System.Drawing.Point(171, 29);
             this.textBoxMpuPitch.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxMpuPitch.Multiline = true;
             this.textBoxMpuPitch.Name = "textBoxMpuPitch";
             this.textBoxMpuPitch.ReadOnly = true;
             this.textBoxMpuPitch.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMpuPitch.Size = new System.Drawing.Size(179, 423);
+            this.textBoxMpuPitch.Size = new System.Drawing.Size(177, 423);
             this.textBoxMpuPitch.TabIndex = 4;
             this.textBoxMpuPitch.Text = "`";
             // 
@@ -1016,7 +1016,7 @@
             this.label12.AutoSize = true;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label12.Location = new System.Drawing.Point(705, 0);
+            this.label12.Location = new System.Drawing.Point(700, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(179, 27);
             this.label12.TabIndex = 38;
@@ -1032,13 +1032,13 @@
             this.textBoxSpeed.Name = "textBoxSpeed";
             this.textBoxSpeed.ReadOnly = true;
             this.textBoxSpeed.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxSpeed.Size = new System.Drawing.Size(168, 423);
+            this.textBoxSpeed.Size = new System.Drawing.Size(165, 423);
             this.textBoxSpeed.TabIndex = 15;
             // 
             // textBoxMpuYaw
             // 
             this.textBoxMpuYaw.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxMpuYaw.Location = new System.Drawing.Point(526, 29);
+            this.textBoxMpuYaw.Location = new System.Drawing.Point(521, 29);
             this.textBoxMpuYaw.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxMpuYaw.Multiline = true;
             this.textBoxMpuYaw.Name = "textBoxMpuYaw";
@@ -1054,7 +1054,7 @@
             this.label10.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label10.Location = new System.Drawing.Point(3, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(166, 27);
+            this.label10.Size = new System.Drawing.Size(163, 27);
             this.label10.TabIndex = 36;
             this.label10.Text = "Speed";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1064,9 +1064,9 @@
             this.label_mpuData.AutoSize = true;
             this.label_mpuData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_mpuData.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label_mpuData.Location = new System.Drawing.Point(175, 0);
+            this.label_mpuData.Location = new System.Drawing.Point(172, 0);
             this.label_mpuData.Name = "label_mpuData";
-            this.label_mpuData.Size = new System.Drawing.Size(177, 27);
+            this.label_mpuData.Size = new System.Drawing.Size(175, 27);
             this.label_mpuData.TabIndex = 8;
             this.label_mpuData.Text = "MPUPitch";
             this.label_mpuData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1074,7 +1074,7 @@
             // textBoxMpuRoll
             // 
             this.textBoxMpuRoll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxMpuRoll.Location = new System.Drawing.Point(357, 29);
+            this.textBoxMpuRoll.Location = new System.Drawing.Point(352, 29);
             this.textBoxMpuRoll.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxMpuRoll.Multiline = true;
             this.textBoxMpuRoll.Name = "textBoxMpuRoll";
@@ -1088,7 +1088,7 @@
             this.label15.AutoSize = true;
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label15.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label15.Location = new System.Drawing.Point(358, 0);
+            this.label15.Location = new System.Drawing.Point(353, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(163, 27);
             this.label15.TabIndex = 41;
@@ -1100,7 +1100,7 @@
             this.label14.AutoSize = true;
             this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label14.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label14.Location = new System.Drawing.Point(527, 0);
+            this.label14.Location = new System.Drawing.Point(522, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(172, 27);
             this.label14.TabIndex = 40;
@@ -1110,7 +1110,7 @@
             // textBoxCadence
             // 
             this.textBoxCadence.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxCadence.Location = new System.Drawing.Point(704, 29);
+            this.textBoxCadence.Location = new System.Drawing.Point(699, 29);
             this.textBoxCadence.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCadence.Multiline = true;
             this.textBoxCadence.Name = "textBoxCadence";
@@ -1124,7 +1124,7 @@
             this.label_batteryDataL.AutoSize = true;
             this.label_batteryDataL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_batteryDataL.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label_batteryDataL.Location = new System.Drawing.Point(1074, 0);
+            this.label_batteryDataL.Location = new System.Drawing.Point(1069, 0);
             this.label_batteryDataL.Name = "label_batteryDataL";
             this.label_batteryDataL.Size = new System.Drawing.Size(175, 27);
             this.label_batteryDataL.TabIndex = 10;

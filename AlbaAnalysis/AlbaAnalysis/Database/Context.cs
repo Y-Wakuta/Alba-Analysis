@@ -10,8 +10,7 @@ namespace AlbaAnalysis.Database {
 
     public class Context : DbContext {
 
-        public Context() : base("sqlite") {
-        }
+        public Context() : base("sqlite") {}
 
         public DbSet<ConfigEntity> config { get; set; }
     }

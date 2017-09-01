@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.ComponentModel;
+using System.IO;
 
 using AlbaAnalysis.Entity;
 using AlbaAnalysis.AdditionalPanel;
@@ -17,20 +17,23 @@ namespace AlbaAnalysis {
     public partial class ConfigDialog : Form {
 
         ConfigDialogDataHandler _cddh;
-        Context context = new Context();
 
         public ConfigDialog() {
             InitializeComponent();
-            _cddh = new ConfigDialogDataHandler(displayOrderAttributeBindingSource);
-            try {
-                var result = context.config.ToList();
-            }catch(Exception e) {
-            var str = System.IO.Directory.GetCurrentDirectory();
-            }
+            _cddh = new ConfigDialogDataHandler(configEntityBindingSource);
+
         }
 
         private void buttonCancel_Click(object sender, EventArgs e) {
             Close();
+        }
+
+        private void buttonAdapt_Click(object sender, EventArgs e) {
+            ConfigRoutine.Insert2DB();
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            _cddh.Update();
         }
     }
 }
