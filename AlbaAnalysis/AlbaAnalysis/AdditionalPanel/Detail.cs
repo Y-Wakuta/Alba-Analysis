@@ -25,9 +25,3 @@ namespace AlbaAnalysis {
         }
     }
 }
-
-public static class Extension {
-    public static FieldInfo GetFieldMemByName(string name) {
-        return typeof(SerialEntity).GetField(name);
-    }
-}

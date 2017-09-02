@@ -17,4 +17,14 @@ C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\Alb
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.csproj.GenerateResource.Cache
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.exe
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.pdb
-C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.csprojResolveAssemblyReference.cache
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Release\EntityFramework.dll
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Release\System.Data.SQLite.dll
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Release\System.Data.SQLite.EF6.dll
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Release\System.Data.SQLite.Linq.dll
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Release\EntityFramework.xml
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Release\System.Data.SQLite.xml
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Release\System.Data.SQLite.dll.config
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.ConfigDialog.resources
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Release\AlbaAnalysis.AlbaChart.resources

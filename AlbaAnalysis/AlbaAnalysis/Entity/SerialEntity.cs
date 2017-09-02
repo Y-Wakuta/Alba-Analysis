@@ -18,41 +18,41 @@ namespace AlbaAnalysis.Entity {
         }
 
         #region column
-        public string MpuXR = "0";
+        public string MpuXR { get; set; } = "0";
 
-        public string MpuYR = "0";
+        public string MpuYR { get; set; } = "0";
 
-        public string MpuZR = "0";
+        public string MpuZR { get; set; } = "0";
 
-        public string MpuXR_A = "0";
+        public string MpuXR_A { get; set; } = "0";
 
-        public string MpuYR_A = "0";
+        public string MpuYR_A { get; set; } = "0";
 
-        public string MpuZR_A = "0";
+        public string MpuZR_A { get; set; } = "0";
 
-        public string VoltageR = "0";
+        public string VoltageR { get; set; } = "0";
 
-        public string MpuXL = "0";
+        public string MpuXL { get; set; } = "0";
 
-        public string MpuYL = "0";
+        public string MpuYL { get; set; } = "0";
 
-        public string MpuZL = "0";
+        public string MpuZL { get; set; } = "0";
 
-        public string MpuXL_A = "0";
+        public string MpuXL_A { get; set; } = "0";
 
-        public string MpuYL_A = "0";
+        public string MpuYL_A { get; set; } = "0";
 
-        public string MpuZL_A = "0";
+        public string MpuZL_A { get; set; } = "0";
 
-        public string VoltageL = "0";
+        public string VoltageL { get; set; } = "0";
 
-        public string ErebonRInput = "0";
+        public string ErebonRInput { get; set; } = "0";
 
-        public string DrugR = "0";
+        public string DrugR { get; set; } = "0";
 
-        public string ErebonLInput = "0";
+        public string ErebonLInput { get; set; } = "0";
 
-        public string DrugL = "0";
+        public string DrugL{ get; set; } = "0";
 
         public string MpuRoll {
             get { return _mpuRoll; }
@@ -63,15 +63,43 @@ namespace AlbaAnalysis.Entity {
         }
         private string _mpuRoll = "0";
 
-        public string MpuPitch = "0";
+        public string MpuPitch {
+            get { return _mpuPitch; }
+            set {
+                _mpuPitch = value;
+                onPropertyChanged(SerialRoutine.GetName(() => this.MpuPitch));
+            }
+        }
+        public string _mpuPitch = "0";
 
-        public string MpuYaw = "0";
+        public string MpuYaw {
+            get { return _mpuYaw; }
+            set {
+                _mpuYaw = value;
+                onPropertyChanged(SerialRoutine.GetName(() => this.MpuYaw));
+            }
+        }
+        public string _mpuYaw = "0";
 
-        public string AirSpeed = "0";
+        public string AirSpeed {
+            get { return _airSpeed; }
+            set {
+                _airSpeed = value;
+                onPropertyChanged(SerialRoutine.GetName(() => this.AirSpeed));
+            }
+        }
+        public string _airSpeed = "0";
 
-        public string Sonar = "0";
+        public string Sonar { get; set; } = "0";
 
-        public string Cadence = "0";
+        public string Cadence {
+            get { return _cadence; }
+            set {
+                _cadence = value;
+                onPropertyChanged(SerialRoutine.GetName(() => this.Cadence));
+            }
+        }
+        public string _cadence = "0";
         //public const int Latitude = 24;
         //public const int Longitude = 25;
 
@@ -83,7 +111,6 @@ namespace AlbaAnalysis.Entity {
             }
         }
         private string _time = "0";
-
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void onPropertyChanged(String propertyName = "") {

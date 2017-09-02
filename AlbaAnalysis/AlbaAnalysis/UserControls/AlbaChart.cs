@@ -12,6 +12,7 @@ using System.Reflection;
 
 using AlbaAnalysis.Database;
 using AlbaAnalysis.Entity;
+using AlbaAnalysis.Routine;
 
 
 namespace AlbaAnalysis {
@@ -19,7 +20,7 @@ namespace AlbaAnalysis {
 
         public string _dataPropertyName = string.Empty;
         public SerialEntity se = new SerialEntity();
-        public FieldInfo f;
+        static public FieldInfo f;
 
         public AlbaChart() {
             InitializeComponent();
@@ -37,8 +38,7 @@ namespace AlbaAnalysis {
                 x = double.Parse(xStr);
                 y = double.Parse(yStr);
                 se.Time = xStr;
-                FieldInfo f = Extension.GetFieldMemByName(_dataPropertyName);
-                f.SetValue(se, yStr);
+                setYValue(_dataPropertyName, se, yStr);
             } catch (Exception exc) { }
             this.Series[0].Points.AddXY(x, y);
             this.ChartAreas[0].AxisX.Maximum = x;
@@ -52,9 +52,23 @@ namespace AlbaAnalysis {
         }
 
         private void AlbaChart_Click(object sender, EventArgs e) {
+
             using (var details = new Detail(_dataPropertyName, ref se)) {
                 details.ShowDialog();
             }
+        }
+
+        private void setYValue(string propName,SerialEntity se,string ystr) {
+            if (SerialRoutine.GetName(() => se.Cadence) == propName)
+                se.Cadence = ystr;
+            else if (SerialRoutine.GetName(() => se.AirSpeed) == propName)
+                se.AirSpeed = ystr;
+            else if (SerialRoutine.GetName(() => se.MpuRoll) == propName)
+                se.MpuRoll = ystr;
+            else if (SerialRoutine.GetName(() => se.MpuYaw) == propName)
+                se.MpuYaw = ystr;
+            else if (SerialRoutine.GetName(() => se.MpuPitch) == propName)
+                se.MpuPitch = ystr;
         }
     }
 }
