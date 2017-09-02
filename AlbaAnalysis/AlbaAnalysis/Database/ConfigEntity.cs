@@ -22,6 +22,15 @@ namespace AlbaAnalysis.Database {
         private int _id;
 
         /// <summary>
+        /// 表示順
+        /// </summary>
+        public int ordering {
+            get { return _ordering; }
+            set { _ordering = value; }
+        }
+        private int _ordering;
+
+        /// <summary>
         /// メンバの名前
         /// </summary>
         public string name {

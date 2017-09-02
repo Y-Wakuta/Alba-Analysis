@@ -20,6 +20,7 @@ namespace AlbaAnalysis.Database {
             using (var c = new Context()) {
                 var allConfig = c.config.ToList();
                 c.config.RemoveRange(allConfig);
+                c.SaveChanges();
             }
         }
 
