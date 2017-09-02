@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+
+using AlbaAnalysis.Routine;
 
 namespace AlbaAnalysis.Entity {
     /// <summary>
     /// ここに新しい要素を追加するときは、database.sqlにも項目を追加してください
     /// </summary>
-    public class SerialEntity {
+    public class SerialEntity : INotifyPropertyChanged {
 
         public SerialEntity Clone() {
             return (SerialEntity)MemberwiseClone();
@@ -51,7 +54,14 @@ namespace AlbaAnalysis.Entity {
 
         public string DrugL = "0";
 
-        public string MpuRoll = "0";
+        public string MpuRoll {
+            get { return _mpuRoll; }
+            set {
+                _mpuRoll = value;
+                onPropertyChanged(SerialRoutine.GetName(() => this.MpuRoll));
+            }
+        }
+        private string _mpuRoll = "0";
 
         public string MpuPitch = "0";
 
@@ -65,7 +75,22 @@ namespace AlbaAnalysis.Entity {
         //public const int Latitude = 24;
         //public const int Longitude = 25;
 
-        public string Time = "0";
+        public string Time {
+            get { return _time; }
+            set {
+                _time = value;
+                onPropertyChanged(SerialRoutine.GetName(() => this.Time));
+            }
+        }
+        private string _time = "0";
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void onPropertyChanged(String propertyName = "") {
+            if (PropertyChanged != null) {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
         #endregion
     }
 
@@ -75,13 +100,9 @@ namespace AlbaAnalysis.Entity {
     /// </summary>
     public static class Constants {
         public const double filterLevel = 8.0;
-
         public static int controlDataNum = Enum.GetNames(typeof(ControlDataOrder)).Length;
-
         public static int InputDataNum = Enum.GetNames(typeof(InputDataOrder)).Length;
-
         public static int MpuDataNum = Enum.GetNames(typeof(MpuDataOrder)).Length;
-
         public static int KeikiDataNum = Enum.GetNames(typeof(KeikiDataOrder)).Length;
     }
 

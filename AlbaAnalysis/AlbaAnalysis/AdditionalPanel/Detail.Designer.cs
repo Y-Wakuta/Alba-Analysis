@@ -23,10 +23,15 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.textBoxYValue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxXValue = new System.Windows.Forms.TextBox();
+            this.bindingSourceX = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSourceY = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceY)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxYValue
@@ -78,6 +83,8 @@
             this.Controls.Add(this.textBoxYValue);
             this.Name = "Detail";
             this.Text = "Detail";
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceY)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -89,5 +96,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxXValue;
+        private System.Windows.Forms.BindingSource bindingSourceX;
+        private System.Windows.Forms.BindingSource bindingSourceY;
     }
 }

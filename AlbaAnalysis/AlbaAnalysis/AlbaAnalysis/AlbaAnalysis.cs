@@ -29,6 +29,7 @@ namespace AlbaAnalysis {
             _ad = new AlbaAnalysisDataHandler(bauditemsBindingSource, portNamesBindingSource, filePathBindingSource);
             initializeButtonEnable();
             buttonConnect.Focus();
+            setChartDispName(new SerialEntity());
 
             bauditemsBindingSource.PositionChanged += (s, e) => {
                 serialPort1.BaudRate = ((BaudRateEntity)(bauditemsBindingSource.Current)).rate;
@@ -254,6 +255,7 @@ namespace AlbaAnalysis {
                             if (targetEnum == InputEnum.notAccepted)
                                 continue;
                             lastSerialEntity = serialEntity.Clone();
+
                             InvokeControls(serialEntity, csvLine, targetEnum);
                         }
                         //csv読み込みの速度向上
@@ -331,6 +333,40 @@ namespace AlbaAnalysis {
                 config.ShowDialog();
             }
         }
+
+        private void setChartDispName(SerialEntity se) {
+            chartCadence.SetDataPropertyName(SerialRoutine.GetName(() => se.Cadence));
+            chartMpuPitch.SetDataPropertyName(SerialRoutine.GetName(() => se.MpuPitch));
+            chartMpuRoll.SetDataPropertyName(SerialRoutine.GetName(() => se.MpuRoll));
+            chartMpuYaw.SetDataPropertyName(SerialRoutine.GetName(() => se.MpuYaw));
+            chartSpeed.SetDataPropertyName(SerialRoutine.GetName(() => se.AirSpeed));
+            chartRBattery.SetDataPropertyName(SerialRoutine.GetName(() => se.VoltageR));
+            chartLBattery.SetDataPropertyName(SerialRoutine.GetName(() => se.VoltageL));
+            chartRollInput.SetDataPropertyName(SerialRoutine.GetName(() => se.ErebonRInput));
+            chartPitchInput.SetDataPropertyName(SerialRoutine.GetName(() => se.ErebonLInput));
+            chartDrugInput.SetDataPropertyName(SerialRoutine.GetName(() => se.DrugL));//ドラッグラダーのchartはここでだけLとして識別する
+        }
+
+        //public class data {
+        //    private static string _d;
+        //    public data(string disp,SerialEntity se) {
+        //        _d = disp;
+        //        x = Extension.GetFieldMemByName("Time").GetValue(se).ToString();
+        //        y = Extension.GetFieldMemByName(_d).GetValue(se).ToString();
+        //    }
+
+        //    public string x {
+        //        get { return _x; }
+        //        set { _x = value; }
+        //    }
+        //    private string _x;
+
+        //    public string y {
+        //        get { return _y; }
+        //        set { _y = value; }
+        //    }
+        //    private string _y;
+        //}
     }
 }
 

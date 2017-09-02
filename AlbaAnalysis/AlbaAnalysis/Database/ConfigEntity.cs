@@ -66,7 +66,6 @@ namespace AlbaAnalysis.Database {
         }
         private int _filter_level;
 
-
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName = "") {
             if (PropertyChanged != null) {

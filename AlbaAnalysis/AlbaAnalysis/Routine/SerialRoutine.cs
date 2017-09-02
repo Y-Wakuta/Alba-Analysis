@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,6 +31,11 @@ namespace AlbaAnalysis.Routine {
                 }
             }
         }
+
+        public static string GetName<T>(Expression<Func<T>> e) {
+            return ((MemberExpression)e.Body).Member.Name;
+        }
+
         /// <summary>
         /// シリアルから来てるデータにフィルタをかけます(操舵入力を除く)
         /// </summary>

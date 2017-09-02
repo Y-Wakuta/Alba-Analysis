@@ -182,6 +182,7 @@
             this.buttonAdapt.Text = "適用";
             this.buttonAdapt.UseVisualStyleBackColor = true;
             this.buttonAdapt.Click += new System.EventHandler(this.buttonAdapt_Click_1);
+
             // 
             // buttonReset
             // 

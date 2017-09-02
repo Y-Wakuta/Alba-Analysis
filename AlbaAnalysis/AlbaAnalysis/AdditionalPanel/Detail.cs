@@ -8,13 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Reflection;
+using AlbaAnalysis.Entity;
+
 namespace AlbaAnalysis {
     public partial class Detail : Form {
-        public Detail(Entity.DetailEntity ca) {
+        public string _disp;
+        public SerialEntity _se;
+        public Detail(string dispName,ref SerialEntity se) {
             InitializeComponent();
+            _disp = dispName;
+            _se = se;
 
-            //this.timebindingsource.datasource = new entity.time();
-            //this.cadencebindingsource.datasource = new entity.cadence();
+            textBoxXValue.DataBindings.Add("Text", _se, "Time");
+            textBoxYValue.DataBindings.Add("Text", _se, _disp, true, DataSourceUpdateMode.OnPropertyChanged);
         }
+    }
+}
+
+public static class Extension {
+    public static FieldInfo GetFieldMemByName(string name) {
+        return typeof(SerialEntity).GetField(name);
     }
 }
