@@ -16,24 +16,26 @@ namespace AlbaAnalysis.AdditionalPanel {
 
         BindingList<ConfigEntity> _configBl;
         BindingSource _abd;
-        ConfigRoutine configRoutine = new ConfigRoutine();
 
         public ConfigDialogDataHandler(BindingSource abd) {
             _abd = abd;
-            _configBl = new BindingList<ConfigEntity>(configRoutine.GetConfigs());
+            _configBl = new BindingList<ConfigEntity>(ConfigRoutine.GetConfigs());
             _abd.DataSource = _configBl;
 
             _configBl.ListChanged += (s, e) => Validate();
         }
 
-        #region DB
-        public void Reset() {
-            _abd.DataSource = new BindingList<ConfigEntity>(configRoutine.GetConfigs());
+        public void ResetBinding() {
+            _configBl = new BindingList<ConfigEntity>(ConfigRoutine.GetConfigs());
+            _abd.DataSource = _configBl;
         }
 
+        #region DB
+  
+
         public void Update() {
-            configRoutine.ClearDB();
-            configRoutine.Insert2DB(_configBl.ToList());
+            ConfigRoutine.ClearDB();
+            ConfigRoutine.Insert2DB(_configBl.ToList());
         }
         #endregion
 

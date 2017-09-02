@@ -24,12 +24,12 @@ namespace AlbaAnalysis {
         }
 
         private void buttonReset_Click(object sender, EventArgs e) {
+            if (DialogResult.Cancel == MessageBox.Show("設定をリセットしますか？", "データベースリセット", MessageBoxButtons.OKCancel))
+                return;
 
-            _cddh.Reset();
-        }
-
-        private void ConfigDialog_FormClosing(object sender, FormClosingEventArgs e) {
-            _cddh.Reset();
+            ConfigRoutine.ClearDB();
+           ConfigRoutine.ResetDB();
+            _cddh.ResetBinding();
         }
 
         private void buttonAdapt_Click_1(object sender, EventArgs e) {

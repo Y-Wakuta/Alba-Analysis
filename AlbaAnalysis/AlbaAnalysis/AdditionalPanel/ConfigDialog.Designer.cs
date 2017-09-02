@@ -214,7 +214,6 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "ConfigDialog";
             this.Text = "ConfigDialog";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConfigDialog_FormClosing);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
