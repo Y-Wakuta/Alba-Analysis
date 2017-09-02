@@ -52,10 +52,28 @@ namespace AlbaAnalysis {
         }
 
         private void AlbaChart_Click(object sender, EventArgs e) {
-
+            if (!isClickable(_dataPropertyName)) {
+                MessageBox.Show("このグラフは詳細表示できません。");
+                return;
+            }
+                
             using (var details = new Detail(_dataPropertyName, ref se)) {
                 details.ShowDialog();
             }
+        }
+
+        private bool isClickable(string propName) {
+            if (SerialRoutine.GetName(() => se.Cadence) == propName)
+                return true;
+            else if (SerialRoutine.GetName(() => se.AirSpeed) == propName)
+                return true;
+            else if (SerialRoutine.GetName(() => se.MpuRoll) == propName)
+                return true;
+            else if (SerialRoutine.GetName(() => se.MpuYaw) == propName)
+                return true;
+            else if (SerialRoutine.GetName(() => se.MpuPitch) == propName)
+                return true;
+            else return false;
         }
 
         private void setYValue(string propName,SerialEntity se,string ystr) {
