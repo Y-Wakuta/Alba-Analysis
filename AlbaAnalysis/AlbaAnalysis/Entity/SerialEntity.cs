@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AlbaAnalysis.Entity {
+    /// <summary>
+    /// ここに新しい要素を追加するときは、database.sqlにも項目を追加してください
+    /// </summary>
     public class SerialEntity {
 
         public SerialEntity Clone() {
@@ -70,8 +73,16 @@ namespace AlbaAnalysis.Entity {
     /// <summary>
     /// マクロを定義
     /// </summary>
-    public class Constants {
+    public static class Constants {
         public const double filterLevel = 8.0;
+
+        public static int controlDataNum = Enum.GetNames(typeof(ControlDataOrder)).Length;
+
+        public static int InputDataNum = Enum.GetNames(typeof(InputDataOrder)).Length;
+
+        public static int MpuDataNum = Enum.GetNames(typeof(MpuDataOrder)).Length;
+
+        public static int KeikiDataNum = Enum.GetNames(typeof(KeikiDataOrder)).Length;
     }
 
     public class portNames {

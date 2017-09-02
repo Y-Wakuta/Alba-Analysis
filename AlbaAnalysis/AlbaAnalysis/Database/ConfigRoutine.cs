@@ -9,8 +9,6 @@ using System.IO;
 namespace AlbaAnalysis.Database {
     public static class ConfigRoutine {
 
-        static Context context = new Context();
-
         public static List<ConfigEntity> GetConfigs() {
             using (var c = new Context())
                 return c.config.ToList();

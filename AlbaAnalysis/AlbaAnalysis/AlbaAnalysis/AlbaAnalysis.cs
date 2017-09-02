@@ -49,8 +49,7 @@ namespace AlbaAnalysis {
             sw.Start();
             try {
                 data = serialPort1.ReadLine();
-            }
-            catch (Exception) {
+            } catch (Exception) {
                 return;
             }
             sw.Stop();
@@ -61,13 +60,13 @@ namespace AlbaAnalysis {
                 if (!int.TryParse(dataArray[i], out var tmp))
                     dataArray[i] = 0.ToString();
             }
-            if (dataArray.First().Equals("con") && dataArray.Count() == Enum.GetNames(typeof(ControlDataOrder)).Length + 2)
+            if (dataArray.First().Equals("con") && dataArray.Count() == Constants.controlDataNum + 2)
                 ProccessSerialDatas(InputEnum.control, dataArray, data);
-            else if (dataArray.First().Equals("inp") && dataArray.Count() == Enum.GetNames(typeof(InputDataOrder)).Length + 1)
+            else if (dataArray.First().Equals("inp") && dataArray.Count() == Constants.InputDataNum + 1)
                 ProccessSerialDatas(InputEnum.input, dataArray, data);
-            else if (dataArray.First().Equals("mpu") && dataArray.Count() == Enum.GetNames(typeof(MpuDataOrder)).Length + 1)
+            else if (dataArray.First().Equals("mpu") && dataArray.Count() == Constants.MpuDataNum + 1)
                 ProccessSerialDatas(InputEnum.mpu, dataArray, data);
-            else if (dataArray.First().Equals("kei") && dataArray.Count() == Enum.GetNames(typeof(KeikiDataOrder)).Length + 1)
+            else if (dataArray.First().Equals("kei") && dataArray.Count() == Constants.KeikiDataNum + 1)
                 ProccessSerialDatas(InputEnum.keiki, dataArray, data);
         }
 
@@ -117,23 +116,19 @@ namespace AlbaAnalysis {
                 if (InputEnum.keiki == ie) {
                     chartSpeed.AddXY(datas.Time, datas.AirSpeed);
                     chartCadence.AddXY(datas.Time, datas.Cadence);
-                }
-                else if (InputEnum.control == ie) {
+                } else if (InputEnum.control == ie) {
                     chartRBattery.AddXY(datas.Time, datas.VoltageR);
                     chartLBattery.AddXY(datas.Time, datas.VoltageL);
-                }
-                else if (InputEnum.mpu == ie) {
+                } else if (InputEnum.mpu == ie) {
                     chartMpuPitch.AddXY(datas.Time, datas.MpuPitch);
                     chartMpuYaw.AddXY(datas.Time, datas.MpuYaw);
                     chartMpuRoll.AddXY(datas.Time, datas.MpuRoll);
-                }
-                else if (InputEnum.input == ie) {
+                } else if (InputEnum.input == ie) {
                     chartDrugInput.AddXY(datas.Time, (double.Parse(datas.DrugR) - double.Parse(datas.DrugL)).ToString());
                     chartRollInput.AddXY(datas.Time, datas.ErebonRInput);
                     chartPitchInput.AddXY(datas.Time, datas.ErebonLInput);
                 }
-            }
-            catch (Exception) {
+            } catch (Exception) {
                 return;
             }
             //});
@@ -161,12 +156,10 @@ namespace AlbaAnalysis {
             if (InputEnum.keiki == ie) {
                 textBoxSpeed.AppendText(datas.AirSpeed + Environment.NewLine);
                 textBoxCadence.AppendText(datas.Cadence + Environment.NewLine);
-            }
-            else if (InputEnum.control == ie) {
+            } else if (InputEnum.control == ie) {
                 textBoxBatteryDataR.AppendText(datas.VoltageR + Environment.NewLine);
                 textBoxBatteryDataL.AppendText(datas.VoltageL + Environment.NewLine);
-            }
-            else if (InputEnum.mpu == ie) {
+            } else if (InputEnum.mpu == ie) {
                 textBoxMpuPitch.AppendText(datas.MpuPitch + Environment.NewLine);
                 textBoxMpuRoll.AppendText(datas.MpuRoll + Environment.NewLine);
                 textBoxMpuYaw.AppendText(datas.MpuYaw + Environment.NewLine);
@@ -190,8 +183,7 @@ namespace AlbaAnalysis {
 
             try {
                 serialPort1.Open();
-            }
-            catch (Exception) {
+            } catch (Exception) {
                 MessageBox.Show("利用可能なシリアルポートがありません");
             }
             serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialPort1_DataReceived);
@@ -300,8 +292,7 @@ namespace AlbaAnalysis {
             var nowTime = DateTime.Now.ToString("MMdd_hhmm");
             try {
                 System.IO.Directory.CreateDirectory(@"../../../Log/chart/" + nowTime + comment);
-            }
-            catch (IOException io) {
+            } catch (IOException io) {
                 MessageBox.Show(io.Message);
             }
             var fls = typeof(SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("Chart"));

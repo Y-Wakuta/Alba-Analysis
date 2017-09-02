@@ -14,6 +14,9 @@ namespace AlbaAnalysis {
     public partial class AlbaChart : Chart {
         public AlbaChart() {
             InitializeComponent();
+            this.Click += new System.EventHandler(this.buttonAdapt_Click_1);
+
+
         }
 
         public void AddXY(string xStr, string yStr) {
@@ -28,15 +31,12 @@ namespace AlbaAnalysis {
             this.ChartAreas[0].AxisX.Maximum = x;
         }
 
-        protected override void OnPaint(PaintEventArgs pe) {
-            base.OnPaint(pe);
-        }
-
         private void AlbaChart_Layout(object sender, LayoutEventArgs e) {
             this.ChartAreas[0].AxisX.Minimum = 0;
             this.ChartAreas[0].AxisY.Minimum = 0;
             this.ChartAreas[0].AxisX.Maximum = 0.1;
             Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
         }
+
     }
 }
