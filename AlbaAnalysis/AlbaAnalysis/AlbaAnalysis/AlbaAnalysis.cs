@@ -346,27 +346,6 @@ namespace AlbaAnalysis {
             chartPitchInput.SetDataPropertyName(SerialRoutine.GetName(() => se.ErebonLInput));
             chartDrugInput.SetDataPropertyName(SerialRoutine.GetName(() => se.DrugL));//ドラッグラダーのchartはここでだけLとして識別する
         }
-
-        //public class data {
-        //    private static string _d;
-        //    public data(string disp,SerialEntity se) {
-        //        _d = disp;
-        //        x = Extension.GetFieldMemByName("Time").GetValue(se).ToString();
-        //        y = Extension.GetFieldMemByName(_d).GetValue(se).ToString();
-        //    }
-
-        //    public string x {
-        //        get { return _x; }
-        //        set { _x = value; }
-        //    }
-        //    private string _x;
-
-        //    public string y {
-        //        get { return _y; }
-        //        set { _y = value; }
-        //    }
-        //    private string _y;
-        //}
     }
 }
 
