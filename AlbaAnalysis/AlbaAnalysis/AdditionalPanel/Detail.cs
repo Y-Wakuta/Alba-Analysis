@@ -13,15 +13,11 @@ using AlbaAnalysis.Entity;
 
 namespace AlbaAnalysis {
     public partial class Detail : Form {
-        public string _disp;
-        public SerialEntity _se;
         public Detail(string dispName,ref SerialEntity se) {
             InitializeComponent();
-            _disp = dispName;
-            _se = se;
 
-            textBoxXValue.DataBindings.Add("Text", _se, "Time");
-            textBoxYValue.DataBindings.Add("Text", _se, _disp, true, DataSourceUpdateMode.OnPropertyChanged);
+            textBoxXValue.DataBindings.Add("Text", se, "Time");
+            textBoxYValue.DataBindings.Add("Text", se, dispName, true, DataSourceUpdateMode.OnPropertyChanged);
         }
     }
 }
