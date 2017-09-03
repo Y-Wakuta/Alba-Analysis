@@ -63,29 +63,29 @@ namespace AlbaAnalysis {
         }
 
         private bool isClickable(string propName) {
-            if (SerialRoutine.GetName(() => se.Cadence) == propName)
+            if (nameof(se.Cadence) == propName)
                 return true;
-            else if (SerialRoutine.GetName(() => se.AirSpeed) == propName)
+            else if (nameof(se.AirSpeed) == propName)
                 return true;
-            else if (SerialRoutine.GetName(() => se.MpuRoll) == propName)
+            else if (nameof(se.MpuRoll) == propName)
                 return true;
-            else if (SerialRoutine.GetName(() => se.MpuYaw) == propName)
+            else if (nameof(se.MpuYaw) == propName)
                 return true;
-            else if (SerialRoutine.GetName(() => se.MpuPitch) == propName)
+            else if (nameof(se.MpuPitch) == propName)
                 return true;
             else return false;
         }
 
         private void setYValue(string propName,SerialEntity se,string ystr) {
-            if (SerialRoutine.GetName(() => se.Cadence) == propName)
+            if (nameof(se.Cadence) == propName)
                 se.Cadence = ystr;
-            else if (SerialRoutine.GetName(() => se.AirSpeed) == propName)
+            else if (nameof(se.AirSpeed) == propName)
                 se.AirSpeed = ystr;
-            else if (SerialRoutine.GetName(() => se.MpuRoll) == propName)
+            else if (nameof(se.MpuRoll) == propName)
                 se.MpuRoll = ystr;
-            else if (SerialRoutine.GetName(() => se.MpuYaw) == propName)
+            else if (nameof(se.MpuYaw) == propName)
                 se.MpuYaw = ystr;
-            else if (SerialRoutine.GetName(() => se.MpuPitch) == propName)
+            else if (nameof(se.MpuPitch) == propName)
                 se.MpuPitch = ystr;
         }
     }

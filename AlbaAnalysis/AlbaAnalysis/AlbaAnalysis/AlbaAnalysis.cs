@@ -335,16 +335,16 @@ namespace AlbaAnalysis {
         }
 
         private void setChartDispName(SerialEntity se) {
-            chartCadence.SetDataPropertyName(SerialRoutine.GetName(() => se.Cadence));
-            chartMpuPitch.SetDataPropertyName(SerialRoutine.GetName(() => se.MpuPitch));
-            chartMpuRoll.SetDataPropertyName(SerialRoutine.GetName(() => se.MpuRoll));
-            chartMpuYaw.SetDataPropertyName(SerialRoutine.GetName(() => se.MpuYaw));
-            chartSpeed.SetDataPropertyName(SerialRoutine.GetName(() => se.AirSpeed));
-            chartRBattery.SetDataPropertyName(SerialRoutine.GetName(() => se.VoltageR));
-            chartLBattery.SetDataPropertyName(SerialRoutine.GetName(() => se.VoltageL));
-            chartRollInput.SetDataPropertyName(SerialRoutine.GetName(() => se.ErebonRInput));
-            chartPitchInput.SetDataPropertyName(SerialRoutine.GetName(() => se.ErebonLInput));
-            chartDrugInput.SetDataPropertyName(SerialRoutine.GetName(() => se.DrugL));//ドラッグラダーのchartはここでだけLとして識別する
+            chartCadence.SetDataPropertyName(nameof(se.Cadence));
+            chartMpuPitch.SetDataPropertyName(nameof(se.MpuPitch));
+            chartMpuRoll.SetDataPropertyName(nameof(se.MpuRoll));
+            chartMpuYaw.SetDataPropertyName(nameof(se.MpuYaw));
+            chartSpeed.SetDataPropertyName(nameof(se.AirSpeed));
+            chartRBattery.SetDataPropertyName(nameof(se.VoltageR));
+            chartLBattery.SetDataPropertyName(nameof(se.VoltageL));
+            chartRollInput.SetDataPropertyName(nameof(se.ErebonRInput));
+            chartPitchInput.SetDataPropertyName(nameof(se.ErebonLInput));
+            chartDrugInput.SetDataPropertyName(nameof(se.DrugL));//ドラッグラダーのchartはここでだけLとして識別する
         }
     }
 }

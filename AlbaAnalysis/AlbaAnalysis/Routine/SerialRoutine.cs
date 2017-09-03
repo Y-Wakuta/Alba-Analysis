@@ -32,10 +32,6 @@ namespace AlbaAnalysis.Routine {
             }
         }
 
-        public static string GetName<T>(Expression<Func<T>> e) {
-            return ((MemberExpression)e.Body).Member.Name;
-        }
-
         /// <summary>
         /// シリアルから来てるデータにフィルタをかけます(操舵入力を除く)
         /// </summary>

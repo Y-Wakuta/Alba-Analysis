@@ -58,7 +58,7 @@ namespace AlbaAnalysis.Entity {
             get { return _mpuRoll; }
             set {
                 _mpuRoll = value;
-                onPropertyChanged(SerialRoutine.GetName(() => this.MpuRoll));
+                onPropertyChanged(nameof(MpuRoll));
             }
         }
         private string _mpuRoll = "0";
@@ -67,7 +67,7 @@ namespace AlbaAnalysis.Entity {
             get { return _mpuPitch; }
             set {
                 _mpuPitch = value;
-                onPropertyChanged(SerialRoutine.GetName(() => this.MpuPitch));
+                onPropertyChanged(nameof(MpuPitch));
             }
         }
         public string _mpuPitch = "0";
@@ -76,7 +76,7 @@ namespace AlbaAnalysis.Entity {
             get { return _mpuYaw; }
             set {
                 _mpuYaw = value;
-                onPropertyChanged(SerialRoutine.GetName(() => this.MpuYaw));
+                onPropertyChanged(nameof(MpuYaw));
             }
         }
         public string _mpuYaw = "0";
@@ -85,7 +85,7 @@ namespace AlbaAnalysis.Entity {
             get { return _airSpeed; }
             set {
                 _airSpeed = value;
-                onPropertyChanged(SerialRoutine.GetName(() => this.AirSpeed));
+                onPropertyChanged(nameof(AirSpeed));
             }
         }
         public string _airSpeed = "0";
@@ -96,7 +96,7 @@ namespace AlbaAnalysis.Entity {
             get { return _cadence; }
             set {
                 _cadence = value;
-                onPropertyChanged(SerialRoutine.GetName(() => this.Cadence));
+                onPropertyChanged(nameof(Cadence));
             }
         }
         public string _cadence = "0";
@@ -107,7 +107,7 @@ namespace AlbaAnalysis.Entity {
             get { return _time; }
             set {
                 _time = value;
-                onPropertyChanged(SerialRoutine.GetName(() => this.Time));
+                onPropertyChanged(nameof(Time));
             }
         }
         private string _time = "0";
