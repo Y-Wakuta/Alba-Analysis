@@ -32,37 +32,6 @@ namespace AlbaAnalysis.Routine {
             }
         }
 
-        /// <summary>
-        /// シリアルから来てるデータにフィルタをかけます(操舵入力を除く)
-        /// </summary>
-        /// <param name="datas"></param>
-        /// <param name="filter"></param>
-        /// <returns></returns>
-        public string[] fiterDatas(string[] datas, string[] filter) {
-            string[] resultDatas = new string[datas.Count()];
-            if (flag == 0) {
-                oldDatas = datas;
-                flag++;
-            }
-            for (int i = 6; i < 8; i++) {
-                if (datas[i] != "") {
-                    if (double.Parse(oldDatas[i]) - double.Parse(filter[i]) < double.Parse(datas[i])
-                        && double.Parse(datas[i]) < double.Parse(oldDatas[i]) + double.Parse(filter[i])) {
-                        resultDatas[i] = datas[i];
-                        oldDatas[i] = datas[i];
-                    }
-                    else
-                        resultDatas[i] = oldDatas[i];
-                }
-                else {
-                    if (datas[i] == oldDatas[i])
-                        resultDatas[i] = datas[i];
-                    resultDatas[i] = oldDatas[i];
-                }
-            }
-            return resultDatas;
-        }
-
         public static void CopyASCsv(SerialEntity se, string[] data) {
             se.Time = data[0];
             se.MpuXR = data[1];

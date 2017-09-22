@@ -44,5 +44,9 @@ namespace AlbaAnalysis.Database {
         public static string GetDispNameByName(string name) {
             return GetConfigs().First(c => c.name == name).disp_name;
         }
+
+        public static int GetFilterByName(string name) {
+            return GetConfigs().FirstOrDefault(c => c.name == name)?.filter_level ?? 0;
+        }
     }
 }

@@ -24,11 +24,17 @@ namespace AlbaAnalysis {
         AlbaAnalysisDataHandler _ad;
         DateTime start;
 
+        List<SerialEntity> SerialDataList;
+
         public SerialForm() {
             InitializeComponent();
             _ad = new AlbaAnalysisDataHandler(bauditemsBindingSource, portNamesBindingSource, filePathBindingSource);
             initializeButtonEnable();
             buttonConnect.Focus();
+            SerialDataList = new List<SerialEntity>();
+            foreach(var i in Enumerable.Range(0, 500000)) {
+                SerialDataList.Add(new SerialEntity());
+            }
             setChartDispName(new SerialEntity());
 
             bauditemsBindingSource.PositionChanged += (s, e) => {
