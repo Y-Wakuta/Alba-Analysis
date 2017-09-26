@@ -29,3 +29,4 @@ C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Debug\Entit
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Debug\EntityFramework.xml
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Debug\AlbaAnalysis.csprojResolveAssemblyReference.cache
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Debug\ZedGraph.dll
