@@ -33,6 +33,7 @@ namespace AlbaAnalysis {
                 _portBl.Add("利用可能なシリアルポートは存在しません。");
             _portS.DataSource = _portBl;
 
+            createDirIfNotExist();
             _fileBl = new BindingList<string>(AddAllPath());
             _fileS.DataSource = _fileBl;
         }
@@ -41,6 +42,12 @@ namespace AlbaAnalysis {
             _fileBl.Clear();
             _fileBl = new BindingList<string>(AddAllPath());
             _fileS.DataSource = _fileBl;
+        }
+
+        private void createDirIfNotExist() {
+            if (!Directory.Exists(pathBase)) {
+                Directory.CreateDirectory(pathBase);
+            }
         }
 
         private List<string> AddAllPath() {
