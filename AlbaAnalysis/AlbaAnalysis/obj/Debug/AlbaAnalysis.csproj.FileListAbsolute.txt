@@ -29,3 +29,9 @@ C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Debug\Entit
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Debug\EntityFramework.xml
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Debug\AlbaAnalysis.csprojResolveAssemblyReference.cache
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Debug\AlbaAnalysis.csproj.CoreCompileInputs.cache
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Debug\System.Composition.AttributedModel.dll
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Debug\System.Composition.Convention.dll
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Debug\System.Composition.Hosting.dll
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Debug\System.Composition.Runtime.dll
+C:\Users\rocko\Documents\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\bin\Debug\System.Composition.TypedParts.dll
