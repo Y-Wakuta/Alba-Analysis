@@ -233,40 +233,30 @@ namespace AlbaAnalysis {
             var _resultPath = (filePathBindingSource.Current).ToString();
             csvFlag = 0;
             await Task.Run(() => {
-                start = DateTime.Now;
                 if (string.IsNullOrEmpty(_resultPath)) {
                     MessageBox.Show("パスを選択してください");
                     return;
                 }
-                using (var fw = new StreamReader(_resultPath)) {
-                    do {
-                        if (csvFlag == 1) {
-                            fw.Dispose();
-                            fw.Close();
-                            return;
-                        }
-                        var csvLine = fw.ReadLine();
-                        string[] csvdatas = null;
-                        csvdatas = csvLine.Split(',');
-                        if (csvdatas.Any(d => string.IsNullOrEmpty(d)))
-                            continue;
-                        if (csvdatas.Count() == 25) {
-                            var serialEntity = new SerialEntity();
-                            SerialRoutine.CopyASCsv(serialEntity, csvdatas);
-                            if (lastSerialEntity == null) {
-                                lastSerialEntity = serialEntity.Clone();
-                                continue;
-                            }
-                            var targetEnum = SerialRoutine.GetTargetEntity(serialEntity, lastSerialEntity);
-                            if (targetEnum == InputEnum.notAccepted)
-                                continue;
-                            lastSerialEntity = serialEntity.Clone();
+                foreach (var csvLine in File.ReadAllLines(_resultPath)) {
+                    if (csvFlag == 1)
+                        return;
+                    var csvdatas = csvLine.Split(',');
+                    if (csvdatas.Any(d => string.IsNullOrEmpty(d) && d.ToCharArray().ToList().Any(c => Char.IsDigit(c))) && csvdatas.Count() != 25)
+                        continue;
+                    var serialEntity = new SerialEntity();
+                    SerialRoutine.CopyASCsv(serialEntity, csvdatas);
+                    if (lastSerialEntity == null) {
+                        lastSerialEntity = serialEntity.Clone();
+                        continue;
+                    }
+                    var targetEnum = SerialRoutine.GetTargetEntity(serialEntity, lastSerialEntity);
+                    if (targetEnum == InputEnum.notAccepted)
+                        continue;
+                    lastSerialEntity = serialEntity.Clone();
+                    InvokeControls(serialEntity, csvLine, targetEnum);
 
-                            InvokeControls(serialEntity, csvLine, targetEnum);
-                        }
-                        //csv読み込みの速度向上
-                        System.Threading.Thread.Sleep(50);
-                    } while (fw.EndOfStream != true);
+                    //csv読み込みの速度向上
+                    System.Threading.Thread.Sleep(45);
                 }
                 MessageBox.Show("ファイルの読み込みを終了しました。");
             });
