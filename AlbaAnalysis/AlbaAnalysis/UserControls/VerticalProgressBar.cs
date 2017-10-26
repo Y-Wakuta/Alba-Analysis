@@ -26,7 +26,7 @@ namespace AlbaAnalysis {
                 this.Value = (int)input + 1;  //progressBarは値が下がる時はすぐに変位するので、それを利用して表示
                 this.Value = (int)input;
             }
-            catch (Exception e) { }
+            catch (Exception) { }
         }
     }
 }

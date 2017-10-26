@@ -32,7 +32,7 @@ namespace AlbaAnalysis {
             initializeButtonEnable();
             buttonConnect.Focus();
             SerialDataList = new List<SerialEntity>();
-            foreach(var i in Enumerable.Range(0, 500000)) {
+            foreach (var i in Enumerable.Range(0, 500000)) {
                 SerialDataList.Add(new SerialEntity());
             }
             setChartDispName(new SerialEntity());
@@ -241,7 +241,7 @@ namespace AlbaAnalysis {
                     if (csvFlag == 1)
                         return;
                     var csvdatas = csvLine.Split(',');
-                    if (csvdatas.Any(d => string.IsNullOrEmpty(d) && d.ToCharArray().ToList().Any(c => Char.IsDigit(c))) && csvdatas.Count() != 25)
+                    if (csvdatas.Any(d => string.IsNullOrEmpty(d)) || csvdatas.Count() != 25)
                         continue;
                     var serialEntity = new SerialEntity();
                     SerialRoutine.CopyASCsv(serialEntity, csvdatas);

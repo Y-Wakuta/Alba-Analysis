@@ -1,0 +1,3 @@
+C:\Users\yusuke\Dropbox\Dropbox\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Debug\AlbaAnalysis.csprojResolveAssemblyReference.cache
+C:\Users\yusuke\Dropbox\Dropbox\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Debug\AlbaAnalysis.exe
+C:\Users\yusuke\Dropbox\Dropbox\Alba-Analysis\AlbaAnalysis\AlbaAnalysis\obj\Debug\AlbaAnalysis.pdb

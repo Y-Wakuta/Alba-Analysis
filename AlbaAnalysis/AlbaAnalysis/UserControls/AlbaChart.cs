@@ -52,7 +52,7 @@ namespace AlbaAnalysis {
                     this.Series[0].Points.AddXY(x, y);
                     this.ChartAreas[0].AxisX.Maximum = x;
                 }
-            } catch (Exception exc) { }
+            } catch (Exception) { }
         }
 
         private void AlbaChart_Layout(object sender, LayoutEventArgs e) {

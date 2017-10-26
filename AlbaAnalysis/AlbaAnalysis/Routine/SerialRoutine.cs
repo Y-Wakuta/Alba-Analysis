@@ -13,7 +13,6 @@ namespace AlbaAnalysis.Routine {
     public class SerialRoutine {
 
         string[] oldDatas = new string[40];
-        int flag = 0;
 
         /// <summary>
         /// リストに保存したデータをcsvに出力します
