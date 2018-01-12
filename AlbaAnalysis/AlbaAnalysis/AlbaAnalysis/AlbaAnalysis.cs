@@ -19,7 +19,7 @@ namespace AlbaAnalysis {
     delegate void Handler(SerialEntity strs, string str, InputEnum ie);
 
     public partial class SerialForm : Form {
-        List<SerialEntity> saveData = new List<SerialEntity>();
+        List<SerialEntity> saveData;
         int csvFlag = 0;
         AlbaAnalysisDataHandler _ad;
         DateTime start;
@@ -27,6 +27,7 @@ namespace AlbaAnalysis {
         List<SerialEntity> SerialDataList;
 
         public SerialForm() {
+            saveData = new List<SerialEntity>();
             InitializeComponent();
             _ad = new AlbaAnalysisDataHandler(bauditemsBindingSource, portNamesBindingSource, filePathBindingSource);
             initializeButtonEnable();
@@ -191,12 +192,12 @@ namespace AlbaAnalysis {
             try {
                 serialPort1.Open();
             } catch (Exception) {
-                MessageBox.Show("利用可能なシリアルポートがありません");
+                MessageBox.Show(@"利用可能なシリアルポートがありません");
             }
             serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialPort1_DataReceived);
             serialPort1.DtrEnable = true;
             serialPort1.RtsEnable = true;
-            connectButtonEnable();
+            ConnectButtonEnable();
             buttonClose.Focus();
             start = DateTime.Now;
         }
@@ -234,7 +235,7 @@ namespace AlbaAnalysis {
             csvFlag = 0;
             await Task.Run(() => {
                 if (string.IsNullOrEmpty(_resultPath)) {
-                    MessageBox.Show("パスを選択してください");
+                    MessageBox.Show(@"パスを選択してください");
                     return;
                 }
                 foreach (var csvLine in File.ReadAllLines(_resultPath)) {
@@ -263,9 +264,12 @@ namespace AlbaAnalysis {
         }
 
         void InvokeControls(SerialEntity se, string dataStr, InputEnum ie) {
-            BeginInvoke(new Handler(showChart), se, dataStr, ie);
-            BeginInvoke(new Handler(showText), se, dataStr, ie);
-            BeginInvoke(new Handler(checkSteer), se, dataStr, ie);
+            try {
+                Invoke(new Handler(showChart), se, dataStr, ie);
+                Invoke(new Handler(showText), se, dataStr, ie);
+                Invoke(new Handler(checkSteer), se, dataStr, ie);
+            } catch (ObjectDisposedException) {
+            }
         }
 
         private void buttonStopCsv_Click(object sender, EventArgs e) {
@@ -307,7 +311,7 @@ namespace AlbaAnalysis {
             buttonConnect.Enabled = true;
         }
 
-        private void connectButtonEnable() {
+        private void ConnectButtonEnable() {
             buttonConnect.Enabled = false;
             buttonClose.Enabled = true;
             buttonNext.Enabled = false;
@@ -344,5 +348,3 @@ namespace AlbaAnalysis {
         }
     }
 }
-
-
