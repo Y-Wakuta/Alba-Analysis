@@ -127,10 +127,10 @@ namespace AlbaAnalysis.Entity {
     /// </summary>
     public static class Constants {
         public const double filterLevel = 8.0;
-        public static int controlDataNum = Enum.GetNames(typeof(ControlDataOrder)).Length;
-        public static int InputDataNum = Enum.GetNames(typeof(InputDataOrder)).Length;
-        public static int MpuDataNum = Enum.GetNames(typeof(MpuDataOrder)).Length;
-        public static int KeikiDataNum = Enum.GetNames(typeof(KeikiDataOrder)).Length;
+        public static int First = Enum.GetNames(typeof(FirstDataOrder)).Length;
+        public static int Second = Enum.GetNames(typeof(SecondDataOrder)).Length;
+        public static int Third = Enum.GetNames(typeof(ThirdDataOrder)).Length;
+        public static int Forth = Enum.GetNames(typeof(ForthDataOrder)).Length;
     }
 
     public class portNames {

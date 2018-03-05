@@ -69,14 +69,14 @@ namespace AlbaAnalysis
 
             var inputArray = SerialRoutine.validateInput(inputLine).ToArray();
 
-            if (inputArray.First().Equals("con") && inputArray.Count() == Constants.controlDataNum + 2)
-                ProccessSerialDatas(InputEnum.control, inputArray, inputLine);
-            else if (inputArray.First().Equals("inp") && inputArray.Count() == Constants.InputDataNum + 1)
-                ProccessSerialDatas(InputEnum.input, inputArray, inputLine);
-            else if (inputArray.First().Equals("mpu") && inputArray.Count() == Constants.MpuDataNum + 1)
-                ProccessSerialDatas(InputEnum.mpu, inputArray, inputLine);
-            else if (inputArray.First().Equals("kei") && inputArray.Count() == Constants.KeikiDataNum + 1)
-                ProccessSerialDatas(InputEnum.keiki, inputArray, inputLine);
+            if (inputArray.First().Equals("$1") && inputArray.Count() == Constants.First + 2)
+                ProccessSerialDatas(InputEnum.first, inputArray, inputLine);
+            else if (inputArray.First().Equals("$2") && inputArray.Count() == Constants.Second + 1)
+                ProccessSerialDatas(InputEnum.second, inputArray, inputLine);
+            else if (inputArray.First().Equals("$3") && inputArray.Count() == Constants.Third + 1)
+                ProccessSerialDatas(InputEnum.third, inputArray, inputLine);
+            else if (inputArray.First().Equals("$4") && inputArray.Count() == Constants.Forth + 1)
+                ProccessSerialDatas(InputEnum.forth, inputArray, inputLine);
         }
 
         private void ProccessSerialDatas(InputEnum ie, string[] inputArray, string inputLine) {
@@ -97,7 +97,7 @@ namespace AlbaAnalysis
         /// <param name="inputLine">配列化した受信データ</param>
         /// <param name="i"></param>
         private void checkSteer(SerialEntity se, string inputLine, InputEnum ie) {
-            if (InputEnum.input != ie)
+            if (InputEnum.second != ie)
                 return;
 
             buttonRDrug.BackColor = se.DrugR == 1.ToString() ? Color.LightCoral : Color.LightGray;
@@ -122,17 +122,17 @@ namespace AlbaAnalysis
         private void showChart(SerialEntity se, string inputLine, InputEnum ie) {
             #region グラフ設定
             try {
-                if (InputEnum.keiki == ie) {
+                if (InputEnum.forth == ie) {
                     chartSpeed.AddXY(se.Time, se.AirSpeed);
                     chartCadence.AddXY(se.Time, se.Cadence);
-                } else if (InputEnum.control == ie) {
+                } else if (InputEnum.first == ie) {
                     chartRBattery.AddXY(se.Time, se.VoltageR);
                     chartLBattery.AddXY(se.Time, se.VoltageL);
-                } else if (InputEnum.mpu == ie) {
+                } else if (InputEnum.third == ie) {
                     chartMpuPitch.AddXY(se.Time, se.MpuPitch);
                     chartMpuYaw.AddXY(se.Time, se.MpuYaw);
                     chartMpuRoll.AddXY(se.Time, se.MpuRoll);
-                } else if (InputEnum.input == ie) {
+                } else if (InputEnum.second == ie) {
                     if (!double.TryParse(se.DrugR, out var Dr) || !double.TryParse(se.DrugR, out var Dl))
                         return;
 
@@ -144,7 +144,6 @@ namespace AlbaAnalysis
                 Debug.Assert(false);
                 return;
             }
-            //});
             #endregion
         }
 
@@ -166,19 +165,18 @@ namespace AlbaAnalysis
             //await Task.Run(() => {
             #region textboxへの表示
             textBoxAllData.AppendText(allInput + Environment.NewLine);
-            if (InputEnum.keiki == ie) {
+            if (InputEnum.forth == ie) {
                 textBoxSpeed.AppendText(se.AirSpeed + Environment.NewLine);
                 textBoxCadence.AppendText(se.Cadence + Environment.NewLine);
-            } else if (InputEnum.control == ie) {
+            } else if (InputEnum.first == ie) {
                 textBoxBatteryDataR.AppendText(se.VoltageR + Environment.NewLine);
                 textBoxBatteryDataL.AppendText(se.VoltageL + Environment.NewLine);
-            } else if (InputEnum.mpu == ie) {
+            } else if (InputEnum.third == ie) {
                 textBoxMpuPitch.AppendText(se.MpuPitch + Environment.NewLine);
                 textBoxMpuRoll.AppendText(se.MpuRoll + Environment.NewLine);
                 textBoxMpuYaw.AppendText(se.MpuYaw + Environment.NewLine);
             }
             #endregion
-            //});
         }
 
         /// <summary>

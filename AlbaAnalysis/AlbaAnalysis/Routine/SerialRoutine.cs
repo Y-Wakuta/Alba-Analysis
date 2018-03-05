@@ -97,13 +97,13 @@ namespace AlbaAnalysis.Routine {
         }
 
         public static void copyDatas2Entity(SerialEntity se, string[] datas, InputEnum ie) {
-            if (ie == InputEnum.keiki)
+            if (ie == InputEnum.forth)
                 CopyASKei(se, datas);
-            else if (ie == InputEnum.mpu)
+            else if (ie == InputEnum.third)
                 CopyASMpu(se, datas);
-            else if (ie == InputEnum.input)
+            else if (ie == InputEnum.second)
                 CopyASInp(se, datas);
-            else if (ie == InputEnum.control)
+            else if (ie == InputEnum.first)
                 CopyASCon(se, datas);
         }
 
@@ -153,13 +153,13 @@ namespace AlbaAnalysis.Routine {
 
         public static InputEnum GetTargetEntity(SerialEntity se, SerialEntity lastSe) {
             if (IsSameControlEntity(se, lastSe) && IsSameKeikiEntity(se, lastSe) && IsSameMpuEntity(se, lastSe))
-                return InputEnum.input;
+                return InputEnum.second;
             else if (IsSameControlEntity(se, lastSe) && IsSameKeikiEntity(se, lastSe) && IsSameInputEntity(se, lastSe))
-                return InputEnum.mpu;
+                return InputEnum.third;
             else if (IsSameControlEntity(se, lastSe) && IsSameMpuEntity(se, lastSe) && IsSameInputEntity(se, lastSe))
-                return InputEnum.keiki;
+                return InputEnum.forth;
             else if (IsSameKeikiEntity(se, lastSe) && IsSameMpuEntity(se, lastSe) && IsSameInputEntity(se, lastSe))
-                return InputEnum.control;
+                return InputEnum.first;
             else
                 return InputEnum.notAccepted;
         }

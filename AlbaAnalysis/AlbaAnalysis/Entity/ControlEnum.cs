@@ -4,48 +4,61 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlbaAnalysis.Entity {
-    public enum ControlDataOrder {
-        MpuXR,
-        MpuYR,
-        MpuZR,
-        MpuXR_A,
-        MpuYR_A,
-        MpuZR_A,
-        VoltageR,
-        MpuXL,
-        MpuYL,
-        MpuZL,
-        MpuXL_A,
-        MpuYL_A,
-        MpuZL_A,
-        VoltageL,
+namespace AlbaAnalysis.Entity
+{
+    public enum FirstDataOrder
+    {
+        time,
+        airspeed_time,
+        airspeed,
+        height_time,
+        height,
+        cadence_time,
+        cadence,
+        checksum
     }
 
-    public enum InputDataOrder {
-        ErebonRInput,
-        DrugR,
-        ErebonLInput,
-        DrugL,
+    public enum SecondDataOrder
+    {
+        time,
+        mpu_time,
+        mpu_yaw,
+        mpu_pitch,
+        mpu_roll,
+        gps_time,
+        gps_latitude,
+        gps_gratitude,
+        checksum
     }
 
-    public enum MpuDataOrder {
-        MpuRoll,
-        MpuPitch,
-        MpuYaw,
+    public enum ThirdDataOrder
+    {
+        time,
+        souda_time,
+        souda1,
+        souda2,
+        right_roll,
+        right_yaw,
+        checksum
     }
 
-    public enum KeikiDataOrder {
-        AirSpeed,
-        Sonar,
-        Cadence,
+    public enum ForthDataOrder
+    {
+        time,
+        souda_time,
+        right_serve_vol,
+        left_serve_vol,
+        left_roll,
+        left_yaw,
+        checksum
     }
 
-    public enum InputEnum {
-        control = 0,
-        input,
-        mpu,
-        keiki,
+    public enum InputEnum
+    {
+        first = 0,
+        second,
+        third,
+        forth,
         notAccepted
     }
 }
