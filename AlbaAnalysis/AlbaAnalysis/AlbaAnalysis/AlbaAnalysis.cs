@@ -14,11 +14,13 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace AlbaAnalysis {
+namespace AlbaAnalysis
+{
 
     delegate void Handler(SerialEntity strs, string str, InputEnum ie);
 
-    public partial class SerialForm : Form {
+    public partial class SerialForm : Form
+    {
         List<SerialEntity> saveData;
         int csvFlag = 0;
         AlbaAnalysisDataHandler _ad;
@@ -52,11 +54,11 @@ namespace AlbaAnalysis {
         }
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e) {
-            string data = null;
+            string inputLine = null;
             var sw = new Stopwatch();
             sw.Start();
             try {
-                data = serialPort1.ReadLine();
+                inputLine = serialPort1.ReadLine();
             } catch (Exception) {
                 Debug.Assert(false);
                 return;
@@ -65,43 +67,43 @@ namespace AlbaAnalysis {
             if (sw.ElapsedMilliseconds > 5000)
                 serialPort1.DiscardInBuffer();
 
-            var dataArray = SerialRoutine.validateInput(data).ToArray();
+            var inputArray = SerialRoutine.validateInput(inputLine).ToArray();
 
-            if (dataArray.First().Equals("con") && dataArray.Count() == Constants.controlDataNum + 2)
-                ProccessSerialDatas(InputEnum.control, dataArray, data);
-            else if (dataArray.First().Equals("inp") && dataArray.Count() == Constants.InputDataNum + 1)
-                ProccessSerialDatas(InputEnum.input, dataArray, data);
-            else if (dataArray.First().Equals("mpu") && dataArray.Count() == Constants.MpuDataNum + 1)
-                ProccessSerialDatas(InputEnum.mpu, dataArray, data);
-            else if (dataArray.First().Equals("kei") && dataArray.Count() == Constants.KeikiDataNum + 1)
-                ProccessSerialDatas(InputEnum.keiki, dataArray, data);
+            if (inputArray.First().Equals("con") && inputArray.Count() == Constants.controlDataNum + 2)
+                ProccessSerialDatas(InputEnum.control, inputArray, inputLine);
+            else if (inputArray.First().Equals("inp") && inputArray.Count() == Constants.InputDataNum + 1)
+                ProccessSerialDatas(InputEnum.input, inputArray, inputLine);
+            else if (inputArray.First().Equals("mpu") && inputArray.Count() == Constants.MpuDataNum + 1)
+                ProccessSerialDatas(InputEnum.mpu, inputArray, inputLine);
+            else if (inputArray.First().Equals("kei") && inputArray.Count() == Constants.KeikiDataNum + 1)
+                ProccessSerialDatas(InputEnum.keiki, inputArray, inputLine);
         }
 
-        private void ProccessSerialDatas(InputEnum ie, string[] datas, string data) {
+        private void ProccessSerialDatas(InputEnum ie, string[] inputArray, string inputLine) {
             var serialEntity = new SerialEntity();
-            SerialRoutine.copyDatas2Entity(serialEntity, datas, ie);
+            SerialRoutine.copyDatas2Entity(serialEntity, inputArray, ie);
             var end = DateTime.Now;
             var time = end - start;
             serialEntity.Time = time.TotalSeconds.ToString();
 
             var tempSerial = serialEntity.Clone();
             saveData.Add(tempSerial);
-            InvokeControls(tempSerial, data, ie);
+            InvokeControls(tempSerial, inputLine, ie);
         }
 
         /// <summary>
         /// 操舵入力に対応してボタンの色を変化させます
         /// </summary>
-        /// <param name="data">配列化した受信データ</param>
+        /// <param name="inputLine">配列化した受信データ</param>
         /// <param name="i"></param>
-        private void checkSteer(SerialEntity datas, string data, InputEnum ie) {
+        private void checkSteer(SerialEntity se, string inputLine, InputEnum ie) {
             if (InputEnum.input != ie)
                 return;
 
-            buttonRDrug.BackColor = datas.DrugR == 1.ToString() ? Color.LightCoral : Color.LightGray;
-            buttonLDrug.BackColor = datas.DrugL == 1.ToString() ? Color.LightCoral : Color.LightGray;
-            rollVerticalProgressBar.SetValue(datas.ErebonRInput);
-            pitchVerticalProgressBar.SetValue(datas.ErebonLInput);
+            buttonRDrug.BackColor = se.DrugR == 1.ToString() ? Color.LightCoral : Color.LightGray;
+            buttonLDrug.BackColor = se.DrugL == 1.ToString() ? Color.LightCoral : Color.LightGray;
+            rollVerticalProgressBar.SetValue(se.ErebonRInput);
+            pitchVerticalProgressBar.SetValue(se.ErebonLInput);
         }
 
         /// <summary>
@@ -115,28 +117,28 @@ namespace AlbaAnalysis {
         /// <summary>
         /// 受信データに対してグラフを出力します
         /// </summary>
-        /// <param name="datas">配列化した受信データ</param>
+        /// <param name="se">配列化した受信データ</param>
         /// <param name="i"></param>
-        private void showChart(SerialEntity datas, string data, InputEnum ie) {
+        private void showChart(SerialEntity se, string inputLine, InputEnum ie) {
             #region グラフ設定
             try {
                 if (InputEnum.keiki == ie) {
-                    chartSpeed.AddXY(datas.Time, datas.AirSpeed);
-                    chartCadence.AddXY(datas.Time, datas.Cadence);
+                    chartSpeed.AddXY(se.Time, se.AirSpeed);
+                    chartCadence.AddXY(se.Time, se.Cadence);
                 } else if (InputEnum.control == ie) {
-                    chartRBattery.AddXY(datas.Time, datas.VoltageR);
-                    chartLBattery.AddXY(datas.Time, datas.VoltageL);
+                    chartRBattery.AddXY(se.Time, se.VoltageR);
+                    chartLBattery.AddXY(se.Time, se.VoltageL);
                 } else if (InputEnum.mpu == ie) {
-                    chartMpuPitch.AddXY(datas.Time, datas.MpuPitch);
-                    chartMpuYaw.AddXY(datas.Time, datas.MpuYaw);
-                    chartMpuRoll.AddXY(datas.Time, datas.MpuRoll);
+                    chartMpuPitch.AddXY(se.Time, se.MpuPitch);
+                    chartMpuYaw.AddXY(se.Time, se.MpuYaw);
+                    chartMpuRoll.AddXY(se.Time, se.MpuRoll);
                 } else if (InputEnum.input == ie) {
-                    if (!double.TryParse(datas.DrugR, out var Dr) || !double.TryParse(datas.DrugR, out var Dl))
+                    if (!double.TryParse(se.DrugR, out var Dr) || !double.TryParse(se.DrugR, out var Dl))
                         return;
 
-                    chartDrugInput.AddXY(datas.Time, (Dr - Dl).ToString());
-                    chartRollInput.AddXY(datas.Time, datas.ErebonRInput);
-                    chartPitchInput.AddXY(datas.Time, datas.ErebonLInput);
+                    chartDrugInput.AddXY(se.Time, (Dr - Dl).ToString());
+                    chartRollInput.AddXY(se.Time, se.ErebonRInput);
+                    chartPitchInput.AddXY(se.Time, se.ErebonLInput);
                 }
             } catch (Exception) {
                 Debug.Assert(false);
@@ -158,22 +160,22 @@ namespace AlbaAnalysis {
         /// <summary>
         /// 受信データをtextboxに表示します
         /// </summary>
-        /// <param name="datas">配列化した受信データ</param>
+        /// <param name="se">配列化した受信データ</param>
         /// <param name="i"></param>
-        private void showText(SerialEntity datas, string data, InputEnum ie) {
+        private void showText(SerialEntity se, string allInput, InputEnum ie) {
             //await Task.Run(() => {
             #region textboxへの表示
-            textBoxAllData.AppendText(data + Environment.NewLine);
+            textBoxAllData.AppendText(allInput + Environment.NewLine);
             if (InputEnum.keiki == ie) {
-                textBoxSpeed.AppendText(datas.AirSpeed + Environment.NewLine);
-                textBoxCadence.AppendText(datas.Cadence + Environment.NewLine);
+                textBoxSpeed.AppendText(se.AirSpeed + Environment.NewLine);
+                textBoxCadence.AppendText(se.Cadence + Environment.NewLine);
             } else if (InputEnum.control == ie) {
-                textBoxBatteryDataR.AppendText(datas.VoltageR + Environment.NewLine);
-                textBoxBatteryDataL.AppendText(datas.VoltageL + Environment.NewLine);
+                textBoxBatteryDataR.AppendText(se.VoltageR + Environment.NewLine);
+                textBoxBatteryDataL.AppendText(se.VoltageL + Environment.NewLine);
             } else if (InputEnum.mpu == ie) {
-                textBoxMpuPitch.AppendText(datas.MpuPitch + Environment.NewLine);
-                textBoxMpuRoll.AppendText(datas.MpuRoll + Environment.NewLine);
-                textBoxMpuYaw.AppendText(datas.MpuYaw + Environment.NewLine);
+                textBoxMpuPitch.AppendText(se.MpuPitch + Environment.NewLine);
+                textBoxMpuRoll.AppendText(se.MpuRoll + Environment.NewLine);
+                textBoxMpuYaw.AppendText(se.MpuYaw + Environment.NewLine);
             }
             #endregion
             //});
@@ -245,11 +247,14 @@ namespace AlbaAnalysis {
                     foreach (var csvLine in File.ReadAllLines(_resultPath)) {
                         if (csvFlag == 1)
                             return;
-                        var csvdatas = SerialRoutine.validateInput(csvLine);
-                        if (csvdatas.Count() != 25)
+
+                        var csvInputArray = SerialRoutine.validateInput(csvLine);
+
+                        if (csvInputArray.Count() != 25)
                             continue;
                         var serialEntity = new SerialEntity();
-                        SerialRoutine.CopyASCsv(serialEntity, csvdatas.ToArray());
+                        SerialRoutine.CopyASCsv(serialEntity, csvInputArray.ToArray());
+
                         if (lastSerialEntity == null) {
                             lastSerialEntity = serialEntity.Clone();
                             continue;
@@ -270,11 +275,11 @@ namespace AlbaAnalysis {
             });
         }
 
-        void InvokeControls(SerialEntity se, string dataStr, InputEnum ie) {
+        void InvokeControls(SerialEntity se, string inputLine, InputEnum ie) {
             try {
-                Invoke(new Handler(showChart), se, dataStr, ie);
-                Invoke(new Handler(showText), se, dataStr, ie);
-                Invoke(new Handler(checkSteer), se, dataStr, ie);
+                Invoke(new Handler(showChart), se, inputLine, ie);
+                Invoke(new Handler(showText), se, inputLine, ie);
+                Invoke(new Handler(checkSteer), se, inputLine, ie);
             } catch (ObjectDisposedException) {
             }
         }
