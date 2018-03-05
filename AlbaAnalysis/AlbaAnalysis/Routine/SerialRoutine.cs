@@ -31,6 +31,16 @@ namespace AlbaAnalysis.Routine {
             }
         }
 
+        public static List<string> validateInput(string input) {
+            var csvdatas = input.Split(',').ToList();
+            foreach (var i in Enumerable.Range(0, csvdatas.Count)) {
+                csvdatas[i] = csvdatas[i].Trim();
+                if (string.IsNullOrEmpty(csvdatas[i]) || !double.TryParse(csvdatas[i], out double tmp))
+                    csvdatas[i] = 0.ToString();
+            }
+            return csvdatas;
+        }
+
         public static void CopyASCsv(SerialEntity se, string[] data) {
             se.Time = data[0];
             se.MpuXR = data[1];

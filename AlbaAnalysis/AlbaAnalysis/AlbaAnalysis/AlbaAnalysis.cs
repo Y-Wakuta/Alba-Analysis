@@ -64,11 +64,9 @@ namespace AlbaAnalysis {
             sw.Stop();
             if (sw.ElapsedMilliseconds > 5000)
                 serialPort1.DiscardInBuffer();
-            var dataArray = data.Split(',');
-            for (int i = 1; i < dataArray.Count() - 1; i++) {
-                if (!int.TryParse(dataArray[i], out var tmp))
-                    dataArray[i] = 0.ToString();
-            }
+
+            var dataArray = SerialRoutine.validateInput(data).ToArray();
+
             if (dataArray.First().Equals("con") && dataArray.Count() == Constants.controlDataNum + 2)
                 ProccessSerialDatas(InputEnum.control, dataArray, data);
             else if (dataArray.First().Equals("inp") && dataArray.Count() == Constants.InputDataNum + 1)
@@ -247,12 +245,7 @@ namespace AlbaAnalysis {
                     foreach (var csvLine in File.ReadAllLines(_resultPath)) {
                         if (csvFlag == 1)
                             return;
-                        var csvdatas = csvLine.Split(',').ToList();
-                        foreach (var i in Enumerable.Range(0, csvdatas.Count)) {
-                            csvdatas[i] = csvdatas[i].Trim();
-                            if (string.IsNullOrEmpty(csvdatas[i]) || !double.TryParse(csvdatas[i], out double tmp))
-                                csvdatas[i] = 0.ToString();
-                        }
+                        var csvdatas = SerialRoutine.validateInput(csvLine);
                         if (csvdatas.Count() != 25)
                             continue;
                         var serialEntity = new SerialEntity();
