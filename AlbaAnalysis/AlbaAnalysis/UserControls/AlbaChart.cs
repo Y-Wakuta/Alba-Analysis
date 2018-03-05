@@ -13,7 +13,7 @@ using System.Reflection;
 using AlbaAnalysis.Database;
 using AlbaAnalysis.Entity;
 using AlbaAnalysis.Routine;
-
+using System.Diagnostics;
 
 namespace AlbaAnalysis {
     public partial class AlbaChart : Chart {
@@ -52,7 +52,9 @@ namespace AlbaAnalysis {
                     this.Series[0].Points.AddXY(x, y);
                     this.ChartAreas[0].AxisX.Maximum = x;
                 }
-            } catch (Exception) { }
+            } catch (Exception) {
+                Debug.Assert(false);
+            }
         }
 
         private void AlbaChart_Layout(object sender, LayoutEventArgs e) {

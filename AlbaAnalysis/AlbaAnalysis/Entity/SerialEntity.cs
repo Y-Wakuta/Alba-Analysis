@@ -7,52 +7,37 @@ using System.ComponentModel;
 
 using AlbaAnalysis.Routine;
 
-namespace AlbaAnalysis.Entity {
+namespace AlbaAnalysis.Entity
+{
     /// <summary>
     /// ここに新しい要素を追加するときは、database.sqlにも項目を追加してください
     /// </summary>
-    public class SerialEntity : INotifyPropertyChanged {
+    public class SerialEntity : INotifyPropertyChanged
+    {
 
         public SerialEntity Clone() {
             return (SerialEntity)MemberwiseClone();
         }
 
         #region column
-        public string MpuXR { get; set; } = "0";
+        #region migrated
+        public string Time {
+            get { return _time; }
+            set {
+                _time = value;
+                onPropertyChanged(nameof(Time));
+            }
+        }
+        private string _time = "0";
 
-        public string MpuYR { get; set; } = "0";
-
-        public string MpuZR { get; set; } = "0";
-
-        public string MpuXR_A { get; set; } = "0";
-
-        public string MpuYR_A { get; set; } = "0";
-
-        public string MpuZR_A { get; set; } = "0";
-
-        public string VoltageR { get; set; } = "0";
-
-        public string MpuXL { get; set; } = "0";
-
-        public string MpuYL { get; set; } = "0";
-
-        public string MpuZL { get; set; } = "0";
-
-        public string MpuXL_A { get; set; } = "0";
-
-        public string MpuYL_A { get; set; } = "0";
-
-        public string MpuZL_A { get; set; } = "0";
-
-        public string VoltageL { get; set; } = "0";
-
-        public string ErebonRInput { get; set; } = "0";
-
-        public string DrugR { get; set; } = "0";
-
-        public string ErebonLInput { get; set; } = "0";
-
-        public string DrugL{ get; set; } = "0";
+        public string Cadence {
+            get { return _cadence; }
+            set {
+                _cadence = value;
+                onPropertyChanged(nameof(Cadence));
+            }
+        }
+        public string _cadence = "0";
 
         public string MpuRoll {
             get { return _mpuRoll; }
@@ -91,26 +76,22 @@ namespace AlbaAnalysis.Entity {
         public string _airSpeed = "0";
 
         public string Sonar { get; set; } = "0";
+        public int Latitude { get; set; }
+        public int Longitude { get; set; }
+        public int Height { get; set; }
+        public string MpuRYaw { get; set; } = "0";
+        public string MpuRRoll { get; set; } = "0";
+        public string MpuXYaw { get; set; } = "0";
+        public string MpuYRoll { get; set; } = "0";
+        public string RollInput { get; set; } = "0";
+        public string DrugR { get; set; } = "0";
+        public string PitchInput { get; set; } = "0";
+        public string DrugL { get; set; } = "0";
 
-        public string Cadence {
-            get { return _cadence; }
-            set {
-                _cadence = value;
-                onPropertyChanged(nameof(Cadence));
-            }
-        }
-        public string _cadence = "0";
-        //public const int Latitude = 24;
-        //public const int Longitude = 25;
+        public string VoltageR { get; set; } = "0";
 
-        public string Time {
-            get { return _time; }
-            set {
-                _time = value;
-                onPropertyChanged(nameof(Time));
-            }
-        }
-        private string _time = "0";
+        public string VoltageL { get; set; } = "0";
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void onPropertyChanged(String propertyName = "") {
@@ -125,7 +106,8 @@ namespace AlbaAnalysis.Entity {
     /// <summary>
     /// マクロを定義
     /// </summary>
-    public static class Constants {
+    public static class Constants
+    {
         public const double filterLevel = 8.0;
         public static int First = Enum.GetNames(typeof(FirstDataOrder)).Length;
         public static int Second = Enum.GetNames(typeof(SecondDataOrder)).Length;
@@ -133,17 +115,20 @@ namespace AlbaAnalysis.Entity {
         public static int Forth = Enum.GetNames(typeof(ForthDataOrder)).Length;
     }
 
-    public class portNames {
+    public class portNames
+    {
         public string portName { get; set; }
     }
     /// <summary>
     /// データを保存したパスを保持
     /// </summary>
-    public class filePath {
+    public class filePath
+    {
         public string pathName { get; set; }
     }
 
-    public class DetailEntity {
+    public class DetailEntity
+    {
         public string value { get; set; }
         public string time { get; set; }
     }

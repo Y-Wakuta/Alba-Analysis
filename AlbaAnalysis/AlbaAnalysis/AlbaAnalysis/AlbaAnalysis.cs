@@ -98,8 +98,8 @@ namespace AlbaAnalysis
 
             buttonRDrug.BackColor = se.DrugR == 1.ToString() ? Color.LightCoral : Color.LightGray;
             buttonLDrug.BackColor = se.DrugL == 1.ToString() ? Color.LightCoral : Color.LightGray;
-            rollVerticalProgressBar.SetValue(se.ErebonRInput);
-            pitchVerticalProgressBar.SetValue(se.ErebonLInput);
+            rollVerticalProgressBar.SetValue(se.RollInput);
+            pitchVerticalProgressBar.SetValue(se.PitchInput);
         }
 
         /// <summary>
@@ -133,8 +133,8 @@ namespace AlbaAnalysis
                         return;
 
                     chartDrugInput.AddXY(se.Time, (Dr - Dl).ToString());
-                    chartRollInput.AddXY(se.Time, se.ErebonRInput);
-                    chartPitchInput.AddXY(se.Time, se.ErebonLInput);
+                    chartRollInput.AddXY(se.Time, se.RollInput);
+                    chartPitchInput.AddXY(se.Time, se.PitchInput);
                 }
             } catch (Exception) {
                 Debug.Assert(false);
@@ -347,8 +347,8 @@ namespace AlbaAnalysis
             chartSpeed.SetDataPropertyName(nameof(se.AirSpeed));
             chartRBattery.SetDataPropertyName(nameof(se.VoltageR));
             chartLBattery.SetDataPropertyName(nameof(se.VoltageL));
-            chartRollInput.SetDataPropertyName(nameof(se.ErebonRInput));
-            chartPitchInput.SetDataPropertyName(nameof(se.ErebonLInput));
+            chartRollInput.SetDataPropertyName(nameof(se.RollInput));
+            chartPitchInput.SetDataPropertyName(nameof(se.PitchInput));
             chartDrugInput.SetDataPropertyName(nameof(se.DrugL));//ドラッグラダーのchartはここでだけLとして識別する
         }
     }

@@ -22,8 +22,9 @@ namespace AlbaAnalysis.Routine {
         public static void writeDatas(List<SerialEntity> se, string path, bool append) {
             using (var sw = new StreamWriter(path, append)) {
                 foreach (var d in se) {
-                    var dataStrArray = new[] { d.Time,d.MpuXR,d.MpuYR,d.MpuZR,d.MpuXR_A,d.MpuYR_A,d.MpuZR_A,d.VoltageR,d.MpuXL,d.MpuYL,d.MpuZL,d.MpuXL_A,d.MpuYL_A,d.MpuZL_A
-                              ,d.VoltageL,d.ErebonRInput,d.DrugR,d.ErebonLInput,d.DrugL
+                    var dataStrArray = new[] { d.Time,d.MpuRYaw,d.MpuRRoll
+                        ,d.VoltageR,d.MpuXYaw,d.MpuYRoll
+                              ,d.VoltageL,d.RollInput,d.DrugR,d.PitchInput,d.DrugL
                                 ,d.MpuRoll,d.MpuPitch,d.MpuYaw
                                  ,d.AirSpeed,d.Sonar,d.Cadence ,Environment.NewLine};
                     sw.Write(String.Join(",", dataStrArray));
@@ -53,23 +54,15 @@ namespace AlbaAnalysis.Routine {
 
         public static void CopyASCsv(SerialEntity se, string[] data) {
             se.Time = data[0];
-            se.MpuXR = data[1];
-            se.MpuYR = data[2];
-            se.MpuZR = data[3];
-            se.MpuXR_A = data[4];
-            se.MpuYR_A = data[5];
-            se.MpuZR_A = data[6];
+            se.MpuRYaw = data[1];
+            se.MpuRRoll = data[2];
             se.VoltageR = data[7];
-            se.MpuXL = data[8];
-            se.MpuYL = data[9];
-            se.MpuZL = data[10];
-            se.MpuXL_A = data[11];
-            se.MpuYL_A = data[12];
-            se.MpuZL_A = data[13];
+            se.MpuXYaw = data[8];
+            se.MpuYRoll = data[9];
             se.VoltageL = data[14];
-            se.ErebonRInput = data[15];
+            se.RollInput = data[15];
             se.DrugR = data[16];
-            se.ErebonLInput = data[17];
+            se.PitchInput = data[17];
             se.DrugL = data[18];
             se.MpuRoll = data[19];
             se.MpuPitch = data[20];
@@ -79,48 +72,40 @@ namespace AlbaAnalysis.Routine {
             se.Cadence = data[24];
         }
 
-        public static void CopyASCon(SerialEntity se, string[] data) {
-            se.MpuXR = data[1];
-            se.MpuYR = data[2];
-            se.MpuZR = data[3];
-            se.MpuXR_A = data[4];
-            se.MpuYR_A = data[5];
-            se.MpuZR_A = data[6];
+        public static void CopyAS1(SerialEntity se, string[] data) {
+            se.MpuRYaw = data[1];
+            se.MpuRRoll = data[2];
             se.VoltageR = data[7];
-            se.MpuXL = data[8];
-            se.MpuYL = data[9];
-            se.MpuZL = data[10];
-            se.MpuXL_A = data[11];
-            se.MpuYL_A = data[12];
-            se.MpuZL_A = data[13];
+            se.MpuXYaw = data[8];
+            se.MpuYRoll = data[9];
             se.VoltageL = data[14];
         }
 
         public static void copyDatas2Entity(SerialEntity se, string[] datas, InputEnum ie) {
             if (ie == InputEnum.forth)
-                CopyASKei(se, datas);
+                CopyAS4(se, datas);
             else if (ie == InputEnum.third)
-                CopyASMpu(se, datas);
+                CopyAS3(se, datas);
             else if (ie == InputEnum.second)
-                CopyASInp(se, datas);
+                CopyAS2(se, datas);
             else if (ie == InputEnum.first)
-                CopyASCon(se, datas);
+                CopyAS1(se, datas);
         }
 
-        public static void CopyASInp(SerialEntity se, string[] data) {
-            se.ErebonRInput = data[1];
+        public static void CopyAS2(SerialEntity se, string[] data) {
+            se.RollInput = data[1];
             se.DrugR = data[2];
-            se.ErebonLInput = data[3];
+            se.PitchInput = data[3];
             se.DrugL = data[4];
         }
 
-        public static void CopyASMpu(SerialEntity se, string[] data) {
+        public static void CopyAS3(SerialEntity se, string[] data) {
             se.MpuRoll = data[1];
             se.MpuPitch = data[2];
             se.MpuYaw = data[3];
         }
 
-        public static void CopyASKei(SerialEntity se, string[] data) {
+        public static void CopyAS4(SerialEntity se, string[] data) {
             se.AirSpeed = data[1];
             se.Sonar = data[2];
             se.Cadence = data[3];
@@ -146,7 +131,7 @@ namespace AlbaAnalysis.Routine {
         }
 
         public static bool IsSameInputEntity(SerialEntity se, SerialEntity lastSe) {
-            if (se.ErebonLInput == lastSe.ErebonLInput && se.ErebonRInput == lastSe.ErebonRInput && se.DrugL == lastSe.DrugL && se.DrugR == lastSe.DrugR)
+            if (se.PitchInput == lastSe.PitchInput && se.RollInput == lastSe.RollInput && se.DrugL == lastSe.DrugL && se.DrugR == lastSe.DrugR)
                 return true;
             return false;
         }
