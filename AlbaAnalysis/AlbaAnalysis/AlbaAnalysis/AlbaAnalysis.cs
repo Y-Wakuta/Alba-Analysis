@@ -24,7 +24,6 @@ namespace AlbaAnalysis
         List<SerialEntity> saveData;
         int csvFlag = 0;
         AlbaAnalysisDataHandler _ad;
-        DateTime start;
 
         List<SerialEntity> SerialDataList;
 
@@ -82,9 +81,6 @@ namespace AlbaAnalysis
         private void ProccessSerialDatas(InputEnum ie, string[] inputArray, string inputLine) {
             var serialEntity = new SerialEntity();
             SerialRoutine.copyDatas2Entity(serialEntity, inputArray, ie);
-            var end = DateTime.Now;
-            var time = end - start;
-            serialEntity.Time = time.TotalSeconds.ToString();
 
             var tempSerial = serialEntity.Clone();
             saveData.Add(tempSerial);
@@ -202,7 +198,6 @@ namespace AlbaAnalysis
             serialPort1.RtsEnable = true;
             ConnectButtonEnable();
             buttonClose.Focus();
-            start = DateTime.Now;
         }
 
         private void buttonClose_Click_1(object sender, EventArgs e) {
