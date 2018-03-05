@@ -41,6 +41,16 @@ namespace AlbaAnalysis.Routine {
             return csvdatas;
         }
 
+        /// <summary>
+        /// c++とc#で同じ文字列に対してxorをしていくのでも値が違う？
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        private string getCheckSum(string str) {
+            var checkSum = 0;
+            return "";
+        }
+
         public static void CopyASCsv(SerialEntity se, string[] data) {
             se.Time = data[0];
             se.MpuXR = data[1];
