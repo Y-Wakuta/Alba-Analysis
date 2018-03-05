@@ -51,13 +51,14 @@ namespace AlbaAnalysis {
             serialPort1.Close();
         }
 
-        private async void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e) {
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e) {
             string data = null;
             var sw = new Stopwatch();
             sw.Start();
             try {
                 data = serialPort1.ReadLine();
             } catch (Exception) {
+                Debug.Assert(false);
                 return;
             }
             sw.Stop();
@@ -95,7 +96,7 @@ namespace AlbaAnalysis {
         /// </summary>
         /// <param name="data">配列化した受信データ</param>
         /// <param name="i"></param>
-        private async void checkSteer(SerialEntity datas, string data, InputEnum ie) {
+        private void checkSteer(SerialEntity datas, string data, InputEnum ie) {
             if (InputEnum.input != ie)
                 return;
 
@@ -118,7 +119,7 @@ namespace AlbaAnalysis {
         /// </summary>
         /// <param name="datas">配列化した受信データ</param>
         /// <param name="i"></param>
-        private async void showChart(SerialEntity datas, string data, InputEnum ie) {
+        private void showChart(SerialEntity datas, string data, InputEnum ie) {
             #region グラフ設定
             try {
                 if (InputEnum.keiki == ie) {
@@ -132,11 +133,15 @@ namespace AlbaAnalysis {
                     chartMpuYaw.AddXY(datas.Time, datas.MpuYaw);
                     chartMpuRoll.AddXY(datas.Time, datas.MpuRoll);
                 } else if (InputEnum.input == ie) {
-                    chartDrugInput.AddXY(datas.Time, (double.Parse(datas.DrugR) - double.Parse(datas.DrugL)).ToString());
+                    if (!double.TryParse(datas.DrugR, out var Dr) || !double.TryParse(datas.DrugR, out var Dl))
+                        return;
+
+                    chartDrugInput.AddXY(datas.Time, (Dr - Dl).ToString());
                     chartRollInput.AddXY(datas.Time, datas.ErebonRInput);
                     chartPitchInput.AddXY(datas.Time, datas.ErebonLInput);
                 }
             } catch (Exception) {
+                Debug.Assert(false);
                 return;
             }
             //});
@@ -234,30 +239,39 @@ namespace AlbaAnalysis {
             var _resultPath = (filePathBindingSource.Current).ToString();
             csvFlag = 0;
             await Task.Run(() => {
-                if (string.IsNullOrEmpty(_resultPath)) {
-                    MessageBox.Show(@"パスを選択してください");
-                    return;
-                }
-                foreach (var csvLine in File.ReadAllLines(_resultPath)) {
-                    if (csvFlag == 1)
+                try {
+                    if (string.IsNullOrEmpty(_resultPath)) {
+                        MessageBox.Show(@"パスを選択してください");
                         return;
-                    var csvdatas = csvLine.Split(',');
-                    if (csvdatas.Any(d => string.IsNullOrEmpty(d)) || csvdatas.Count() != 25)
-                        continue;
-                    var serialEntity = new SerialEntity();
-                    SerialRoutine.CopyASCsv(serialEntity, csvdatas);
-                    if (lastSerialEntity == null) {
-                        lastSerialEntity = serialEntity.Clone();
-                        continue;
                     }
-                    var targetEnum = SerialRoutine.GetTargetEntity(serialEntity, lastSerialEntity);
-                    if (targetEnum == InputEnum.notAccepted)
-                        continue;
-                    lastSerialEntity = serialEntity.Clone();
-                    InvokeControls(serialEntity, csvLine, targetEnum);
+                    foreach (var csvLine in File.ReadAllLines(_resultPath)) {
+                        if (csvFlag == 1)
+                            return;
+                        var csvdatas = csvLine.Split(',').ToList();
+                        foreach (var i in Enumerable.Range(0, csvdatas.Count)) {
+                            csvdatas[i] = csvdatas[i].Trim();
+                            if (string.IsNullOrEmpty(csvdatas[i]) || !double.TryParse(csvdatas[i], out double tmp))
+                                csvdatas[i] = 0.ToString();
+                        }
+                        if (csvdatas.Count() != 25)
+                            continue;
+                        var serialEntity = new SerialEntity();
+                        SerialRoutine.CopyASCsv(serialEntity, csvdatas.ToArray());
+                        if (lastSerialEntity == null) {
+                            lastSerialEntity = serialEntity.Clone();
+                            continue;
+                        }
+                        var targetEnum = SerialRoutine.GetTargetEntity(serialEntity, lastSerialEntity);
+                        if (targetEnum == InputEnum.notAccepted)
+                            continue;
+                        lastSerialEntity = serialEntity.Clone();
+                        InvokeControls(serialEntity, csvLine, targetEnum);
 
-                    //csv読み込みの速度向上
-                    System.Threading.Thread.Sleep(45);
+                        //csv読み込みの速度向上
+                        System.Threading.Thread.Sleep(45);
+                    }
+                } catch (Exception) {
+                    Debug.Assert(false);
                 }
                 MessageBox.Show("ファイルの読み込みを終了しました。");
             });
