@@ -23,7 +23,6 @@ namespace AlbaAnalysis
         List<SerialEntity> saveData;
         int csvFlag = 0;
         AlbaAnalysisDataHandler _ad;
-        List<SerialEntity> SerialDataList;
 
 
         public SerialForm() {
@@ -32,10 +31,6 @@ namespace AlbaAnalysis
             _ad = new AlbaAnalysisDataHandler(bauditemsBindingSource, portNamesBindingSource, filePathBindingSource);
             initializeButtonEnable();
             buttonConnect.Focus();
-            SerialDataList = new List<SerialEntity>();
-            foreach (var i in Enumerable.Range(0, 500000)) {
-                SerialDataList.Add(new SerialEntity());
-            }
             setChartDispName(new SerialEntity());
 
             bauditemsBindingSource.PositionChanged += (s, e) => {
