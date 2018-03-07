@@ -16,7 +16,6 @@ using System.Reflection;
 
 namespace AlbaAnalysis
 {
-
     delegate void Handler(SerialEntity strs, string str, InputEnum ie);
 
     public partial class SerialForm : Form
@@ -24,8 +23,8 @@ namespace AlbaAnalysis
         List<SerialEntity> saveData;
         int csvFlag = 0;
         AlbaAnalysisDataHandler _ad;
-
         List<SerialEntity> SerialDataList;
+
 
         public SerialForm() {
             saveData = new List<SerialEntity>();
@@ -47,11 +46,8 @@ namespace AlbaAnalysis
             };
         }
 
-        private void SerialForm_FormClosing(object sender, FormClosingEventArgs e) {
-            serialPort1.Dispose();
-            serialPort1.Close();
-        }
 
+        #region データ受信
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e) {
             string inputLine = null;
             var sw = new Stopwatch();
@@ -79,152 +75,6 @@ namespace AlbaAnalysis
                 ProccessSerialDatas(InputEnum.third, inputArray, inputLine);
             else if (inputArray.First().Equals("$4") && inputArray.Count() == Constants.Forth + 1)
                 ProccessSerialDatas(InputEnum.forth, inputArray, inputLine);
-        }
-
-        private void ProccessSerialDatas(InputEnum ie, string[] inputArray, string inputLine) {
-            var serialEntity = new SerialEntity();
-            SerialRoutine.copyDatas2Entity(serialEntity, inputArray, ie);
-
-            var tempSerial = serialEntity.Clone();
-            saveData.Add(tempSerial);
-            InvokeControls(tempSerial, inputLine, ie);
-        }
-
-        /// <summary>
-        /// 操舵入力に対応してボタンの色を変化させます
-        /// </summary>
-        /// <param name="inputLine">配列化した受信データ</param>
-        /// <param name="i"></param>
-        private void checkSteer(SerialEntity se, string inputLine, InputEnum ie) {
-            if (InputEnum.second != ie)
-                return;
-
-            buttonRDrug.BackColor = se.DrugR == 1.ToString() ? Color.LightCoral : Color.LightGray;
-            buttonLDrug.BackColor = se.DrugL == 1.ToString() ? Color.LightCoral : Color.LightGray;
-            rollVerticalProgressBar.SetValue(se.RollInput);
-            pitchVerticalProgressBar.SetValue(se.PitchInput);
-        }
-
-        /// <summary>
-        /// 操舵入力表示用のボタンをNextButtonを押したときに色を戻します
-        /// </summary>
-        private void ResetButton() {
-            buttonRDrug.BackColor = Color.LightGray;
-            buttonLDrug.BackColor = Color.LightGray;
-        }
-
-        /// <summary>
-        /// 受信データに対してグラフを出力します
-        /// </summary>
-        /// <param name="se">配列化した受信データ</param>
-        /// <param name="i"></param>
-        private void showChart(SerialEntity se, string inputLine, InputEnum ie) {
-            #region グラフ設定
-            try {
-                if (InputEnum.forth == ie) {
-                    chartSpeed.AddXY(se.Time, se.AirSpeed);
-                    chartCadence.AddXY(se.Time, se.Cadence);
-                } else if (InputEnum.first == ie) {
-                    chartRBattery.AddXY(se.Time, se.VoltageR);
-                    chartLBattery.AddXY(se.Time, se.VoltageL);
-                } else if (InputEnum.third == ie) {
-                    chartMpuPitch.AddXY(se.Time, se.MpuPitch);
-                    chartMpuYaw.AddXY(se.Time, se.MpuYaw);
-                    chartMpuRoll.AddXY(se.Time, se.MpuRoll);
-                } else if (InputEnum.second == ie) {
-                    if (!double.TryParse(se.DrugR, out var Dr) || !double.TryParse(se.DrugR, out var Dl))
-                        return;
-
-                    chartDrugInput.AddXY(se.Time, (Dr - Dl).ToString());
-                    chartRollInput.AddXY(se.Time, se.RollInput);
-                    chartPitchInput.AddXY(se.Time, se.PitchInput);
-                }
-            } catch (Exception) {
-                Debug.Assert(false);
-                return;
-            }
-            #endregion
-        }
-
-        /// <summary>
-        /// Nextボタンを押したときにグラフをクリアします
-        /// </summary>
-        void ClearChart() {
-            var fls = typeof(SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("AlbaChart"));
-            foreach (var fi in fls)
-                ((Chart)fi.GetValue(this)).Series[0].Points.Clear();
-        }
-
-        /// <summary>
-        /// 受信データをtextboxに表示します
-        /// </summary>
-        /// <param name="se">配列化した受信データ</param>
-        /// <param name="i"></param>
-        private void showText(SerialEntity se, string allInput, InputEnum ie) {
-            //await Task.Run(() => {
-            #region textboxへの表示
-            textBoxAllData.AppendText(allInput + Environment.NewLine);
-            if (InputEnum.forth == ie) {
-                textBoxSpeed.AppendText(se.AirSpeed + Environment.NewLine);
-                textBoxCadence.AppendText(se.Cadence + Environment.NewLine);
-            } else if (InputEnum.first == ie) {
-                textBoxBatteryDataR.AppendText(se.VoltageR + Environment.NewLine);
-                textBoxBatteryDataL.AppendText(se.VoltageL + Environment.NewLine);
-            } else if (InputEnum.third == ie) {
-                textBoxMpuPitch.AppendText(se.MpuPitch + Environment.NewLine);
-                textBoxMpuRoll.AppendText(se.MpuRoll + Environment.NewLine);
-                textBoxMpuYaw.AppendText(se.MpuYaw + Environment.NewLine);
-            }
-            #endregion
-        }
-
-        /// <summary>
-        /// Nextボタンを押したときにtextBoxをクリアします
-        /// </summary>
-        void ClearTextBox() {
-            var fls = typeof(AlbaAnalysis.SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("TextBox"));
-            foreach (var f in fls)
-                ((TextBox)f.GetValue(this)).Clear();
-        }
-
-        private void buttonConnect_Click_1(object sender, EventArgs e) {
-            if (serialPort1.IsOpen)
-                return;
-
-            try {
-                serialPort1.Open();
-            } catch (Exception) {
-                MessageBox.Show(@"利用可能なシリアルポートがありません");
-            }
-            serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialPort1_DataReceived);
-            serialPort1.DtrEnable = true;
-            serialPort1.RtsEnable = true;
-            ConnectButtonEnable();
-            buttonClose.Focus();
-        }
-
-        private void buttonClose_Click_1(object sender, EventArgs e) {
-            var commentForm = new AdditionalFileNameDialog();
-            serialPort1.DataReceived -= serialPort1_DataReceived;
-            commentForm.ShowDialog();
-            SaveAllCharts(commentForm.GetComment());
-            SerialRoutine.writeDatas(saveData, _ad.pathBase + "TF" + DateTime.Now.ToString("MMdd_hhmm") + commentForm.GetComment() + ".csv", true);
-            _ad.resetFileList();
-            serialPort1.DiscardInBuffer();
-            serialPort1.Close();
-            closeButtonEnable();
-        }
-
-        private void buttonNext_Click_1(object sender, EventArgs e) {
-            clearForm();
-            buttonConnect.Focus();
-        }
-
-        private void clearForm() {
-            ClearTextBox();
-            ClearChart();
-            ResetButton();
-            saveData.Clear();
         }
 
         private async void buttonRunCsv_Click(object sender, EventArgs e) {
@@ -273,7 +123,17 @@ namespace AlbaAnalysis
                 MessageBox.Show("ファイルの読み込みを終了しました。");
             });
         }
+        #endregion
 
+        #region 画面描画
+        private void ProccessSerialDatas(InputEnum ie, string[] inputArray, string inputLine) {
+            var serialEntity = new SerialEntity();
+            SerialRoutine.copyDatas2Entity(serialEntity, inputArray, ie);
+
+            var tempSerial = serialEntity.Clone();
+            saveData.Add(tempSerial);
+            InvokeControls(tempSerial, inputLine, ie);
+        }
         void InvokeControls(SerialEntity se, string inputLine, InputEnum ie) {
             try {
                 Invoke(new Handler(showChart), se, inputLine, ie);
@@ -281,6 +141,147 @@ namespace AlbaAnalysis
                 Invoke(new Handler(checkSteer), se, inputLine, ie);
             } catch (ObjectDisposedException) {
             }
+        }
+
+        /// <summary>
+        /// 受信データに対してグラフを出力します
+        /// </summary>
+        /// <param name="se">配列化した受信データ</param>
+        /// <param name="i"></param>
+        private void showChart(SerialEntity se, string inputLine, InputEnum ie) {
+            #region グラフ設定
+            try {
+                if (InputEnum.forth == ie) {
+                    chartSpeed.AddXY(se.Time, se.AirSpeed);
+                    chartCadence.AddXY(se.Time, se.Cadence);
+                } else if (InputEnum.first == ie) {
+                    chartRBattery.AddXY(se.Time, se.VoltageR);
+                    chartLBattery.AddXY(se.Time, se.VoltageL);
+                } else if (InputEnum.third == ie) {
+                    chartMpuPitch.AddXY(se.Time, se.MpuPitch);
+                    chartMpuYaw.AddXY(se.Time, se.MpuYaw);
+                    chartMpuRoll.AddXY(se.Time, se.MpuRoll);
+                } else if (InputEnum.second == ie) {
+                    if (!double.TryParse(se.DrugR, out var Dr) || !double.TryParse(se.DrugR, out var Dl))
+                        return;
+
+                    chartDrugInput.AddXY(se.Time, (Dr - Dl).ToString());
+                    chartRollInput.AddXY(se.Time, se.RollInput);
+                    chartPitchInput.AddXY(se.Time, se.PitchInput);
+                }
+            } catch (Exception) {
+                Debug.Assert(false);
+                return;
+            }
+            #endregion
+        }
+
+        /// <summary>
+        /// 受信データをtextboxに表示します
+        /// </summary>
+        /// <param name="se">配列化した受信データ</param>
+        /// <param name="i"></param>
+        private void showText(SerialEntity se, string allInput, InputEnum ie) {
+            //await Task.Run(() => {
+            #region textboxへの表示
+            textBoxAllData.AppendText(allInput + Environment.NewLine);
+            if (InputEnum.forth == ie) {
+                textBoxSpeed.AppendText(se.AirSpeed + Environment.NewLine);
+                textBoxCadence.AppendText(se.Cadence + Environment.NewLine);
+            } else if (InputEnum.first == ie) {
+                textBoxBatteryDataR.AppendText(se.VoltageR + Environment.NewLine);
+                textBoxBatteryDataL.AppendText(se.VoltageL + Environment.NewLine);
+            } else if (InputEnum.third == ie) {
+                textBoxMpuPitch.AppendText(se.MpuPitch + Environment.NewLine);
+                textBoxMpuRoll.AppendText(se.MpuRoll + Environment.NewLine);
+                textBoxMpuYaw.AppendText(se.MpuYaw + Environment.NewLine);
+            }
+            #endregion
+        }
+
+        /// <summary>
+        /// 操舵入力に対応してボタンの色を変化させます
+        /// </summary>
+        /// <param name="inputLine">配列化した受信データ</param>
+        /// <param name="i"></param>
+        private void checkSteer(SerialEntity se, string inputLine, InputEnum ie) {
+            if (InputEnum.second != ie)
+                return;
+
+            buttonRDrug.BackColor = se.DrugR == 1.ToString() ? Color.LightCoral : Color.LightGray;
+            buttonLDrug.BackColor = se.DrugL == 1.ToString() ? Color.LightCoral : Color.LightGray;
+            rollVerticalProgressBar.SetValue(se.RollInput);
+            pitchVerticalProgressBar.SetValue(se.PitchInput);
+        }
+        #endregion
+
+        #region クリア処理
+        /// <summary>
+        /// Nextボタンを押したときにグラフをクリアします
+        /// </summary>
+        void ClearChart() {
+            var fls = typeof(SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("AlbaChart"));
+            foreach (var fi in fls)
+                ((Chart)fi.GetValue(this)).Series[0].Points.Clear();
+        }
+
+        /// <summary>
+        /// Nextボタンを押したときにtextBoxをクリアします
+        /// </summary>
+        void ClearTextBox() {
+            var fls = typeof(AlbaAnalysis.SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("TextBox"));
+            foreach (var f in fls)
+                ((TextBox)f.GetValue(this)).Clear();
+        }
+
+        private void clearForm() {
+            ClearTextBox();
+            ClearChart();
+            ResetButton();
+            saveData.Clear();
+        }
+
+        /// <summary>
+        /// 操舵入力表示用のボタンをNextButtonを押したときに色を戻します
+        /// </summary>
+        private void ResetButton() {
+            buttonRDrug.BackColor = Color.LightGray;
+            buttonLDrug.BackColor = Color.LightGray;
+        }
+        #endregion
+
+        #region control event
+        private void buttonConnect_Click_1(object sender, EventArgs e) {
+            if (serialPort1.IsOpen)
+                return;
+
+            try {
+                serialPort1.Open();
+            } catch (Exception) {
+                MessageBox.Show(@"利用可能なシリアルポートがありません");
+            }
+            serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialPort1_DataReceived);
+            serialPort1.DtrEnable = true;
+            serialPort1.RtsEnable = true;
+            ConnectButtonEnable();
+            buttonClose.Focus();
+        }
+
+        private void buttonClose_Click_1(object sender, EventArgs e) {
+            var commentForm = new AdditionalFileNameDialog();
+            serialPort1.DataReceived -= serialPort1_DataReceived;
+            commentForm.ShowDialog();
+            SaveAllCharts(commentForm.GetComment());
+            SerialRoutine.writeDatas(saveData, _ad.pathBase + "TF" + DateTime.Now.ToString("MMdd_hhmm") + commentForm.GetComment() + ".csv", true);
+            _ad.resetFileList();
+            serialPort1.DiscardInBuffer();
+            serialPort1.Close();
+            closeButtonEnable();
+        }
+
+        private void buttonNext_Click_1(object sender, EventArgs e) {
+            clearForm();
+            buttonConnect.Focus();
         }
 
         private void buttonStopCsv_Click(object sender, EventArgs e) {
@@ -301,18 +302,19 @@ namespace AlbaAnalysis
             buttonRunCsv.Focus();
         }
 
-        private void SaveAllCharts(string comment) {
-            var nowTime = DateTime.Now.ToString("MMdd_hhmm");
-            try {
-                System.IO.Directory.CreateDirectory(@"../../../Log/chart/" + nowTime + comment);
-            } catch (IOException io) {
-                MessageBox.Show(io.Message);
+        private void button1_Click(object sender, EventArgs e) {
+            using (var config = new ConfigDialog()) {
+                config.ShowDialog();
             }
-            var fls = typeof(SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("Chart"));
-            foreach (var f in fls)
-                ((Chart)f.GetValue(this)).SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + ((Chart)f.GetValue(this)).Name + ".jpeg", ChartImageFormat.Jpeg);
         }
 
+        private void SerialForm_FormClosing(object sender, FormClosingEventArgs e) {
+            serialPort1.Dispose();
+            serialPort1.Close();
+        }
+        #endregion
+
+        #region enable
         private void initializeButtonEnable() {
             buttonNext.Enabled = false;
             buttonClose.Enabled = false;
@@ -338,11 +340,19 @@ namespace AlbaAnalysis
             buttonRunCsv.Enabled = true;
             buttonOpenCsv.Enabled = true;
         }
+        #endregion
 
-        private void button1_Click(object sender, EventArgs e) {
-            using (var config = new ConfigDialog()) {
-                config.ShowDialog();
+        #region chart Method
+        private void SaveAllCharts(string comment) {
+            var nowTime = DateTime.Now.ToString("MMdd_hhmm");
+            try {
+                System.IO.Directory.CreateDirectory(@"../../../Log/chart/" + nowTime + comment);
+            } catch (IOException io) {
+                MessageBox.Show(io.Message);
             }
+            var fls = typeof(SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("Chart"));
+            foreach (var f in fls)
+                ((Chart)f.GetValue(this)).SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + ((Chart)f.GetValue(this)).Name + ".jpeg", ChartImageFormat.Jpeg);
         }
 
         private void setChartDispName(SerialEntity se) {
@@ -357,5 +367,6 @@ namespace AlbaAnalysis
             chartPitchInput.SetDataPropertyName(nameof(se.PitchInput));
             chartDrugInput.SetDataPropertyName(nameof(se.DrugL));//ドラッグラダーのchartはここでだけLとして識別する
         }
+        #endregion
     }
 }
