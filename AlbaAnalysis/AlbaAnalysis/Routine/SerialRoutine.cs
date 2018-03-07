@@ -32,24 +32,31 @@ namespace AlbaAnalysis.Routine {
             }
         }
 
-        public static List<string> validateInput(string input) {
-            var csvdatas = input.Split(',').ToList();
-            foreach (var i in Enumerable.Range(0, csvdatas.Count)) {
-                csvdatas[i] = csvdatas[i].Trim();
-                if (string.IsNullOrEmpty(csvdatas[i]) || !double.TryParse(csvdatas[i], out double tmp))
-                    csvdatas[i] = 0.ToString();
-            }
-            return csvdatas;
+        /// <summary>
+        /// 受信した文字列に欠損がないかを確認します
+        /// </summary>
+        /// <param name="inputLine"></param>
+        /// <returns></returns>
+        public static bool ValidateInput(string inputLine) {
+            var inputList = inputLine.Split(',').ToList();
+            var checkSum = inputList.Last();
+            var beforeDeli = String.Join(",", inputList.Select((value, index) => new { value, index })
+                                                        .Where(mem => mem.index != inputList.Count() - 1)
+                                                        .Select(mem => mem.value)
+                                                        .ToList());
+            return checkSum == getCheckSum(beforeDeli);
         }
 
         /// <summary>
-        /// c++とc#で同じ文字列に対してxorをしていくのでも値が違う？
+        /// 引数の文字列のchecksumを計算する
         /// </summary>
-        /// <param name="str"></param>
+        /// <param name="beforDelimiter"></param>
         /// <returns></returns>
-        private string getCheckSum(string str) {
-            var checkSum = 0;
-            return "";
+        private static string getCheckSum(string beforDelimiter) {
+            var sum = '0';
+            foreach (var c in beforDelimiter.ToCharArray())
+                sum ^= c;
+            return string.Format("{0:X2}", (int)sum);
         }
 
         public static void CopyASCsv(SerialEntity se, string[] data) {

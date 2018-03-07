@@ -66,7 +66,10 @@ namespace AlbaAnalysis
             if (sw.ElapsedMilliseconds > 5000)
                 serialPort1.DiscardInBuffer();
 
-            var inputArray = SerialRoutine.validateInput(inputLine).ToArray();
+            if (!SerialRoutine.ValidateInput(inputLine))
+                return;
+
+            var inputArray = inputLine.Split(',').ToArray();
 
             if (inputArray.First().Equals("$1") && inputArray.Count() == Constants.First + 2)
                 ProccessSerialDatas(InputEnum.first, inputArray, inputLine);
@@ -241,7 +244,10 @@ namespace AlbaAnalysis
                         if (csvFlag == 1)
                             return;
 
-                        var csvInputArray = SerialRoutine.validateInput(csvLine);
+                        if (!SerialRoutine.ValidateInput(csvLine))
+                            return;
+
+                        var csvInputArray = csvLine.Split(',').ToList();
 
                         if (csvInputArray.Count() != 25)
                             continue;
