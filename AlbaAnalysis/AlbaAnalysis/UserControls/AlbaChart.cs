@@ -37,20 +37,14 @@ namespace AlbaAnalysis {
             _filter_level = ConfigRoutine.GetFilterByName(_dataPropertyName);
         }
 
-        public void AddXY(string xStr, string yStr) {
-            double x, y;
-            x = y = 0;
+        public void AddXY(double x, double y) {
             try {
-                x = double.Parse(xStr);
-                y = double.Parse(yStr);
-                se.Time = xStr;
-                setYValue(_dataPropertyName, se, yStr);
+                se.Time = x;
+                setYValue(_dataPropertyName, se, y);
                 _dataList.Add(new DataSet() { X = x, Y = y });
-                if (_dataList.Count() >= 4)
-                    _dataList.RemoveAt(0);
                 if (filterDatas(_dataList, _filter_level)) {
                     this.Series[0].Points.AddXY(x, y);
-                    this.ChartAreas[0].AxisX.Maximum = x;
+                    this.ChartAreas[0].AxisX.Maximum = x * 1.1; //個々の上限は適当
                 }
             } catch (Exception) {
                 Debug.Assert(false);
