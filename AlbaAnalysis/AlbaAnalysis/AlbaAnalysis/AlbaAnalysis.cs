@@ -15,8 +15,6 @@ using System.Diagnostics;
 using System.Reflection;
 
 namespace AlbaAnalysis {
-    delegate void Handler(SerialEntity strs, string str, InputEnum ie);
-
     public partial class SerialForm : Form {
         List<SerialEntity> saveData;
         int csvFlag = 0;
@@ -119,21 +117,47 @@ namespace AlbaAnalysis {
         #endregion
 
         #region 画面描画
-        private void ProccessSerialDatas(InputEnum ie, string[] inputArray, string inputLine) {
-            var serialEntity = new SerialEntity();
-            SerialRoutine.copyDatas2Entity(serialEntity, inputArray, ie);
+        private void ProccessSerialDatas(string[] inputArray, string inputLine) {
+            SerialRoutine.copyDatas2Entity(serialEntity, inputArray);
 
             var tempSerial = serialEntity.Clone();
+            throw new Exception("saveData周りは専用のクラスを作成しよう");
             saveData.Add(tempSerial);
-            InvokeControls(tempSerial, inputLine, ie);
+            InvokeControls(tempSerial, inputLine);
         }
-        void InvokeControls(SerialEntity se, string inputLine, InputEnum ie) {
-            try {
-                Invoke(new Handler(showChart), se, inputLine, ie);
-                Invoke(new Handler(showText), se, inputLine, ie);
-                Invoke(new Handler(checkSteer), se, inputLine, ie);
-            } catch (ObjectDisposedException) {
-            }
+
+        #region Invoke Controls
+        void InvokeControls(FirstEntity se, string inputLine) {
+            Invoke((Action)(() => plotChart(se, inputLine)));
+            Invoke((Action)(() => appendText(se, inputLine)));
+        }
+
+        void InvokeControls(SecondEntity se, string inputLine) {
+            Invoke((Action)(() => plotChart(se, inputLine)));
+            Invoke((Action)(() => appendText(se, inputLine)));
+        }
+
+        void InvokeControls(ThirdEntity se, string inputLine) {
+            Invoke((Action)(() => plotChart(se, inputLine)));
+            Invoke((Action)(() => appendText(se, inputLine)));
+            Invoke((Action)(() => checkSteer(se, inputLine)));
+        }
+
+        void InvokeControls(ForthEntity se, string inputLine) {
+            Invoke((Action)(() => plotChart(se, inputLine)));
+            Invoke((Action)(() => appendText(se, inputLine)));
+        }
+        #endregion
+
+        #region Plot Chart
+        /// <summary>
+        /// 受信データに対してグラフを出力します
+        /// </summary>
+        /// <param name="se">配列化した受信データ</param>
+        /// <param name="i"></param>
+        private void plotChart(FirstEntity se, string inputLine) {
+            chartSpeed.AddXY(se.AirSpeedTime, se.AirSpeed);
+            chartCadence.AddXY(se.CadenceTime, se.Cadence);
         }
 
         /// <summary>
@@ -141,32 +165,42 @@ namespace AlbaAnalysis {
         /// </summary>
         /// <param name="se">配列化した受信データ</param>
         /// <param name="i"></param>
-        private void showChart(SerialEntity se, string inputLine, InputEnum ie) {
-            #region グラフ設定
-            try {
-                if (InputEnum.forth == ie) {
-                    chartSpeed.AddXY(se.Time, se.AirSpeed);
-                    chartCadence.AddXY(se.Time, se.Cadence);
-                } else if (InputEnum.first == ie) {
-                    chartRBattery.AddXY(se.Time, se.VoltageR);
-                    chartLBattery.AddXY(se.Time, se.VoltageL);
-                } else if (InputEnum.third == ie) {
-                    chartMpuPitch.AddXY(se.Time, se.MpuPitch);
-                    chartMpuYaw.AddXY(se.Time, se.MpuYaw);
-                    chartMpuRoll.AddXY(se.Time, se.MpuRoll);
-                } else if (InputEnum.second == ie) {
-                    if (!double.TryParse(se.DrugR, out var Dr) || !double.TryParse(se.DrugR, out var Dl))
-                        return;
+        private void plotChart(SecondEntity se, string inputLine) {
+            chartMpuPitch.AddXY(se.MpuTime, se.MpuPitch);
+            chartMpuYaw.AddXY(se.MpuTime, se.MpuYaw);
+            chartMpuRoll.AddXY(se.MpuTime, se.MpuRoll);
+        }
 
-                    chartDrugInput.AddXY(se.Time, (Dr - Dl).ToString());
-                    chartRollInput.AddXY(se.Time, se.RollInput);
-                    chartPitchInput.AddXY(se.Time, se.PitchInput);
-                }
-            } catch (Exception) {
-                Debug.Assert(false);
-                return;
-            }
-            #endregion
+        /// <summary>
+        /// 受信データに対してグラフを出力します
+        /// </summary>
+        /// <param name="se">配列化した受信データ</param>
+        /// <param name="i"></param>
+        private void plotChart(ThirdEntity se, string inputLine) {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 受信データに対してグラフを出力します
+        /// </summary>
+        /// <param name="se">配列化した受信データ</param>
+        /// <param name="i"></param>
+        private void plotChart(ForthEntity se, string inputLine) {
+            chartRBattery.AddXY(se.ControlTime, se.VoltageR);
+            chartLBattery.AddXY(se.ControlTime, se.VoltageL);
+        }
+        #endregion
+
+        #region Append Text
+        /// <summary>
+        /// 受信データをtextboxに表示します
+        /// </summary>
+        /// <param name="se">配列化した受信データ</param>
+        /// <param name="i"></param>
+        private void appendText(FirstEntity se, string allInput) {
+            textBoxAllData.AppendText(allInput + Environment.NewLine);
+            textBoxSpeed.AppendText(se.AirSpeed + Environment.NewLine);
+            textBoxCadence.AppendText(se.Cadence + Environment.NewLine);
         }
 
         /// <summary>
@@ -174,35 +208,38 @@ namespace AlbaAnalysis {
         /// </summary>
         /// <param name="se">配列化した受信データ</param>
         /// <param name="i"></param>
-        private void showText(SerialEntity se, string allInput, InputEnum ie) {
-            //await Task.Run(() => {
-            #region textboxへの表示
+        private void appendText(SecondEntity se, string allInput) {
             textBoxAllData.AppendText(allInput + Environment.NewLine);
-            if (InputEnum.forth == ie) {
-                textBoxSpeed.AppendText(se.AirSpeed + Environment.NewLine);
-                textBoxCadence.AppendText(se.Cadence + Environment.NewLine);
-            } else if (InputEnum.first == ie) {
-                textBoxBatteryDataR.AppendText(se.VoltageR + Environment.NewLine);
-                textBoxBatteryDataL.AppendText(se.VoltageL + Environment.NewLine);
-            } else if (InputEnum.third == ie) {
-                textBoxMpuPitch.AppendText(se.MpuPitch + Environment.NewLine);
-                textBoxMpuRoll.AppendText(se.MpuRoll + Environment.NewLine);
-                textBoxMpuYaw.AppendText(se.MpuYaw + Environment.NewLine);
-            }
-            #endregion
+            textBoxMpuPitch.AppendText(se.MpuPitch + Environment.NewLine);
+            textBoxMpuRoll.AppendText(se.MpuRoll + Environment.NewLine);
+            textBoxMpuYaw.AppendText(se.MpuYaw + Environment.NewLine);
         }
+
+        private void appendText(ThirdEntity se, string allInput) {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 受信データをtextboxに表示します
+        /// </summary>
+        /// <param name="se">配列化した受信データ</param>
+        /// <param name="i"></param>
+        private void appendText(ForthEntity se, string allInput) {
+            textBoxAllData.AppendText(allInput + Environment.NewLine);
+            textBoxBatteryDataR.AppendText(se.VoltageR + Environment.NewLine);
+            textBoxBatteryDataL.AppendText(se.VoltageL + Environment.NewLine);
+        }
+        #endregion
 
         /// <summary>
         /// 操舵入力に対応してボタンの色を変化させます
         /// </summary>
         /// <param name="inputLine">配列化した受信データ</param>
         /// <param name="i"></param>
-        private void checkSteer(SerialEntity se, string inputLine, InputEnum ie) {
-            if (InputEnum.second != ie)
-                return;
-
-            buttonRDrug.BackColor = se.DrugR == 1.ToString() ? Color.LightCoral : Color.LightGray;
-            buttonLDrug.BackColor = se.DrugL == 1.ToString() ? Color.LightCoral : Color.LightGray;
+        private void checkSteer(ThirdEntity se, string inputLine) {
+            throw new Exception("以下の1との比較はequalsをオーバーライドする必要あり");
+            buttonRDrug.BackColor = se.DrugR == 1 ? Color.LightCoral : Color.LightGray;
+            buttonLDrug.BackColor = se.DrugL == 1 ? Color.LightCoral : Color.LightGray;
             rollVerticalProgressBar.SetValue(se.RollInput);
             pitchVerticalProgressBar.SetValue(se.PitchInput);
         }
