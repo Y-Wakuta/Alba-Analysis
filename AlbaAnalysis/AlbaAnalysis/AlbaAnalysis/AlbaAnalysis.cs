@@ -14,12 +14,10 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace AlbaAnalysis
-{
+namespace AlbaAnalysis {
     delegate void Handler(SerialEntity strs, string str, InputEnum ie);
 
-    public partial class SerialForm : Form
-    {
+    public partial class SerialForm : Form {
         List<SerialEntity> saveData;
         int csvFlag = 0;
         AlbaAnalysisDataHandler _ad;

@@ -106,7 +106,6 @@
     <Compile Include="Database\ConfigEntity.cs" />
     <Compile Include="Database\ConfigRoutine.cs" />
     <Compile Include="Database\Context.cs" />
-    <Compile Include="Entity\ControlEnum.cs" />
     <Compile Include="UserControls\AlbaChart.cs">
       <SubType>Component</SubType>
     </Compile>

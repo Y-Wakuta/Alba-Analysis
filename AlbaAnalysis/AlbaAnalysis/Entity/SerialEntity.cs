@@ -154,28 +154,28 @@ namespace AlbaAnalysis.Entity
     public static class Constants
     {
         public const double filterLevel = 8.0;
-        public static int First = Enum.GetNames(typeof(FirstDataOrder)).Length;
-        public static int Second = Enum.GetNames(typeof(SecondDataOrder)).Length;
-        public static int Third = Enum.GetNames(typeof(ThirdDataOrder)).Length;
-        public static int Forth = Enum.GetNames(typeof(ForthDataOrder)).Length;
+        public static int First = typeof(FirstEntity).GetProperties().Count();
+        public static int Second = typeof(SecondEntity).GetProperties().Count();
+        public static int Third = typeof(ThirdEntity).GetProperties().Count();
+        public static int Forth = typeof(ForthEntity).GetProperties().Count();
     }
 
     public class portNames
     {
-        public double portName { get; set; }
+        public string portName { get; set; }
     }
     /// <summary>
     /// データを保存したパスを保持
     /// </summary>
     public class filePath
     {
-        public double pathName { get; set; }
+        public string pathName { get; set; }
     }
 
     public class DetailEntity
     {
-        public double value { get; set; }
-        public double time { get; set; }
+        public string value { get; set; }
+        public string time { get; set; }
     }
     #endregion
 }
