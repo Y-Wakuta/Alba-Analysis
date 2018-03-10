@@ -9,43 +9,33 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Reflection;
-
-using AlbaAnalysis.Database;
-using AlbaAnalysis.Entity;
-using AlbaAnalysis.Routine;
 using System.Diagnostics;
 
 namespace AlbaAnalysis {
     public partial class AlbaChart : Chart {
 
-        public string _dataPropertyName = string.Empty;
-        public SerialEntity se = new SerialEntity();
-        private List<DataSet> _dataList = new List<DataSet>();
-        private int _filter_level = 0;
+        private bool _isClickable = false;
+        private struct source { public double X; public double Y; }
+        source s = new source();
 
-        public AlbaChart() {
+        public AlbaChart(bool isClickable) {
             InitializeComponent();
             this.Click += new System.EventHandler(this.AlbaChart_Click);
+            _isClickable = isClickable;
         }
 
         public void SetDataPropertyName(string dpn) {
-            _dataPropertyName = dpn;
             setFilterLevel();
         }
 
         private void setFilterLevel() {
-            _filter_level = ConfigRoutine.GetFilterByName(_dataPropertyName);
         }
 
         public void AddXY(double x, double y) {
             try {
-                se.Time = x;
-                setYValue(_dataPropertyName, se, y);
-                _dataList.Add(new DataSet() { X = x, Y = y });
-                if (filterDatas(_dataList, _filter_level)) {
-                    this.Series[0].Points.AddXY(x, y);
-                    this.ChartAreas[0].AxisX.Maximum = x * 1.1; //個々の上限は適当
-                }
+                this.Series[0].Points.AddXY(x, y);
+                this.ChartAreas[0].AxisX.Maximum = x * 1.1; //個々の上限は適当
+                s = new source() { X = x, Y = y };
             } catch (Exception) {
                 Debug.Assert(false);
             }
@@ -59,45 +49,18 @@ namespace AlbaAnalysis {
         }
 
         private void AlbaChart_Click(object sender, EventArgs e) {
-            if (!isClickable(_dataPropertyName)) {
+            if (!_isClickable) {
                 MessageBox.Show("このグラフは詳細表示できません。");
                 return;
             }
 
-            using (var details = new Detail(_dataPropertyName, ref se)) {
+            using (var details = new Detail(s.X, s.Y)) {
                 details.ShowDialog();
             }
         }
 
-        private bool isClickable(string propName) {
-            if (nameof(se.Cadence) == propName)
-                return true;
-            else if (nameof(se.AirSpeed) == propName)
-                return true;
-            else if (nameof(se.MpuRoll) == propName)
-                return true;
-            else if (nameof(se.MpuYaw) == propName)
-                return true;
-            else if (nameof(se.MpuPitch) == propName)
-                return true;
-            else return false;
-        }
-
-        private void setYValue(string propName, SerialEntity se, string ystr) {
-            if (nameof(se.Cadence) == propName)
-                se.Cadence = ystr;
-            else if (nameof(se.AirSpeed) == propName)
-                se.AirSpeed = ystr;
-            else if (nameof(se.MpuRoll) == propName)
-                se.MpuRoll = ystr;
-            else if (nameof(se.MpuYaw) == propName)
-                se.MpuYaw = ystr;
-            else if (nameof(se.MpuPitch) == propName)
-                se.MpuPitch = ystr;
-        }
-
-
         private static bool filterDatas(List<DataSet> list, int fl = 1) { //listの要素数は3とする
+                                                                          //var filter_level = ConfigRoutine.GetFilterByName(_dataPropertyName);
             if (fl == 0)
                 return true;    //filter_levelのデフォルト値は0であるため、その0では無条件に値を通過させる
             var base_diff = (list[1].Y - list[0].Y) / (list[1].X - list[0].X);
