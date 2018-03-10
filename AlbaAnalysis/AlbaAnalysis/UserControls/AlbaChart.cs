@@ -24,13 +24,6 @@ namespace AlbaAnalysis {
             _isClickable = isClickable;
         }
 
-        public void SetDataPropertyName(string dpn) {
-            setFilterLevel();
-        }
-
-        private void setFilterLevel() {
-        }
-
         public void AddXY(double x, double y) {
             try {
                 this.Series[0].Points.AddXY(x, y);

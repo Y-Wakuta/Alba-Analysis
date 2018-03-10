@@ -384,19 +384,6 @@ namespace AlbaAnalysis {
             foreach (var f in fls)
                 ((Chart)f.GetValue(this)).SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + ((Chart)f.GetValue(this)).Name + ".jpeg", ChartImageFormat.Jpeg);
         }
-
-        private void setChartDispName(SerialEntity se) {
-            chartCadence.SetDataPropertyName(nameof(se.Cadence));
-            chartMpuPitch.SetDataPropertyName(nameof(se.MpuPitch));
-            chartMpuRoll.SetDataPropertyName(nameof(se.MpuRoll));
-            chartMpuYaw.SetDataPropertyName(nameof(se.MpuYaw));
-            chartSpeed.SetDataPropertyName(nameof(se.AirSpeed));
-            chartRBattery.SetDataPropertyName(nameof(se.VoltageR));
-            chartLBattery.SetDataPropertyName(nameof(se.VoltageL));
-            chartRollInput.SetDataPropertyName(nameof(se.RollInput));
-            chartPitchInput.SetDataPropertyName(nameof(se.PitchInput));
-            chartDrugInput.SetDataPropertyName(nameof(se.DrugL));//ドラッグラダーのchartはここでだけLとして識別する
-        }
         #endregion
     }
 }
