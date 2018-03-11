@@ -61,63 +61,58 @@ namespace AlbaAnalysis.Routine
             return string.Format("{0:X2}", (int)sum);
         }
 
-        public static void CopyASCsv(SerialEntity se, string[] data) {
-            se.Time = data[0];
-            se.MpuRYaw = data[1];
-            se.MpuRRoll = data[2];
-            se.VoltageR = data[7];
-            se.MpuXYaw = data[8];
-            se.MpuYRoll = data[9];
-            se.VoltageL = data[14];
-            se.RollInput = data[15];
-            se.DrugR = data[16];
-            se.PitchInput = data[17];
-            se.DrugL = data[18];
-            se.MpuRoll = data[19];
-            se.MpuPitch = data[20];
-            se.MpuYaw = data[21];
-            se.AirSpeed = data[22];
-            se.Sonar = data[23];
-            se.Cadence = data[24];
+        public static void Copy2Entity(FirstEntity se, double[] data) {
+            se.BaseUnixTime = data[1];
+            se.AirSpeed = data[2];
+            se.HeightTime = data[7];
+            se.Height = data[8];
+            se.CadenceTime = data[9];
+            se.Cadence = data[14];
         }
 
-        public static void CopyAS1(SerialEntity se, string[] data) {
-            se.MpuRYaw = data[1];
-            se.MpuRRoll = data[2];
-            se.VoltageR = data[7];
-            se.MpuXYaw = data[8];
-            se.MpuYRoll = data[9];
-            se.VoltageL = data[14];
-        }
-
-        public static void copyDatas2Entity(SerialEntity se, string[] datas, InputEnum ie) {
-            if (ie == InputEnum.forth)
-                CopyAS4(se, datas);
-            else if (ie == InputEnum.third)
-                CopyAS3(se, datas);
-            else if (ie == InputEnum.second)
-                CopyAS2(se, datas);
-            else if (ie == InputEnum.first)
-                CopyAS1(se, datas);
-        }
-
-        public static void CopyAS2(SerialEntity se, string[] data) {
-            se.RollInput = data[1];
-            se.DrugR = data[2];
-            se.PitchInput = data[3];
-            se.DrugL = data[4];
-        }
-
-        public static void CopyAS3(SerialEntity se, string[] data) {
-            se.MpuRoll = data[1];
-            se.MpuPitch = data[2];
+        public static void Copy2Entity(SecondEntity se, double[] data) {
+            se.BaseUnixTime = data[1];
+            se.MpuTime = data[2];
             se.MpuYaw = data[3];
+            se.MpuPitch = data[4];
+            se.MpuRoll = data[5];
+            se.GpsTime = data[6];
+            se.Latitude = data[7];
+            se.Longitude = data[8];
         }
 
-        public static void CopyAS4(SerialEntity se, string[] data) {
-            se.AirSpeed = data[1];
-            se.Sonar = data[2];
-            se.Cadence = data[3];
+        public static void Copy2Entity(ThirdEntity se, double[] data) {
+            se.BaseUnixTime = data[1];
+            se.ControlTime = data[2];
+
+            var RInput = ExtractInputs(data[3]);
+            se.RollInput = RInput.Item1;
+            se.DrugR = RInput.Item2;
+
+            var LInput = ExtractInputs(data[4]);
+            se.PitchInput = LInput.Item1;
+            se.DrugL = LInput.Item2;
+
+            se.MpuRRoll = data[5];
+            se.MpuRYaw = data[6];
+        }
+
+        public static void Copy2Entity(ForthEntity se, double[] data) {
+            se.BaseUnixTime = data[1];
+            se.ControlTime = data[2];
+            se.VoltageR = data[3];
+
+            se.VoltageL = data[4];
+            se.MpuLRoll = data[5];
+            se.MpuLYaw = data[6];
+            se.VoltageR = data[4];
+        }
+
+        private static Tuple<double, double> ExtractInputs(double input) {
+            var inputStr = input.ToString().PadLeft(4, '0');
+            Double.TryParse(inputStr.Substring(0, 3), out var joyStick);
+            Double.TryParse(inputStr.Substring(3, 1), out var drug);
+            return Tuple.Create<double, double>(joyStick, drug);
         }
 
         #region 同じentityか判定する
