@@ -9,10 +9,8 @@ using System.IO.Ports;
 using System.IO;
 using AlbaAnalysis.Entity;
 
-namespace AlbaAnalysis.Routine
-{
-    public class SerialRoutine
-    {
+namespace AlbaAnalysis.Routine {
+    public class SerialRoutine {
 
         string[] oldDatas = new string[40];
 

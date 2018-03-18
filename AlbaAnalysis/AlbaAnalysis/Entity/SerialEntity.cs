@@ -7,10 +7,8 @@ using System.ComponentModel;
 
 using AlbaAnalysis.Routine;
 
-namespace AlbaAnalysis.Entity
-{
-    public class FirstEntity : BaseEntity
-    {
+namespace AlbaAnalysis.Entity {
+    public class FirstEntity : BaseEntity {
         public double AirSpeedTime {
             get { return _airSpeed_time; }
             set {
@@ -47,14 +45,11 @@ namespace AlbaAnalysis.Entity
         }
         public double _cadence;
 
-
-        public int HeightTime { get; set; }
-        public int Height { get; set; }
-
+        public double HeightTime { get; set; }
+        public double Height { get; set; }
     }
 
-    public class SecondEntity : BaseEntity
-    {
+    public class SecondEntity : BaseEntity {
         public double MpuTime {
             get { return _mpu_time; }
             set {
@@ -92,13 +87,12 @@ namespace AlbaAnalysis.Entity
         public double _mpuYaw;
 
 
-        public int GpsTime { get; set; }
-        public int Latitude { get; set; }
-        public int Longitude { get; set; }
+        public double GpsTime { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     }
 
-    public class ThirdEntity : BaseEntity
-    {
+    public class ThirdEntity : BaseEntity {
         public double ControlTime { get; set; }
         public double RollInput { get; set; }
         public double DrugR { get; set; }
@@ -108,12 +102,11 @@ namespace AlbaAnalysis.Entity
         public double MpuRRoll { get; set; }
     }
 
-    public class ForthEntity : BaseEntity
-    {
+    public class ForthEntity : BaseEntity {
         public double ControlTime { get; set; }
 
-        public double MpuXYaw { get; set; }
-        public double MpuYRoll { get; set; }
+        public double MpuLYaw { get; set; }
+        public double MpuLRoll { get; set; }
 
 
         public double VoltageR { get; set; }
@@ -121,13 +114,12 @@ namespace AlbaAnalysis.Entity
         public double VoltageL { get; set; }
     }
 
-    public abstract class BaseEntity : INotifyPropertyChanged
-    {
-        public double StartUnixTime {
+    public abstract class BaseEntity : INotifyPropertyChanged {
+        public double BaseUnixTime {
             get { return _start_unix_time; }
             set {
                 _start_unix_time = value;
-                onPropertyChanged(nameof(StartUnixTime));
+                onPropertyChanged(nameof(BaseUnixTime));
             }
         }
         private double _start_unix_time;
@@ -151,29 +143,26 @@ namespace AlbaAnalysis.Entity
     /// <summary>
     /// マクロを定義
     /// </summary>
-    public static class Constants
-    {
+    public static class Constants {
         public const double filterLevel = 8.0;
         public static int First = typeof(FirstEntity).GetProperties().Count();
         public static int Second = typeof(SecondEntity).GetProperties().Count();
         public static int Third = typeof(ThirdEntity).GetProperties().Count();
         public static int Forth = typeof(ForthEntity).GetProperties().Count();
+        public static string pathBase = @"../../../Log/";
     }
 
-    public class portNames
-    {
+    public class portNames {
         public string portName { get; set; }
     }
     /// <summary>
     /// データを保存したパスを保持
     /// </summary>
-    public class filePath
-    {
+    public class filePath {
         public string pathName { get; set; }
     }
 
-    public class DetailEntity
-    {
+    public class DetailEntity {
         public string value { get; set; }
         public string time { get; set; }
     }

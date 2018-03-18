@@ -14,20 +14,23 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.Diagnostics;
 using System.Reflection;
 
+using AlbaAnalysis.Library;
+
 namespace AlbaAnalysis {
     public partial class SerialForm : Form {
-        List<SerialEntity> saveData;
+       // List<SerialEntity> saveData;
         int csvFlag = 0;
         AlbaAnalysisDataHandler _ad;
+        LogWrapper<FirstEntity, SecondEntity, ThirdEntity, ForthEntity> logger;
 
 
         public SerialForm() {
-            saveData = new List<SerialEntity>();
+            //saveData = new List<SerialEntity>();
+            logger = new LogWrapper<FirstEntity, SecondEntity, ThirdEntity, ForthEntity>();
             InitializeComponent();
             _ad = new AlbaAnalysisDataHandler(bauditemsBindingSource, portNamesBindingSource, filePathBindingSource);
             initializeButtonEnable();
             buttonConnect.Focus();
-            setChartDispName(new SerialEntity());
 
             bauditemsBindingSource.PositionChanged += (s, e) => {
                 serialPort1.BaudRate = ((BaudRateEntity)(bauditemsBindingSource.Current)).rate;
@@ -82,22 +85,10 @@ namespace AlbaAnalysis {
                         if (!SerialRoutine.ValidateInput(csvLine))
                             return;
 
-                        var csvInputArray = csvLine.Split(',').ToList();
-
-                        if (csvInputArray.Count() != 25)
-                            continue;
+                        var csvInputArray = csvLine.Split(',').Convert2DoubleList();
                         var serialEntity = new SerialEntity();
-                        SerialRoutine.CopyASCsv(serialEntity, csvInputArray.ToArray());
-
-                        if (lastSerialEntity == null) {
-                            lastSerialEntity = serialEntity.Clone();
-                            continue;
-                        }
-                        var targetEnum = SerialRoutine.GetTargetEntity(serialEntity, lastSerialEntity);
-                        if (targetEnum == InputEnum.notAccepted)
-                            continue;
-                        lastSerialEntity = serialEntity.Clone();
-                        InvokeControls(serialEntity, csvLine, targetEnum);
+                        SerialRoutine.Copy2Entity(serialEntity, csvInputArray.ToArray());
+                        InvokeControls(serialEntity, csvLine);
 
                         //csv読み込みの速度向上
                         System.Threading.Thread.Sleep(45);
@@ -111,11 +102,12 @@ namespace AlbaAnalysis {
         #endregion
 
         #region 画面描画
-        private void ProccessSerialDatas(string[] inputArray, string inputLine) {
-            SerialRoutine.copyDatas2Entity(serialEntity, inputArray);
+        private void ProccessSerialDatas(List<double> inputList, string inputLine) {
+            SerialRoutine.copyDatas2Entity(serialEntity, inputList);
+
+            throw new Exception("saveData周りは専用のクラスを作成しよう");
 
             var tempSerial = serialEntity.Clone();
-            throw new Exception("saveData周りは専用のクラスを作成しよう");
             saveData.Add(tempSerial);
             InvokeControls(tempSerial, inputLine);
         }
