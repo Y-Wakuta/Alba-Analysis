@@ -114,44 +114,5 @@ namespace AlbaAnalysis.Routine
             Double.TryParse(inputStr.Substring(3, 1), out var drug);
             return Tuple.Create<double, double>(joyStick, drug);
         }
-
-        #region 同じentityか判定する
-        public static bool IsSameControlEntity(SerialEntity se, SerialEntity lastSe) {
-            if (se.VoltageL == lastSe.VoltageL && se.VoltageR == lastSe.VoltageR)
-                return true;
-            return false;
-        }
-
-        public static bool IsSameKeikiEntity(SerialEntity se, SerialEntity lastSe) {
-            if (se.AirSpeed == lastSe.AirSpeed && se.Cadence == lastSe.Cadence)
-                return true;
-            return false;
-        }
-
-        public static bool IsSameMpuEntity(SerialEntity se, SerialEntity lastSe) {
-            if (se.MpuPitch == lastSe.MpuPitch && se.MpuYaw == lastSe.MpuYaw && se.MpuRoll == lastSe.MpuRoll)
-                return true;
-            return false;
-        }
-
-        public static bool IsSameInputEntity(SerialEntity se, SerialEntity lastSe) {
-            if (se.PitchInput == lastSe.PitchInput && se.RollInput == lastSe.RollInput && se.DrugL == lastSe.DrugL && se.DrugR == lastSe.DrugR)
-                return true;
-            return false;
-        }
-
-        public static InputEnum GetTargetEntity(SerialEntity se, SerialEntity lastSe) {
-            if (IsSameControlEntity(se, lastSe) && IsSameKeikiEntity(se, lastSe) && IsSameMpuEntity(se, lastSe))
-                return InputEnum.second;
-            else if (IsSameControlEntity(se, lastSe) && IsSameKeikiEntity(se, lastSe) && IsSameInputEntity(se, lastSe))
-                return InputEnum.third;
-            else if (IsSameControlEntity(se, lastSe) && IsSameMpuEntity(se, lastSe) && IsSameInputEntity(se, lastSe))
-                return InputEnum.forth;
-            else if (IsSameKeikiEntity(se, lastSe) && IsSameMpuEntity(se, lastSe) && IsSameInputEntity(se, lastSe))
-                return InputEnum.first;
-            else
-                return InputEnum.notAccepted;
-        }
-        #endregion
     }
 }

@@ -41,38 +41,32 @@ namespace AlbaAnalysis {
         #region データ受信
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e) {
             string inputLine = null;
-            var sw = new Stopwatch();
-            sw.Start();
             try {
                 inputLine = serialPort1.ReadLine();
             } catch (Exception) {
                 Debug.Assert(false);
                 return;
             }
-            sw.Stop();
-            if (sw.ElapsedMilliseconds > 5000)
-                serialPort1.DiscardInBuffer();
 
             if (!SerialRoutine.ValidateInput(inputLine))
                 return;
 
-            var inputArray = inputLine.Split(',').ToArray();
+            var inputArray = inputLine.Split(',').Convert2DoubleList();
 
-            if (inputArray.First().Equals("$1") && inputArray.Count() == Constants.First + 2)
-                ProccessSerialDatas(InputEnum.first, inputArray, inputLine);
-            else if (inputArray.First().Equals("$2") && inputArray.Count() == Constants.Second + 1)
-                ProccessSerialDatas(InputEnum.second, inputArray, inputLine);
-            else if (inputArray.First().Equals("$3") && inputArray.Count() == Constants.Third + 1)
-                ProccessSerialDatas(InputEnum.third, inputArray, inputLine);
-            else if (inputArray.First().Equals("$4") && inputArray.Count() == Constants.Forth + 1)
-                ProccessSerialDatas(InputEnum.forth, inputArray, inputLine);
+            if (inputArray.First().Equals("$1") && inputArray.Count() == Constants.First)
+                ProccessSerialDatas(inputArray, inputLine);
+            else if (inputArray.First().Equals("$2") && inputArray.Count() == Constants.Second)
+                ProccessSerialDatas(inputArray, inputLine);
+            else if (inputArray.First().Equals("$3") && inputArray.Count() == Constants.Third)
+                ProccessSerialDatas(inputArray, inputLine);
+            else if (inputArray.First().Equals("$4") && inputArray.Count() == Constants.Forth)
+                ProccessSerialDatas(inputArray, inputLine);
         }
 
         private async void buttonRunCsv_Click(object sender, EventArgs e) {
             clearForm();
             buttonStopCsv.Enabled = true;
             buttonStopCsv.Focus();
-            SerialEntity lastSerialEntity = null;
             var _resultPath = (filePathBindingSource.Current).ToString();
             csvFlag = 0;
             await Task.Run(() => {
