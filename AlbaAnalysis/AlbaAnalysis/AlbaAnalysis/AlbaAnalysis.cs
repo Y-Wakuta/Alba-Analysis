@@ -296,6 +296,7 @@ namespace AlbaAnalysis {
             serialPort1.DataReceived -= serialPort1_DataReceived;
             commentForm.ShowDialog();
             SaveAllCharts(commentForm.GetComment());
+            logger.Export(_ad.pathBase + "TF" + DateTime.Now.ToString("MMdd_hhmm") + commentForm.GetComment());
             SerialRoutine.writeDatas(saveData, _ad.pathBase + "TF" + DateTime.Now.ToString("MMdd_hhmm") + commentForm.GetComment() + ".csv", true);
             _ad.resetFileList();
             serialPort1.DiscardInBuffer();

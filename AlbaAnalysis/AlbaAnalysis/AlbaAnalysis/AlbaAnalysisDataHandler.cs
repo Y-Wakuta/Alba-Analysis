@@ -19,7 +19,6 @@ namespace AlbaAnalysis {
         BindingList<BaudRateEntity> _baudBl;
         BindingList<string> _portBl;
         BindingList<string> _fileBl;
-        public string pathBase = @"../../../Log/";
 
         public AlbaAnalysisDataHandler(BindingSource baudS, BindingSource portS, BindingSource fileS) {
             _baudS = baudS;
@@ -33,7 +32,8 @@ namespace AlbaAnalysis {
                 _portBl.Add("利用可能なシリアルポートは存在しません。");
             _portS.DataSource = _portBl;
 
-            createDirIfNotExist();
+            if (!Directory.Exists(Constants.pathBase))
+                Directory.CreateDirectory(Constants.pathBase);
             _fileBl = new BindingList<string>(AddAllPath());
             _fileS.DataSource = _fileBl;
         }
@@ -44,14 +44,8 @@ namespace AlbaAnalysis {
             _fileS.DataSource = _fileBl;
         }
 
-        private void createDirIfNotExist() {
-            if (!Directory.Exists(pathBase)) {
-                Directory.CreateDirectory(pathBase);
-            }
-        }
-
         private List<string> AddAllPath() {
-            return new List<string>(Directory.GetFiles(pathBase, "*.csv", SearchOption.AllDirectories)
+            return new List<string>(Directory.GetFiles(Constants.pathBase, "*.csv", SearchOption.AllDirectories)
                 .ToList()
                 .Where(p => {
                     var file = new System.IO.FileInfo(p);
