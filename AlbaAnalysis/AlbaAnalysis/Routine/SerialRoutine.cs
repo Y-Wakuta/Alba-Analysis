@@ -14,23 +14,7 @@ namespace AlbaAnalysis.Routine {
 
         string[] oldDatas = new string[40];
 
-        /// <summary>
-        /// リストに保存したデータをcsvに出力します
-        /// </summary>
-        /// <param name="se">配列化していない受信データ</param>
-        /// <param name="path"></param>
-        public static void writeDatas(List<SerialEntity> se, string path, bool append) {
-            using (var sw = new StreamWriter(path, append)) {
-                foreach (var d in se) {
-                    var dataStrArray = new[] { d.Time,d.MpuRYaw,d.MpuRRoll
-                        ,d.VoltageR,d.MpuXYaw,d.MpuYRoll
-                              ,d.VoltageL,d.RollInput,d.DrugR,d.PitchInput,d.DrugL
-                                ,d.MpuRoll,d.MpuPitch,d.MpuYaw
-                                 ,d.AirSpeed,d.Sonar,d.Cadence ,Environment.NewLine};
-                    sw.Write(String.Join(",", dataStrArray));
-                }
-            }
-        }
+   
 
         /// <summary>
         /// 受信した文字列に欠損がないかを確認します

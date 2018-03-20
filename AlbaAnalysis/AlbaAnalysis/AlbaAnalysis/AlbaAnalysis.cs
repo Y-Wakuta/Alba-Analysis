@@ -44,7 +44,7 @@ namespace AlbaAnalysis {
         #region データ受信
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e) {
             string inputLine = null;
-            try {
+                try {
                 inputLine = serialPort1.ReadLine();
             } catch (Exception) {
                 Debug.Assert(false);

@@ -106,6 +106,10 @@
     <Compile Include="Database\ConfigEntity.cs" />
     <Compile Include="Database\ConfigRoutine.cs" />
     <Compile Include="Database\Context.cs" />
+    <Compile Include="Entity\BaseEntity.cs" />
+    <Compile Include="Entity\FirstEntity.cs" />
+    <Compile Include="Entity\SecondEntity.cs" />
+    <Compile Include="Entity\ThirdEntity.cs" />
     <Compile Include="Library\Extensions.cs" />
     <Compile Include="Library\LogWrapper.cs" />
     <Compile Include="UserControls\AlbaChart.cs">
@@ -120,8 +124,8 @@
     <Compile Include="AdditionalPanel\Detail.Designer.cs">
       <DependentUpon>Detail.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entity\BaudRateEntity.cs" />
-    <Compile Include="Entity\SerialEntity.cs" />
+    <Compile Include="Entity\ConfigEntity.cs" />
+    <Compile Include="Entity\ForthEntity.cs" />
     <Compile Include="Routine\SerialRoutine.cs" />
     <Compile Include="AlbaAnalysis\AlbaAnalysis.cs">
       <SubType>Form</SubType>
