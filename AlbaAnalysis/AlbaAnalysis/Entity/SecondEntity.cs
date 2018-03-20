@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,8 @@ namespace AlbaAnalysis.Entity
 {
     public class SecondEntity : BaseEntity
     {
+
+        [Display(Order = 0)]
         public double MpuTime {
             get { return _mpu_time; }
             set {
@@ -17,6 +20,7 @@ namespace AlbaAnalysis.Entity
         }
         private double _mpu_time;
 
+        [Display(Order = 1)]
         public double MpuRoll {
             get { return _mpuRoll; }
             set {
@@ -26,6 +30,7 @@ namespace AlbaAnalysis.Entity
         }
         private double _mpuRoll;
 
+        [Display(Order = 2)]
         public double MpuPitch {
             get { return _mpuPitch; }
             set {
@@ -35,6 +40,7 @@ namespace AlbaAnalysis.Entity
         }
         public double _mpuPitch;
 
+        [Display(Order = 3)]
         public double MpuYaw {
             get { return _mpuYaw; }
             set {
@@ -44,9 +50,13 @@ namespace AlbaAnalysis.Entity
         }
         public double _mpuYaw;
 
-
+        [Display(Order = 4)]
         public double GpsTime { get; set; }
+
+        [Display(Order = 5)]
         public double Latitude { get; set; }
+
+        [Display(Order = 6)]
         public double Longitude { get; set; }
     }
 }
