@@ -57,13 +57,13 @@ namespace AlbaAnalysis {
             var inputArray = inputLine.Split(',').Convert2DoubleList();
 
             if (inputArray.First().Equals(Constants.firstFlag) && inputArray.Count() == Constants.First)
-                ProccessSerialDatas(inputArray, inputLine);
+                ProccessSerialDatas(inputArray, inputLine, new FirstEntity());
             else if (inputArray.First().Equals(Constants.secondFlag) && inputArray.Count() == Constants.Second)
-                ProccessSerialDatas(inputArray, inputLine);
+                ProccessSerialDatas(inputArray, inputLine, new SecondEntity());
             else if (inputArray.First().Equals(Constants.thirdFlag) && inputArray.Count() == Constants.Third)
-                ProccessSerialDatas(inputArray, inputLine);
+                ProccessSerialDatas(inputArray, inputLine, new ThirdEntity());
             else if (inputArray.First().Equals(Constants.fourthFlag) && inputArray.Count() == Constants.Forth)
-                ProccessSerialDatas(inputArray, inputLine);
+                ProccessSerialDatas(inputArray, inputLine, new ForthEntity());
         }
 
         private async void buttonRunCsv_Click(object sender, EventArgs e) {
@@ -82,6 +82,8 @@ namespace AlbaAnalysis {
                     if (csvFlag == 1)
                         return;
 
+
+                    textBoxAllData.Text = "csv読み込みでは一覧表示はサポートされません。";
                     var read = logger.Read(_resultPath);
 
                     var first = read.Item1.GetCopiedList();
@@ -91,8 +93,8 @@ namespace AlbaAnalysis {
 
                     while (first.Count() != 0 && second.Count() != 0 && third.Count() != 0 && fourth.Count() != 0) {
                         var result = _ad.PopRecord(first, second, third, fourth);
-                        if(result.Item1 != null)
-                        InvokeControls(result.Item1, csvLine);  
+                        if (result.Item1 != null)
+                            InvokeControls(result.Item1,String.Empty);
 
                         //csv読み込みの速度向上
                         System.Threading.Thread.Sleep(45);
@@ -132,23 +134,21 @@ namespace AlbaAnalysis {
 
         #region Invoke Controls
         void InvokeControls(FirstEntity se, string inputLine) {
-            Invoke((Action)(() => plotChart(se, inputLine)));
+            Invoke((Action)(() => plotChart(se)));
             Invoke((Action)(() => appendText(se, inputLine)));
         }
 
         void InvokeControls(SecondEntity se, string inputLine) {
-            Invoke((Action)(() => plotChart(se, inputLine)));
+            Invoke((Action)(() => plotChart(se)));
             Invoke((Action)(() => appendText(se, inputLine)));
         }
 
         void InvokeControls(ThirdEntity se, string inputLine) {
-            Invoke((Action)(() => plotChart(se, inputLine)));
-            Invoke((Action)(() => appendText(se, inputLine)));
-            Invoke((Action)(() => checkSteer(se, inputLine)));
+            Invoke((Action)(() => checkSteer(se)));
         }
 
         void InvokeControls(ForthEntity se, string inputLine) {
-            Invoke((Action)(() => plotChart(se, inputLine)));
+            Invoke((Action)(() => plotChart(se)));
             Invoke((Action)(() => appendText(se, inputLine)));
         }
         #endregion
@@ -159,7 +159,7 @@ namespace AlbaAnalysis {
         /// </summary>
         /// <param name="se">配列化した受信データ</param>
         /// <param name="i"></param>
-        private void plotChart(FirstEntity se, string inputLine) {
+        private void plotChart(FirstEntity se) {
             chartSpeed.AddXY(se.AirSpeedTime, se.AirSpeed);
             chartCadence.AddXY(se.CadenceTime, se.Cadence);
         }
@@ -169,7 +169,7 @@ namespace AlbaAnalysis {
         /// </summary>
         /// <param name="se">配列化した受信データ</param>
         /// <param name="i"></param>
-        private void plotChart(SecondEntity se, string inputLine) {
+        private void plotChart(SecondEntity se) {
             chartMpuPitch.AddXY(se.MpuTime, se.MpuPitch);
             chartMpuYaw.AddXY(se.MpuTime, se.MpuYaw);
             chartMpuRoll.AddXY(se.MpuTime, se.MpuRoll);
@@ -180,16 +180,7 @@ namespace AlbaAnalysis {
         /// </summary>
         /// <param name="se">配列化した受信データ</param>
         /// <param name="i"></param>
-        private void plotChart(ThirdEntity se, string inputLine) {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// 受信データに対してグラフを出力します
-        /// </summary>
-        /// <param name="se">配列化した受信データ</param>
-        /// <param name="i"></param>
-        private void plotChart(ForthEntity se, string inputLine) {
+        private void plotChart(ForthEntity se) {
             chartRBattery.AddXY(se.ControlTime, se.VoltageR);
             chartLBattery.AddXY(se.ControlTime, se.VoltageL);
         }
@@ -219,10 +210,6 @@ namespace AlbaAnalysis {
             textBoxMpuYaw.AppendText(se.MpuYaw + Environment.NewLine);
         }
 
-        private void appendText(ThirdEntity se, string allInput) {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// 受信データをtextboxに表示します
         /// </summary>
@@ -240,7 +227,7 @@ namespace AlbaAnalysis {
         /// </summary>
         /// <param name="inputLine">配列化した受信データ</param>
         /// <param name="i"></param>
-        private void checkSteer(ThirdEntity se, string inputLine) {
+        private void checkSteer(ThirdEntity se) {
             throw new Exception("以下の1との比較はequalsをオーバーライドする必要あり");
             buttonRDrug.BackColor = se.DrugR == 1 ? Color.LightCoral : Color.LightGray;
             buttonLDrug.BackColor = se.DrugL == 1 ? Color.LightCoral : Color.LightGray;
