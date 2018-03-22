@@ -7,7 +7,6 @@ namespace AlbaAnalysis {
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        SerialEntity se = new SerialEntity();
         /// <summary>
         /// 使用中のリソースをすべてクリーンアップします。
         /// </summary>

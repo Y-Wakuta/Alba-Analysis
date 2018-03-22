@@ -18,6 +18,8 @@ namespace AlbaAnalysis {
         private struct source { public double X; public double Y; }
         source s = new source();
 
+        public AlbaChart() { }
+
         public AlbaChart(bool isClickable) {
             InitializeComponent();
             this.Click += new System.EventHandler(this.AlbaChart_Click);

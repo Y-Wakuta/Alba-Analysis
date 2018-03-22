@@ -43,7 +43,7 @@ namespace AlbaAnalysis.Routine {
             return string.Format("{0:X2}", (int)sum);
         }
 
-        public static void Copy2Entity(FirstEntity se, double[] data) {
+        public static void Copy2Entity(FirstEntity se,List<double> data) {
             se.BaseUnixTime = data[1];
             se.AirSpeed = data[2];
             se.HeightTime = data[7];
@@ -52,7 +52,7 @@ namespace AlbaAnalysis.Routine {
             se.Cadence = data[14];
         }
 
-        public static void Copy2Entity(SecondEntity se, double[] data) {
+        public static void Copy2Entity(SecondEntity se, List<double> data) {
             se.BaseUnixTime = data[1];
             se.MpuTime = data[2];
             se.MpuYaw = data[3];
@@ -63,7 +63,7 @@ namespace AlbaAnalysis.Routine {
             se.Longitude = data[8];
         }
 
-        public static void Copy2Entity(ThirdEntity se, double[] data) {
+        public static void Copy2Entity(ThirdEntity se, List<double> data) {
             se.BaseUnixTime = data[1];
             se.ControlTime = data[2];
 
@@ -79,7 +79,7 @@ namespace AlbaAnalysis.Routine {
             se.MpuRYaw = data[6];
         }
 
-        public static void Copy2Entity(ForthEntity se, double[] data) {
+        public static void Copy2Entity(ForthEntity se, List<double> data) {
             se.BaseUnixTime = data[1];
             se.ControlTime = data[2];
             se.VoltageR = data[3];

@@ -18,7 +18,7 @@ using AlbaAnalysis.Library;
 
 namespace AlbaAnalysis {
     public partial class SerialForm : Form {
-       // List<SerialEntity> saveData;
+        // List<SerialEntity> saveData;
         int csvFlag = 0;
         AlbaAnalysisDataHandler _ad;
         LogWrapper<FirstEntity, SecondEntity, ThirdEntity, ForthEntity> logger;
@@ -44,7 +44,7 @@ namespace AlbaAnalysis {
         #region データ受信
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e) {
             string inputLine = null;
-                try {
+            try {
                 inputLine = serialPort1.ReadLine();
             } catch (Exception) {
                 Debug.Assert(false);
