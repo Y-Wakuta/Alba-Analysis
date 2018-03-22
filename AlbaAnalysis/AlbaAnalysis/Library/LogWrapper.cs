@@ -99,5 +99,12 @@ namespace AlbaAnalysis.Library {
             exportList(parentpath, listV);
             exportList(parentpath, listW);
         }
+
+        public void Clear() {
+            listT.Clear();
+            listU.Clear();
+            listV.Clear();
+            listW.Clear();
+        }
     }
 }
