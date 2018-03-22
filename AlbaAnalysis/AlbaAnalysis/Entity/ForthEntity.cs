@@ -10,6 +10,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AlbaAnalysis.Entity
 {
+    [DisplayName(Constants.fourthFlag)]
     public class ForthEntity : BaseEntity
     {
 

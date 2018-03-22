@@ -26,6 +26,11 @@ namespace AlbaAnalysis.Entity {
         public static int Third = typeof(ThirdEntity).GetProperties().Count();
         public static int Forth = typeof(ForthEntity).GetProperties().Count();
         public static string pathBase = @"../../../Log/";
+
+        public const string firstFlag = "$1";
+        public const string secondFlag = "$2";
+        public const string thirdFlag = "$3";
+        public const string fourthFlag = "$4";
     }
 
     public class portNames

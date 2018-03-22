@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlbaAnalysis.Entity
-{
-    public class ThirdEntity : BaseEntity
-    {
-
+namespace AlbaAnalysis.Entity {
+    [DisplayName(Constants.thirdFlag)]
+    public class ThirdEntity : BaseEntity {
         [Display(Order = 0)]
         public double ControlTime { get; set; }
 

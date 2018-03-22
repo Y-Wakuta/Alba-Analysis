@@ -6,11 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlbaAnalysis.Entity
-{
-    [DisplayName("$1データ")]
-    public class FirstEntity : BaseEntity
-    {
+namespace AlbaAnalysis.Entity {
+    [DisplayName(Constants.firstFlag)]
+    public class FirstEntity : BaseEntity {
         [Display(Order = 0)]
         public double AirSpeedTime {
             get { return _airSpeed_time; }

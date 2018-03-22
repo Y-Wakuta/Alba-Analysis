@@ -56,13 +56,13 @@ namespace AlbaAnalysis {
 
             var inputArray = inputLine.Split(',').Convert2DoubleList();
 
-            if (inputArray.First().Equals("$1") && inputArray.Count() == Constants.First)
+            if (inputArray.First().Equals(Constants.firstFlag) && inputArray.Count() == Constants.First)
                 ProccessSerialDatas(inputArray, inputLine);
-            else if (inputArray.First().Equals("$2") && inputArray.Count() == Constants.Second)
+            else if (inputArray.First().Equals(Constants.secondFlag) && inputArray.Count() == Constants.Second)
                 ProccessSerialDatas(inputArray, inputLine);
-            else if (inputArray.First().Equals("$3") && inputArray.Count() == Constants.Third)
+            else if (inputArray.First().Equals(Constants.thirdFlag) && inputArray.Count() == Constants.Third)
                 ProccessSerialDatas(inputArray, inputLine);
-            else if (inputArray.First().Equals("$4") && inputArray.Count() == Constants.Forth)
+            else if (inputArray.First().Equals(Constants.fourthFlag) && inputArray.Count() == Constants.Forth)
                 ProccessSerialDatas(inputArray, inputLine);
         }
 

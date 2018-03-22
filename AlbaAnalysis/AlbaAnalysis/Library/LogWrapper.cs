@@ -68,7 +68,6 @@ namespace AlbaAnalysis.Library {
                             listW = readList(fn, (W)Activator.CreateInstance(dictName.Value));
                     }
             return Tuple.Create(listT, listU, listV, listW);
-
         }
 
         /// <summary>

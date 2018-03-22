@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlbaAnalysis.Entity
-{
-    public class SecondEntity : BaseEntity
-    {
+namespace AlbaAnalysis.Entity {
+    [DisplayName(Constants.secondFlag)]
+    public class SecondEntity : BaseEntity {
 
         [Display(Order = 0)]
         public double MpuTime {
