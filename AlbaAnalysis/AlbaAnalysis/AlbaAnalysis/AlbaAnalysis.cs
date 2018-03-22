@@ -106,14 +106,28 @@ namespace AlbaAnalysis {
         #endregion
 
         #region 画面描画
-        private void ProccessSerialDatas(List<double> inputList, string inputLine) {
-            SerialRoutine.copyDatas2Entity(serialEntity, inputList);
+        private void ProccessSerialDatas(List<double> inputList, string inputLine, FirstEntity fe) {
+            SerialRoutine.Copy2Entity(fe, inputList);
+            logger.Append(fe);
+            InvokeControls(fe, inputLine);
+        }
 
-            throw new Exception("saveData周りは専用のクラスを作成しよう");
+        private void ProccessSerialDatas(List<double> inputList, string inputLine, SecondEntity se) {
+            SerialRoutine.Copy2Entity(se, inputList);
+            logger.Append(se);
+            InvokeControls(se, inputLine);
+        }
 
-            var tempSerial = serialEntity.Clone();
-            saveData.Add(tempSerial);
-            InvokeControls(tempSerial, inputLine);
+        private void ProccessSerialDatas(List<double> inputList, string inputLine, ThirdEntity te) {
+            SerialRoutine.Copy2Entity(te, inputList);
+            logger.Append(te);
+            InvokeControls(te, inputLine);
+        }
+
+        private void ProccessSerialDatas(List<double> inputList, string inputLine, ForthEntity fe) {
+            SerialRoutine.Copy2Entity(fe, inputList);
+            logger.Append(fe);
+            InvokeControls(fe, inputLine);
         }
 
         #region Invoke Controls
@@ -258,7 +272,7 @@ namespace AlbaAnalysis {
             ClearTextBox();
             ClearChart();
             ResetButton();
-            saveData.Clear();
+            logger.Clear();
         }
 
         /// <summary>
@@ -292,8 +306,7 @@ namespace AlbaAnalysis {
             serialPort1.DataReceived -= serialPort1_DataReceived;
             commentForm.ShowDialog();
             SaveAllCharts(commentForm.GetComment());
-            logger.Export(_ad.pathBase + "TF" + DateTime.Now.ToString("MMdd_hhmm") + commentForm.GetComment());
-            SerialRoutine.writeDatas(saveData, _ad.pathBase + "TF" + DateTime.Now.ToString("MMdd_hhmm") + commentForm.GetComment() + ".csv", true);
+            logger.Export(Constants.pathBase + "TF" + DateTime.Now.ToString("MMdd_hhmm") + commentForm.GetComment());
             _ad.resetFileList();
             serialPort1.DiscardInBuffer();
             serialPort1.Close();

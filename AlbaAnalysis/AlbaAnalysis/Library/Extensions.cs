@@ -26,5 +26,11 @@ namespace AlbaAnalysis.Library
               .GetProperties()
               .OrderBy(p => (p.GetCustomAttributes(typeof(DisplayAttribute), false).FirstOrDefault() as DisplayAttribute)?.Order ?? int.MaxValue);
         }
+
+        public static List<T> GetCopiedList<T>(this List<T> list) {
+            T[] t = new T[0];
+            list.CopyTo(t);
+            return t.ToList();
+        }
     }
 }
