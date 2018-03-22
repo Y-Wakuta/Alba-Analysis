@@ -24,7 +24,7 @@ namespace AlbaAnalysis.Library
         {
             return t
               .GetProperties()
-              .OrderBy(p => (p.GetCustomAttributes(typeof(DisplayAttribute), false)[0] as DisplayAttribute).Order);
+              .OrderBy(p => (p.GetCustomAttributes(typeof(DisplayAttribute), false).FirstOrDefault() as DisplayAttribute)?.Order ?? int.MaxValue);
         }
     }
 }
