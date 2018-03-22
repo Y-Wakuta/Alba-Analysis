@@ -78,17 +78,21 @@ namespace AlbaAnalysis {
                         MessageBox.Show(@"パスを選択してください");
                         return;
                     }
-                    foreach (var csvLine in File.ReadAllLines(_resultPath)) {
-                        if (csvFlag == 1)
-                            return;
 
-                        if (!SerialRoutine.ValidateInput(csvLine))
-                            return;
+                    if (csvFlag == 1)
+                        return;
 
-                        var csvInputArray = csvLine.Split(',').Convert2DoubleList();
-                        var serialEntity = new SerialEntity();
-                        SerialRoutine.Copy2Entity(serialEntity, csvInputArray.ToArray());
-                        InvokeControls(serialEntity, csvLine);
+                    var read = logger.Read(_resultPath);
+
+                    var first = read.Item1.GetCopiedList();
+                    var second = read.Item2.GetCopiedList();
+                    var third = read.Item3.GetCopiedList();
+                    var fourth = read.Item4.GetCopiedList();
+
+                    while (first.Count() != 0 && second.Count() != 0 && third.Count() != 0 && fourth.Count() != 0) {
+                        var result = _ad.PopRecord(first, second, third, fourth);
+                        if(result.Item1 != null)
+                        InvokeControls(result.Item1, csvLine);  
 
                         //csv読み込みの速度向上
                         System.Threading.Thread.Sleep(45);

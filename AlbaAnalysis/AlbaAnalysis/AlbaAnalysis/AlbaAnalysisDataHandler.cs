@@ -44,6 +44,39 @@ namespace AlbaAnalysis {
             _fileS.DataSource = _fileBl;
         }
 
+
+        public Tuple<FirstEntity, SecondEntity, ThirdEntity, ForthEntity> PopRecord(List<FirstEntity> first, List<SecondEntity> second, List<ThirdEntity> third, List<ForthEntity> fourth) {
+            //それぞれのlistから計測時間の小さいデータを抜き出してリストのデータを一つ減らすようなメソッドがほしい
+            var dict = new Dictionary<Type, double>() {
+                { typeof(FirstEntity), first.First().AirSpeedTime },
+                { typeof(SecondEntity), second.First().MpuTime },
+                { typeof(FirstEntity),third.First().ControlTime },
+                { typeof(FirstEntity), fourth.First().ControlTime },
+            };
+
+            var min = dict.Select(d => new { key = d.Key, value = d.Value }).Min(d => d.value);
+            var min_key = dict.First(d => d.Value == min).Key;
+
+            if (min_key == typeof(FirstEntity)) {
+                var tmp = first[0];
+                first.RemoveAt(0);
+                return Tuple.Create<FirstEntity, SecondEntity, ThirdEntity, ForthEntity>(tmp, null, null, null);
+            } else if (min_key == typeof(SecondEntity)) {
+                var tmp = second.First();
+                second.RemoveAt(0);
+                return Tuple.Create<FirstEntity, SecondEntity, ThirdEntity, ForthEntity>(null, tmp, null, null);
+            } else if (min_key == typeof(ThirdEntity)) {
+                var tmp = third.First();
+                third.RemoveAt(0);
+                return Tuple.Create<FirstEntity, SecondEntity, ThirdEntity, ForthEntity>(null, null, tmp, null);
+            } else if (min_key == typeof(ForthEntity)) {
+                var tmp = fourth.First();
+                fourth.RemoveAt(0);
+                return Tuple.Create<FirstEntity, SecondEntity, ThirdEntity, ForthEntity>(null, null, null, tmp);
+            }
+            return Tuple.Create<FirstEntity, SecondEntity, ThirdEntity, ForthEntity>(null, null, null, null);
+        }
+
         private List<string> AddAllPath() {
             return new List<string>(Directory.GetFiles(Constants.pathBase, "*.csv", SearchOption.AllDirectories)
                 .ToList()
