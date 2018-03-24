@@ -151,12 +151,12 @@ namespace AlbaAnalysis {
             // 
             this.textBoxAllData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxAllData.Location = new System.Drawing.Point(2, 14);
-            this.textBoxAllData.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxAllData.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxAllData.Multiline = true;
             this.textBoxAllData.Name = "textBoxAllData";
             this.textBoxAllData.ReadOnly = true;
             this.textBoxAllData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxAllData.Size = new System.Drawing.Size(623, 110);
+            this.textBoxAllData.Size = new System.Drawing.Size(623, 130);
             this.textBoxAllData.TabIndex = 27;
             // 
             // groupBoxAllData
@@ -165,23 +165,26 @@ namespace AlbaAnalysis {
             this.groupBoxAllData.Controls.Add(this.textBoxAllData);
             this.groupBoxAllData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxAllData.Location = new System.Drawing.Point(2, 82);
-            this.groupBoxAllData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxAllData.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxAllData.Name = "groupBoxAllData";
-            this.groupBoxAllData.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBoxAllData.Size = new System.Drawing.Size(627, 126);
+            this.groupBoxAllData.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBoxAllData.Size = new System.Drawing.Size(627, 146);
             this.groupBoxAllData.TabIndex = 27;
             this.groupBoxAllData.TabStop = false;
             this.groupBoxAllData.Text = "受信データ";
             // 
             // comboBoxPort
             // 
+            this.comboBoxPort.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPort.DataSource = this.portNamesBindingSource;
             this.comboBoxPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPort.FormattingEnabled = true;
             this.comboBoxPort.Location = new System.Drawing.Point(1, 1);
-            this.comboBoxPort.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.comboBoxPort.Margin = new System.Windows.Forms.Padding(1);
             this.comboBoxPort.Name = "comboBoxPort";
-            this.comboBoxPort.Size = new System.Drawing.Size(181, 20);
+            this.comboBoxPort.Size = new System.Drawing.Size(175, 20);
             this.comboBoxPort.TabIndex = 2;
             // 
             // portNamesBindingSource
@@ -194,9 +197,9 @@ namespace AlbaAnalysis {
             this.groupBoxSerialConfig.Controls.Add(this.tableLayoutPanel6);
             this.groupBoxSerialConfig.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxSerialConfig.Location = new System.Drawing.Point(2, 2);
-            this.groupBoxSerialConfig.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxSerialConfig.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxSerialConfig.Name = "groupBoxSerialConfig";
-            this.groupBoxSerialConfig.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxSerialConfig.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxSerialConfig.Size = new System.Drawing.Size(627, 76);
             this.groupBoxSerialConfig.TabIndex = 13;
             this.groupBoxSerialConfig.TabStop = false;
@@ -210,7 +213,7 @@ namespace AlbaAnalysis {
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel6.Controls.Add(this.comboBoxBaud, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.comboBoxPort, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.buttonClose, 4, 0);
@@ -223,7 +226,7 @@ namespace AlbaAnalysis {
             this.tableLayoutPanel6.Controls.Add(this.buttonStopCsv, 3, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(2, 14);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -242,10 +245,10 @@ namespace AlbaAnalysis {
             this.comboBoxBaud.DisplayMember = "NAME";
             this.comboBoxBaud.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBaud.FormattingEnabled = true;
-            this.comboBoxBaud.Location = new System.Drawing.Point(184, 1);
-            this.comboBoxBaud.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.comboBoxBaud.Location = new System.Drawing.Point(178, 1);
+            this.comboBoxBaud.Margin = new System.Windows.Forms.Padding(1);
             this.comboBoxBaud.Name = "comboBoxBaud";
-            this.comboBoxBaud.Size = new System.Drawing.Size(211, 20);
+            this.comboBoxBaud.Size = new System.Drawing.Size(206, 20);
             this.comboBoxBaud.TabIndex = 3;
             this.comboBoxBaud.ValueMember = "RATE";
             // 
@@ -257,8 +260,8 @@ namespace AlbaAnalysis {
             // 
             this.buttonClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonClose.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonClose.Location = new System.Drawing.Point(476, 2);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonClose.Location = new System.Drawing.Point(465, 2);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 26);
             this.buttonClose.TabIndex = 31;
@@ -270,8 +273,8 @@ namespace AlbaAnalysis {
             // 
             this.buttonConnect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonConnect.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonConnect.Location = new System.Drawing.Point(398, 2);
-            this.buttonConnect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonConnect.Location = new System.Drawing.Point(387, 2);
+            this.buttonConnect.Margin = new System.Windows.Forms.Padding(2);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(74, 26);
             this.buttonConnect.TabIndex = 29;
@@ -283,10 +286,10 @@ namespace AlbaAnalysis {
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(555, 32);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(544, 32);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(66, 26);
+            this.button1.Size = new System.Drawing.Size(77, 26);
             this.button1.TabIndex = 38;
             this.button1.Text = "Config";
             this.button1.UseVisualStyleBackColor = true;
@@ -296,10 +299,10 @@ namespace AlbaAnalysis {
             // 
             this.buttonNext.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonNext.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNext.Location = new System.Drawing.Point(555, 2);
-            this.buttonNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonNext.Location = new System.Drawing.Point(544, 2);
+            this.buttonNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(66, 26);
+            this.buttonNext.Size = new System.Drawing.Size(77, 26);
             this.buttonNext.TabIndex = 33;
             this.buttonNext.Text = "Next>>";
             this.buttonNext.UseVisualStyleBackColor = true;
@@ -309,8 +312,8 @@ namespace AlbaAnalysis {
             // 
             this.buttonRunCsv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonRunCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRunCsv.Location = new System.Drawing.Point(320, 32);
-            this.buttonRunCsv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonRunCsv.Location = new System.Drawing.Point(309, 32);
+            this.buttonRunCsv.Margin = new System.Windows.Forms.Padding(2);
             this.buttonRunCsv.Name = "buttonRunCsv";
             this.buttonRunCsv.Size = new System.Drawing.Size(74, 26);
             this.buttonRunCsv.TabIndex = 48;
@@ -326,9 +329,9 @@ namespace AlbaAnalysis {
             this.comboBoxFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBoxFiles.FormattingEnabled = true;
             this.comboBoxFiles.Location = new System.Drawing.Point(2, 32);
-            this.comboBoxFiles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxFiles.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxFiles.Name = "comboBoxFiles";
-            this.comboBoxFiles.Size = new System.Drawing.Size(314, 20);
+            this.comboBoxFiles.Size = new System.Drawing.Size(303, 20);
             this.comboBoxFiles.TabIndex = 34;
             this.comboBoxFiles.ValueMember = "pathName";
             this.comboBoxFiles.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiles_SelectedIndexChanged);
@@ -341,8 +344,8 @@ namespace AlbaAnalysis {
             // 
             this.buttonOpenCsv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonOpenCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonOpenCsv.Location = new System.Drawing.Point(476, 32);
-            this.buttonOpenCsv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonOpenCsv.Location = new System.Drawing.Point(465, 32);
+            this.buttonOpenCsv.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOpenCsv.Name = "buttonOpenCsv";
             this.buttonOpenCsv.Size = new System.Drawing.Size(75, 26);
             this.buttonOpenCsv.TabIndex = 36;
@@ -354,8 +357,8 @@ namespace AlbaAnalysis {
             // 
             this.buttonStopCsv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonStopCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonStopCsv.Location = new System.Drawing.Point(398, 32);
-            this.buttonStopCsv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonStopCsv.Location = new System.Drawing.Point(387, 32);
+            this.buttonStopCsv.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStopCsv.Name = "buttonStopCsv";
             this.buttonStopCsv.Size = new System.Drawing.Size(74, 26);
             this.buttonStopCsv.TabIndex = 50;
@@ -370,21 +373,21 @@ namespace AlbaAnalysis {
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(2, 212);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Location = new System.Drawing.Point(2, 232);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1387, 580);
+            this.tabControl1.Size = new System.Drawing.Size(1387, 579);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.tableLayoutPanel2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1379, 554);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Size = new System.Drawing.Size(1379, 553);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Core";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -392,9 +395,9 @@ namespace AlbaAnalysis {
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.68886F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.31114F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 447F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.79258F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.87409F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.Controls.Add(this.chartCadence, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.chartSpeed, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.chartMpuPitch, 0, 1);
@@ -402,12 +405,12 @@ namespace AlbaAnalysis {
             this.tableLayoutPanel2.Controls.Add(this.chartMpuRoll, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.23365F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.76635F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1375, 550);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1375, 549);
             this.tableLayoutPanel2.TabIndex = 21;
             // 
             // chartCadence
@@ -434,7 +437,7 @@ namespace AlbaAnalysis {
             legend1.Position.X = 79F;
             legend1.Position.Y = 2F;
             this.chartCadence.Legends.Add(legend1);
-            this.chartCadence.Location = new System.Drawing.Point(928, 277);
+            this.chartCadence.Location = new System.Drawing.Point(917, 276);
             this.chartCadence.Margin = new System.Windows.Forms.Padding(1);
             this.chartCadence.Name = "chartCadence";
             series1.BorderWidth = 2;
@@ -444,7 +447,7 @@ namespace AlbaAnalysis {
             series1.Legend = "Legend1";
             series1.Name = "Cadence";
             this.chartCadence.Series.Add(series1);
-            this.chartCadence.Size = new System.Drawing.Size(446, 272);
+            this.chartCadence.Size = new System.Drawing.Size(457, 272);
             this.chartCadence.TabIndex = 17;
             this.chartCadence.Text = "Cadence";
             // 
@@ -473,7 +476,7 @@ namespace AlbaAnalysis {
             legend2.Position.X = 79F;
             legend2.Position.Y = 2F;
             this.chartSpeed.Legends.Add(legend2);
-            this.chartSpeed.Location = new System.Drawing.Point(471, 1);
+            this.chartSpeed.Location = new System.Drawing.Point(465, 1);
             this.chartSpeed.Margin = new System.Windows.Forms.Padding(1);
             this.chartSpeed.Name = "chartSpeed";
             series2.BorderWidth = 2;
@@ -484,7 +487,7 @@ namespace AlbaAnalysis {
             series2.LegendText = "Speed";
             series2.Name = "Speed";
             this.chartSpeed.Series.Add(series2);
-            this.chartSpeed.Size = new System.Drawing.Size(903, 274);
+            this.chartSpeed.Size = new System.Drawing.Size(909, 273);
             this.chartSpeed.TabIndex = 18;
             this.chartSpeed.Text = "chart6";
             title1.Name = "Speed";
@@ -517,7 +520,7 @@ namespace AlbaAnalysis {
             legend3.Position.X = 79F;
             legend3.Position.Y = 2F;
             this.chartMpuPitch.Legends.Add(legend3);
-            this.chartMpuPitch.Location = new System.Drawing.Point(1, 277);
+            this.chartMpuPitch.Location = new System.Drawing.Point(1, 276);
             this.chartMpuPitch.Margin = new System.Windows.Forms.Padding(1);
             this.chartMpuPitch.Name = "chartMpuPitch";
             series3.BorderWidth = 2;
@@ -527,7 +530,7 @@ namespace AlbaAnalysis {
             series3.Legend = "Legend1";
             series3.Name = "MPitch";
             this.chartMpuPitch.Series.Add(series3);
-            this.chartMpuPitch.Size = new System.Drawing.Size(468, 272);
+            this.chartMpuPitch.Size = new System.Drawing.Size(462, 272);
             this.chartMpuPitch.TabIndex = 20;
             this.chartMpuPitch.Text = "Mpitch";
             // 
@@ -554,7 +557,7 @@ namespace AlbaAnalysis {
             legend4.Position.X = 79F;
             legend4.Position.Y = 2F;
             this.chartMpuYaw.Legends.Add(legend4);
-            this.chartMpuYaw.Location = new System.Drawing.Point(471, 277);
+            this.chartMpuYaw.Location = new System.Drawing.Point(465, 276);
             this.chartMpuYaw.Margin = new System.Windows.Forms.Padding(1);
             this.chartMpuYaw.Name = "chartMpuYaw";
             series4.BorderWidth = 2;
@@ -564,7 +567,7 @@ namespace AlbaAnalysis {
             series4.Legend = "Legend1";
             series4.Name = "MYaw";
             this.chartMpuYaw.Series.Add(series4);
-            this.chartMpuYaw.Size = new System.Drawing.Size(455, 272);
+            this.chartMpuYaw.Size = new System.Drawing.Size(450, 272);
             this.chartMpuYaw.TabIndex = 13;
             this.chartMpuYaw.Text = "MpuYaw";
             // 
@@ -601,7 +604,7 @@ namespace AlbaAnalysis {
             series5.Legend = "Legend1";
             series5.Name = "MRoll";
             this.chartMpuRoll.Series.Add(series5);
-            this.chartMpuRoll.Size = new System.Drawing.Size(468, 274);
+            this.chartMpuRoll.Size = new System.Drawing.Size(462, 273);
             this.chartMpuRoll.TabIndex = 19;
             this.chartMpuRoll.Text = "MpuRoll";
             // 
@@ -609,10 +612,10 @@ namespace AlbaAnalysis {
             // 
             this.tabPage2.Controls.Add(this.tableLayoutPanel3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1380, 554);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage2.Size = new System.Drawing.Size(1379, 553);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "WingEdge";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -626,11 +629,11 @@ namespace AlbaAnalysis {
             this.tableLayoutPanel3.Controls.Add(this.chartRBattery, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1376, 550);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1375, 549);
             this.tableLayoutPanel3.TabIndex = 18;
             // 
             // chartLBattery
@@ -668,7 +671,7 @@ namespace AlbaAnalysis {
             series6.LegendText = "LBattery";
             series6.Name = "LBattery";
             this.chartLBattery.Series.Add(series6);
-            this.chartLBattery.Size = new System.Drawing.Size(710, 548);
+            this.chartLBattery.Size = new System.Drawing.Size(709, 547);
             this.chartLBattery.TabIndex = 17;
             this.chartLBattery.Text = "chart4";
             // 
@@ -707,7 +710,7 @@ namespace AlbaAnalysis {
             series7.LegendText = "RBattery";
             series7.Name = "RBattery";
             this.chartRBattery.Series.Add(series7);
-            this.chartRBattery.Size = new System.Drawing.Size(662, 548);
+            this.chartRBattery.Size = new System.Drawing.Size(662, 547);
             this.chartRBattery.TabIndex = 16;
             this.chartRBattery.Text = "chart4";
             // 
@@ -715,9 +718,9 @@ namespace AlbaAnalysis {
             // 
             this.tabPage3.Controls.Add(this.tableLayoutPanel4);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1380, 554);
+            this.tabPage3.Size = new System.Drawing.Size(1379, 553);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Control";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -725,11 +728,11 @@ namespace AlbaAnalysis {
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 5;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.72727F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.27273F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 283F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 291F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 720F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.66673F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.48148F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.92181F));
             this.tableLayoutPanel4.Controls.Add(this.buttonRDrug, 3, 1);
             this.tableLayoutPanel4.Controls.Add(this.chartDrugInput, 4, 3);
             this.tableLayoutPanel4.Controls.Add(this.buttonLDrug, 2, 1);
@@ -739,24 +742,24 @@ namespace AlbaAnalysis {
             this.tableLayoutPanel4.Controls.Add(this.pitchVerticalProgressBar, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 4;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.15337F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 74.84663F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 144F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 255F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1380, 554);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.29656F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.91139F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.3255F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1379, 553);
             this.tableLayoutPanel4.TabIndex = 21;
             // 
             // buttonRDrug
             // 
             this.buttonRDrug.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonRDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRDrug.Location = new System.Drawing.Point(370, 40);
-            this.buttonRDrug.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonRDrug.Location = new System.Drawing.Point(477, 81);
+            this.buttonRDrug.Margin = new System.Windows.Forms.Padding(2);
             this.buttonRDrug.Name = "buttonRDrug";
-            this.buttonRDrug.Size = new System.Drawing.Size(287, 112);
+            this.buttonRDrug.Size = new System.Drawing.Size(256, 64);
             this.buttonRDrug.TabIndex = 5;
             this.buttonRDrug.Text = "右ドラッグラダー";
             this.buttonRDrug.UseVisualStyleBackColor = true;
@@ -785,7 +788,7 @@ namespace AlbaAnalysis {
             legend8.Position.X = 79F;
             legend8.Position.Y = 2F;
             this.chartDrugInput.Legends.Add(legend8);
-            this.chartDrugInput.Location = new System.Drawing.Point(660, 299);
+            this.chartDrugInput.Location = new System.Drawing.Point(736, 330);
             this.chartDrugInput.Margin = new System.Windows.Forms.Padding(1);
             this.chartDrugInput.Name = "chartDrugInput";
             series8.BorderWidth = 2;
@@ -796,7 +799,7 @@ namespace AlbaAnalysis {
             series8.LegendText = "DrugInput";
             series8.Name = "DrugInput";
             this.chartDrugInput.Series.Add(series8);
-            this.chartDrugInput.Size = new System.Drawing.Size(719, 254);
+            this.chartDrugInput.Size = new System.Drawing.Size(642, 222);
             this.chartDrugInput.TabIndex = 17;
             this.chartDrugInput.Text = "chart4";
             // 
@@ -804,10 +807,10 @@ namespace AlbaAnalysis {
             // 
             this.buttonLDrug.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonLDrug.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLDrug.Location = new System.Drawing.Point(87, 40);
-            this.buttonLDrug.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonLDrug.Location = new System.Drawing.Point(166, 81);
+            this.buttonLDrug.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLDrug.Name = "buttonLDrug";
-            this.buttonLDrug.Size = new System.Drawing.Size(279, 112);
+            this.buttonLDrug.Size = new System.Drawing.Size(307, 64);
             this.buttonLDrug.TabIndex = 3;
             this.buttonLDrug.Text = "左ドラッグラダー";
             this.buttonLDrug.UseVisualStyleBackColor = true;
@@ -836,7 +839,7 @@ namespace AlbaAnalysis {
             legend9.Position.X = 79F;
             legend9.Position.Y = 2F;
             this.chartRollInput.Legends.Add(legend9);
-            this.chartRollInput.Location = new System.Drawing.Point(660, 1);
+            this.chartRollInput.Location = new System.Drawing.Point(736, 1);
             this.chartRollInput.Margin = new System.Windows.Forms.Padding(1);
             this.chartRollInput.Name = "chartRollInput";
             this.tableLayoutPanel4.SetRowSpan(this.chartRollInput, 3);
@@ -848,18 +851,18 @@ namespace AlbaAnalysis {
             series9.LegendText = "RollInput";
             series9.Name = "RollInput";
             this.chartRollInput.Series.Add(series9);
-            this.chartRollInput.Size = new System.Drawing.Size(719, 296);
+            this.chartRollInput.Size = new System.Drawing.Size(642, 327);
             this.chartRollInput.TabIndex = 19;
             this.chartRollInput.Text = "chart4";
             // 
             // rollVerticalProgressBar
             // 
             this.rollVerticalProgressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rollVerticalProgressBar.Location = new System.Drawing.Point(43, 2);
-            this.rollVerticalProgressBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rollVerticalProgressBar.Location = new System.Drawing.Point(84, 2);
+            this.rollVerticalProgressBar.Margin = new System.Windows.Forms.Padding(2);
             this.rollVerticalProgressBar.Name = "rollVerticalProgressBar";
             this.tableLayoutPanel4.SetRowSpan(this.rollVerticalProgressBar, 4);
-            this.rollVerticalProgressBar.Size = new System.Drawing.Size(40, 550);
+            this.rollVerticalProgressBar.Size = new System.Drawing.Size(78, 549);
             this.rollVerticalProgressBar.TabIndex = 20;
             // 
             // chartPitchInput
@@ -887,7 +890,7 @@ namespace AlbaAnalysis {
             legend10.Position.X = 79F;
             legend10.Position.Y = 2F;
             this.chartPitchInput.Legends.Add(legend10);
-            this.chartPitchInput.Location = new System.Drawing.Point(86, 155);
+            this.chartPitchInput.Location = new System.Drawing.Point(165, 148);
             this.chartPitchInput.Margin = new System.Windows.Forms.Padding(1);
             this.chartPitchInput.Name = "chartPitchInput";
             this.tableLayoutPanel4.SetRowSpan(this.chartPitchInput, 2);
@@ -899,7 +902,7 @@ namespace AlbaAnalysis {
             series10.LegendText = "PitchInput";
             series10.Name = "PitchInput";
             this.chartPitchInput.Series.Add(series10);
-            this.chartPitchInput.Size = new System.Drawing.Size(572, 398);
+            this.chartPitchInput.Size = new System.Drawing.Size(569, 404);
             this.chartPitchInput.TabIndex = 18;
             this.chartPitchInput.Text = "chart4";
             // 
@@ -907,10 +910,10 @@ namespace AlbaAnalysis {
             // 
             this.pitchVerticalProgressBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pitchVerticalProgressBar.Location = new System.Drawing.Point(2, 2);
-            this.pitchVerticalProgressBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pitchVerticalProgressBar.Margin = new System.Windows.Forms.Padding(2);
             this.pitchVerticalProgressBar.Name = "pitchVerticalProgressBar";
             this.tableLayoutPanel4.SetRowSpan(this.pitchVerticalProgressBar, 4);
-            this.pitchVerticalProgressBar.Size = new System.Drawing.Size(37, 550);
+            this.pitchVerticalProgressBar.Size = new System.Drawing.Size(78, 549);
             this.pitchVerticalProgressBar.TabIndex = 9;
             // 
             // tableLayoutPanel1
@@ -924,11 +927,11 @@ namespace AlbaAnalysis {
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.9397F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.0603F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 583F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1391, 794);
             this.tableLayoutPanel1.TabIndex = 28;
@@ -940,11 +943,11 @@ namespace AlbaAnalysis {
             this.groupBox1.Controls.Add(this.tableLayoutPanel5);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(633, 2);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.SetRowSpan(this.groupBox1, 2);
-            this.groupBox1.Size = new System.Drawing.Size(756, 206);
+            this.groupBox1.Size = new System.Drawing.Size(756, 226);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "センサ詳細情報";
@@ -961,15 +964,14 @@ namespace AlbaAnalysis {
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.ColumnCount = 8;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.32402F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.67598F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
+            this.tableLayoutPanel5.ColumnCount = 7;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.08101F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.91899F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel5.Controls.Add(this.textBoxBatteryDataR, 5, 1);
             this.tableLayoutPanel5.Controls.Add(this.label_batteryDataR, 5, 0);
             this.tableLayoutPanel5.Controls.Add(this.textBoxBatteryDataL, 6, 1);
@@ -986,24 +988,24 @@ namespace AlbaAnalysis {
             this.tableLayoutPanel5.Controls.Add(this.label_batteryDataL, 6, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 14);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.167401F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.1674F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.8326F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(752, 190);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(752, 210);
             this.tableLayoutPanel5.TabIndex = 42;
             // 
             // textBoxBatteryDataR
             // 
             this.textBoxBatteryDataR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxBatteryDataR.Location = new System.Drawing.Point(477, 12);
-            this.textBoxBatteryDataR.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxBatteryDataR.Location = new System.Drawing.Point(536, 13);
+            this.textBoxBatteryDataR.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxBatteryDataR.Multiline = true;
             this.textBoxBatteryDataR.Name = "textBoxBatteryDataR";
             this.textBoxBatteryDataR.ReadOnly = true;
             this.textBoxBatteryDataR.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxBatteryDataR.Size = new System.Drawing.Size(98, 177);
+            this.textBoxBatteryDataR.Size = new System.Drawing.Size(105, 196);
             this.textBoxBatteryDataR.TabIndex = 7;
             // 
             // label_batteryDataR
@@ -1011,10 +1013,10 @@ namespace AlbaAnalysis {
             this.label_batteryDataR.AutoSize = true;
             this.label_batteryDataR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_batteryDataR.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label_batteryDataR.Location = new System.Drawing.Point(478, 0);
+            this.label_batteryDataR.Location = new System.Drawing.Point(537, 0);
             this.label_batteryDataR.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_batteryDataR.Name = "label_batteryDataR";
-            this.label_batteryDataR.Size = new System.Drawing.Size(96, 11);
+            this.label_batteryDataR.Size = new System.Drawing.Size(103, 12);
             this.label_batteryDataR.TabIndex = 11;
             this.label_batteryDataR.Text = "batteryR";
             this.label_batteryDataR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1022,25 +1024,25 @@ namespace AlbaAnalysis {
             // textBoxBatteryDataL
             // 
             this.textBoxBatteryDataL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxBatteryDataL.Location = new System.Drawing.Point(577, 12);
-            this.textBoxBatteryDataL.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxBatteryDataL.Location = new System.Drawing.Point(643, 13);
+            this.textBoxBatteryDataL.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxBatteryDataL.Multiline = true;
             this.textBoxBatteryDataL.Name = "textBoxBatteryDataL";
             this.textBoxBatteryDataL.ReadOnly = true;
             this.textBoxBatteryDataL.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxBatteryDataL.Size = new System.Drawing.Size(97, 177);
+            this.textBoxBatteryDataL.Size = new System.Drawing.Size(108, 196);
             this.textBoxBatteryDataL.TabIndex = 6;
             // 
             // textBoxMpuPitch
             // 
             this.textBoxMpuPitch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxMpuPitch.Location = new System.Drawing.Point(91, 12);
-            this.textBoxMpuPitch.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxMpuPitch.Location = new System.Drawing.Point(104, 13);
+            this.textBoxMpuPitch.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxMpuPitch.Multiline = true;
             this.textBoxMpuPitch.Name = "textBoxMpuPitch";
             this.textBoxMpuPitch.ReadOnly = true;
             this.textBoxMpuPitch.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMpuPitch.Size = new System.Drawing.Size(94, 177);
+            this.textBoxMpuPitch.Size = new System.Drawing.Size(109, 196);
             this.textBoxMpuPitch.TabIndex = 4;
             this.textBoxMpuPitch.Text = "`";
             // 
@@ -1049,10 +1051,10 @@ namespace AlbaAnalysis {
             this.label12.AutoSize = true;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label12.Location = new System.Drawing.Point(377, 0);
+            this.label12.Location = new System.Drawing.Point(430, 0);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(97, 11);
+            this.label12.Size = new System.Drawing.Size(103, 12);
             this.label12.TabIndex = 38;
             this.label12.Text = "Cadence";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1060,25 +1062,25 @@ namespace AlbaAnalysis {
             // textBoxSpeed
             // 
             this.textBoxSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxSpeed.Location = new System.Drawing.Point(1, 12);
-            this.textBoxSpeed.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxSpeed.Location = new System.Drawing.Point(1, 13);
+            this.textBoxSpeed.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxSpeed.Multiline = true;
             this.textBoxSpeed.Name = "textBoxSpeed";
             this.textBoxSpeed.ReadOnly = true;
             this.textBoxSpeed.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxSpeed.Size = new System.Drawing.Size(88, 177);
+            this.textBoxSpeed.Size = new System.Drawing.Size(101, 196);
             this.textBoxSpeed.TabIndex = 15;
             // 
             // textBoxMpuYaw
             // 
             this.textBoxMpuYaw.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxMpuYaw.Location = new System.Drawing.Point(279, 12);
-            this.textBoxMpuYaw.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxMpuYaw.Location = new System.Drawing.Point(322, 13);
+            this.textBoxMpuYaw.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxMpuYaw.Multiline = true;
             this.textBoxMpuYaw.Name = "textBoxMpuYaw";
             this.textBoxMpuYaw.ReadOnly = true;
             this.textBoxMpuYaw.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMpuYaw.Size = new System.Drawing.Size(95, 177);
+            this.textBoxMpuYaw.Size = new System.Drawing.Size(105, 196);
             this.textBoxMpuYaw.TabIndex = 16;
             // 
             // label10
@@ -1089,7 +1091,7 @@ namespace AlbaAnalysis {
             this.label10.Location = new System.Drawing.Point(2, 0);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(86, 11);
+            this.label10.Size = new System.Drawing.Size(99, 12);
             this.label10.TabIndex = 36;
             this.label10.Text = "Speed";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1099,10 +1101,10 @@ namespace AlbaAnalysis {
             this.label_mpuData.AutoSize = true;
             this.label_mpuData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_mpuData.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label_mpuData.Location = new System.Drawing.Point(92, 0);
+            this.label_mpuData.Location = new System.Drawing.Point(105, 0);
             this.label_mpuData.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_mpuData.Name = "label_mpuData";
-            this.label_mpuData.Size = new System.Drawing.Size(92, 11);
+            this.label_mpuData.Size = new System.Drawing.Size(107, 12);
             this.label_mpuData.TabIndex = 8;
             this.label_mpuData.Text = "MPUPitch";
             this.label_mpuData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1110,13 +1112,13 @@ namespace AlbaAnalysis {
             // textBoxMpuRoll
             // 
             this.textBoxMpuRoll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxMpuRoll.Location = new System.Drawing.Point(187, 12);
-            this.textBoxMpuRoll.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxMpuRoll.Location = new System.Drawing.Point(215, 13);
+            this.textBoxMpuRoll.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxMpuRoll.Multiline = true;
             this.textBoxMpuRoll.Name = "textBoxMpuRoll";
             this.textBoxMpuRoll.ReadOnly = true;
             this.textBoxMpuRoll.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMpuRoll.Size = new System.Drawing.Size(90, 177);
+            this.textBoxMpuRoll.Size = new System.Drawing.Size(105, 196);
             this.textBoxMpuRoll.TabIndex = 12;
             // 
             // label15
@@ -1124,10 +1126,10 @@ namespace AlbaAnalysis {
             this.label15.AutoSize = true;
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label15.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label15.Location = new System.Drawing.Point(188, 0);
+            this.label15.Location = new System.Drawing.Point(216, 0);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(88, 11);
+            this.label15.Size = new System.Drawing.Size(103, 12);
             this.label15.TabIndex = 41;
             this.label15.Text = "MPURoll";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1137,10 +1139,10 @@ namespace AlbaAnalysis {
             this.label14.AutoSize = true;
             this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label14.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label14.Location = new System.Drawing.Point(280, 0);
+            this.label14.Location = new System.Drawing.Point(323, 0);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(93, 11);
+            this.label14.Size = new System.Drawing.Size(103, 12);
             this.label14.TabIndex = 40;
             this.label14.Text = "MPUYaw";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1148,13 +1150,13 @@ namespace AlbaAnalysis {
             // textBoxCadence
             // 
             this.textBoxCadence.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxCadence.Location = new System.Drawing.Point(376, 12);
-            this.textBoxCadence.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxCadence.Location = new System.Drawing.Point(429, 13);
+            this.textBoxCadence.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxCadence.Multiline = true;
             this.textBoxCadence.Name = "textBoxCadence";
             this.textBoxCadence.ReadOnly = true;
             this.textBoxCadence.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxCadence.Size = new System.Drawing.Size(99, 177);
+            this.textBoxCadence.Size = new System.Drawing.Size(105, 196);
             this.textBoxCadence.TabIndex = 20;
             // 
             // label_batteryDataL
@@ -1162,10 +1164,10 @@ namespace AlbaAnalysis {
             this.label_batteryDataL.AutoSize = true;
             this.label_batteryDataL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_batteryDataL.Font = new System.Drawing.Font("MS UI Gothic", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label_batteryDataL.Location = new System.Drawing.Point(578, 0);
+            this.label_batteryDataL.Location = new System.Drawing.Point(644, 0);
             this.label_batteryDataL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_batteryDataL.Name = "label_batteryDataL";
-            this.label_batteryDataL.Size = new System.Drawing.Size(95, 11);
+            this.label_batteryDataL.Size = new System.Drawing.Size(106, 12);
             this.label_batteryDataL.TabIndex = 10;
             this.label_batteryDataL.Text = "batteryL";
             this.label_batteryDataL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1180,7 +1182,7 @@ namespace AlbaAnalysis {
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "SerialForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "シリアルデータ";

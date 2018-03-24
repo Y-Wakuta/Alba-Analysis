@@ -36,7 +36,7 @@ namespace AlbaAnalysis {
                 serialPort1.BaudRate = ((BaudRateEntity)(bauditemsBindingSource.Current)).rate;
             };
             portNamesBindingSource.PositionChanged += (s, e) => {
-                serialPort1.PortName = ((portNames)portNamesBindingSource.Current).portName;
+                serialPort1.PortName = (string)portNamesBindingSource.Current;
             };
         }
 
