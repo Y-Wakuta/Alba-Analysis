@@ -319,24 +319,33 @@ namespace AlbaAnalysis {
             p.WaitForExit();
         }
 
-        private void comboBoxFiles_SelectedIndexChanged(object sender, EventArgs e) {
+        private void comboBoxFiles_SelectedIndexChanged(object sender, EventArgs e)
+        {
             buttonRunCsv.Focus();
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            using (var config = new ConfigDialog()) {
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (var config = new ConfigDialog())
+            {
                 config.ShowDialog();
             }
         }
 
-        private void SerialForm_FormClosing(object sender, FormClosingEventArgs e) {
-            serialPort1.Dispose();
-            serialPort1.Close();
+        private void SerialForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                MessageBox.Show("serial通信を切断してください。");
+                e.Cancel = true;
+                return;
+            }
         }
         #endregion
 
         #region enable
-        private void initializeButtonEnable() {
+        private void initializeButtonEnable()
+        {
             buttonNext.Enabled = false;
             buttonClose.Enabled = false;
             buttonStopCsv.Enabled = false;
