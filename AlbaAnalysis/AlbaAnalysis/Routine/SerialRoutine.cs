@@ -40,16 +40,17 @@ namespace AlbaAnalysis.Routine {
             var sum = '0';
             foreach (var c in beforDelimiter.ToCharArray())
                 sum ^= c;
+            var tmp =  string.Format("{0:X2}", (int)sum);
             return string.Format("{0:X2}", (int)sum);
         }
 
         public static void Copy2Entity(FirstEntity se,List<double> data) {
             se.BaseUnixTime = data[1];
             se.AirSpeed = data[2];
-            se.HeightTime = data[7];
-            se.Height = data[8];
-            se.CadenceTime = data[9];
-            se.Cadence = data[14];
+            se.HeightTime = data[3];
+            se.Height = data[4];
+            se.CadenceTime = data[5];
+            se.Cadence = data[6];
         }
 
         public static void Copy2Entity(SecondEntity se, List<double> data) {

@@ -10,8 +10,10 @@ using System.IO.Ports;
 using System.IO;
 using AlbaAnalysis.Entity;
 
-namespace AlbaAnalysis {
-    public class AlbaAnalysisDataHandler {
+namespace AlbaAnalysis
+{
+    public class AlbaAnalysisDataHandler
+    {
 
         BindingSource _baudS = new BindingSource();
         BindingSource _portS = new BindingSource();
@@ -20,7 +22,8 @@ namespace AlbaAnalysis {
         BindingList<string> _portBl;
         BindingList<string> _fileBl;
 
-        public AlbaAnalysisDataHandler(BindingSource baudS, BindingSource portS, BindingSource fileS) {
+        public AlbaAnalysisDataHandler(BindingSource baudS, BindingSource portS, BindingSource fileS)
+        {
             _baudS = baudS;
             _portS = portS;
             _fileS = fileS;
@@ -38,14 +41,16 @@ namespace AlbaAnalysis {
             _fileS.DataSource = _fileBl;
         }
 
-        public void resetFileList() {
+        public void resetFileList()
+        {
             _fileBl.Clear();
             _fileBl = new BindingList<string>(AddAllPath());
             _fileS.DataSource = _fileBl;
         }
 
 
-        public Tuple<FirstEntity, SecondEntity, ThirdEntity, ForthEntity> PopRecord(List<FirstEntity> first, List<SecondEntity> second, List<ThirdEntity> third, List<ForthEntity> fourth) {
+        public Tuple<FirstEntity, SecondEntity, ThirdEntity, ForthEntity> PopRecord(List<FirstEntity> first, List<SecondEntity> second, List<ThirdEntity> third, List<ForthEntity> fourth)
+        {
             //それぞれのlistから計測時間の小さいデータを抜き出してリストのデータを一つ減らすようなメソッドがほしい
             var dict = new Dictionary<Type, double>() {
                 { typeof(FirstEntity), first.First().AirSpeedTime },
@@ -57,19 +62,26 @@ namespace AlbaAnalysis {
             var min = dict.Select(d => new { key = d.Key, value = d.Value }).Min(d => d.value);
             var min_key = dict.First(d => d.Value == min).Key;
 
-            if (min_key == typeof(FirstEntity)) {
+            if (min_key == typeof(FirstEntity))
+            {
                 var tmp = first[0];
                 first.RemoveAt(0);
                 return Tuple.Create<FirstEntity, SecondEntity, ThirdEntity, ForthEntity>(tmp, null, null, null);
-            } else if (min_key == typeof(SecondEntity)) {
+            }
+            else if (min_key == typeof(SecondEntity))
+            {
                 var tmp = second.First();
                 second.RemoveAt(0);
                 return Tuple.Create<FirstEntity, SecondEntity, ThirdEntity, ForthEntity>(null, tmp, null, null);
-            } else if (min_key == typeof(ThirdEntity)) {
+            }
+            else if (min_key == typeof(ThirdEntity))
+            {
                 var tmp = third.First();
                 third.RemoveAt(0);
                 return Tuple.Create<FirstEntity, SecondEntity, ThirdEntity, ForthEntity>(null, null, tmp, null);
-            } else if (min_key == typeof(ForthEntity)) {
+            }
+            else if (min_key == typeof(ForthEntity))
+            {
                 var tmp = fourth.First();
                 fourth.RemoveAt(0);
                 return Tuple.Create<FirstEntity, SecondEntity, ThirdEntity, ForthEntity>(null, null, null, tmp);
@@ -77,21 +89,29 @@ namespace AlbaAnalysis {
             return Tuple.Create<FirstEntity, SecondEntity, ThirdEntity, ForthEntity>(null, null, null, null);
         }
 
-        private List<string> AddAllPath() {
+        private List<string> AddAllPath()
+        {
             return new List<string>(Directory.GetFiles(Constants.pathBase, "*.csv", SearchOption.AllDirectories)
                 .ToList()
-                .Where(p => {
+                .Where(p =>
+                {
                     var file = new System.IO.FileInfo(p);
                     return file.Length != 0;
                 }));
         }
 
-        private List<BaudRateEntity> setBaudList() {
+        private List<BaudRateEntity> setBaudList()
+        {
             return new List<BaudRateEntity> {
+                    new BaudRateEntity {
+                name = "9600bps",
+                rate = 9600
+             },
             new BaudRateEntity {
                 name = "4800bps",
                 rate = 4800
              },
+
             new BaudRateEntity {
                 name = "14400bps",
                 rate = 14400
