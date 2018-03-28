@@ -32,7 +32,6 @@ namespace AlbaAnalysis {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -79,23 +78,18 @@ namespace AlbaAnalysis {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.chartCadence = new AlbaAnalysis.AlbaChart();
-            this.chartSpeed = new AlbaAnalysis.AlbaChart();
-            this.chartMpuPitch = new AlbaAnalysis.AlbaChart();
-            this.chartMpuYaw = new AlbaAnalysis.AlbaChart();
-            this.chartMpuRoll = new AlbaAnalysis.AlbaChart();
+            this.AirSpeedChart = new AlbaAnalysis.AlbaChart();
+            this.MpuRollChart = new AlbaAnalysis.AlbaChart();
+            this.MpuPitchChart = new AlbaAnalysis.AlbaChart();
+            this.MpuYawChart = new AlbaAnalysis.AlbaChart();
+            this.CadenceChart = new AlbaAnalysis.AlbaChart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.chartLBattery = new AlbaAnalysis.AlbaChart();
-            this.chartRBattery = new AlbaAnalysis.AlbaChart();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonRDrug = new System.Windows.Forms.Button();
-            this.chartDrugInput = new AlbaAnalysis.AlbaChart();
             this.buttonLDrug = new System.Windows.Forms.Button();
-            this.chartRollInput = new AlbaAnalysis.AlbaChart();
             this.rollVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
-            this.chartPitchInput = new AlbaAnalysis.AlbaChart();
             this.pitchVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -115,6 +109,11 @@ namespace AlbaAnalysis {
             this.label14 = new System.Windows.Forms.Label();
             this.textBoxCadence = new System.Windows.Forms.TextBox();
             this.label_batteryDataL = new System.Windows.Forms.Label();
+            this.RBatteryChart = new AlbaAnalysis.AlbaChart();
+            this.LBatteryChart = new AlbaAnalysis.AlbaChart();
+            this.PitchInputChart = new AlbaAnalysis.AlbaChart();
+            this.RollInputChart = new AlbaAnalysis.AlbaChart();
+            this.DrugInputChart = new AlbaAnalysis.AlbaChart();
             this.groupBoxAllData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.portNamesBindingSource)).BeginInit();
             this.groupBoxSerialConfig.SuspendLayout();
@@ -124,23 +123,23 @@ namespace AlbaAnalysis {
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartCadence)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartMpuPitch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartMpuYaw)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartMpuRoll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AirSpeedChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MpuRollChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MpuPitchChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MpuYawChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CadenceChart)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartLBattery)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartRBattery)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartDrugInput)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartRollInput)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartPitchInput)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RBatteryChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LBatteryChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PitchInputChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RollInputChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DrugInputChart)).BeginInit();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -151,7 +150,7 @@ namespace AlbaAnalysis {
             // 
             this.textBoxAllData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxAllData.Location = new System.Drawing.Point(3, 21);
-            this.textBoxAllData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxAllData.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxAllData.Multiline = true;
             this.textBoxAllData.Name = "textBoxAllData";
             this.textBoxAllData.ReadOnly = true;
@@ -180,9 +179,9 @@ namespace AlbaAnalysis {
             this.comboBoxPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPort.FormattingEnabled = true;
             this.comboBoxPort.Location = new System.Drawing.Point(2, 2);
-            this.comboBoxPort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxPort.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxPort.Name = "comboBoxPort";
-            this.comboBoxPort.Size = new System.Drawing.Size(290, 26);
+            this.comboBoxPort.Size = new System.Drawing.Size(283, 26);
             this.comboBoxPort.TabIndex = 2;
             // 
             // portNamesBindingSource
@@ -209,7 +208,7 @@ namespace AlbaAnalysis {
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 148F));
             this.tableLayoutPanel6.Controls.Add(this.comboBoxBaud, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.comboBoxPort, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.buttonClose, 4, 0);
@@ -240,10 +239,10 @@ namespace AlbaAnalysis {
             this.comboBoxBaud.DisplayMember = "NAME";
             this.comboBoxBaud.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBaud.FormattingEnabled = true;
-            this.comboBoxBaud.Location = new System.Drawing.Point(296, 2);
-            this.comboBoxBaud.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxBaud.Location = new System.Drawing.Point(289, 2);
+            this.comboBoxBaud.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxBaud.Name = "comboBoxBaud";
-            this.comboBoxBaud.Size = new System.Drawing.Size(343, 26);
+            this.comboBoxBaud.Size = new System.Drawing.Size(337, 26);
             this.comboBoxBaud.TabIndex = 3;
             this.comboBoxBaud.ValueMember = "RATE";
             // 
@@ -255,7 +254,7 @@ namespace AlbaAnalysis {
             // 
             this.buttonClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonClose.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonClose.Location = new System.Drawing.Point(774, 3);
+            this.buttonClose.Location = new System.Drawing.Point(761, 3);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(126, 39);
             this.buttonClose.TabIndex = 31;
@@ -267,7 +266,7 @@ namespace AlbaAnalysis {
             // 
             this.buttonConnect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonConnect.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonConnect.Location = new System.Drawing.Point(644, 3);
+            this.buttonConnect.Location = new System.Drawing.Point(631, 3);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(124, 39);
             this.buttonConnect.TabIndex = 29;
@@ -279,9 +278,9 @@ namespace AlbaAnalysis {
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(906, 48);
+            this.button1.Location = new System.Drawing.Point(893, 48);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 39);
+            this.button1.Size = new System.Drawing.Size(143, 39);
             this.button1.TabIndex = 38;
             this.button1.Text = "Config";
             this.button1.UseVisualStyleBackColor = true;
@@ -291,9 +290,9 @@ namespace AlbaAnalysis {
             // 
             this.buttonNext.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonNext.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNext.Location = new System.Drawing.Point(906, 3);
+            this.buttonNext.Location = new System.Drawing.Point(893, 3);
             this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(130, 39);
+            this.buttonNext.Size = new System.Drawing.Size(143, 39);
             this.buttonNext.TabIndex = 33;
             this.buttonNext.Text = "Next>>";
             this.buttonNext.UseVisualStyleBackColor = true;
@@ -303,7 +302,7 @@ namespace AlbaAnalysis {
             // 
             this.buttonRunCsv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonRunCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRunCsv.Location = new System.Drawing.Point(514, 48);
+            this.buttonRunCsv.Location = new System.Drawing.Point(501, 48);
             this.buttonRunCsv.Name = "buttonRunCsv";
             this.buttonRunCsv.Size = new System.Drawing.Size(124, 39);
             this.buttonRunCsv.TabIndex = 48;
@@ -320,7 +319,7 @@ namespace AlbaAnalysis {
             this.comboBoxFiles.FormattingEnabled = true;
             this.comboBoxFiles.Location = new System.Drawing.Point(3, 48);
             this.comboBoxFiles.Name = "comboBoxFiles";
-            this.comboBoxFiles.Size = new System.Drawing.Size(505, 26);
+            this.comboBoxFiles.Size = new System.Drawing.Size(492, 26);
             this.comboBoxFiles.TabIndex = 34;
             this.comboBoxFiles.ValueMember = "pathName";
             this.comboBoxFiles.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiles_SelectedIndexChanged);
@@ -333,7 +332,7 @@ namespace AlbaAnalysis {
             // 
             this.buttonOpenCsv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonOpenCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonOpenCsv.Location = new System.Drawing.Point(774, 48);
+            this.buttonOpenCsv.Location = new System.Drawing.Point(761, 48);
             this.buttonOpenCsv.Name = "buttonOpenCsv";
             this.buttonOpenCsv.Size = new System.Drawing.Size(126, 39);
             this.buttonOpenCsv.TabIndex = 36;
@@ -345,7 +344,7 @@ namespace AlbaAnalysis {
             // 
             this.buttonStopCsv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonStopCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonStopCsv.Location = new System.Drawing.Point(644, 48);
+            this.buttonStopCsv.Location = new System.Drawing.Point(631, 48);
             this.buttonStopCsv.Name = "buttonStopCsv";
             this.buttonStopCsv.Size = new System.Drawing.Size(124, 39);
             this.buttonStopCsv.TabIndex = 50;
@@ -371,7 +370,7 @@ namespace AlbaAnalysis {
             this.tabPage1.Controls.Add(this.tableLayoutPanel2);
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(2304, 836);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Core";
@@ -383,221 +382,118 @@ namespace AlbaAnalysis {
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.79258F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.87409F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Controls.Add(this.chartCadence, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.chartSpeed, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.chartMpuPitch, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.chartMpuYaw, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.chartMpuRoll, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.AirSpeedChart, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.MpuRollChart, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.MpuPitchChart, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.MpuYawChart, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.CadenceChart, 2, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.23365F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.76635F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(2298, 830);
             this.tableLayoutPanel2.TabIndex = 21;
             // 
-            // chartCadence
+            // AirSpeedChart
             // 
-            this.chartCadence.BackColor = System.Drawing.Color.LightGray;
-            chartArea1.AxisX.LabelStyle.Format = "#.#";
-            chartArea1.AxisX.Maximum = 0.1D;
-            chartArea1.AxisX.Minimum = 0D;
-            chartArea1.AxisY.IsLabelAutoFit = false;
-            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.Maximum = 100D;
-            chartArea1.AxisY.Minimum = 0D;
-            chartArea1.AxisY.Title = "Cadence[/m]";
             chartArea1.Name = "ChartArea1";
-            chartArea1.Position.Auto = false;
-            chartArea1.Position.Height = 100F;
-            chartArea1.Position.Width = 94F;
-            this.chartCadence.ChartAreas.Add(chartArea1);
-            this.chartCadence.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AirSpeedChart.ChartAreas.Add(chartArea1);
+            this.tableLayoutPanel2.SetColumnSpan(this.AirSpeedChart, 2);
+            this.AirSpeedChart.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
-            legend1.Position.Auto = false;
-            legend1.Position.Height = 9.476309F;
-            legend1.Position.Width = 20F;
-            legend1.Position.X = 79F;
-            legend1.Position.Y = 2F;
-            this.chartCadence.Legends.Add(legend1);
-            this.chartCadence.Location = new System.Drawing.Point(1533, 418);
-            this.chartCadence.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.chartCadence.Name = "chartCadence";
-            series1.BorderWidth = 2;
+            this.AirSpeedChart.Legends.Add(legend1);
+            this.AirSpeedChart.Location = new System.Drawing.Point(779, 3);
+            this.AirSpeedChart.Name = "AirSpeedChart";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series1.Color = System.Drawing.Color.Lime;
             series1.Legend = "Legend1";
-            series1.Name = "Cadence";
-            this.chartCadence.Series.Add(series1);
-            this.chartCadence.Size = new System.Drawing.Size(763, 410);
-            this.chartCadence.TabIndex = 17;
-            this.chartCadence.Text = "Cadence";
+            series1.Name = "Series1";
+            this.AirSpeedChart.Series.Add(series1);
+            this.AirSpeedChart.Size = new System.Drawing.Size(1516, 410);
+            this.AirSpeedChart.TabIndex = 28;
+            this.AirSpeedChart.Text = "chart1";
             // 
-            // chartSpeed
+            // MpuRollChart
             // 
-            this.chartSpeed.BackColor = System.Drawing.Color.LightGray;
-            chartArea2.AxisX.LabelStyle.Format = "#.#";
-            chartArea2.AxisX.Maximum = 0.1D;
-            chartArea2.AxisX.Minimum = 0D;
-            chartArea2.AxisY.IsLabelAutoFit = false;
-            chartArea2.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea2.AxisY.Maximum = 10D;
-            chartArea2.AxisY.Minimum = 0D;
-            chartArea2.AxisY.Title = "Speed[m/s]";
             chartArea2.Name = "ChartArea1";
-            chartArea2.Position.Auto = false;
-            chartArea2.Position.Height = 100F;
-            chartArea2.Position.Width = 94F;
-            this.chartSpeed.ChartAreas.Add(chartArea2);
-            this.tableLayoutPanel2.SetColumnSpan(this.chartSpeed, 2);
-            this.chartSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MpuRollChart.ChartAreas.Add(chartArea2);
+            this.MpuRollChart.Dock = System.Windows.Forms.DockStyle.Fill;
             legend2.Name = "Legend1";
-            legend2.Position.Auto = false;
-            legend2.Position.Height = 9.476309F;
-            legend2.Position.Width = 20F;
-            legend2.Position.X = 79F;
-            legend2.Position.Y = 2F;
-            this.chartSpeed.Legends.Add(legend2);
-            this.chartSpeed.Location = new System.Drawing.Point(778, 2);
-            this.chartSpeed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.chartSpeed.Name = "chartSpeed";
-            series2.BorderWidth = 2;
+            this.MpuRollChart.Legends.Add(legend2);
+            this.MpuRollChart.Location = new System.Drawing.Point(3, 3);
+            this.MpuRollChart.Name = "MpuRollChart";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             series2.Legend = "Legend1";
-            series2.LegendText = "Speed";
-            series2.Name = "Speed";
-            this.chartSpeed.Series.Add(series2);
-            this.chartSpeed.Size = new System.Drawing.Size(1518, 412);
-            this.chartSpeed.TabIndex = 18;
-            this.chartSpeed.Text = "chart6";
-            title1.Name = "Speed";
-            this.chartSpeed.Titles.Add(title1);
+            series2.Name = "MpuRoll";
+            this.MpuRollChart.Series.Add(series2);
+            this.MpuRollChart.Size = new System.Drawing.Size(770, 410);
+            this.MpuRollChart.TabIndex = 29;
+            this.MpuRollChart.Text = "albaChart1";
             // 
-            // chartMpuPitch
+            // MpuPitchChart
             // 
-            this.chartMpuPitch.BackColor = System.Drawing.Color.LightGray;
-            chartArea3.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            chartArea3.AxisX.LabelStyle.Format = "#.#";
-            chartArea3.AxisX.Maximum = 0.1D;
-            chartArea3.AxisX.Minimum = 0D;
-            chartArea3.AxisX.ScrollBar.ButtonColor = System.Drawing.Color.Black;
-            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisY.IsLabelAutoFit = false;
-            chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisY.Minimum = 0D;
-            chartArea3.AxisY.Title = "MPitch";
-            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Meiryo UI", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             chartArea3.Name = "ChartArea1";
-            chartArea3.Position.Auto = false;
-            chartArea3.Position.Height = 100F;
-            chartArea3.Position.Width = 94F;
-            this.chartMpuPitch.ChartAreas.Add(chartArea3);
-            this.chartMpuPitch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MpuPitchChart.ChartAreas.Add(chartArea3);
+            this.MpuPitchChart.Dock = System.Windows.Forms.DockStyle.Fill;
             legend3.Name = "Legend1";
-            legend3.Position.Auto = false;
-            legend3.Position.Height = 9.476309F;
-            legend3.Position.Width = 20F;
-            legend3.Position.X = 79F;
-            legend3.Position.Y = 2F;
-            this.chartMpuPitch.Legends.Add(legend3);
-            this.chartMpuPitch.Location = new System.Drawing.Point(2, 418);
-            this.chartMpuPitch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.chartMpuPitch.Name = "chartMpuPitch";
-            series3.BorderWidth = 2;
+            this.MpuPitchChart.Legends.Add(legend3);
+            this.MpuPitchChart.Location = new System.Drawing.Point(3, 419);
+            this.MpuPitchChart.Name = "MpuPitchChart";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series3.Color = System.Drawing.Color.Blue;
             series3.Legend = "Legend1";
-            series3.Name = "MPitch";
-            this.chartMpuPitch.Series.Add(series3);
-            this.chartMpuPitch.Size = new System.Drawing.Size(772, 410);
-            this.chartMpuPitch.TabIndex = 20;
-            this.chartMpuPitch.Text = "Mpitch";
+            series3.Name = "MpuPitch";
+            this.MpuPitchChart.Series.Add(series3);
+            this.MpuPitchChart.Size = new System.Drawing.Size(770, 408);
+            this.MpuPitchChart.TabIndex = 30;
+            this.MpuPitchChart.Text = "albaChart1";
             // 
-            // chartMpuYaw
+            // MpuYawChart
             // 
-            this.chartMpuYaw.BackColor = System.Drawing.Color.LightGray;
-            chartArea4.AxisX.LabelStyle.Format = "#.#";
-            chartArea4.AxisX.Maximum = 0.1D;
-            chartArea4.AxisX.Minimum = 0D;
-            chartArea4.AxisY.IsLabelAutoFit = false;
-            chartArea4.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea4.AxisY.Minimum = 0D;
-            chartArea4.AxisY.Title = "MpuYaw";
             chartArea4.Name = "ChartArea1";
-            chartArea4.Position.Auto = false;
-            chartArea4.Position.Height = 100F;
-            chartArea4.Position.Width = 94F;
-            this.chartMpuYaw.ChartAreas.Add(chartArea4);
-            this.chartMpuYaw.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MpuYawChart.ChartAreas.Add(chartArea4);
+            this.MpuYawChart.Dock = System.Windows.Forms.DockStyle.Fill;
             legend4.Name = "Legend1";
-            legend4.Position.Auto = false;
-            legend4.Position.Height = 9.476309F;
-            legend4.Position.Width = 20F;
-            legend4.Position.X = 79F;
-            legend4.Position.Y = 2F;
-            this.chartMpuYaw.Legends.Add(legend4);
-            this.chartMpuYaw.Location = new System.Drawing.Point(778, 418);
-            this.chartMpuYaw.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.chartMpuYaw.Name = "chartMpuYaw";
-            series4.BorderWidth = 2;
+            this.MpuYawChart.Legends.Add(legend4);
+            this.MpuYawChart.Location = new System.Drawing.Point(779, 419);
+            this.MpuYawChart.Name = "MpuYawChart";
             series4.ChartArea = "ChartArea1";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             series4.Legend = "Legend1";
-            series4.Name = "MYaw";
-            this.chartMpuYaw.Series.Add(series4);
-            this.chartMpuYaw.Size = new System.Drawing.Size(751, 410);
-            this.chartMpuYaw.TabIndex = 13;
-            this.chartMpuYaw.Text = "MpuYaw";
+            series4.Name = "MpuYaw";
+            this.MpuYawChart.Series.Add(series4);
+            this.MpuYawChart.Size = new System.Drawing.Size(749, 408);
+            this.MpuYawChart.TabIndex = 31;
+            this.MpuYawChart.Text = "albaChart2";
             // 
-            // chartMpuRoll
+            // CadenceChart
             // 
-            this.chartMpuRoll.BackColor = System.Drawing.Color.LightGray;
-            chartArea5.AxisX.LabelStyle.Format = "#.#";
-            chartArea5.AxisX.Maximum = 0.1D;
-            chartArea5.AxisX.Minimum = 0D;
-            chartArea5.AxisY.IsLabelAutoFit = false;
-            chartArea5.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea5.AxisY.Minimum = 0D;
-            chartArea5.AxisY.Title = "MpuRoll";
             chartArea5.Name = "ChartArea1";
-            chartArea5.Position.Auto = false;
-            chartArea5.Position.Height = 100F;
-            chartArea5.Position.Width = 94F;
-            this.chartMpuRoll.ChartAreas.Add(chartArea5);
-            this.chartMpuRoll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CadenceChart.ChartAreas.Add(chartArea5);
+            this.CadenceChart.Dock = System.Windows.Forms.DockStyle.Fill;
             legend5.Name = "Legend1";
-            legend5.Position.Auto = false;
-            legend5.Position.Height = 9.476309F;
-            legend5.Position.Width = 20F;
-            legend5.Position.X = 79F;
-            legend5.Position.Y = 2F;
-            this.chartMpuRoll.Legends.Add(legend5);
-            this.chartMpuRoll.Location = new System.Drawing.Point(2, 2);
-            this.chartMpuRoll.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.chartMpuRoll.Name = "chartMpuRoll";
-            series5.BorderWidth = 2;
+            this.CadenceChart.Legends.Add(legend5);
+            this.CadenceChart.Location = new System.Drawing.Point(1534, 419);
+            this.CadenceChart.Name = "CadenceChart";
             series5.ChartArea = "ChartArea1";
             series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series5.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             series5.Legend = "Legend1";
-            series5.Name = "MRoll";
-            this.chartMpuRoll.Series.Add(series5);
-            this.chartMpuRoll.Size = new System.Drawing.Size(772, 412);
-            this.chartMpuRoll.TabIndex = 19;
-            this.chartMpuRoll.Text = "MpuRoll";
+            series5.Name = "Cadence";
+            this.CadenceChart.Series.Add(series5);
+            this.CadenceChart.Size = new System.Drawing.Size(761, 408);
+            this.CadenceChart.TabIndex = 32;
+            this.CadenceChart.Text = "albaChart3";
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tableLayoutPanel3);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(2304, 836);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "WingEdge";
@@ -608,8 +504,8 @@ namespace AlbaAnalysis {
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.3004F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.6996F));
-            this.tableLayoutPanel3.Controls.Add(this.chartLBattery, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.chartRBattery, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.RBatteryChart, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.LBatteryChart, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -617,84 +513,6 @@ namespace AlbaAnalysis {
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(2298, 830);
             this.tableLayoutPanel3.TabIndex = 18;
-            // 
-            // chartLBattery
-            // 
-            this.chartLBattery.BackColor = System.Drawing.Color.LightGray;
-            chartArea6.AxisX.LabelStyle.Format = "#.#";
-            chartArea6.AxisX.Maximum = 0.1D;
-            chartArea6.AxisX.Minimum = 0D;
-            chartArea6.AxisY.IsLabelAutoFit = false;
-            chartArea6.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea6.AxisY.Minimum = 0D;
-            chartArea6.AxisY.Title = "LBattery[V]";
-            chartArea6.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea6.Name = "ChartArea1";
-            chartArea6.Position.Auto = false;
-            chartArea6.Position.Height = 100F;
-            chartArea6.Position.Width = 94F;
-            this.chartLBattery.ChartAreas.Add(chartArea6);
-            this.chartLBattery.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend6.Name = "Legend1";
-            legend6.Position.Auto = false;
-            legend6.Position.Height = 9.476309F;
-            legend6.Position.Width = 20F;
-            legend6.Position.X = 79F;
-            legend6.Position.Y = 2F;
-            this.chartLBattery.Legends.Add(legend6);
-            this.chartLBattery.Location = new System.Drawing.Point(1111, 2);
-            this.chartLBattery.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.chartLBattery.Name = "chartLBattery";
-            series6.BorderWidth = 2;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series6.Color = System.Drawing.Color.Blue;
-            series6.Legend = "Legend1";
-            series6.LegendText = "LBattery";
-            series6.Name = "LBattery";
-            this.chartLBattery.Series.Add(series6);
-            this.chartLBattery.Size = new System.Drawing.Size(1185, 826);
-            this.chartLBattery.TabIndex = 17;
-            this.chartLBattery.Text = "chart4";
-            // 
-            // chartRBattery
-            // 
-            this.chartRBattery.BackColor = System.Drawing.Color.LightGray;
-            chartArea7.AxisX.LabelStyle.Format = "#.#";
-            chartArea7.AxisX.Maximum = 0.1D;
-            chartArea7.AxisX.Minimum = 0D;
-            chartArea7.AxisY.IsLabelAutoFit = false;
-            chartArea7.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea7.AxisY.Minimum = 0D;
-            chartArea7.AxisY.Title = "RBattery[V";
-            chartArea7.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea7.Name = "ChartArea1";
-            chartArea7.Position.Auto = false;
-            chartArea7.Position.Height = 100F;
-            chartArea7.Position.Width = 94F;
-            this.chartRBattery.ChartAreas.Add(chartArea7);
-            this.chartRBattery.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend7.Name = "Legend1";
-            legend7.Position.Auto = false;
-            legend7.Position.Height = 9.476309F;
-            legend7.Position.Width = 20F;
-            legend7.Position.X = 79F;
-            legend7.Position.Y = 2F;
-            this.chartRBattery.Legends.Add(legend7);
-            this.chartRBattery.Location = new System.Drawing.Point(2, 2);
-            this.chartRBattery.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.chartRBattery.Name = "chartRBattery";
-            series7.BorderWidth = 2;
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series7.Color = System.Drawing.Color.Red;
-            series7.Legend = "Legend1";
-            series7.LegendText = "RBattery";
-            series7.Name = "RBattery";
-            this.chartRBattery.Series.Add(series7);
-            this.chartRBattery.Size = new System.Drawing.Size(1105, 826);
-            this.chartRBattery.TabIndex = 16;
-            this.chartRBattery.Text = "chart4";
             // 
             // tabPage3
             // 
@@ -715,12 +533,12 @@ namespace AlbaAnalysis {
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.48148F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.92181F));
             this.tableLayoutPanel4.Controls.Add(this.buttonRDrug, 3, 1);
-            this.tableLayoutPanel4.Controls.Add(this.chartDrugInput, 4, 3);
             this.tableLayoutPanel4.Controls.Add(this.buttonLDrug, 2, 1);
-            this.tableLayoutPanel4.Controls.Add(this.chartRollInput, 4, 0);
             this.tableLayoutPanel4.Controls.Add(this.rollVerticalProgressBar, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.chartPitchInput, 2, 2);
             this.tableLayoutPanel4.Controls.Add(this.pitchVerticalProgressBar, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.PitchInputChart, 2, 2);
+            this.tableLayoutPanel4.Controls.Add(this.RollInputChart, 4, 0);
+            this.tableLayoutPanel4.Controls.Add(this.DrugInputChart, 4, 3);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -729,6 +547,7 @@ namespace AlbaAnalysis {
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.29656F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.56459F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(2304, 836);
             this.tableLayoutPanel4.TabIndex = 21;
             // 
@@ -743,45 +562,6 @@ namespace AlbaAnalysis {
             this.buttonRDrug.Text = "右ドラッグラダー";
             this.buttonRDrug.UseVisualStyleBackColor = true;
             // 
-            // chartDrugInput
-            // 
-            this.chartDrugInput.BackColor = System.Drawing.Color.LightGray;
-            chartArea8.AxisX.LabelStyle.Format = "#.#";
-            chartArea8.AxisX.Maximum = 0.1D;
-            chartArea8.AxisX.Minimum = 0D;
-            chartArea8.AxisY.IsLabelAutoFit = false;
-            chartArea8.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea8.AxisY.Minimum = 0D;
-            chartArea8.AxisY.Title = "DrugInput";
-            chartArea8.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea8.Name = "ChartArea1";
-            chartArea8.Position.Auto = false;
-            chartArea8.Position.Height = 100F;
-            chartArea8.Position.Width = 94F;
-            this.chartDrugInput.ChartAreas.Add(chartArea8);
-            this.chartDrugInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend8.Name = "Legend1";
-            legend8.Position.Auto = false;
-            legend8.Position.Height = 9.476309F;
-            legend8.Position.Width = 20F;
-            legend8.Position.X = 79F;
-            legend8.Position.Y = 2F;
-            this.chartDrugInput.Legends.Add(legend8);
-            this.chartDrugInput.Location = new System.Drawing.Point(1231, 431);
-            this.chartDrugInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.chartDrugInput.Name = "chartDrugInput";
-            series8.BorderWidth = 2;
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series8.Color = System.Drawing.Color.Red;
-            series8.Legend = "Legend1";
-            series8.LegendText = "DrugInput";
-            series8.Name = "DrugInput";
-            this.chartDrugInput.Series.Add(series8);
-            this.chartDrugInput.Size = new System.Drawing.Size(1071, 403);
-            this.chartDrugInput.TabIndex = 17;
-            this.chartDrugInput.Text = "chart4";
-            // 
             // buttonLDrug
             // 
             this.buttonLDrug.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -793,46 +573,6 @@ namespace AlbaAnalysis {
             this.buttonLDrug.Text = "左ドラッグラダー";
             this.buttonLDrug.UseVisualStyleBackColor = true;
             // 
-            // chartRollInput
-            // 
-            this.chartRollInput.BackColor = System.Drawing.Color.LightGray;
-            chartArea9.AxisX.LabelStyle.Format = "#.#";
-            chartArea9.AxisX.Maximum = 0.1D;
-            chartArea9.AxisX.Minimum = 0D;
-            chartArea9.AxisY.IsLabelAutoFit = false;
-            chartArea9.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea9.AxisY.Minimum = 0D;
-            chartArea9.AxisY.Title = "RollInput";
-            chartArea9.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea9.Name = "ChartArea1";
-            chartArea9.Position.Auto = false;
-            chartArea9.Position.Height = 100F;
-            chartArea9.Position.Width = 94F;
-            this.chartRollInput.ChartAreas.Add(chartArea9);
-            this.chartRollInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend9.Name = "Legend1";
-            legend9.Position.Auto = false;
-            legend9.Position.Height = 9.476309F;
-            legend9.Position.Width = 20F;
-            legend9.Position.X = 79F;
-            legend9.Position.Y = 2F;
-            this.chartRollInput.Legends.Add(legend9);
-            this.chartRollInput.Location = new System.Drawing.Point(1231, 2);
-            this.chartRollInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.chartRollInput.Name = "chartRollInput";
-            this.tableLayoutPanel4.SetRowSpan(this.chartRollInput, 3);
-            series9.BorderWidth = 2;
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series9.Color = System.Drawing.Color.Red;
-            series9.Legend = "Legend1";
-            series9.LegendText = "RollInput";
-            series9.Name = "RollInput";
-            this.chartRollInput.Series.Add(series9);
-            this.chartRollInput.Size = new System.Drawing.Size(1071, 425);
-            this.chartRollInput.TabIndex = 19;
-            this.chartRollInput.Text = "chart4";
-            // 
             // rollVerticalProgressBar
             // 
             this.rollVerticalProgressBar.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -841,47 +581,6 @@ namespace AlbaAnalysis {
             this.tableLayoutPanel4.SetRowSpan(this.rollVerticalProgressBar, 4);
             this.rollVerticalProgressBar.Size = new System.Drawing.Size(131, 830);
             this.rollVerticalProgressBar.TabIndex = 20;
-            // 
-            // chartPitchInput
-            // 
-            this.chartPitchInput.BackColor = System.Drawing.Color.LightGray;
-            chartArea10.AxisX.LabelStyle.Format = "#.#";
-            chartArea10.AxisX.Maximum = 0.1D;
-            chartArea10.AxisX.Minimum = 0D;
-            chartArea10.AxisY.IsLabelAutoFit = false;
-            chartArea10.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea10.AxisY.Minimum = 0D;
-            chartArea10.AxisY.Title = "PitchInput";
-            chartArea10.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea10.Name = "ChartArea1";
-            chartArea10.Position.Auto = false;
-            chartArea10.Position.Height = 100F;
-            chartArea10.Position.Width = 94F;
-            this.chartPitchInput.ChartAreas.Add(chartArea10);
-            this.tableLayoutPanel4.SetColumnSpan(this.chartPitchInput, 2);
-            this.chartPitchInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend10.Name = "Legend1";
-            legend10.Position.Auto = false;
-            legend10.Position.Height = 9.476309F;
-            legend10.Position.Width = 20F;
-            legend10.Position.X = 79F;
-            legend10.Position.Y = 2F;
-            this.chartPitchInput.Legends.Add(legend10);
-            this.chartPitchInput.Location = new System.Drawing.Point(276, 223);
-            this.chartPitchInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.chartPitchInput.Name = "chartPitchInput";
-            this.tableLayoutPanel4.SetRowSpan(this.chartPitchInput, 2);
-            series10.BorderWidth = 2;
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series10.Color = System.Drawing.Color.Red;
-            series10.Legend = "Legend1";
-            series10.LegendText = "PitchInput";
-            series10.Name = "PitchInput";
-            this.chartPitchInput.Series.Add(series10);
-            this.chartPitchInput.Size = new System.Drawing.Size(951, 611);
-            this.chartPitchInput.TabIndex = 18;
-            this.chartPitchInput.Text = "chart4";
             // 
             // pitchVerticalProgressBar
             // 
@@ -971,7 +670,7 @@ namespace AlbaAnalysis {
             // 
             this.textBoxBatteryDataR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxBatteryDataR.Location = new System.Drawing.Point(897, 21);
-            this.textBoxBatteryDataR.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxBatteryDataR.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxBatteryDataR.Multiline = true;
             this.textBoxBatteryDataR.Name = "textBoxBatteryDataR";
             this.textBoxBatteryDataR.ReadOnly = true;
@@ -995,7 +694,7 @@ namespace AlbaAnalysis {
             // 
             this.textBoxBatteryDataL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxBatteryDataL.Location = new System.Drawing.Point(1076, 21);
-            this.textBoxBatteryDataL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxBatteryDataL.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxBatteryDataL.Multiline = true;
             this.textBoxBatteryDataL.Name = "textBoxBatteryDataL";
             this.textBoxBatteryDataL.ReadOnly = true;
@@ -1007,7 +706,7 @@ namespace AlbaAnalysis {
             // 
             this.textBoxMpuPitch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxMpuPitch.Location = new System.Drawing.Point(175, 21);
-            this.textBoxMpuPitch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxMpuPitch.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxMpuPitch.Multiline = true;
             this.textBoxMpuPitch.Name = "textBoxMpuPitch";
             this.textBoxMpuPitch.ReadOnly = true;
@@ -1032,7 +731,7 @@ namespace AlbaAnalysis {
             // 
             this.textBoxSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxSpeed.Location = new System.Drawing.Point(2, 21);
-            this.textBoxSpeed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSpeed.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSpeed.Multiline = true;
             this.textBoxSpeed.Name = "textBoxSpeed";
             this.textBoxSpeed.ReadOnly = true;
@@ -1044,7 +743,7 @@ namespace AlbaAnalysis {
             // 
             this.textBoxMpuYaw.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxMpuYaw.Location = new System.Drawing.Point(539, 21);
-            this.textBoxMpuYaw.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxMpuYaw.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxMpuYaw.Multiline = true;
             this.textBoxMpuYaw.Name = "textBoxMpuYaw";
             this.textBoxMpuYaw.ReadOnly = true;
@@ -1080,7 +779,7 @@ namespace AlbaAnalysis {
             // 
             this.textBoxMpuRoll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxMpuRoll.Location = new System.Drawing.Point(360, 21);
-            this.textBoxMpuRoll.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxMpuRoll.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxMpuRoll.Multiline = true;
             this.textBoxMpuRoll.Name = "textBoxMpuRoll";
             this.textBoxMpuRoll.ReadOnly = true;
@@ -1116,7 +815,7 @@ namespace AlbaAnalysis {
             // 
             this.textBoxCadence.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxCadence.Location = new System.Drawing.Point(718, 21);
-            this.textBoxCadence.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxCadence.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCadence.Multiline = true;
             this.textBoxCadence.Name = "textBoxCadence";
             this.textBoxCadence.ReadOnly = true;
@@ -1136,6 +835,99 @@ namespace AlbaAnalysis {
             this.label_batteryDataL.Text = "batteryL";
             this.label_batteryDataL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // RBatteryChart
+            // 
+            chartArea6.Name = "ChartArea1";
+            this.RBatteryChart.ChartAreas.Add(chartArea6);
+            this.RBatteryChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend6.Name = "Legend1";
+            this.RBatteryChart.Legends.Add(legend6);
+            this.RBatteryChart.Location = new System.Drawing.Point(3, 3);
+            this.RBatteryChart.Name = "RBatteryChart";
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series6.Legend = "Legend1";
+            series6.Name = "RBattery";
+            this.RBatteryChart.Series.Add(series6);
+            this.RBatteryChart.Size = new System.Drawing.Size(1103, 824);
+            this.RBatteryChart.TabIndex = 18;
+            this.RBatteryChart.Text = "albaChart1";
+            // 
+            // LBatteryChart
+            // 
+            chartArea7.Name = "ChartArea1";
+            this.LBatteryChart.ChartAreas.Add(chartArea7);
+            this.LBatteryChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend7.Name = "Legend1";
+            this.LBatteryChart.Legends.Add(legend7);
+            this.LBatteryChart.Location = new System.Drawing.Point(1112, 3);
+            this.LBatteryChart.Name = "LBatteryChart";
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series7.Legend = "Legend1";
+            series7.Name = "LBatteryChart";
+            this.LBatteryChart.Series.Add(series7);
+            this.LBatteryChart.Size = new System.Drawing.Size(1183, 824);
+            this.LBatteryChart.TabIndex = 19;
+            this.LBatteryChart.Text = "albaChart1";
+            // 
+            // PitchInputChart
+            // 
+            chartArea8.Name = "ChartArea1";
+            this.PitchInputChart.ChartAreas.Add(chartArea8);
+            this.tableLayoutPanel4.SetColumnSpan(this.PitchInputChart, 2);
+            this.PitchInputChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend8.Name = "Legend1";
+            this.PitchInputChart.Legends.Add(legend8);
+            this.PitchInputChart.Location = new System.Drawing.Point(277, 224);
+            this.PitchInputChart.Name = "PitchInputChart";
+            this.tableLayoutPanel4.SetRowSpan(this.PitchInputChart, 2);
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series8.Legend = "Legend1";
+            series8.Name = "PitchInput";
+            this.PitchInputChart.Series.Add(series8);
+            this.PitchInputChart.Size = new System.Drawing.Size(949, 609);
+            this.PitchInputChart.TabIndex = 21;
+            this.PitchInputChart.Text = "albaChart2";
+            // 
+            // RollInputChart
+            // 
+            chartArea9.Name = "ChartArea1";
+            this.RollInputChart.ChartAreas.Add(chartArea9);
+            this.RollInputChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend9.Name = "Legend1";
+            this.RollInputChart.Legends.Add(legend9);
+            this.RollInputChart.Location = new System.Drawing.Point(1232, 3);
+            this.RollInputChart.Name = "RollInputChart";
+            this.tableLayoutPanel4.SetRowSpan(this.RollInputChart, 3);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series9.Legend = "Legend1";
+            series9.Name = "RollInput";
+            this.RollInputChart.Series.Add(series9);
+            this.RollInputChart.Size = new System.Drawing.Size(1069, 423);
+            this.RollInputChart.TabIndex = 22;
+            this.RollInputChart.Text = "albaChart2";
+            // 
+            // DrugInputChart
+            // 
+            chartArea10.Name = "ChartArea1";
+            this.DrugInputChart.ChartAreas.Add(chartArea10);
+            this.DrugInputChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend10.Name = "Legend1";
+            this.DrugInputChart.Legends.Add(legend10);
+            this.DrugInputChart.Location = new System.Drawing.Point(1232, 432);
+            this.DrugInputChart.Name = "DrugInputChart";
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series10.Legend = "Legend1";
+            series10.Name = "DrugInput";
+            this.DrugInputChart.Series.Add(series10);
+            this.DrugInputChart.Size = new System.Drawing.Size(1069, 401);
+            this.DrugInputChart.TabIndex = 23;
+            this.DrugInputChart.Text = "albaChart2";
+            // 
             // SerialForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -1146,7 +938,7 @@ namespace AlbaAnalysis {
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SerialForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "シリアルデータ";
@@ -1162,26 +954,26 @@ namespace AlbaAnalysis {
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartCadence)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartMpuPitch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartMpuYaw)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartMpuRoll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AirSpeedChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MpuRollChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MpuPitchChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MpuYawChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CadenceChart)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartLBattery)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartRBattery)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartDrugInput)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartRollInput)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartPitchInput)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RBatteryChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LBatteryChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PitchInputChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RollInputChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DrugInputChart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1199,18 +991,8 @@ namespace AlbaAnalysis {
         private System.Windows.Forms.ComboBox comboBoxFiles;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private AlbaChart chartMpuPitch;
-        private AlbaChart chartSpeed;
-        private AlbaChart chartMpuRoll;
-        private AlbaChart chartMpuYaw;
-        private AlbaChart chartCadence;
         private System.Windows.Forms.TabPage tabPage2;
-        private AlbaChart chartLBattery;
-        private AlbaChart chartRBattery;
         private System.Windows.Forms.TabPage tabPage3;
-        private AlbaChart chartRollInput;
-        private AlbaChart chartPitchInput;
-        private AlbaChart chartDrugInput;
         private VerticalProgressBar pitchVerticalProgressBar;
         private System.Windows.Forms.Button buttonRDrug;
         private System.Windows.Forms.Button buttonLDrug;
@@ -1244,6 +1026,16 @@ namespace AlbaAnalysis {
         private System.Windows.Forms.Button buttonRunCsv;
         private System.Windows.Forms.Button buttonOpenCsv;
         private System.Windows.Forms.Button buttonStopCsv;
+        private AlbaChart AirSpeedChart;
+        private AlbaChart MpuRollChart;
+        private AlbaChart MpuPitchChart;
+        private AlbaChart MpuYawChart;
+        private AlbaChart CadenceChart;
+        private AlbaChart RBatteryChart;
+        private AlbaChart LBatteryChart;
+        private AlbaChart PitchInputChart;
+        private AlbaChart RollInputChart;
+        private AlbaChart DrugInputChart;
     }
 }
 

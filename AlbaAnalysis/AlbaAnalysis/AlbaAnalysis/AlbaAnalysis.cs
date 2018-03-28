@@ -212,8 +212,9 @@ namespace AlbaAnalysis
         {
             counter = counter + 1;
             //   chartSpeed.AddXY(se.AirSpeedTime, se.AirSpeed);
-            chartSpeed.AddXY(counter * 2, counter);
-            chartCadence.AddXY(se.CadenceTime, se.Cadence);
+            AirSpeedChart.Series[0].Points.AddXY(se.AirSpeedTime, se.AirSpeed);
+            //     chartSpeed.Series[0].Points.AddXY(counter, counter % 10);
+            CadenceChart.Series[0].Points.AddXY(se.CadenceTime, se.Cadence);
         }
 
         /// <summary>
@@ -225,9 +226,9 @@ namespace AlbaAnalysis
         {
             try
             {
-                chartMpuPitch.AddXY(se.MpuTime, se.MpuPitch);
-                chartMpuYaw.AddXY(se.MpuTime, se.MpuYaw);
-                chartMpuRoll.AddXY(se.MpuTime, se.MpuRoll);
+                MpuPitchChart.Series[0].Points.AddXY(se.MpuTime, se.MpuPitch);
+                MpuYawChart.Series[0].Points.AddXY(se.MpuTime, se.MpuYaw);
+                MpuRollChart.Series[0].Points.AddXY(se.MpuTime, se.MpuRoll);
             }
             catch (Exception e) { }
         }
@@ -239,9 +240,9 @@ namespace AlbaAnalysis
         /// <param name="i"></param>
         private void plotChart(ThirdEntity se)
         {
-            chartRollInput.AddXY(se.ControlTime, se.RollInput);
-            chartPitchInput.AddXY(se.ControlTime, se.PitchInput);
-            chartDrugInput.AddXY(se.ControlTime, se.DrugL + se.DrugR);
+            RollInputChart.Series[0].Points.AddXY(se.ControlTime, se.RollInput);
+            PitchInputChart.Series[0].Points.AddXY(se.ControlTime, se.PitchInput);
+            DrugInputChart.Series[0].Points.AddXY(se.ControlTime, se.DrugL + se.DrugR);
         }
 
         /// <summary>
@@ -251,8 +252,8 @@ namespace AlbaAnalysis
         /// <param name="i"></param>
         private void plotChart(ForthEntity se)
         {
-            chartRBattery.AddXY(se.ControlTime, se.VoltageR);
-            chartLBattery.AddXY(se.ControlTime, se.VoltageL);
+            RBatteryChart.Series[0].Points.AddXY(se.ControlTime, se.VoltageR);
+            LBatteryChart.Series[0].Points.AddXY(se.ControlTime, se.VoltageL);
         }
         #endregion
 

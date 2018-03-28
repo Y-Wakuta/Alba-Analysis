@@ -28,6 +28,9 @@
             // 
             // AlbaChart
             // 
+            this.BackColor = System.Drawing.Color.DimGray;
+            this.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PrePaint += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ChartPaintEventArgs>(this.AlbaChart_PrePaint);
             this.Layout += new System.Windows.Forms.LayoutEventHandler(this.AlbaChart_Layout);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
