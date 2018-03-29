@@ -8,11 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using AlbaAnalysis.Entity;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AlbaAnalysis
 {
     public partial class XChart : UserControl
     {
+        string _name = string.Empty;
+
         public XChart()
         {
             InitializeComponent();
@@ -20,15 +24,15 @@ namespace AlbaAnalysis
             this.chart.Series[0].BorderWidth = 3;
         }
 
-        public void SetProperties(string Name)
+        public void SetProperties(string name)
         {
-            this.chart.Series[0].Name = Name;
-            this.chart.Legends[0].Name = Name;
+            this.chart.Series[0].Name = name;
+            this.chart.Legends[0].Name = name;
 
+            _name = name;
         }
 
-        private struct source { public double X; public double Y; }
-        source s = new source();
+        Source s = new Source();
 
         //ここでコンストラクタを宣言すると動かなくなる。
 
@@ -38,14 +42,29 @@ namespace AlbaAnalysis
             try
             {
                 this.chart.Series[0].Points.AddXY(x, y);
-                //if (this.ChartAreas[0].AxisX.Maximum < x * 1.1)
-                //           this.ChartAreas[0].AxisX.Maximum = x; //個々の上限は適当
-               
-                s = new source() { X = x, Y = y };
+                s = new Source() { X = x, Y = y };
             }
             catch (Exception)
             {
                 Debug.Assert(false);
+            }
+        }
+
+        public void Clear()
+        {
+            this.chart.Series[0].Points.Clear();
+        }
+
+        public void SaveImage(string path)
+        {
+            this.chart.SaveImage(path, ChartImageFormat.Jpeg);
+        }
+
+        private void chart_Click(object sender, EventArgs e)
+        {
+            using (var details = new Detail(ref s))
+            {
+                details.ShowDialog();
             }
         }
     }

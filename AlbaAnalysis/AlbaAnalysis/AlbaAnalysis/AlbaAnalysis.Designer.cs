@@ -63,6 +63,9 @@ namespace AlbaAnalysis {
             this.buttonLDrug = new System.Windows.Forms.Button();
             this.rollVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
             this.pitchVerticalProgressBar = new AlbaAnalysis.VerticalProgressBar();
+            this.PitchInputChart = new AlbaAnalysis.XChart();
+            this.RollInputChart = new AlbaAnalysis.XChart();
+            this.DrugInputChart = new AlbaAnalysis.XChart();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -81,9 +84,6 @@ namespace AlbaAnalysis {
             this.label14 = new System.Windows.Forms.Label();
             this.textBoxCadence = new System.Windows.Forms.TextBox();
             this.label_batteryDataL = new System.Windows.Forms.Label();
-            this.PitchInputChart = new AlbaAnalysis.XChart();
-            this.RollInputChart = new AlbaAnalysis.XChart();
-            this.DrugInputChart = new AlbaAnalysis.XChart();
             this.groupBoxAllData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.portNamesBindingSource)).BeginInit();
             this.groupBoxSerialConfig.SuspendLayout();
@@ -141,7 +141,7 @@ namespace AlbaAnalysis {
             this.comboBoxPort.Location = new System.Drawing.Point(2, 2);
             this.comboBoxPort.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxPort.Name = "comboBoxPort";
-            this.comboBoxPort.Size = new System.Drawing.Size(278, 26);
+            this.comboBoxPort.Size = new System.Drawing.Size(275, 26);
             this.comboBoxPort.TabIndex = 2;
             // 
             // portNamesBindingSource
@@ -168,7 +168,7 @@ namespace AlbaAnalysis {
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 157F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 161F));
             this.tableLayoutPanel6.Controls.Add(this.comboBoxBaud, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.comboBoxPort, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.buttonClose, 4, 0);
@@ -199,10 +199,10 @@ namespace AlbaAnalysis {
             this.comboBoxBaud.DisplayMember = "NAME";
             this.comboBoxBaud.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBaud.FormattingEnabled = true;
-            this.comboBoxBaud.Location = new System.Drawing.Point(284, 2);
+            this.comboBoxBaud.Location = new System.Drawing.Point(281, 2);
             this.comboBoxBaud.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxBaud.Name = "comboBoxBaud";
-            this.comboBoxBaud.Size = new System.Drawing.Size(333, 26);
+            this.comboBoxBaud.Size = new System.Drawing.Size(332, 26);
             this.comboBoxBaud.TabIndex = 3;
             this.comboBoxBaud.ValueMember = "RATE";
             // 
@@ -214,7 +214,7 @@ namespace AlbaAnalysis {
             // 
             this.buttonClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonClose.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonClose.Location = new System.Drawing.Point(752, 3);
+            this.buttonClose.Location = new System.Drawing.Point(748, 3);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(126, 39);
             this.buttonClose.TabIndex = 31;
@@ -226,7 +226,7 @@ namespace AlbaAnalysis {
             // 
             this.buttonConnect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonConnect.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonConnect.Location = new System.Drawing.Point(622, 3);
+            this.buttonConnect.Location = new System.Drawing.Point(618, 3);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(124, 39);
             this.buttonConnect.TabIndex = 29;
@@ -238,9 +238,9 @@ namespace AlbaAnalysis {
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(884, 48);
+            this.button1.Location = new System.Drawing.Point(880, 48);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(152, 39);
+            this.button1.Size = new System.Drawing.Size(156, 39);
             this.button1.TabIndex = 38;
             this.button1.Text = "Config";
             this.button1.UseVisualStyleBackColor = true;
@@ -250,9 +250,9 @@ namespace AlbaAnalysis {
             // 
             this.buttonNext.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonNext.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNext.Location = new System.Drawing.Point(884, 3);
+            this.buttonNext.Location = new System.Drawing.Point(880, 3);
             this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(152, 39);
+            this.buttonNext.Size = new System.Drawing.Size(156, 39);
             this.buttonNext.TabIndex = 33;
             this.buttonNext.Text = "Next>>";
             this.buttonNext.UseVisualStyleBackColor = true;
@@ -262,7 +262,7 @@ namespace AlbaAnalysis {
             // 
             this.buttonRunCsv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonRunCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRunCsv.Location = new System.Drawing.Point(492, 48);
+            this.buttonRunCsv.Location = new System.Drawing.Point(488, 48);
             this.buttonRunCsv.Name = "buttonRunCsv";
             this.buttonRunCsv.Size = new System.Drawing.Size(124, 39);
             this.buttonRunCsv.TabIndex = 48;
@@ -279,7 +279,7 @@ namespace AlbaAnalysis {
             this.comboBoxFiles.FormattingEnabled = true;
             this.comboBoxFiles.Location = new System.Drawing.Point(3, 48);
             this.comboBoxFiles.Name = "comboBoxFiles";
-            this.comboBoxFiles.Size = new System.Drawing.Size(483, 26);
+            this.comboBoxFiles.Size = new System.Drawing.Size(479, 26);
             this.comboBoxFiles.TabIndex = 34;
             this.comboBoxFiles.ValueMember = "pathName";
             this.comboBoxFiles.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiles_SelectedIndexChanged);
@@ -292,7 +292,7 @@ namespace AlbaAnalysis {
             // 
             this.buttonOpenCsv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonOpenCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonOpenCsv.Location = new System.Drawing.Point(752, 48);
+            this.buttonOpenCsv.Location = new System.Drawing.Point(748, 48);
             this.buttonOpenCsv.Name = "buttonOpenCsv";
             this.buttonOpenCsv.Size = new System.Drawing.Size(126, 39);
             this.buttonOpenCsv.TabIndex = 36;
@@ -304,7 +304,7 @@ namespace AlbaAnalysis {
             // 
             this.buttonStopCsv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonStopCsv.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonStopCsv.Location = new System.Drawing.Point(622, 48);
+            this.buttonStopCsv.Location = new System.Drawing.Point(618, 48);
             this.buttonStopCsv.Name = "buttonStopCsv";
             this.buttonStopCsv.Size = new System.Drawing.Size(124, 39);
             this.buttonStopCsv.TabIndex = 50;
@@ -516,6 +516,33 @@ namespace AlbaAnalysis {
             this.tableLayoutPanel4.SetRowSpan(this.pitchVerticalProgressBar, 4);
             this.pitchVerticalProgressBar.Size = new System.Drawing.Size(131, 830);
             this.pitchVerticalProgressBar.TabIndex = 9;
+            // 
+            // PitchInputChart
+            // 
+            this.tableLayoutPanel4.SetColumnSpan(this.PitchInputChart, 2);
+            this.PitchInputChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PitchInputChart.Location = new System.Drawing.Point(277, 224);
+            this.PitchInputChart.Name = "PitchInputChart";
+            this.tableLayoutPanel4.SetRowSpan(this.PitchInputChart, 2);
+            this.PitchInputChart.Size = new System.Drawing.Size(949, 609);
+            this.PitchInputChart.TabIndex = 24;
+            // 
+            // RollInputChart
+            // 
+            this.RollInputChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RollInputChart.Location = new System.Drawing.Point(1232, 3);
+            this.RollInputChart.Name = "RollInputChart";
+            this.tableLayoutPanel4.SetRowSpan(this.RollInputChart, 3);
+            this.RollInputChart.Size = new System.Drawing.Size(1069, 423);
+            this.RollInputChart.TabIndex = 25;
+            // 
+            // DrugInputChart
+            // 
+            this.DrugInputChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DrugInputChart.Location = new System.Drawing.Point(1232, 432);
+            this.DrugInputChart.Name = "DrugInputChart";
+            this.DrugInputChart.Size = new System.Drawing.Size(1069, 401);
+            this.DrugInputChart.TabIndex = 26;
             // 
             // tableLayoutPanel1
             // 
@@ -760,33 +787,6 @@ namespace AlbaAnalysis {
             this.label_batteryDataL.TabIndex = 10;
             this.label_batteryDataL.Text = "batteryL";
             this.label_batteryDataL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // PitchInputChart
-            // 
-            this.tableLayoutPanel4.SetColumnSpan(this.PitchInputChart, 2);
-            this.PitchInputChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PitchInputChart.Location = new System.Drawing.Point(277, 224);
-            this.PitchInputChart.Name = "PitchInputChart";
-            this.tableLayoutPanel4.SetRowSpan(this.PitchInputChart, 2);
-            this.PitchInputChart.Size = new System.Drawing.Size(949, 609);
-            this.PitchInputChart.TabIndex = 24;
-            // 
-            // RollInputChart
-            // 
-            this.RollInputChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RollInputChart.Location = new System.Drawing.Point(1232, 3);
-            this.RollInputChart.Name = "RollInputChart";
-            this.tableLayoutPanel4.SetRowSpan(this.RollInputChart, 3);
-            this.RollInputChart.Size = new System.Drawing.Size(1069, 423);
-            this.RollInputChart.TabIndex = 25;
-            // 
-            // DrugInputChart
-            // 
-            this.DrugInputChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DrugInputChart.Location = new System.Drawing.Point(1232, 432);
-            this.DrugInputChart.Name = "DrugInputChart";
-            this.DrugInputChart.Size = new System.Drawing.Size(1069, 401);
-            this.DrugInputChart.TabIndex = 26;
             // 
             // SerialForm
             // 

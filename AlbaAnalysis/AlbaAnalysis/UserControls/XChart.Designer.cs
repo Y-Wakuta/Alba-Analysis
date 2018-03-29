@@ -56,13 +56,14 @@
             this.chart.Size = new System.Drawing.Size(400, 321);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart1";
+            this.chart.Click += new System.EventHandler(this.chart_Click);
             // 
             // XChart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.chart);
-            this.Name = "XChart";
+            this._name = "XChart";
             this.Size = new System.Drawing.Size(400, 321);
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.ResumeLayout(false);

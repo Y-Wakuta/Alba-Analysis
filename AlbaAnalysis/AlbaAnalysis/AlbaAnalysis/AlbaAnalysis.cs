@@ -20,7 +20,6 @@ namespace AlbaAnalysis
 {
     public partial class SerialForm : Form
     {
-        // List<SerialEntity> saveData;
         int csvFlag = 0;
         AlbaAnalysisDataHandler _ad;
         LogWrapper<FirstEntity, SecondEntity, ThirdEntity, ForthEntity> logger;
@@ -29,7 +28,6 @@ namespace AlbaAnalysis
 
         public SerialForm()
         {
-            //saveData = new List<SerialEntity>();
             logger = new LogWrapper<FirstEntity, SecondEntity, ThirdEntity, ForthEntity>();
             InitializeComponent();
             _ad = new AlbaAnalysisDataHandler(bauditemsBindingSource, portNamesBindingSource, filePathBindingSource);
@@ -38,7 +36,6 @@ namespace AlbaAnalysis
 
             serialPort1.BaudRate = ((BaudRateEntity)(bauditemsBindingSource.Current)).rate;
             serialPort1.PortName = (string)portNamesBindingSource.Current;
-            //    serialPort1.Encoding = System.Text.Encoding.GetEncoding("utf-32");
 
             setChartProps();
 
@@ -65,7 +62,6 @@ namespace AlbaAnalysis
             }
             catch (Exception)
             {
-                //         Debug.Assert(false);
                 return;
             }
 
@@ -172,8 +168,8 @@ namespace AlbaAnalysis
         {
             try
             {
-                Invoke((Action)(() => plotChart(se)));
-                Invoke((Action)(() => appendText(se, inputLine)));
+                BeginInvoke((Action)(() => plotChart(se)));
+                BeginInvoke((Action)(() => appendText(se, inputLine)));
             }
             catch (TargetInvocationException ex) { }
         }
@@ -182,24 +178,25 @@ namespace AlbaAnalysis
         {
             try
             {
-                Invoke((Action)(() => plotChart(se)));
-                Invoke((Action)(() => appendText(se, inputLine)));
+                BeginInvoke((Action)(() => plotChart(se)));
+                BeginInvoke((Action)(() => appendText(se, inputLine)));
             }
             catch (TargetInvocationException exc) { }
         }
 
         void InvokeControls(ThirdEntity se, string inputLine)
         {
-            Invoke((Action)(() => plotChart(se)));
-            Invoke((Action)(() => checkSteer(se)));
+            BeginInvoke((Action)(() => plotChart(se)));
+            BeginInvoke((Action)(() => checkSteer(se)));
+            BeginInvoke((Action)(() => appendText(se, inputLine)));
         }
 
         void InvokeControls(ForthEntity se, string inputLine)
         {
             try
             {
-                Invoke((Action)(() => plotChart(se)));
-                Invoke((Action)(() => appendText(se, inputLine)));
+                BeginInvoke((Action)(() => plotChart(se)));
+                BeginInvoke((Action)(() => appendText(se, inputLine)));
             }
             catch (TargetInvocationException e) { }
         }
@@ -213,10 +210,7 @@ namespace AlbaAnalysis
         /// <param name="i"></param>
         private void plotChart(FirstEntity se)
         {
-            counter = counter + 1;
-            //   chartSpeed.AddXY(se.AirSpeedTime, se.AirSpeed);
             AirSpeedChart.AddXY(se.AirSpeedTime, se.AirSpeed);
-            //     chartSpeed.AddXY(counter, counter % 10);
             CadenceChart.AddXY(se.CadenceTime, se.Cadence);
         }
 
@@ -291,6 +285,16 @@ namespace AlbaAnalysis
         /// </summary>
         /// <param name="se">配列化した受信データ</param>
         /// <param name="i"></param>
+        private void appendText(ThirdEntity se, string allInput)
+        {
+            textBoxAllData.AppendText(allInput + Environment.NewLine);
+        }
+
+        /// <summary>
+        /// 受信データをtextboxに表示します
+        /// </summary>
+        /// <param name="se">配列化した受信データ</param>
+        /// <param name="i"></param>
         private void appendText(ForthEntity se, string allInput)
         {
             textBoxAllData.AppendText(allInput + Environment.NewLine);
@@ -320,9 +324,9 @@ namespace AlbaAnalysis
         /// </summary>
         void ClearChart()
         {
-            var fls = typeof(SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals("AlbaChart"));
+            var fls = typeof(SerialForm).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.FieldType.Name.Equals(nameof(XChart)));
             foreach (var fi in fls)
-                ((Chart)fi.GetValue(this)).Series[0].Points.Clear();
+                ((XChart)fi.GetValue(this)).Clear();
         }
 
         /// <summary>
@@ -376,12 +380,7 @@ namespace AlbaAnalysis
 
         private void buttonClose_Click_1(object sender, EventArgs e)
         {
-            var commentForm = new AdditionalFileNameDialog();
             serialPort1.DataReceived -= serialPort1_DataReceived;
-            commentForm.ShowDialog();
-            SaveAllCharts(commentForm.GetComment());
-            logger.Export(Constants.pathBase + "TF" + DateTime.Now.ToString("MMdd_hhmm") + commentForm.GetComment());
-            _ad.resetFileList();
             serialPort1.DiscardInBuffer();
             serialPort1.Close();
             closeButtonEnable();
@@ -389,6 +388,11 @@ namespace AlbaAnalysis
 
         private void buttonNext_Click_1(object sender, EventArgs e)
         {
+            var commentForm = new AdditionalFileNameDialog();
+            commentForm.ShowDialog();
+            SaveAllCharts(commentForm.GetComment());
+            logger.Export(Constants.pathBase + DateTime.Now.ToString("MMdd_hhmm") + commentForm.GetComment());
+            _ad.resetFileList();
             clearForm();
             buttonConnect.Focus();
         }
@@ -490,7 +494,6 @@ namespace AlbaAnalysis
             CadenceChart.SetProperties(nameof(FirstEntity.Cadence));
             RBatteryChart.SetProperties(nameof(ForthEntity.VoltageR));
             LBatteryChart.SetProperties(nameof(ForthEntity.VoltageL));
-
             PitchInputChart.SetProperties(nameof(ThirdEntity.PitchInput));
             RollInputChart.SetProperties(nameof(ThirdEntity.RollInput));
             DrugInputChart.SetProperties(nameof(ThirdEntity.DrugR) + nameof(ThirdEntity.DrugL));

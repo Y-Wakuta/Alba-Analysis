@@ -73,34 +73,39 @@ namespace AlbaAnalysis.Library {
         /// <summary>
         /// excelにappendしてきたデータを出力する。遅くてもよい
         /// </summary>
-        private void exportList<Y>(string directoryPath, List<Y> target) {
+        private void exportList<Y>(string directoryPath, List<Y> target)
+        {
             //データ型に対応するリスト
             if (!System.IO.Directory.Exists(directoryPath))
                 System.IO.Directory.CreateDirectory(directoryPath);
 
             var className = Attribute.GetCustomAttribute(typeof(Y), typeof(DisplayNameAttribute)) as DisplayNameAttribute;
 
-            using (var sw = new StreamWriter(directoryPath + className.DisplayName + ".csv", append: true)) {
+            using (var sw = new StreamWriter(directoryPath + @"\" + className.DisplayName + ".csv", append: true))
+            {
                 var props = typeof(Y).GetSortedProperties();
 
-                var headerArray = props.Select(p => nameof(p));
-                sw.Write(String.Join(",", headerArray));
+                var headerArray = props.Select(p => p.Name);
+                sw.Write(String.Join(",", headerArray) + Environment.NewLine);
 
-                foreach (var t in target) {
+                foreach (var t in target)
+                {
                     var strArray = props.Select(p => p.GetValue(t).ToString());
-                    sw.Write(String.Join(",", strArray));
+                    sw.Write(String.Join(",", strArray) + Environment.NewLine);
                 }
             }
         }
 
-        public void Export(string parentpath) {
+        public void Export(string parentpath)
+        {
             exportList(parentpath, listT);
             exportList(parentpath, listU);
             exportList(parentpath, listV);
             exportList(parentpath, listW);
         }
 
-        public void Clear() {
+        public void Clear()
+        {
             listT.Clear();
             listU.Clear();
             listV.Clear();
