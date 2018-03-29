@@ -115,12 +115,6 @@
     <Compile Include="Entity\ThirdEntity.cs" />
     <Compile Include="Library\Extensions.cs" />
     <Compile Include="Library\LogWrapper.cs" />
-    <Compile Include="UserControls\AlbaChart.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\AlbaChart.Designer.cs">
-      <DependentUpon>AlbaChart.cs</DependentUpon>
-    </Compile>
     <Compile Include="AdditionalPanel\Detail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +134,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\VerticalProgressBar.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\XChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\XChart.Designer.cs">
+      <DependentUpon>XChart.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AdditionalPanel\AdditionalFileNameDialog.resx">
       <DependentUpon>AdditionalFileNameDialog.cs</DependentUpon>
@@ -162,8 +162,8 @@
     <EmbeddedResource Include="AlbaAnalysis\AlbaAnalysis.resx">
       <DependentUpon>AlbaAnalysis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\AlbaChart.resx">
-      <DependentUpon>AlbaChart.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\XChart.resx">
+      <DependentUpon>XChart.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Config.sqlite3" />
     <None Include="packages.config" />

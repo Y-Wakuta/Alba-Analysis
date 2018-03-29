@@ -40,6 +40,8 @@ namespace AlbaAnalysis
             serialPort1.PortName = (string)portNamesBindingSource.Current;
             //    serialPort1.Encoding = System.Text.Encoding.GetEncoding("utf-32");
 
+            setChartProps();
+
             bauditemsBindingSource.PositionChanged += (s, e) =>
             {
                 serialPort1.BaudRate = ((BaudRateEntity)(bauditemsBindingSource.Current)).rate;
@@ -48,6 +50,7 @@ namespace AlbaAnalysis
             {
                 serialPort1.PortName = (string)portNamesBindingSource.Current;
             };
+
 
         }
 
@@ -60,7 +63,7 @@ namespace AlbaAnalysis
             {
                 inputLine = serialPort1.ReadLine();
             }
-            catch (Exception exccc)
+            catch (Exception)
             {
                 //         Debug.Assert(false);
                 return;
@@ -478,16 +481,20 @@ namespace AlbaAnalysis
             foreach (var f in fls)
                 ((Chart)f.GetValue(this)).SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + ((Chart)f.GetValue(this)).Name + ".jpeg", ChartImageFormat.Jpeg);
         }
+
+        private void setChartProps()
+        {
+            MpuRollChart.SetProperties(nameof(SecondEntity.MpuRoll));
+            MpuYawChart.SetProperties(nameof(SecondEntity.MpuYaw));
+            MpuPitchChart.SetProperties(nameof(SecondEntity.MpuPitch));
+            CadenceChart.SetProperties(nameof(FirstEntity.Cadence));
+            RBatteryChart.SetProperties(nameof(ForthEntity.VoltageR));
+            LBatteryChart.SetProperties(nameof(ForthEntity.VoltageL));
+
+            PitchInputChart.SetProperties(nameof(ThirdEntity.PitchInput));
+            RollInputChart.SetProperties(nameof(ThirdEntity.RollInput));
+            DrugInputChart.SetProperties(nameof(ThirdEntity.DrugR) + nameof(ThirdEntity.DrugL));
+        }
         #endregion
-
-        private void RBatteryChart_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void MpuRollChart_Click(object sender, EventArgs e)
-        {
-            RBatteryChart.Show_details();
-            Albachartコントロールで一括でプロパティを決定したが変えられない。
-        }
     }
 }
