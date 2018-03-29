@@ -30,8 +30,9 @@
             // 
             this.BackColor = System.Drawing.Color.DimGray;
             this.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PrePaint += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ChartPaintEventArgs>(this.AlbaChart_PrePaint);
+            this.Click += new System.EventHandler(this.AlbaChart_Click_1);
             this.Layout += new System.Windows.Forms.LayoutEventHandler(this.AlbaChart_Layout);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.AlbaChart_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 

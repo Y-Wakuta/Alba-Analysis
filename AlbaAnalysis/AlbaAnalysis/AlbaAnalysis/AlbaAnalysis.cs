@@ -212,9 +212,9 @@ namespace AlbaAnalysis
         {
             counter = counter + 1;
             //   chartSpeed.AddXY(se.AirSpeedTime, se.AirSpeed);
-            AirSpeedChart.Series[0].Points.AddXY(se.AirSpeedTime, se.AirSpeed);
-            //     chartSpeed.Series[0].Points.AddXY(counter, counter % 10);
-            CadenceChart.Series[0].Points.AddXY(se.CadenceTime, se.Cadence);
+            AirSpeedChart.AddXY(se.AirSpeedTime, se.AirSpeed);
+            //     chartSpeed.AddXY(counter, counter % 10);
+            CadenceChart.AddXY(se.CadenceTime, se.Cadence);
         }
 
         /// <summary>
@@ -226,9 +226,9 @@ namespace AlbaAnalysis
         {
             try
             {
-                MpuPitchChart.Series[0].Points.AddXY(se.MpuTime, se.MpuPitch);
-                MpuYawChart.Series[0].Points.AddXY(se.MpuTime, se.MpuYaw);
-                MpuRollChart.Series[0].Points.AddXY(se.MpuTime, se.MpuRoll);
+                MpuPitchChart.AddXY(se.MpuTime, se.MpuPitch);
+                MpuYawChart.AddXY(se.MpuTime, se.MpuYaw);
+                MpuRollChart.AddXY(se.MpuTime, se.MpuRoll);
             }
             catch (Exception e) { }
         }
@@ -240,9 +240,9 @@ namespace AlbaAnalysis
         /// <param name="i"></param>
         private void plotChart(ThirdEntity se)
         {
-            RollInputChart.Series[0].Points.AddXY(se.ControlTime, se.RollInput);
-            PitchInputChart.Series[0].Points.AddXY(se.ControlTime, se.PitchInput);
-            DrugInputChart.Series[0].Points.AddXY(se.ControlTime, se.DrugL + se.DrugR);
+            RollInputChart.AddXY(se.ControlTime, se.RollInput);
+            PitchInputChart.AddXY(se.ControlTime, se.PitchInput);
+            DrugInputChart.AddXY(se.ControlTime, se.DrugL + se.DrugR);
         }
 
         /// <summary>
@@ -252,8 +252,8 @@ namespace AlbaAnalysis
         /// <param name="i"></param>
         private void plotChart(ForthEntity se)
         {
-            RBatteryChart.Series[0].Points.AddXY(se.ControlTime, se.VoltageR);
-            LBatteryChart.Series[0].Points.AddXY(se.ControlTime, se.VoltageL);
+            RBatteryChart.AddXY(se.ControlTime, se.VoltageR);
+            LBatteryChart.AddXY(se.ControlTime, se.VoltageL);
         }
         #endregion
 
@@ -479,5 +479,15 @@ namespace AlbaAnalysis
                 ((Chart)f.GetValue(this)).SaveImage(@"../../../Log/chart/" + nowTime + comment + "/" + ((Chart)f.GetValue(this)).Name + ".jpeg", ChartImageFormat.Jpeg);
         }
         #endregion
+
+        private void RBatteryChart_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void MpuRollChart_Click(object sender, EventArgs e)
+        {
+            RBatteryChart.Show_details();
+            Albachartコントロールで一括でプロパティを決定したが変えられない。
+        }
     }
 }
